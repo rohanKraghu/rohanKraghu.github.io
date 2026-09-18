@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Plain-language definitions of every financial term used in the Numeraldo Financial Literacy Crash Course — from APR and compound interest to required minimum distributions and security freezes.">
+<meta property="og:title" content="Glossary — Financial Literacy Crash Course">
+<meta property="og:description" content="Every term in the course, defined in plain language.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6E5C'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='600' fill='%23EFF2F0' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<title>Glossary · Financial Literacy Crash Course · Numeraldo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="assets/course.css">
+<style>
+  .gl-controls{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-bottom:8px}
+  .gl-controls .field{flex:1 1 260px;max-width:420px}
+  .gl-filters{display:flex;gap:8px;flex-wrap:wrap}
+  .gl-filters button{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    padding:9px 14px;border:1.5px solid var(--line-strong);background:var(--surface);
+    color:var(--muted);border-radius:2px;cursor:pointer;
+  }
+  .gl-filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+  .gl-count{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--muted);margin-top:16px}
+  .glossary{margin:22px 0 0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+  .gl-item{padding:20px 0;border-bottom:1px solid var(--line)}
+  .gl-item dt{
+    font-family:var(--display);font-weight:600;font-size:1.12em;letter-spacing:-.01em;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0;
+  }
+  .gl-item dd{margin:8px 0 0;color:var(--muted);max-width:74ch}
+  .gl-tag{
+    font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;border:1px solid var(--line-strong);color:var(--muted);
+  }
+  .gl-tag.teens{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .gl-tag.seniors{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+  .gl-empty{padding:30px 0;color:var(--muted)}
+  @media print{.gl-controls,.gl-count{display:none!important}}
+</style>
+</head>
+<body data-track="glossary">
+
+<a class="skip" href="#glossary">Skip to the glossary</a>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="index.html">
+      <span class="mark">N</span>
+      <span class="wordmark">Numeraldo<small>Crash Course</small></span>
+    </a>
+    <nav class="main">
+      <a href="index.html">Overview</a>
+      <a href="teens.html">Teens</a>
+      <a href="seniors.html">Seniors</a>
+      <a href="glossary.html" aria-current="page">Glossary</a>
+    </nav>
+    <a class="btn ghost sm noprint" href="#" data-print>Print</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Reference · Both tracks</span>
+      <h1 class="lede">Every term, <em>in plain language.</em></h1>
+      <p class="sub">47 definitions covering both tracks of the crash course. Financial jargon is
+        mostly ordinary ideas wearing a costume — here they are without it.</p>
+    </div>
+  </div>
+
+  <section id="glossary">
+    <div class="wrap">
+      <div class="gl-controls noprint">
+        <div class="field">
+          <label for="gl-q">Search the glossary</label>
+          <input type="search" id="gl-q" placeholder="interest, overdraft, FAFSA…" autocomplete="off">
+        </div>
+        <div class="gl-filters" role="group" aria-label="Filter by track">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="teens" aria-pressed="false">Teens</button>
+          <button type="button" data-filter="seniors" aria-pressed="false">Seniors</button>
+        </div>
+      </div>
+      <p class="gl-count" id="gl-count" aria-live="polite"></p>
+
+      <dl class="glossary" id="gl-list">
+        <div class="gl-item" data-track="teens" data-term="1099">
+          <dt>1099 <span class="gl-tag teens">Teens</span></dt>
+          <dd>A tax form for work done as an independent contractor rather than an employee. No tax is withheld for you, and you owe both halves of FICA — 15.3% — on top of income tax. Most gig and 'contractor' work is 1099.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="amortization">
+          <dt>Amortization <span class="gl-tag both">Both tracks</span></dt>
+          <dd>The process of paying off a loan through fixed payments, where each payment covers that period's interest first and the remainder reduces the principal. Early payments are mostly interest; later ones are mostly principal.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="annuity">
+          <dt>Annuity <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>An insurance contract that pays income over time in exchange for a lump sum. Some are straightforward; many carry high fees and long surrender periods during which taking your own money back costs a penalty. Always ask for total fees and the surrender period in writing.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="apr">
+          <dt>APR <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Annual Percentage Rate — the yearly cost of borrowing, not including the effect of compounding. On a credit card carrying a balance, the effective cost is higher than the APR suggests.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="apy">
+          <dt>APY <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Annual Percentage Yield — the yearly return on savings <em>including</em> compounding. This is the number to compare when shopping for a savings account or CD.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="authorized user">
+          <dt>Authorized user <span class="gl-tag teens">Teens</span></dt>
+          <dd>Someone added to another person's credit card account. The account's history can appear on the authorized user's credit file, which is one of the few ways to build credit history before you can qualify for a card yourself.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="beneficiary">
+          <dt>Beneficiary <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>The person named to receive an account or policy when the owner dies. Beneficiary designations override a will, so reviewing them after a marriage, divorce, or death matters more than most people realize.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="certificate of deposit (cd)">
+          <dt>Certificate of deposit (CD) <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>A deposit committed for a fixed term at a fixed rate. Federally insured and predictable; withdrawing early costs a penalty, usually a few months of interest.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="compound interest">
+          <dt>Compound interest <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Interest paid on your principal <em>and</em> on the interest already earned. It's what makes long-term saving work and what makes carried debt dangerous — the same mechanism running in both directions.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="cost of attendance">
+          <dt>Cost of attendance <span class="gl-tag teens">Teens</span></dt>
+          <dd>A college's full advertised annual price: tuition, fees, housing, food, books. Almost nobody pays it. The number that matters is the net price.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="credit score">
+          <dt>Credit score <span class="gl-tag teens">Teens</span></dt>
+          <dd>A lender's estimate of whether you pay people back. The common FICO model weights payment history 35%, amounts owed 30%, length of history 15%, new credit 10%, and credit mix 10%.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="credit utilization">
+          <dt>Credit utilization <span class="gl-tag teens">Teens</span></dt>
+          <dd>The share of your credit limit you're using. Keeping it under 30% — ideally under 10% — is one of the fastest ways to improve a score, and it resets every month.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="deductible">
+          <dt>Deductible <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>The amount you pay out of pocket before insurance starts covering costs. A lower premium often means a higher deductible; the total you'd pay in a bad year is the real comparison.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="diversification">
+          <dt>Diversification <span class="gl-tag teens">Teens</span></dt>
+          <dd>Owning many investments so no single failure is catastrophic. One company can go to zero; a broad index of hundreds, historically, has not.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="durable power of attorney">
+          <dt>Durable power of attorney <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>A legal document authorizing someone you choose to handle financial matters if you can't. Set up in advance, it lets you define the limits while you're fully able to — unlike arrangements made in a crisis.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="earned income">
+          <dt>Earned income <span class="gl-tag teens">Teens</span></dt>
+          <dd>Money from work — wages, salary, tips, self-employment. It's a requirement for contributing to an IRA, which is why a summer job is what makes a teen Roth IRA possible.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="emergency fund">
+          <dt>Emergency fund <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Cash set aside for unplanned expenses, held somewhere safe and reachable. The first target for a teenager is $500; the standard adult guideline is three to six months of expenses.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="expense ratio">
+          <dt>Expense ratio <span class="gl-tag teens">Teens</span></dt>
+          <dd>A fund's annual fee as a percent of your balance. 0.03% costs $3 per $10,000 a year; 1.0% costs $100 — and compounds against you for as long as you hold it.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="explanation of benefits (eob)">
+          <dt>Explanation of Benefits (EOB) <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>A statement from an insurer showing what a provider billed and what insurance paid. <strong>It is not a bill.</strong> Keep it and compare it to the provider's actual bill when that arrives.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="fafsa">
+          <dt>FAFSA <span class="gl-tag teens">Teens</span></dt>
+          <dd>The Free Application for Federal Student Aid — the form that unlocks federal grants, work-study, and federal loans, and which most states and colleges use to award their own aid. Free to file, and frequently skipped by families who assume they won't qualify.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="fdic insurance">
+          <dt>FDIC insurance <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>Federal insurance covering bank deposits up to $250,000 per depositor, per bank, per ownership category. Credit unions have equivalent NCUA coverage. It covers deposits — not stocks, bonds, mutual funds, annuities, or crypto, even when sold at a bank.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="fica">
+          <dt>FICA <span class="gl-tag teens">Teens</span></dt>
+          <dd>The federal payroll taxes on nearly every paycheck: Social Security at 6.2% and Medicare at 1.45%, for 7.65% total. Your employer pays a matching share you never see.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="fiduciary">
+          <dt>Fiduciary <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>Someone legally required to act in your interest rather than their own. Not everyone selling financial products is one — ask, and ask for the answer in writing.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="fixed income">
+          <dt>Fixed income <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>Income that doesn't rise with your spending needs — Social Security, a pension, an annuity. It isn't necessarily small; it's <em>known</em>, which makes it the easiest kind of income to plan against.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="grace period">
+          <dt>Grace period <span class="gl-tag teens">Teens</span></dt>
+          <dd>The window between a credit card statement closing and its due date — usually about three weeks. Pay the full statement balance within it and you pay no interest at all.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="grant">
+          <dt>Grant <span class="gl-tag teens">Teens</span></dt>
+          <dd>Aid you don't repay, usually based on financial need. Award letters often list grants and loans together under 'financial aid,' which is why they have to be read line by line.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="gross pay">
+          <dt>Gross pay <span class="gl-tag teens">Teens</span></dt>
+          <dd>What you earned before deductions. Net pay is what's left after taxes and withholding — for a first job, expect to keep roughly 80–85% of gross.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="index fund">
+          <dt>Index fund <span class="gl-tag teens">Teens</span></dt>
+          <dd>A fund that buys an entire market segment rather than trying to pick winners. Low fees and instant diversification; the default choice for most long-term investors.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="inflation">
+          <dt>Inflation <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>The rate at which prices rise, which quietly reduces what your money buys. Your real return is roughly what you earn minus inflation — so savings earning nothing lose ground every year.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="ira">
+          <dt>IRA <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Individual Retirement Arrangement. A <strong>traditional</strong> IRA gives a tax break now and is taxed on withdrawal; a <strong>Roth</strong> IRA is funded with money already taxed and qualified withdrawals are tax-free.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="401(k)">
+          <dt>401(k) <span class="gl-tag both">Both tracks</span></dt>
+          <dd>A retirement account offered through an employer. Contributions are usually taken from your paycheck before tax, and many employers match part of what you put in — the match is the closest thing to free money in personal finance.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="liquidity">
+          <dt>Liquidity <span class="gl-tag both">Both tracks</span></dt>
+          <dd>How quickly something can become spendable cash without losing value. A savings account is liquid; a five-year CD and a house are not.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="medicare">
+          <dt>Medicare <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>Federal health coverage for people 65 and older and some younger people with disabilities. Part A covers hospital stays, Part B medical services, Part C (Advantage) bundles coverage through private plans, and Part D covers prescriptions.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="minimum payment">
+          <dt>Minimum payment <span class="gl-tag teens">Teens</span></dt>
+          <dd>The smallest amount that keeps a credit card in good standing — deliberately set low. Paying only the minimum can take years and cost more in interest than the original purchases.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="net price">
+          <dt>Net price <span class="gl-tag teens">Teens</span></dt>
+          <dd>A college's cost of attendance minus grants and scholarships — what your family actually pays. Every college is required to publish a net price calculator, and sticker prices predict it poorly.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="overdraft fee">
+          <dt>Overdraft fee <span class="gl-tag both">Both tracks</span></dt>
+          <dd>A charge — commonly around $35 — for spending money you don't have. Fees apply per transaction, so several small purchases can cost over $100. Opting out of overdraft coverage makes the card decline instead.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="phishing">
+          <dt>Phishing <span class="gl-tag both">Both tracks</span></dt>
+          <dd>A message impersonating a real institution to get credentials, codes, or payment. The current versions are well written and often use details about you gathered elsewhere. The defense isn't spotting typos — it's contacting the institution yourself.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="principal">
+          <dt>Principal <span class="gl-tag both">Both tracks</span></dt>
+          <dd>The original amount borrowed or invested, separate from interest. On a loan, only payments above the interest charge reduce it.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="required minimum distribution (rmd)">
+          <dt>Required Minimum Distribution (RMD) <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>The amount the IRS requires you to withdraw each year from tax-deferred retirement accounts once you reach a certain age — currently 73 for most people, scheduled to rise to 75 in 2033. Your custodian will calculate yours on request.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="rule of 72">
+          <dt>Rule of 72 <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Divide 72 by an annual rate to estimate the years until money doubles. At 8%, about nine years. At a 24% credit card APR, your balance doubles in about three.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="security freeze">
+          <dt>Security freeze <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>A free, legally guaranteed block that stops new credit from being opened in your name. It doesn't affect your score or existing accounts, and you can lift it any time. It must be set at all three credit bureaus separately.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="social security">
+          <dt>Social Security <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>Federal retirement and disability benefits funded by payroll taxes. You can claim as early as 62 at a permanently reduced amount, receive the full benefit at full retirement age (66–67), or delay to 70 for credits that increase it.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="subsidized loan">
+          <dt>Subsidized loan <span class="gl-tag teens">Teens</span></dt>
+          <dd>A federal student loan on which the government pays the interest while you're enrolled. On an <strong>unsubsidized</strong> loan, interest accrues from day one — the same headline rate, a meaningfully larger balance at graduation.</dd>
+        </div>
+        <div class="gl-item" data-track="seniors" data-term="trusted contact">
+          <dt>Trusted contact <span class="gl-tag seniors">Seniors</span></dt>
+          <dd>A person your bank or brokerage may contact if they see something alarming or can't reach you. They can't move your money or see balances — one of the most useful and least invasive protections available, and it's free.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="w-2">
+          <dt>W-2 <span class="gl-tag teens">Teens</span></dt>
+          <dd>The annual form from an employer reporting your wages and the tax withheld. You need it to file a tax return, and it's worth checking against your final pay stub.</dd>
+        </div>
+        <div class="gl-item" data-track="teens" data-term="w-4">
+          <dt>W-4 <span class="gl-tag teens">Teens</span></dt>
+          <dd>The form you complete when hired, telling your employer how much tax to withhold. Withhold too much and you get a refund; too little and you owe in April.</dd>
+        </div>
+        <div class="gl-item" data-track="teens seniors" data-term="withholding">
+          <dt>Withholding <span class="gl-tag both">Both tracks</span></dt>
+          <dd>Tax taken out of a payment in advance and sent to the government on your behalf. You can also request withholding on retirement account withdrawals, which prevents a surprise tax bill.</dd>
+        </div>
+      </dl>
+      <p class="gl-empty" id="gl-empty" hidden>No term matches that. Try a shorter word — or check the
+        <a href="teens.html">teens</a> and <a href="seniors.html">seniors</a> tracks directly.</p>
+
+      <div class="note" style="margin-top:34px">
+        <b>A term missing?</b> Tell us at <a href="mailto:info@numeraldo.org">info@numeraldo.org</a> and
+        we'll add it. This glossary describes United States rules and institutions, and is educational
+        rather than personalized advice.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot">
+    <span>&copy; <span data-year>2026</span> Numeraldo &middot; Financial Literacy Crash Course</span>
+    <span><a href="index.html">Course home</a> &middot; <a href="https://numeraldo.org/" rel="noopener">numeraldo.org</a></span>
+  </div>
+</footer>
+
+<script src="assets/course.js"></script>
+<script>
+(function () {
+  var q = document.getElementById("gl-q");
+  var items = Array.prototype.slice.call(document.querySelectorAll(".gl-item"));
+  var count = document.getElementById("gl-count");
+  var empty = document.getElementById("gl-empty");
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  var track = "all";
+
+  function run() {
+    var text = (q.value || "").trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function (item) {
+      var okTrack = track === "all" || item.dataset.track.indexOf(track) !== -1;
+      var okText = !text ||
+        item.dataset.term.indexOf(text) !== -1 ||
+        item.textContent.toLowerCase().indexOf(text) !== -1;
+      var show = okTrack && okText;
+      item.hidden = !show;
+      if (show) shown++;
+    });
+    empty.hidden = shown !== 0;
+    count.textContent = shown === items.length
+      ? items.length + " terms"
+      : shown + " of " + items.length + " terms";
+  }
+
+  q.addEventListener("input", run);
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () {
+      track = b.dataset.filter;
+      buttons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      run();
+    });
+  });
+  run();
+})();
+</script>
+
+</body>
+</html>
