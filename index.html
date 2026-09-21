@@ -4,21 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- ---------------------------------------------------------------------------
-     Two placeholders remain, both marked .ph (dashed outline on the page):
-       · GitHub URL — not present on the resume, so not invented here
+     Two placeholders remain, both marked .ph (dashed underline on the page):
+       · GitHub URL — not on the resume, so not invented here
        · resume.pdf — drop the file in beside this one and the links go live
      --------------------------------------------------------------------------- -->
-<meta name="description" content="Rohan Raghu — MIT mathematics and artificial intelligence candidate. Quantitative research, catalyst modelling, and a numeracy nonprofit reaching 1,000+ people.">
+<meta name="description" content="Rohan Raghu — mathematics and artificial intelligence at MIT. Quantitative research, machine learning, and a numeracy nonprofit reaching 1,000+ people.">
 <meta property="og:title" content="Rohan Raghu">
-<meta property="og:description" content="I carry work from research to deployment.">
+<meta property="og:description" content="Making numbers mean something.">
 <meta property="og:type" content="profile">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <title>Rohan Raghu</title>
+<script>document.documentElement.className="js"</script>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
+<!-- Ranade (Fontshare) for display; Inter for text. Both sans. -->
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=ranade@500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* ---------- three colors, two typefaces, nothing else ---------- */
+  /* ---------- three colors, two sans faces ---------- */
   :root{
     --paper:#F3F1EC;
     --ink:#16130F;
@@ -26,7 +31,9 @@
     --line:#DCD6CB;
     --accent:#8A4B2A;
 
-    --display:"Instrument Serif",Georgia,"Times New Roman",serif;
+    /* Ranade is wide and low-contrast; the fallbacks match that proportion
+       so the layout doesn't jump if Fontshare is slow or unreachable. */
+    --display:"Ranade","Helvetica Neue",Helvetica,Arial,sans-serif;
     --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 
     --gut:clamp(22px,5vw,64px);
@@ -42,246 +49,224 @@
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  html{-webkit-text-size-adjust:100%}
   body{
     margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
     font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-    font-feature-settings:"kern" 1;
   }
-  h1,h2,h3{margin:0;font-weight:400;letter-spacing:-.015em;line-height:1.04}
+  h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06}
   p{margin:0}
   a{color:inherit;text-decoration:none}
   ul{margin:0;padding:0;list-style:none}
-
   .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
 
-  /* the one label style: small, letterspaced, uppercase */
-  .lbl{
-    font-size:10.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--muted);
-  }
-  .num{font-size:11px;font-weight:500;letter-spacing:.16em;color:var(--accent)}
-  .rule{height:1px;background:var(--line);border:0;margin:0}
-
-  /* placeholder marker — deliberately plain, not a badge */
-  .ph{
-    font-size:.9em;color:var(--accent);border-bottom:1px dashed var(--accent);
-    padding-bottom:1px;
-  }
-
+  .lbl{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .num{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent)}
+  .ph{font-size:.9em;color:var(--accent);border-bottom:1px dashed var(--accent);padding-bottom:1px}
   .skip{position:absolute;left:-9999px;background:var(--ink);color:var(--paper);padding:12px 18px;z-index:99;font-size:13px}
   .skip:focus{left:10px;top:10px}
   a:focus-visible,button:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
 
-  /* ---------- header: a hairline, nothing more ---------- */
-  header.site{
-    position:sticky;top:0;z-index:30;background:var(--paper);
-    border-bottom:1px solid var(--line);
-  }
-  .bar{display:flex;align-items:baseline;gap:20px;padding-block:17px}
-  .bar .me{font-family:var(--display);font-size:19px;letter-spacing:-.01em;margin-right:auto}
-  .bar nav{display:flex;gap:26px}
-  .bar nav a{transition:color .15s}
-  .bar nav a:hover{color:var(--accent)}
+  /* ---------- top bar ---------- */
+  .top{border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:20px;padding-block:16px}
+  .top .me{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin-right:auto}
+  .top a.mail{font-size:13.5px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .15s,border-color .15s}
+  .top a.mail:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
-  /* ---------- hero: asymmetric, 12 columns ---------- */
-  .hero{padding-block:clamp(70px,13vw,152px) clamp(48px,8vw,92px)}
-  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut) 24px;align-items:start}
+  /* ---------- hero: short, asymmetric ---------- */
+  .hero{padding-block:clamp(52px,8.5vw,104px) clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut) 24px;align-items:end}
   .hero .lede{grid-column:1 / 9}
   h1.tag{
-    font-family:var(--display);
-    font-size:clamp(46px,8.4vw,116px);
-    line-height:.96;letter-spacing:-.025em;margin-top:26px;
+    font-size:clamp(35px,6.2vw,78px);
+    line-height:1.0;letter-spacing:-.035em;margin-top:20px;
   }
-  h1.tag em{font-style:italic;color:var(--accent)}
+  h1.tag span{color:var(--accent)}
   .hero .stand{
-    margin-top:clamp(26px,3vw,40px);max-width:50ch;font-size:clamp(16.5px,1.5vw,19px);
-    color:var(--muted);line-height:1.56;
+    margin-top:clamp(22px,2.6vw,32px);max-width:48ch;
+    font-size:clamp(16px,1.42vw,18.5px);color:var(--muted);line-height:1.58;
   }
-  /* the offset meta column — the asymmetry */
-  .hero .meta{grid-column:10 / 13;padding-top:12px;display:flex;flex-direction:column;gap:22px}
-  .hero .meta .row{display:flex;flex-direction:column;gap:5px}
-  .hero .meta .v{font-size:14.5px;line-height:1.45}
-  .hero .meta a{border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .15s,color .15s}
+  .hero .meta{grid-column:10 / 13;display:flex;flex-direction:column;gap:7px;padding-bottom:5px}
+  .hero .meta a{font-size:14px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:2px;align-self:flex-start;transition:color .15s,border-color .15s}
   .hero .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .hero .where{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.5}
 
-  /* ---------- section scaffolding ---------- */
-  section{padding-block:clamp(56px,7.5vw,104px);border-top:1px solid var(--line)}
-  .head{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(38px,5vw,64px)}
-  .head .lbl{grid-column:1 / 3}
-  .head h2{grid-column:4 / 11;font-family:var(--display);font-size:clamp(27px,3.9vw,46px);letter-spacing:-.02em}
-  .head p{grid-column:4 / 10;color:var(--muted);margin-top:14px;max-width:54ch}
+  /* ---------- tab bar ---------- */
+  .tabbar{position:sticky;top:0;z-index:20;background:var(--paper);border-block:1px solid var(--line)}
+  .tabs{display:flex;gap:clamp(18px,3vw,42px);overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs button{
+    appearance:none;background:none;border:0;cursor:pointer;color:var(--muted);
+    font-family:var(--display);font-weight:700;font-size:clamp(15px,1.5vw,18px);
+    letter-spacing:-.015em;padding:17px 0 15px;white-space:nowrap;
+    border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s;
+  }
+  .tabs button:hover{color:var(--ink)}
+  .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+  .tabs .count{font-family:var(--body);font-weight:500;font-size:10.5px;color:var(--muted);vertical-align:super;margin-left:5px;letter-spacing:.04em}
 
-  /* ---------- selected work: asymmetric rows, no cards ---------- */
+  .panel{padding-block:clamp(44px,6vw,84px)}
+  .panel:focus{outline:none}
+  .intro{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(32px,4.5vw,56px)}
+  .intro .lbl{grid-column:1 / 3;padding-top:7px}
+  .intro h2{grid-column:4 / 11;font-size:clamp(23px,3.2vw,38px)}
+  .intro p{grid-column:4 / 10;color:var(--muted);margin-top:13px;max-width:52ch}
+
+  /* ---------- work items ---------- */
   .work{border-top:1px solid var(--line)}
   .item{
     display:grid;grid-template-columns:repeat(12,1fr);gap:10px 24px;
-    padding-block:clamp(30px,3.6vw,48px);border-bottom:1px solid var(--line);
-    align-items:start;
+    padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line);align-items:start;
   }
   a.item{transition:background-color .2s}
   a.item:hover{background:color-mix(in srgb,var(--ink) 3.5%,transparent)}
-  .item .idx{grid-column:1 / 2}
+  .item .idx{grid-column:1 / 2;padding-top:6px}
   .item .main{grid-column:2 / 8}
-  .item .aside{grid-column:9 / 13;display:flex;flex-direction:column;gap:9px;padding-top:3px}
-  .item h3{font-family:var(--display);font-size:clamp(24px,3vw,37px);letter-spacing:-.02em}
-  .item .desc{margin-top:14px;color:var(--muted);max-width:46ch;font-size:15.5px}
+  .item .aside{grid-column:9 / 13;display:flex;flex-direction:column;gap:9px;padding-top:6px}
+  .item h3{font-size:clamp(21px,2.5vw,31px)}
+  .item .desc{margin-top:13px;color:var(--muted);max-width:46ch;font-size:15.5px}
   .item .stack{font-size:13px;color:var(--muted);line-height:1.5}
   .item .status{display:flex;align-items:center;gap:8px}
   .item .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
   .item .dot.off{background:var(--line)}
-  .item .go{
-    font-size:13px;color:var(--accent);margin-top:18px;display:inline-block;
-    border-bottom:1px solid transparent;padding-bottom:1px;
-  }
+  .item .go{font-size:13px;font-weight:500;color:var(--accent);margin-top:16px;display:inline-block;border-bottom:1px solid transparent;padding-bottom:1px}
   a.item:hover .go{border-bottom-color:var(--accent)}
 
   /* ---------- experience ---------- */
-  .role{
-    display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;
-    padding-block:clamp(28px,3.4vw,44px);border-bottom:1px solid var(--line);
-  }
+  .role{display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line)}
   .role:first-child{border-top:1px solid var(--line)}
-  .role .when{grid-column:1 / 3;font-size:13px;color:var(--muted);padding-top:7px;line-height:1.45}
+  .role .when{grid-column:1 / 3;font-size:13px;color:var(--muted);padding-top:8px;line-height:1.45}
   .role .body{grid-column:4 / 12}
-  .role h3{font-family:var(--display);font-size:clamp(22px,2.5vw,31px)}
+  .role h3{font-size:clamp(19px,2.2vw,27px)}
   .role .org{font-size:14px;color:var(--muted);margin-top:7px}
-  .role ul{margin-top:18px;display:flex;flex-direction:column;gap:11px;max-width:64ch}
+  .role ul{margin-top:17px;display:flex;flex-direction:column;gap:11px;max-width:64ch}
   .role li{padding-left:22px;position:relative;color:var(--muted);font-size:15.5px}
   .role li::before{content:"";position:absolute;left:0;top:11px;width:11px;height:1px;background:var(--accent)}
-  .role li b{color:var(--ink);font-weight:500}
+  .role li b{color:var(--ink);font-weight:600}
 
-  /* ---------- bio: offset block ---------- */
-  .bio-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-  .bio-grid .text{grid-column:4 / 11}
-  .bio-grid p{font-family:var(--display);font-size:clamp(21px,2.5vw,30px);line-height:1.36;letter-spacing:-.012em}
-  .bio-grid p + p{margin-top:24px;font-family:var(--body);font-size:16.5px;line-height:1.66;color:var(--muted);letter-spacing:0}
-
-  /* ---------- details: dense editorial columns ---------- */
-  .details{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(34px,4vw,54px) 24px}
-  .col-a{grid-column:1 / 5}
-  .col-b{grid-column:5 / 9}
-  .col-c{grid-column:9 / 13}
-  .details .lbl{display:block;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  /* ---------- about ---------- */
+  .bio{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .bio .text{grid-column:4 / 11}
+  .bio .big{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.5vw,29px);line-height:1.28;letter-spacing:-.025em}
+  .bio .body-copy{margin-top:22px;font-size:16.5px;line-height:1.66;color:var(--muted)}
+  .details{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(32px,4vw,52px) 24px;margin-top:clamp(52px,6.5vw,88px)}
+  .col-a{grid-column:1 / 5}.col-b{grid-column:5 / 9}.col-c{grid-column:9 / 13}
+  .details .lbl{display:block;padding-bottom:13px;border-bottom:1px solid var(--line)}
   .details dl{margin:0}
-  .details .d{padding-block:15px;border-bottom:1px solid var(--line)}
+  .details .d{padding-block:14px;border-bottom:1px solid var(--line)}
   .details .d:last-child{border-bottom:0}
-  .details dt{font-size:15.5px;line-height:1.4}
+  .details dt{font-size:15.5px;font-weight:500;line-height:1.4}
   .details dd{margin:5px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
-  .details .yr{float:right;font-size:12px;color:var(--muted);margin-left:12px}
+  .details .yr{float:right;font-size:12px;font-weight:400;color:var(--muted);margin-left:12px}
 
   /* ---------- contact footer ---------- */
-  footer.site{border-top:1px solid var(--line);padding-block:clamp(56px,7vw,96px) 44px}
-  .cta{font-family:var(--display);font-size:clamp(30px,5.6vw,68px);line-height:1.02;letter-spacing:-.025em}
-  .cta a{border-bottom:1px solid var(--line);transition:border-color .15s,color .15s}
-  .cta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-  .foot-rows{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-top:clamp(44px,6vw,76px)}
+  footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
+  .cta{font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
+  .cta a{color:var(--accent);border-bottom:2px solid transparent;transition:border-color .15s}
+  .cta a:hover{border-bottom-color:var(--accent)}
+  .foot-rows{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-top:clamp(40px,5vw,64px)}
   .foot-rows .c{grid-column:span 3;display:flex;flex-direction:column;gap:6px}
-  .foot-rows .c a{font-size:14.5px;border-bottom:1px solid var(--line);align-self:flex-start;padding-bottom:1px;transition:border-color .15s,color .15s}
+  .foot-rows .c a{font-size:14.5px;font-weight:500;border-bottom:1px solid var(--line);align-self:flex-start;padding-bottom:1px;transition:color .15s,border-color .15s}
   .foot-rows .c a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-  .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(44px,6vw,72px);padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+  .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 
-  /* ---------- responsive: collapse the asymmetry deliberately ---------- */
+  /* ---------- responsive ---------- */
   @media (max-width:1000px){
+    .hero-grid{align-items:start}
     .hero .lede{grid-column:1 / 10}
-    .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:30px 48px;padding-top:0}
-    .head h2,.head p{grid-column:4 / 13}
+    .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-bottom:0}
+    .hero .where{width:100%;margin-bottom:0}
+    .intro h2,.intro p{grid-column:4 / 13}
     .item .main{grid-column:2 / 9}
-    .item .aside{grid-column:9 / 13}
     .role .body{grid-column:4 / 13}
-    .bio-grid .text{grid-column:3 / 13}
+    .bio .text{grid-column:3 / 13}
     .col-a{grid-column:1 / 7}.col-b{grid-column:7 / 13}.col-c{grid-column:1 / 7}
     .foot-rows .c{grid-column:span 4}
   }
   @media (max-width:680px){
     body{font-size:15.5px}
-    .bar nav{display:none}
-    .head .lbl{grid-column:1 / 13}
-    .head h2,.head p{grid-column:1 / 13}
+    .intro .lbl,.intro h2,.intro p{grid-column:1 / 13}
     .item{gap:6px}
-    .item .idx{grid-column:1 / 13}
-    .item .main{grid-column:1 / 13}
-    .item .aside{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:8px 22px;margin-top:16px}
-    .role .when{grid-column:1 / 13;padding-top:0}
-    .role .body{grid-column:1 / 13}
-    .bio-grid .text{grid-column:1 / 13}
+    .item .idx,.item .main{grid-column:1 / 13}
+    .item .idx{padding-top:0}
+    .item .aside{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:8px 20px;margin-top:15px;padding-top:0}
+    .role .when,.role .body{grid-column:1 / 13}
+    .role .when{padding-top:0}
+    .bio .text{grid-column:1 / 13}
     .col-a,.col-b,.col-c{grid-column:1 / 13}
     .foot-rows .c{grid-column:span 6}
   }
 
-  /* ---------- print: the page is also the resume ---------- */
+  /* ---------- no JS: show every panel, drop the tab bar ---------- */
+  .tabbar{display:block}
+  html:not(.js) .tabbar{display:none}
+  html:not(.js) [role="tabpanel"][hidden]{display:block!important}
+
+  /* ---------- print: every panel, no tabs ---------- */
   @media print{
-    :root{--paper:#fff;--ink:#000;--muted:#3a3a3a;--line:#c4c4c4;--accent:#000;--gut:0}
-    header.site,.skip,.item .go,.hero .stand{display:none!important}
+    :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--gut:0}
+    .top,.tabbar,.skip,.item .go,.hero .stand{display:none!important}
+    [role="tabpanel"][hidden]{display:block!important}
     body{font-size:10pt}
-    section,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
+    .panel,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
     .hero{padding-block:0 12pt}
-    h1.tag{font-size:26pt;margin-top:8pt}
+    h1.tag{font-size:24pt}
     .item,.role{break-inside:avoid}
-    .cta{font-size:16pt}
+    .cta{font-size:15pt}
     a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
   }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#work">Skip to work</a>
+<a class="skip" href="#panels">Skip to content</a>
 
-<header class="site">
-  <div class="wrap bar">
-    <a class="me" href="#top">Rohan Raghu</a>
-    <nav>
-      <a class="lbl" href="#work">Work</a>
-      <a class="lbl" href="#experience">Experience</a>
-      <a class="lbl" href="#about">About</a>
-      <a class="lbl" href="#contact">Contact</a>
-    </nav>
+<div class="top">
+  <div class="wrap">
+    <span class="me">Rohan Raghu</span>
+    <a class="mail" href="mailto:rohan.k.raghu@gmail.com">rohan.k.raghu@gmail.com</a>
   </div>
-</header>
+</div>
 
-<main id="top">
-
-  <!-- ===================== HERO ===================== -->
-  <div class="hero">
-    <div class="wrap hero-grid">
-      <div class="lede">
-        <span class="lbl">Mathematics &amp; Artificial Intelligence · MIT ’30</span>
-        <h1 class="tag">I carry work from research to <em>deployment.</em></h1>
-        <p class="stand">Catalyst modelling in the Strano Lab at MIT. Python forecasting and
-          back-testing systems for a hedge fund. A numeracy nonprofit I founded and still teach at
-          every week, now past a thousand people. The through-line is finishing things.</p>
-      </div>
-
-      <div class="meta">
-        <div class="row">
-          <span class="lbl">Currently</span>
-          <span class="v">Founder, Numeraldo<br>Flanders, New Jersey</span>
-        </div>
-        <div class="row">
-          <span class="lbl">Next</span>
-          <span class="v">MIT, August 2026<br>Course 18 &amp; 6-4</span>
-        </div>
-        <div class="row">
-          <span class="lbl">Elsewhere</span>
-          <span class="v">
-            <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a><br>
-            <a href="mailto:rohan.k.raghu@gmail.com">Email</a><br>
-            <a href="resume.pdf">Resume</a>
-          </span>
-        </div>
-      </div>
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="lede">
+      <span class="lbl">New Jersey · Mathematics &amp; artificial intelligence</span>
+      <h1 class="tag">Making numbers mean something<span>.</span></h1>
+      <p class="stand">I'm interested in the moment a number stops being noise and becomes a
+        decision — in a catalyst model, a market forecast, or somebody's first bank account.
+        Closing that gap is the thread through everything I build.</p>
+    </div>
+    <div class="meta">
+      <span class="where">Founder at Numeraldo.<br>MIT, from August 2026.</span>
+      <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
+      <a href="resume.pdf">Resume</a>
     </div>
   </div>
+</div>
 
-  <!-- ===================== SELECTED WORK ===================== -->
-  <section id="work">
+<!-- ===================== TABS ===================== -->
+<div class="tabbar">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="t-work" aria-controls="p-work" aria-selected="true" tabindex="0">Work<span class="count">05</span></button>
+      <button role="tab" id="t-exp" aria-controls="p-exp" aria-selected="false" tabindex="-1">Experience<span class="count">03</span></button>
+      <button role="tab" id="t-about" aria-controls="p-about" aria-selected="false" tabindex="-1">About</button>
+    </div>
+  </div>
+</div>
+
+<main id="panels">
+
+  <!-- ---------- WORK ---------- -->
+  <section class="panel" role="tabpanel" id="p-work" aria-labelledby="t-work" tabindex="-1">
     <div class="wrap">
-      <div class="head">
+      <div class="intro">
         <span class="lbl">Selected work</span>
-        <h2>Things that are live, and things being built.</h2>
-        <p>Two are shipped and in daily use. Three are in progress — listed as such, because a
-          portfolio that blurs the difference is worth less than one that doesn't.</p>
+        <h2>Two are live. Three are being built.</h2>
+        <p>Listed as such — a portfolio that blurs the difference is worth less than one that doesn't.</p>
       </div>
 
       <div class="work">
@@ -363,146 +348,138 @@
     </div>
   </section>
 
-  <!-- ===================== EXPERIENCE ===================== -->
-  <section id="experience">
+  <!-- ---------- EXPERIENCE ---------- -->
+  <section class="panel" role="tabpanel" id="p-exp" aria-labelledby="t-exp" tabindex="-1" hidden>
     <div class="wrap">
-      <div class="head">
+      <div class="intro">
         <span class="lbl">Experience</span>
         <h2>Three summers, one organisation, and the numbers attached.</h2>
       </div>
 
-      <div class="roles">
-        <article class="role">
-          <span class="when">Sep 2024 —<br>Present</span>
-          <div class="body">
-            <h3>Founder</h3>
-            <p class="org">Numeraldo · 501(c)(3) nonprofit</p>
-            <ul>
-              <li>Founded and scaled a 501(c)(3) expanding numeracy and financial literacy access for
-                underserved youth, seniors, and first-time banking participants.</li>
-              <li>Designed and led quantitative-reasoning and financial literacy workshops for
-                <b>1,000+ attendees</b>; guided <b>120+</b> through bank account setup and <b>70+</b>
-                through Roth IRA retirement planning.</li>
-              <li>Built a weekly math mentorship partnership with the local Boys &amp; Girls Club
-                serving <b>40+ students</b>.</li>
-              <li>Recruited and managed <b>20 volunteers</b> and raised <b>$1,000+</b> in grants across
-                two partner organisations.</li>
-            </ul>
-          </div>
-        </article>
+      <article class="role">
+        <span class="when">Sep 2024 —<br>Present</span>
+        <div class="body">
+          <h3>Founder</h3>
+          <p class="org">Numeraldo · 501(c)(3) nonprofit</p>
+          <ul>
+            <li>Founded and scaled a 501(c)(3) expanding numeracy and financial literacy access for
+              underserved youth, seniors, and first-time banking participants.</li>
+            <li>Designed and led quantitative-reasoning and financial literacy workshops for
+              <b>1,000+ attendees</b>; guided <b>120+</b> through bank account setup and <b>70+</b>
+              through Roth IRA retirement planning.</li>
+            <li>Built a weekly math mentorship partnership with the local Boys &amp; Girls Club
+              serving <b>40+ students</b>.</li>
+            <li>Recruited and managed <b>20 volunteers</b> and raised <b>$1,000+</b> in grants across
+              two partner organisations.</li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="role">
-          <span class="when">Jun —<br>Aug 2025</span>
-          <div class="body">
-            <h3>Private Hedge Fund Analyst</h3>
-            <p class="org">TruSuccess Investments · Rockaway, NJ</p>
-            <ul>
-              <li>Boosted annual returns by <b>5%</b> through quantitative modelling of proprietary
-                equity and macroeconomic datasets, applying statistical inference, time-series
-                analysis, and predictive analytics.</li>
-              <li>Built a Python forecasting and back-testing framework from scratch: regression
-                models, volatility and moving-average indicators, sentiment signals, and reusable
-                data-ingestion modules.</li>
-              <li>Applied machine learning to detect trading patterns and quantify risk exposure,
-                informing <b>$100K+</b> in investment decisions through probability modelling and
-                performance attribution.</li>
-            </ul>
-          </div>
-        </article>
+      <article class="role">
+        <span class="when">Jun —<br>Aug 2025</span>
+        <div class="body">
+          <h3>Private Hedge Fund Analyst</h3>
+          <p class="org">TruSuccess Investments · Rockaway, NJ</p>
+          <ul>
+            <li>Boosted annual returns by <b>5%</b> through quantitative modelling of proprietary
+              equity and macroeconomic datasets, applying statistical inference, time-series
+              analysis, and predictive analytics.</li>
+            <li>Built a Python forecasting and back-testing framework from scratch: regression
+              models, volatility and moving-average indicators, sentiment signals, and reusable
+              data-ingestion modules.</li>
+            <li>Applied machine learning to detect trading patterns and quantify risk exposure,
+              informing <b>$100K+</b> in investment decisions through probability modelling and
+              performance attribution.</li>
+          </ul>
+        </div>
+      </article>
 
-        <article class="role">
-          <span class="when">Jun —<br>Aug 2024</span>
-          <div class="body">
-            <h3>Research Intern</h3>
-            <p class="org">MIT Chemical Engineering · HIP-SAT Program, Michael Strano Lab · Cambridge, MA</p>
-            <ul>
-              <li>Conducted experimental and computational research on a dual-catalyst methane and
-                CO₂ fixation system for sustainable polymer synthesis and carbon sequestration.</li>
-              <li>Built Python data-processing and firmware pipelines to model catalyst efficiency;
-                parameter tuning and numerical optimisation raised production efficiency <b>25%</b>,
-                supporting a paper publication.</li>
-              <li>Presented findings and optimisation results at an MIT Chemical Engineering
-                symposium.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
+      <article class="role">
+        <span class="when">Jun —<br>Aug 2024</span>
+        <div class="body">
+          <h3>Research Intern</h3>
+          <p class="org">MIT Chemical Engineering · HIP-SAT Program, Michael Strano Lab · Cambridge, MA</p>
+          <ul>
+            <li>Conducted experimental and computational research on a dual-catalyst methane and
+              CO₂ fixation system for sustainable polymer synthesis and carbon sequestration.</li>
+            <li>Built Python data-processing and firmware pipelines to model catalyst efficiency;
+              parameter tuning and numerical optimisation raised production efficiency <b>25%</b>,
+              supporting a paper publication.</li>
+            <li>Presented findings and optimisation results at an MIT Chemical Engineering
+              symposium.</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about">
-    <div class="wrap bio-grid">
-      <div class="text">
-        <span class="lbl" style="display:block;margin-bottom:26px">About</span>
-        <p>I started Numeraldo because the people who struggle most with numbers are rarely the
-          people offered help with them.</p>
-        <p>That has turned out to be the same instinct behind everything else I work on. In the
-          Strano Lab it meant writing the pipelines that made catalyst data legible rather than
-          waiting for someone else to. At a hedge fund it meant building the back-testing framework
-          from scratch, and learning quickly that the interesting question is not what a backtest
-          claims but why it lies. At Numeraldo it means teaching the session myself every week, not
-          delegating the classroom. I study mathematics and artificial intelligence at MIT starting
-          this August, and I am looking for work where shipping the thing is part of the job.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== DETAILS ===================== -->
-  <section id="details">
-    <div class="wrap details">
-      <div class="col-a">
-        <span class="lbl">Education</span>
-        <dl>
-          <div class="d">
-            <dt>Massachusetts Institute of Technology<span class="yr">2030</span></dt>
-            <dd>B.S. candidate, Mathematics and Artificial Intelligence — Course 18 and Course 6-4.
-              Cambridge, MA.</dd>
-          </div>
-          <div class="d">
-            <dt>Stanford University Online High School<span class="yr">2026</span></dt>
-            <dd>3.97 GPA · 1580 SAT (800 M, 780 V) · 36 ACT · 10 perfect AP scores.
-              Redwood City, CA.</dd>
-          </div>
-        </dl>
+  <!-- ---------- ABOUT ---------- -->
+  <section class="panel" role="tabpanel" id="p-about" aria-labelledby="t-about" tabindex="-1" hidden>
+    <div class="wrap">
+      <div class="bio">
+        <div class="text">
+          <span class="lbl" style="display:block;margin-bottom:22px">About</span>
+          <p class="big">I started Numeraldo because the people who struggle most with numbers are
+            rarely the people offered help with them.</p>
+          <p class="body-copy">That has turned out to be the same instinct behind everything else I
+            work on. In the Strano Lab it meant writing the pipelines that made catalyst data legible
+            rather than waiting for someone else to. At a hedge fund it meant building the
+            back-testing framework from scratch, and learning quickly that the interesting question
+            is not what a backtest claims but why it lies. At Numeraldo it means teaching the session
+            myself every week, not delegating the classroom. I study mathematics and artificial
+            intelligence at MIT starting this August, and I'm looking for work where shipping the
+            thing is part of the job.</p>
+        </div>
       </div>
 
-      <div class="col-b">
-        <span class="lbl">Honors</span>
-        <dl>
-          <div class="d">
-            <dt>Gold Medal, USA Astronomy/Astrophysics Olympiad<span class="yr">2025</span></dt>
-            <dd>Top 5 nationally; Team USA at the International Olympiad on Astronomy and
-              Astrophysics.</dd>
-          </div>
-          <div class="d">
-            <dt>Gold Medal, US Congressional Award<span class="yr">2026</span></dt>
-            <dd>Congress's highest civilian honor for youth.</dd>
-          </div>
-          <div class="d">
-            <dt>First Place, Stanford OHS Science Bowl<span class="yr">2024</span></dt>
-            <dd>First of approximately 390 students.</dd>
-          </div>
-        </dl>
-      </div>
+      <div class="details">
+        <div class="col-a">
+          <span class="lbl">Education</span>
+          <dl>
+            <div class="d">
+              <dt>Massachusetts Institute of Technology<span class="yr">2030</span></dt>
+              <dd>B.S. candidate, Mathematics and Artificial Intelligence — Course 18 and Course 6-4.
+                Cambridge, MA.</dd>
+            </div>
+            <div class="d">
+              <dt>Stanford University Online High School<span class="yr">2026</span></dt>
+              <dd>3.97 GPA · 1580 SAT (800 M, 780 V) · 36 ACT · 10 perfect AP scores.
+                Redwood City, CA.</dd>
+            </div>
+          </dl>
+        </div>
 
-      <div class="col-c">
-        <span class="lbl">Skills</span>
-        <dl>
-          <div class="d">
-            <dt>Languages</dt>
-            <dd>Python, Java, C/C++, JavaScript, MATLAB, R</dd>
-          </div>
-          <div class="d">
-            <dt>ML &amp; data</dt>
-            <dd>NumPy, pandas, scikit-learn, PyTorch, TensorFlow; regression, forecasting,
-              back-testing</dd>
-          </div>
-          <div class="d">
-            <dt>Tools</dt>
-            <dd>Git/GitHub, Jupyter, SQL, Linux/CLI, LaTeX</dd>
-          </div>
-        </dl>
+        <div class="col-b">
+          <span class="lbl">Honors</span>
+          <dl>
+            <div class="d">
+              <dt>Gold Medal, USA Astronomy/Astrophysics Olympiad<span class="yr">2025</span></dt>
+              <dd>Top 5 nationally; Team USA at the International Olympiad on Astronomy and
+                Astrophysics.</dd>
+            </div>
+            <div class="d">
+              <dt>Gold Medal, US Congressional Award<span class="yr">2026</span></dt>
+              <dd>Congress's highest civilian honor for youth.</dd>
+            </div>
+            <div class="d">
+              <dt>First Place, Stanford OHS Science Bowl<span class="yr">2024</span></dt>
+              <dd>First of approximately 390 students.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="col-c">
+          <span class="lbl">Skills</span>
+          <dl>
+            <div class="d"><dt>Languages</dt>
+              <dd>Python, Java, C/C++, JavaScript, MATLAB, R</dd></div>
+            <div class="d"><dt>ML &amp; data</dt>
+              <dd>NumPy, pandas, scikit-learn, PyTorch, TensorFlow; regression, forecasting,
+                back-testing</dd></div>
+            <div class="d"><dt>Tools</dt>
+              <dd>Git/GitHub, Jupyter, SQL, Linux/CLI, LaTeX</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
@@ -513,36 +490,64 @@
 <footer class="site" id="contact">
   <div class="wrap">
     <span class="lbl">Contact</span>
-    <p class="cta" style="margin-top:24px">Open to internships and work in quantitative research,
-      machine learning, and software. <a href="mailto:rohan.k.raghu@gmail.com">Say hello →</a></p>
+    <p class="cta" style="margin-top:22px">Looking for work in quantitative research, ML, and
+      software. <a href="mailto:rohan.k.raghu@gmail.com">Say hello →</a></p>
 
     <div class="foot-rows">
-      <div class="c">
-        <span class="lbl">Email</span>
-        <a href="mailto:rohan.k.raghu@gmail.com">rohan.k.raghu@gmail.com</a>
-      </div>
-      <div class="c">
-        <span class="lbl">LinkedIn</span>
-        <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">in/rohan-raghu</a>
-      </div>
-      <div class="c">
-        <span class="lbl">GitHub</span>
-        <span class="ph">your GitHub URL</span>
-      </div>
-      <div class="c">
-        <span class="lbl">Resume</span>
-        <a href="resume.pdf">Download PDF</a>
-      </div>
+      <div class="c"><span class="lbl">Email</span>
+        <a href="mailto:rohan.k.raghu@gmail.com">rohan.k.raghu@gmail.com</a></div>
+      <div class="c"><span class="lbl">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">in/rohan-raghu</a></div>
+      <div class="c"><span class="lbl">GitHub</span>
+        <span class="ph">your GitHub URL</span></div>
+      <div class="c"><span class="lbl">Resume</span>
+        <a href="resume.pdf">Download PDF</a></div>
     </div>
 
     <div class="colophon">
       <span>© <span id="yr">2026</span> Rohan Raghu</span>
-      <span>Set in Instrument Serif and Inter.</span>
+      <span>Set in Ranade and Inter.</span>
     </div>
   </div>
 </footer>
 
-<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+<script>
+(function () {
+  "use strict";
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var tabs = [].slice.call(document.querySelectorAll('[role="tab"]'));
+  if (!tabs.length) return;
+  var bar = document.querySelector(".tabbar");
+
+  function select(tab, focus) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    // Keep the tab bar in view: if it has scrolled off the top, bring it back
+    // so the swapped panel starts where the eye already is.
+    if (bar && bar.getBoundingClientRect().top < 0) {
+      window.scrollTo({ top: bar.offsetTop, behavior: "smooth" });
+    }
+    if (focus) tab.focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { select(tab, false); });
+    tab.addEventListener("keydown", function (e) {
+      var k = e.key, next = null;
+      if (k === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      else if (k === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (k === "Home") next = tabs[0];
+      else if (k === "End") next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); select(next, true); }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
