@@ -41,20 +41,20 @@
     --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 
     --gut:clamp(22px,5vw,64px);
-    --wrap:1240px;
+    --wrap:1600px;
 
     /* How far the attractor sits behind the type. */
-    --lz-veil:.38;
+    --lz-veil:.72;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
       --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
-      --lz-veil:.34;
+      --lz-veil:.56;
     }
   }
   :root[data-theme="dark"]{
     --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
-    --lz-veil:.34;
+    --lz-veil:.56;
   }
 
   *{box-sizing:border-box}
@@ -86,7 +86,7 @@
   /* ---------- hero: short, asymmetric ---------- */
   .hero{padding-block:clamp(52px,8.5vw,104px) clamp(40px,6vw,72px)}
   .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut) 24px;align-items:end}
-  .hero .lede{grid-column:1 / 9}
+  .hero .lede{grid-column:1 / 7}
   h1.tag{
     font-size:clamp(35px,6.2vw,78px);
     line-height:1.0;letter-spacing:-.035em;margin-top:20px;
@@ -96,7 +96,7 @@
     margin-top:clamp(22px,2.6vw,32px);max-width:48ch;
     font-size:clamp(16px,1.42vw,18.5px);color:var(--muted);line-height:1.58;
   }
-  .hero .meta{grid-column:10 / 13;display:flex;flex-direction:column;gap:7px;padding-bottom:5px}
+  .hero .meta{grid-column:11 / 13;display:flex;flex-direction:column;gap:7px;padding-bottom:5px}
   .hero .meta a{font-size:14px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:2px;align-self:flex-start;transition:color .15s,border-color .15s}
   .hero .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .hero .where{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.5}
@@ -183,13 +183,17 @@
   /* ---------- Lorenz attractor behind the hero ---------- */
   /* Decorative only: aria-hidden, pointer-events:none, and it carries nothing
      the text doesn't already say. Type keeps its own layer above it. */
-  .hero{position:relative;overflow:hidden}
-  .hero > .wrap{position:relative;z-index:1}
+  /* Its own grid cell between the lede and the meta column. Grid items do not
+     overlap, so the trace cannot land behind text however the copy reflows. */
+  .hero-art{
+    grid-column:7 / 11;position:relative;align-self:stretch;
+    min-height:clamp(280px,25vw,440px);
+  }
   #lorenz{
-    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    position:absolute;inset:0;width:100%;height:100%;
     pointer-events:none;opacity:var(--lz-veil);
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent 92%);
-            mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent 92%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%);
+            mask-image:linear-gradient(180deg,transparent 0,#000 9%,#000 91%,transparent 100%);
   }
 
   .lorenz-ui{margin-top:clamp(26px,3.4vw,40px)}
@@ -197,7 +201,7 @@
     display:flex;align-items:baseline;gap:10px 22px;flex-wrap:wrap;
     padding-top:14px;border-top:1px solid var(--line);
   }
-  .lz-cap{font-size:13px;line-height:1.55;color:var(--muted);max-width:64ch}
+  .lz-cap{font-size:13px;line-height:1.55;color:var(--muted);max-width:74ch}
   .lz-cap b{font-weight:600;color:var(--ink)}
   .lz-btn{
     appearance:none;-webkit-appearance:none;background:none;border:0;cursor:pointer;
@@ -213,7 +217,7 @@
   .lz-panel{padding-top:20px}
   .lz-eq{font-size:12.5px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
   .lz-eq span{display:inline-block;margin-right:26px;white-space:nowrap}
-  .lz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 28px;max-width:780px}
+  .lz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 32px;max-width:1080px}
   .lz-ctl{display:flex;flex-direction:column;gap:7px}
   .lz-ctl .k{
     display:flex;justify-content:space-between;align-items:baseline;gap:10px;
@@ -230,12 +234,13 @@
   .lz-panel .lz-btn{margin-top:16px}
 
   /* No JS: nothing draws, so don't leave dead controls on the page. */
-  html:not(.js) .lorenz-ui,html:not(.js) #lorenz{display:none}
+  html:not(.js) .lorenz-ui,html:not(.js) .hero-art{display:none}
 
   /* ---------- responsive ---------- */
   @media (max-width:1000px){
     .hero-grid{align-items:start}
     .hero .lede{grid-column:1 / 10}
+    .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
     .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-bottom:0}
     .hero .where{width:100%;margin-bottom:0}
     .intro h2,.intro p{grid-column:4 / 13}
@@ -248,6 +253,7 @@
   @media (max-width:680px){
     body{font-size:15.5px}
     .intro .lbl,.intro h2,.intro p{grid-column:1 / 13}
+    .hero-art{min-height:clamp(230px,56vw,320px)}
     .item{gap:6px}
     .item .idx,.item .main{grid-column:1 / 13}
     .item .idx{padding-top:0}
@@ -259,7 +265,6 @@
     .foot-rows .c{grid-column:span 6}
     .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .lz-line .lz-btn{margin-left:0}
-    #lorenz{opacity:calc(var(--lz-veil) * .55)}
   }
 
   /* ---------- no JS: show every panel, drop the tab bar ---------- */
@@ -270,7 +275,7 @@
   /* ---------- print: every panel, no tabs ---------- */
   @media print{
     :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--gut:0}
-    .top,.tabbar,.skip,.item .go,.hero .stand,#lorenz,.lorenz-ui{display:none!important}
+    .top,.tabbar,.skip,.item .go,.hero .stand,.hero-art,.lorenz-ui{display:none!important}
     [role="tabpanel"][hidden]{display:block!important}
     body{font-size:10pt}
     .panel,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
@@ -295,8 +300,6 @@
 
 <!-- ===================== HERO ===================== -->
 <div class="hero">
-  <canvas id="lorenz" aria-hidden="true"></canvas>
-
   <div class="wrap hero-grid">
     <div class="lede">
       <span class="lbl">New Jersey · Mathematics &amp; artificial intelligence</span>
@@ -305,6 +308,9 @@
         decision — in a catalyst model, a market forecast, or somebody's first bank account.
         Closing that gap is the thread through everything I build.</p>
     </div>
+
+    <div class="hero-art"><canvas id="lorenz" aria-hidden="true"></canvas></div>
+
     <div class="meta">
       <span class="where">Founder at Numeraldo.<br>MIT, from August 2026.</span>
       <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
@@ -314,9 +320,10 @@
 
   <div class="wrap lorenz-ui">
     <div class="lz-line">
-      <p class="lz-cap"><b>Lorenz attractor</b>, 1963 — a deterministic system whose path
-        never repeats and never crosses itself. Drag ρ below 24.74 and the wandering
-        stops: sooner or later the trajectory falls into one wing and stays there.</p>
+      <p class="lz-cap"><b>Lorenz attractor</b>, 1963 — three equations, no randomness, and
+        still no forecast that holds. The same arithmetic as a backtest that looks like edge
+        and isn't: the reason I care where a number stops meaning anything.
+        Drag ρ below 24.74 and the wandering stops.</p>
       <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
     </div>
 
@@ -329,19 +336,19 @@
       <div class="lz-grid">
         <div class="lz-ctl">
           <span class="k"><label for="lz-sigma">Sigma <i>σ</i></label><output for="lz-sigma" id="lz-sigma-v">10.0</output></span>
-          <input id="lz-sigma" type="range" min="1" max="20" step="0.1" value="10">
+          <input id="lz-sigma" type="range" min="2" max="20" step="0.5" value="10">
         </div>
         <div class="lz-ctl">
           <span class="k"><label for="lz-rho">Rho <i>ρ</i></label><output for="lz-rho" id="lz-rho-v">28.0</output></span>
-          <input id="lz-rho" type="range" min="1" max="60" step="0.1" value="28">
+          <input id="lz-rho" type="range" min="2" max="50" step="0.5" value="28">
         </div>
         <div class="lz-ctl">
           <span class="k"><label for="lz-beta">Beta <i>β</i></label><output for="lz-beta" id="lz-beta-v">2.67</output></span>
-          <input id="lz-beta" type="range" min="0.4" max="6" step="0.01" value="2.67">
+          <input id="lz-beta" type="range" min="0.3333" max="5" step="0.1667" value="2.6667">
         </div>
         <div class="lz-ctl">
           <span class="k"><label for="lz-speed">Speed</label><output for="lz-speed" id="lz-speed-v">5</output></span>
-          <input id="lz-speed" type="range" min="1" max="12" step="1" value="5">
+          <input id="lz-speed" type="range" min="1" max="10" step="1" value="5">
         </div>
       </div>
       <p class="lz-note" id="lz-motion" hidden>Your system is set to reduce motion, so the
@@ -685,16 +692,15 @@
 
   var DT = 0.004;      // integration step
   var FADE = 0.005;    // fraction of the trail erased per frame
-  var FILL = 0.86;     // share of the drawable band the figure is allowed
+  var FILL = 0.94;     // share of its own cell the figure is allowed
   var STATIC_STEPS = 12000;
 
   // Trail length in steps: it survives ~ln(100)/FADE frames before it is down
   // to a hundredth, and each frame adds `speed` of them. Drawing that much up
   // front means the page opens on the attractor instead of slowly accreting it.
-  function trailSteps() { return Math.round(P.speed * 4.6 / FADE); }
+  function trailSteps() { return Math.min(9000, Math.round(P.speed * 4.6 / FADE)); }
 
   var w = 0, h = 0, scale = 1, ox = 0, oy = 0, zMid = 0;
-  var bandTop = 0, bandH = 0;   // the slice of the hero the figure may use
   var x = 0, y = 0, z = 0, sx = 0, sy = 0;
   var accent = "#8A4B2A";
   var raf = 0, onScreen = true, still = false, pendingResize = 0;
@@ -723,11 +729,10 @@
     // anything that auto-fits the drawn extent would zoom a dot to fill the page.
     var xSpan = Math.max(0.72 * P.rho + 16, 18);
     var zSpan = Math.max(1.25 * P.rho + 8, 16);
-    var narrow = w < 720;
-    scale = Math.min(w / xSpan, bandH / zSpan) * FILL * (narrow ? 0.82 : 1);
+    scale = Math.min(w / xSpan, h / zSpan) * FILL;
     zMid = P.rho - 3;
-    ox = w * (narrow ? 0.5 : 0.62);   // wide hero: off the headline's mass
-    oy = bandTop + bandH / 2;
+    ox = w * 0.5;
+    oy = h * 0.5;
   }
   // Plotted on the plain x-z plane. Mixing any y into the horizontal reads as
   // a three-quarter view, but y tracks x closely enough that the two cancel:
@@ -777,23 +782,6 @@
 
   function wipe() { ctx.clearRect(0, 0, w, h); }
 
-  // The caption and the controls sit inside the hero, so the canvas covers them
-  // too. Measure what is left above them and keep the figure -- and the mask
-  // that fades it out -- inside that band. Opening the panel grows the hero by
-  // about the height it adds, so the band, and the figure, barely move.
-  function measureBand() {
-    var ui = document.querySelector(".lorenz-ui");
-    var below = ui ? ui.offsetHeight + 16 : 0;
-    bandTop = h * 0.06;
-    bandH = Math.max(120, h - below - bandTop);
-    var end = Math.min(1, (bandTop + bandH) / h);
-    var hold = Math.max(0.12, end - 0.24);
-    var g = "linear-gradient(180deg,transparent 0,#000 12%,#000 " +
-            (hold * 100).toFixed(1) + "%,transparent " + (end * 100).toFixed(1) + "%)";
-    canvas.style.webkitMaskImage = g;
-    canvas.style.maskImage = g;
-  }
-
   function drawStill() {           // reduced motion: draw it once, leave it
     wipe(); reseed(); trace(STATIC_STEPS, 0.62);
   }
@@ -840,7 +828,6 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.lineWidth = 1;
     ctx.lineJoin = ctx.lineCap = "round";
-    measureBand();
     restart();
   }
   function queueResize() { if (!pendingResize) pendingResize = requestAnimationFrame(resize); }
@@ -875,8 +862,17 @@
       P[c.key] = v;
       show(c);
       // Speed only changes how fast the same curve is walked; the other three
-      // change the curve, so the frame and the trail both have to go.
-      if (c.key === "speed") schedule(); else restart();
+      // change the curve, so the frame and the trail both have to go. Refilling
+      // the trail here would redraw thousands of segments on every step of the
+      // drag, which is what made it stutter -- that waits for `change` below.
+      if (c.key !== "speed") { reframe(); wipe(); reseed(); }
+      if (!still) schedule();
+    });
+
+    // Thumb released (or committed from the keyboard): now do the costly part.
+    el.addEventListener("change", function () {
+      if (still) { drawStill(); return; }
+      wipe(); reseed(); prefill(); schedule();
     });
   });
 
