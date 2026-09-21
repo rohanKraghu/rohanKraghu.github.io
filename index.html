@@ -3,542 +3,542 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- ===========================================================================
-     PLACEHOLDERS TO FILL IN
-     Everything wrapped in <span class="ph"> renders with a dashed outline so
-     it's impossible to miss on the live page. Search this file for "ph" and
-     replace each one. The list:
-
-       · the institution behind the Strano Lab · olympiad years
-       · repo links for the planned projects   · public email address
-       · LinkedIn URL                          · GitHub URL
-       · resume PDF (drop it in as resume.pdf)
-
-     Delete any block you don't want rather than leaving it as a placeholder.
-     =========================================================================== -->
-<meta name="description" content="Rohan K. Raghu — founder of Numeraldo, a numeracy education nonprofit teaching math and financial literacy to students, seniors, and underserved communities in New Jersey.">
-<meta property="og:title" content="Rohan K. Raghu">
-<meta property="og:description" content="Founder of Numeraldo. Teaching numeracy where it isn't taught.">
+<!-- ---------------------------------------------------------------------------
+     Two placeholders remain, both marked .ph (dashed outline on the page):
+       · GitHub URL — not present on the resume, so not invented here
+       · resume.pdf — drop the file in beside this one and the links go live
+     --------------------------------------------------------------------------- -->
+<meta name="description" content="Rohan Raghu — MIT mathematics and artificial intelligence candidate. Quantitative research, catalyst modelling, and a numeracy nonprofit reaching 1,000+ people.">
+<meta property="og:title" content="Rohan Raghu">
+<meta property="og:description" content="I carry work from research to deployment.">
 <meta property="og:type" content="profile">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234338CA'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='600' fill='%23F7F7FB' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
-<title>Rohan K. Raghu</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<title>Rohan Raghu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap">
 <style>
+  /* ---------- three colors, two typefaces, nothing else ---------- */
   :root{
-    --paper:#FAFAF9;
-    --surface:#FFFFFF;
-    --surface-2:#F1F1F4;
-    --ink:#15151A;
-    --muted:#5C5C6B;
-    --line:#E2E2E8;
-    --line-strong:#C6C6D2;
-    --accent:#4338CA;
-    --accent-soft:#EEEDFB;
-    --shadow:0 1px 2px rgba(21,21,26,.05), 0 12px 28px -20px rgba(21,21,26,.35);
+    --paper:#F3F1EC;
+    --ink:#16130F;
+    --muted:#6E675C;
+    --line:#DCD6CB;
+    --accent:#8A4B2A;
 
-    --display:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+    --display:"Instrument Serif",Georgia,"Times New Roman",serif;
     --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-    --wrap:1040px;
+
+    --gut:clamp(22px,5vw,64px);
+    --wrap:1240px;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --paper:#0E0E12;--surface:#16161C;--surface-2:#1E1E26;--ink:#ECECF2;--muted:#9C9CAE;
-      --line:#272730;--line-strong:#3A3A47;--accent:#A5B4FC;--accent-soft:#1C1B33;
-      --shadow:0 1px 2px rgba(0,0,0,.5), 0 18px 34px -22px rgba(0,0,0,.9);
+      --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
     }
   }
   :root[data-theme="dark"]{
-    --paper:#0E0E12;--surface:#16161C;--surface-2:#1E1E26;--ink:#ECECF2;--muted:#9C9CAE;
-    --line:#272730;--line-strong:#3A3A47;--accent:#A5B4FC;--accent-soft:#1C1B33;
-    --shadow:0 1px 2px rgba(0,0,0,.5), 0 18px 34px -22px rgba(0,0,0,.9);
+    --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
     margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
-    font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    font-feature-settings:"kern" 1;
   }
-  h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.02em;text-wrap:balance}
+  h1,h2,h3{margin:0;font-weight:400;letter-spacing:-.015em;line-height:1.04}
   p{margin:0}
-  a{color:inherit}
-  img{max-width:100%}
-  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:22px}
-  .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .skip{position:absolute;left:-9999px;background:var(--accent);color:#fff;padding:12px 18px;z-index:100;font-family:var(--mono);font-size:13px;text-decoration:none}
-  .skip:focus{left:8px;top:8px}
+  a{color:inherit;text-decoration:none}
+  ul{margin:0;padding:0;list-style:none}
 
-  /* ---- placeholder marker: obvious on the live page, easy to grep ---- */
+  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+
+  /* the one label style: small, letterspaced, uppercase */
+  .lbl{
+    font-size:10.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);
+  }
+  .num{font-size:11px;font-weight:500;letter-spacing:.16em;color:var(--accent)}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  /* placeholder marker — deliberately plain, not a badge */
   .ph{
-    display:inline-block;font-family:var(--mono);font-size:.88em;color:var(--accent);
-    background:var(--accent-soft);border:1px dashed var(--accent);border-radius:3px;
-    padding:1px 7px;
+    font-size:.9em;color:var(--accent);border-bottom:1px dashed var(--accent);
+    padding-bottom:1px;
   }
 
-  /* ---------- header ---------- */
+  .skip{position:absolute;left:-9999px;background:var(--ink);color:var(--paper);padding:12px 18px;z-index:99;font-size:13px}
+  .skip:focus{left:10px;top:10px}
+  a:focus-visible,button:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
+
+  /* ---------- header: a hairline, nothing more ---------- */
   header.site{
-    position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);
-    backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:30;background:var(--paper);
+    border-bottom:1px solid var(--line);
   }
-  .bar{display:flex;align-items:center;gap:18px;min-height:60px;flex-wrap:wrap;padding-block:8px}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
-  .mark{
-    width:29px;height:29px;border:1.5px solid var(--accent);border-radius:7px;display:grid;place-items:center;
-    font-family:var(--mono);font-weight:500;font-size:13px;color:var(--accent);background:var(--accent-soft);flex:none;
-  }
-  .wordmark{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.02em}
-  nav.main{display:flex;gap:19px;flex-wrap:wrap;align-items:center}
-  nav.main a{
-    font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
-    text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1.5px solid transparent;
-  }
-  nav.main a:hover{color:var(--ink);border-bottom-color:var(--accent)}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-    font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;
-    padding:10px 16px;border-radius:3px;border:1.5px solid var(--accent);
-    background:var(--accent);color:#fff;white-space:nowrap;
-  }
-  /* in dark mode the accent is light, so solid buttons need dark label text */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]) .btn{color:#15151A}
-  }
-  :root[data-theme="dark"] .btn{color:#15151A}
-  .btn:hover{background:transparent;color:var(--accent)}
-  :root[data-theme="dark"] .btn.ghost{color:var(--ink)}
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]) .btn.ghost{color:var(--ink)}
-  }
-  .btn.ghost:hover{color:var(--accent)}
-  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
-  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .btn.sm{padding:8px 13px;font-size:11px}
+  .bar{display:flex;align-items:baseline;gap:20px;padding-block:17px}
+  .bar .me{font-family:var(--display);font-size:19px;letter-spacing:-.01em;margin-right:auto}
+  .bar nav{display:flex;gap:26px}
+  .bar nav a{transition:color .15s}
+  .bar nav a:hover{color:var(--accent)}
 
-  /* ---------- hero ---------- */
-  .hero{padding-block:76px 56px}
-  h1.name{font-size:clamp(40px,7vw,74px);font-weight:700;letter-spacing:-.04em;margin-top:16px}
-  .hero p.sub{margin-top:20px;max-width:60ch;font-size:19px;color:var(--muted)}
-  .hero-cta{display:flex;gap:11px;margin-top:30px;flex-wrap:wrap}
-  .facts{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
-  .chip{
-    font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
-    border:1px solid var(--line-strong);color:var(--muted);padding:5px 11px;border-radius:999px;
+  /* ---------- hero: asymmetric, 12 columns ---------- */
+  .hero{padding-block:clamp(70px,13vw,152px) clamp(48px,8vw,92px)}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut) 24px;align-items:start}
+  .hero .lede{grid-column:1 / 9}
+  h1.tag{
+    font-family:var(--display);
+    font-size:clamp(46px,8.4vw,116px);
+    line-height:.96;letter-spacing:-.025em;margin-top:26px;
   }
-  .chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-
-  /* ---------- sections ---------- */
-  section{padding-block:60px;border-top:1px solid var(--line)}
-  .sec-head{display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;margin-bottom:34px}
-  .sec-head h2{font-size:clamp(24px,3.2vw,32px)}
-  .sec-head p{color:var(--muted);max-width:60ch;margin-top:10px}
-
-  /* ---------- resume entries ---------- */
-  .entries{display:flex;flex-direction:column}
-  .entry{
-    display:grid;grid-template-columns:150px 1fr;gap:26px;
-    padding:24px 0;border-bottom:1px solid var(--line);
+  h1.tag em{font-style:italic;color:var(--accent)}
+  .hero .stand{
+    margin-top:clamp(26px,3vw,40px);max-width:50ch;font-size:clamp(16.5px,1.5vw,19px);
+    color:var(--muted);line-height:1.56;
   }
-  .entry:first-child{border-top:1px solid var(--line)}
-  .entry .when{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--accent);padding-top:3px}
-  .entry h3{font-size:19px}
-  .entry .org{color:var(--muted);font-size:14.5px;font-family:var(--mono);margin-top:5px}
-  .entry p{margin-top:11px;color:var(--muted);max-width:66ch}
-  .entry ul{margin:11px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-  .entry li{display:grid;grid-template-columns:16px 1fr;gap:9px;color:var(--muted);font-size:15.5px;max-width:64ch}
-  .entry li::before{content:"—";color:var(--accent);font-family:var(--mono);font-size:12px;padding-top:3px}
+  /* the offset meta column — the asymmetry */
+  .hero .meta{grid-column:10 / 13;padding-top:12px;display:flex;flex-direction:column;gap:22px}
+  .hero .meta .row{display:flex;flex-direction:column;gap:5px}
+  .hero .meta .v{font-size:14.5px;line-height:1.45}
+  .hero .meta a{border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .15s,color .15s}
+  .hero .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
-  /* ---------- projects ---------- */
-  .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .project{
-    display:flex;flex-direction:column;gap:12px;background:var(--surface);
-    border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);
-    padding:26px 26px 28px;text-decoration:none;color:inherit;
+  /* ---------- section scaffolding ---------- */
+  section{padding-block:clamp(56px,7.5vw,104px);border-top:1px solid var(--line)}
+  .head{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(38px,5vw,64px)}
+  .head .lbl{grid-column:1 / 3}
+  .head h2{grid-column:4 / 11;font-family:var(--display);font-size:clamp(27px,3.9vw,46px);letter-spacing:-.02em}
+  .head p{grid-column:4 / 10;color:var(--muted);margin-top:14px;max-width:54ch}
+
+  /* ---------- selected work: asymmetric rows, no cards ---------- */
+  .work{border-top:1px solid var(--line)}
+  .item{
+    display:grid;grid-template-columns:repeat(12,1fr);gap:10px 24px;
+    padding-block:clamp(30px,3.6vw,48px);border-bottom:1px solid var(--line);
+    align-items:start;
   }
-  a.project:hover{border-color:var(--accent)}
-  .project h3{font-size:21px}
-  .project p{color:var(--muted);font-size:15.5px}
-  .project .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
-  .project .go{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-top:auto;padding-top:12px}
-  .project.stub{border-style:dashed;background:transparent;box-shadow:none}
-  .chip.soon{border-style:dashed;border-color:var(--line-strong);color:var(--muted)}
-  .project.stub h3{color:var(--muted)}
-  .project .repo{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted);margin-top:auto;padding-top:12px}
-
-  /* ---------- skills ---------- */
-  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-  .skills article{background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:10px}
-  .skills h3{font-size:15px;font-family:var(--mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-  .skills p{color:var(--muted);font-size:15px}
-
-  /* ---------- contact ---------- */
-  #contact{background:var(--surface)}
-  .contact-list{display:flex;flex-direction:column;gap:0;margin-top:10px}
-  .contact-list a,.contact-list div.row{
-    display:flex;justify-content:space-between;gap:18px;align-items:baseline;
-    padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
+  a.item{transition:background-color .2s}
+  a.item:hover{background:color-mix(in srgb,var(--ink) 3.5%,transparent)}
+  .item .idx{grid-column:1 / 2}
+  .item .main{grid-column:2 / 8}
+  .item .aside{grid-column:9 / 13;display:flex;flex-direction:column;gap:9px;padding-top:3px}
+  .item h3{font-family:var(--display);font-size:clamp(24px,3vw,37px);letter-spacing:-.02em}
+  .item .desc{margin-top:14px;color:var(--muted);max-width:46ch;font-size:15.5px}
+  .item .stack{font-size:13px;color:var(--muted);line-height:1.5}
+  .item .status{display:flex;align-items:center;gap:8px}
+  .item .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+  .item .dot.off{background:var(--line)}
+  .item .go{
+    font-size:13px;color:var(--accent);margin-top:18px;display:inline-block;
+    border-bottom:1px solid transparent;padding-bottom:1px;
   }
-  .contact-list a:hover .cv{color:var(--accent)}
-  .ck{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .cv{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+  a.item:hover .go{border-bottom-color:var(--accent)}
 
-  .note{border:1px dashed var(--line-strong);border-radius:4px;background:var(--surface);padding:18px 20px;color:var(--muted);font-size:14.5px}
-  .note b{color:var(--ink)}
-
-  footer.site{border-top:1px solid var(--line);padding-block:28px 38px}
-  .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;
-    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
-  .foot a{color:var(--muted)}
-  .foot a:hover{color:var(--accent)}
-
-  @media (max-width:860px){
-    .sec-head{grid-template-columns:1fr;gap:8px}
-    .entry{grid-template-columns:1fr;gap:6px}
-    .entry .when{padding-top:0}
-    .projects{grid-template-columns:1fr}
+  /* ---------- experience ---------- */
+  .role{
+    display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;
+    padding-block:clamp(28px,3.4vw,44px);border-bottom:1px solid var(--line);
   }
-  @media (max-width:560px){
-    body{font-size:16px}
-    .wrap{padding-inline:17px}
-    section{padding-block:46px}
-    .hero{padding-block:52px 40px}
-    nav.main{display:none}
+  .role:first-child{border-top:1px solid var(--line)}
+  .role .when{grid-column:1 / 3;font-size:13px;color:var(--muted);padding-top:7px;line-height:1.45}
+  .role .body{grid-column:4 / 12}
+  .role h3{font-family:var(--display);font-size:clamp(22px,2.5vw,31px)}
+  .role .org{font-size:14px;color:var(--muted);margin-top:7px}
+  .role ul{margin-top:18px;display:flex;flex-direction:column;gap:11px;max-width:64ch}
+  .role li{padding-left:22px;position:relative;color:var(--muted);font-size:15.5px}
+  .role li::before{content:"";position:absolute;left:0;top:11px;width:11px;height:1px;background:var(--accent)}
+  .role li b{color:var(--ink);font-weight:500}
+
+  /* ---------- bio: offset block ---------- */
+  .bio-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .bio-grid .text{grid-column:4 / 11}
+  .bio-grid p{font-family:var(--display);font-size:clamp(21px,2.5vw,30px);line-height:1.36;letter-spacing:-.012em}
+  .bio-grid p + p{margin-top:24px;font-family:var(--body);font-size:16.5px;line-height:1.66;color:var(--muted);letter-spacing:0}
+
+  /* ---------- details: dense editorial columns ---------- */
+  .details{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(34px,4vw,54px) 24px}
+  .col-a{grid-column:1 / 5}
+  .col-b{grid-column:5 / 9}
+  .col-c{grid-column:9 / 13}
+  .details .lbl{display:block;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .details dl{margin:0}
+  .details .d{padding-block:15px;border-bottom:1px solid var(--line)}
+  .details .d:last-child{border-bottom:0}
+  .details dt{font-size:15.5px;line-height:1.4}
+  .details dd{margin:5px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .details .yr{float:right;font-size:12px;color:var(--muted);margin-left:12px}
+
+  /* ---------- contact footer ---------- */
+  footer.site{border-top:1px solid var(--line);padding-block:clamp(56px,7vw,96px) 44px}
+  .cta{font-family:var(--display);font-size:clamp(30px,5.6vw,68px);line-height:1.02;letter-spacing:-.025em}
+  .cta a{border-bottom:1px solid var(--line);transition:border-color .15s,color .15s}
+  .cta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .foot-rows{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-top:clamp(44px,6vw,76px)}
+  .foot-rows .c{grid-column:span 3;display:flex;flex-direction:column;gap:6px}
+  .foot-rows .c a{font-size:14.5px;border-bottom:1px solid var(--line);align-self:flex-start;padding-bottom:1px;transition:border-color .15s,color .15s}
+  .foot-rows .c a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(44px,6vw,72px);padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+
+  /* ---------- responsive: collapse the asymmetry deliberately ---------- */
+  @media (max-width:1000px){
+    .hero .lede{grid-column:1 / 10}
+    .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:30px 48px;padding-top:0}
+    .head h2,.head p{grid-column:4 / 13}
+    .item .main{grid-column:2 / 9}
+    .item .aside{grid-column:9 / 13}
+    .role .body{grid-column:4 / 13}
+    .bio-grid .text{grid-column:3 / 13}
+    .col-a{grid-column:1 / 7}.col-b{grid-column:7 / 13}.col-c{grid-column:1 / 7}
+    .foot-rows .c{grid-column:span 4}
+  }
+  @media (max-width:680px){
+    body{font-size:15.5px}
+    .bar nav{display:none}
+    .head .lbl{grid-column:1 / 13}
+    .head h2,.head p{grid-column:1 / 13}
+    .item{gap:6px}
+    .item .idx{grid-column:1 / 13}
+    .item .main{grid-column:1 / 13}
+    .item .aside{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:8px 22px;margin-top:16px}
+    .role .when{grid-column:1 / 13;padding-top:0}
+    .role .body{grid-column:1 / 13}
+    .bio-grid .text{grid-column:1 / 13}
+    .col-a,.col-b,.col-c{grid-column:1 / 13}
+    .foot-rows .c{grid-column:span 6}
   }
 
-  /* ---------- print: this page doubles as a resume ---------- */
+  /* ---------- print: the page is also the resume ---------- */
   @media print{
-    :root{--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--muted:#333;
-      --line:#bbb;--line-strong:#888;--accent:#4338CA;--shadow:none}
-    header.site,.hero-cta,.noprint,.project .go{display:none!important}
-    body{font-size:10.5pt}
-    section{padding-block:14pt;border-top:0}
+    :root{--paper:#fff;--ink:#000;--muted:#3a3a3a;--line:#c4c4c4;--accent:#000;--gut:0}
+    header.site,.skip,.item .go,.hero .stand{display:none!important}
+    body{font-size:10pt}
+    section,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
     .hero{padding-block:0 12pt}
-    h1.name{font-size:26pt}
-    .entry,.project{break-inside:avoid}
-    .projects{grid-template-columns:1fr 1fr}
-    .project{border:1px solid #bbb;box-shadow:none;padding:10pt}
-    a[href^="http"]::after,a[href^="mailto"]::after{content:" (" attr(href) ")";font-size:8pt;color:#555;word-break:break-all}
+    h1.tag{font-size:26pt;margin-top:8pt}
+    .item,.role{break-inside:avoid}
+    .cta{font-size:16pt}
+    a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
   }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#work">Skip to work</a>
 
 <header class="site">
   <div class="wrap bar">
-    <a class="brand" href="#top">
-      <span class="mark">R</span>
-      <span class="wordmark">Rohan K. Raghu</span>
-    </a>
-    <nav class="main">
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+    <a class="me" href="#top">Rohan Raghu</a>
+    <nav>
+      <a class="lbl" href="#work">Work</a>
+      <a class="lbl" href="#experience">Experience</a>
+      <a class="lbl" href="#about">About</a>
+      <a class="lbl" href="#contact">Contact</a>
     </nav>
-    <a class="btn sm" href="resume.pdf">Resume</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
-  <div class="hero" id="main">
-    <div class="wrap">
-      <span class="eyebrow">Northern New Jersey · Mathematics &amp; AI at MIT, from Aug 2026</span>
-      <h1 class="name">Rohan K. Raghu</h1>
-      <p class="sub">I founded <a href="numeraldo/" style="color:var(--accent)">Numeraldo</a>, a 501(c)(3)
-        nonprofit that teaches numeracy — the everyday math of paychecks, interest, and dosages — to
-        students, seniors, and families who were left to work it out alone. I'm headed to MIT in August 2026 to
-        study mathematics and artificial intelligence, after summers doing quantitative research at a
-        hedge fund and catalyst modelling in a materials lab.</p>
-      <div class="facts">
-        <span class="chip on">Founder, Numeraldo</span>
-        <span class="chip">Nonprofit leadership</span>
-        <span class="chip">Curriculum &amp; instruction</span>
-        <span class="chip">Quantitative research</span>
-        <span class="chip">Astrophysics olympiad</span>
+  <!-- ===================== HERO ===================== -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="lede">
+        <span class="lbl">Mathematics &amp; Artificial Intelligence · MIT ’30</span>
+        <h1 class="tag">I carry work from research to <em>deployment.</em></h1>
+        <p class="stand">Catalyst modelling in the Strano Lab at MIT. Python forecasting and
+          back-testing systems for a hedge fund. A numeracy nonprofit I founded and still teach at
+          every week, now past a thousand people. The through-line is finishing things.</p>
       </div>
-      <div class="hero-cta">
-        <a class="btn" href="resume.pdf">Download resume</a>
-        <a class="btn ghost" href="#projects">See my work</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
+
+      <div class="meta">
+        <div class="row">
+          <span class="lbl">Currently</span>
+          <span class="v">Founder, Numeraldo<br>Flanders, New Jersey</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Next</span>
+          <span class="v">MIT, August 2026<br>Course 18 &amp; 6-4</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Elsewhere</span>
+          <span class="v">
+            <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a><br>
+            <a href="mailto:rohan.k.raghu@gmail.com">Email</a><br>
+            <a href="resume.pdf">Resume</a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section id="work">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Experience</span>
-        <div>
-          <h2>What I've built and led.</h2>
-          <p>The short version: I started an organization to solve a problem I kept noticing, and then
-            did the unglamorous work of actually running it every week.</p>
-        </div>
+      <div class="head">
+        <span class="lbl">Selected work</span>
+        <h2>Things that are live, and things being built.</h2>
+        <p>Two are shipped and in daily use. Three are in progress — listed as such, because a
+          portfolio that blurs the difference is worth less than one that doesn't.</p>
       </div>
 
-      <div class="entries">
-        <article class="entry">
-          <span class="when">2025 — present</span>
-          <div>
+      <div class="work">
+        <a class="item" href="numeraldo/">
+          <span class="num idx">01</span>
+          <div class="main">
+            <h3>Numeraldo</h3>
+            <p class="desc">A 501(c)(3) expanding numeracy and financial literacy for underserved
+              youth, seniors, and first-time banking participants. Founded, incorporated, and run —
+              programs, curriculum, partnerships, and the weekly teaching itself.</p>
+            <span class="go">Visit the site →</span>
+          </div>
+          <div class="aside">
+            <span class="status"><span class="dot"></span><span class="lbl">Live · 2024—</span></span>
+            <span class="stack">1,000+ workshop attendees · 20 volunteers · Casio partnership</span>
+          </div>
+        </a>
+
+        <a class="item" href="numeraldo/crash-course/">
+          <span class="num idx">02</span>
+          <div class="main">
+            <h3>Financial Literacy Crash Course</h3>
+            <p class="desc">Two self-paced courses — one for teens, one for seniors — covering
+              paychecks, credit, compound interest, fixed-income budgeting, and scam recognition.
+              Working calculators, quizzes, and a 47-term glossary. Written and coded end to end.</p>
+            <span class="go">Open the course →</span>
+          </div>
+          <div class="aside">
+            <span class="status"><span class="dot"></span><span class="lbl">Live · 16 modules</span></span>
+            <span class="stack">Hand-written HTML, CSS, JavaScript · no dependencies · printable</span>
+          </div>
+        </a>
+
+        <div class="item">
+          <span class="num idx">03</span>
+          <div class="main">
+            <h3>Honest backtesting framework</h3>
+            <p class="desc">An event-driven backtester built on point-in-time data, explicit slippage
+              and fee models, and walk-forward validation. The headline result is a negative one:
+              watching a strategy's Sharpe degrade as real costs land and look-ahead bias is removed.</p>
+          </div>
+          <div class="aside">
+            <span class="status"><span class="dot off"></span><span class="lbl">In progress</span></span>
+            <span class="stack">Python · pandas · NumPy</span>
+            <span class="stack"><span class="ph">repo link when it's public</span></span>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="num idx">04</span>
+          <div class="main">
+            <h3>ML on astronomical survey data</h3>
+            <p class="desc">Transit detection and variable-star classification on TESS and Kepler
+              light curves from the MAST archive. Severe class imbalance and irregularly sampled,
+              noisy series — a real modelling problem rather than a tutorial set.</p>
+          </div>
+          <div class="aside">
+            <span class="status"><span class="dot off"></span><span class="lbl">In progress</span></span>
+            <span class="stack">Python · scikit-learn · PyTorch</span>
+            <span class="stack"><span class="ph">repo link when it's public</span></span>
+          </div>
+        </div>
+
+        <div class="item">
+          <span class="num idx">05</span>
+          <div class="main">
+            <h3>Retirement projection tool</h3>
+            <p class="desc">A compound-interest and retirement projection tool for the people who
+              attend Numeraldo workshops — the 70+ already walked through Roth IRA planning are the
+              first users. Real deployment, real data handling, an existing audience.</p>
+          </div>
+          <div class="aside">
+            <span class="status"><span class="dot off"></span><span class="lbl">In progress</span></span>
+            <span class="stack">For Numeraldo</span>
+            <span class="stack"><span class="ph">repo link when it's public</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="head">
+        <span class="lbl">Experience</span>
+        <h2>Three summers, one organisation, and the numbers attached.</h2>
+      </div>
+
+      <div class="roles">
+        <article class="role">
+          <span class="when">Sep 2024 —<br>Present</span>
+          <div class="body">
             <h3>Founder</h3>
-            <div class="org">Numeraldo · 501(c)(3) nonprofit</div>
-            <p>Founded a numeracy education nonprofit on a simple observation: the people who struggle
-              most with numbers are rarely the people offered help with them.</p>
+            <p class="org">Numeraldo · 501(c)(3) nonprofit</p>
             <ul>
-              <li>Built the organization from scratch — programs, curriculum, partnerships, and 501(c)(3) structure.</li>
-              <li>Negotiated a corporate partnership with Casio to supply scientific and graphing calculators at no cost to students.</li>
-              <li>Teach weekly small-group sessions personally, rather than delegating the classroom work.</li>
-              <li>Publish a free two-track financial literacy course used by teens, seniors, and the families who sit down with them.</li>
-              <li>Reached 1,000+ workshop attendees across schools, clubs, and community organizations.</li>
+              <li>Founded and scaled a 501(c)(3) expanding numeracy and financial literacy access for
+                underserved youth, seniors, and first-time banking participants.</li>
+              <li>Designed and led quantitative-reasoning and financial literacy workshops for
+                <b>1,000+ attendees</b>; guided <b>120+</b> through bank account setup and <b>70+</b>
+                through Roth IRA retirement planning.</li>
+              <li>Built a weekly math mentorship partnership with the local Boys &amp; Girls Club
+                serving <b>40+ students</b>.</li>
+              <li>Recruited and managed <b>20 volunteers</b> and raised <b>$1,000+</b> in grants across
+                two partner organisations.</li>
             </ul>
           </div>
         </article>
 
-        <article class="entry">
-          <span class="when">Weekly · school year</span>
-          <div>
-            <h3>Instructor, Numeracy Club</h3>
-            <div class="org">Boys &amp; Girls Club of Lower Bergen County</div>
-            <p>Small-group instruction for grades 4–8 — mental math and estimation, then real-world
-              blocks on unit pricing, percentages, and budgets, then homework support for whatever
-              students walked in carrying. No lecture, no worksheets collected.</p>
+        <article class="role">
+          <span class="when">Jun —<br>Aug 2025</span>
+          <div class="body">
+            <h3>Private Hedge Fund Analyst</h3>
+            <p class="org">TruSuccess Investments · Rockaway, NJ</p>
+            <ul>
+              <li>Boosted annual returns by <b>5%</b> through quantitative modelling of proprietary
+                equity and macroeconomic datasets, applying statistical inference, time-series
+                analysis, and predictive analytics.</li>
+              <li>Built a Python forecasting and back-testing framework from scratch: regression
+                models, volatility and moving-average indicators, sentiment signals, and reusable
+                data-ingestion modules.</li>
+              <li>Applied machine learning to detect trading patterns and quantify risk exposure,
+                informing <b>$100K+</b> in investment decisions through probability modelling and
+                performance attribution.</li>
+            </ul>
           </div>
         </article>
 
-        <article class="entry">
-          <span class="when">Jun — Aug 2025</span>
-          <div>
-            <h3>Quantitative Analyst</h3>
-            <div class="org">TruSuccess</div>
-            <p>Quantitative research at a small hedge fund: built forecasting models and
-              back-testing infrastructure in Python.</p>
-          </div>
-        </article>
-
-        <article class="entry">
-          <span class="when">Jun — Aug 2024</span>
-          <div>
+        <article class="role">
+          <span class="when">Jun —<br>Aug 2024</span>
+          <div class="body">
             <h3>Research Intern</h3>
-            <div class="org">Strano Lab · <span class="ph">institution</span></div>
-            <p>Catalyst modelling and Python data pipelines for experimental analysis.</p>
+            <p class="org">MIT Chemical Engineering · HIP-SAT Program, Michael Strano Lab · Cambridge, MA</p>
+            <ul>
+              <li>Conducted experimental and computational research on a dual-catalyst methane and
+                CO₂ fixation system for sustainable polymer synthesis and carbon sequestration.</li>
+              <li>Built Python data-processing and firmware pipelines to model catalyst efficiency;
+                parameter tuning and numerical optimisation raised production efficiency <b>25%</b>,
+                supporting a paper publication.</li>
+              <li>Presented findings and optimisation results at an MIT Chemical Engineering
+                symposium.</li>
+            </ul>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Projects</span>
-        <div>
-          <h2>Things I've made.</h2>
-          <p>Live links, not descriptions of things that once existed.</p>
-        </div>
-      </div>
-
-      <div class="projects">
-        <a class="project" href="numeraldo/">
-          <h3>Numeraldo</h3>
-          <div class="meta">
-            <span class="chip on">Live</span>
-            <span class="chip">Nonprofit</span>
-          </div>
-          <p>A numeracy education nonprofit expanding world numeracy one number at a time — weekly
-            teaching at the Boys &amp; Girls Club of Lower Bergen County, a calculator access
-            partnership with Casio, and workshops for seniors.</p>
-          <span class="go">Visit the site →</span>
-        </a>
-
-        <a class="project" href="numeraldo/crash-course/">
-          <h3>Financial Literacy Crash Course</h3>
-          <div class="meta">
-            <span class="chip on">Live</span>
-            <span class="chip">16 modules</span>
-          </div>
-          <p>Two free self-paced courses — one for teens, one for seniors — covering paychecks, credit,
-            compound interest, scam recognition, and fixed-income budgeting. Built with working
-            calculators, quizzes, and a 47-term glossary. Written and coded end to end.</p>
-          <span class="go">Open the course →</span>
-        </a>
-
-        <div class="project stub">
-          <h3>Honest backtesting framework</h3>
-          <div class="meta">
-            <span class="chip soon">Planned · next up</span>
-            <span class="chip">Python</span>
-          </div>
-          <p>An event-driven backtester built around point-in-time data, explicit slippage and fee
-            models, and walk-forward validation. The interesting output is the negative result: showing
-            a strategy's Sharpe degrade as realistic costs are layered in and look-ahead bias is
-            removed. Understanding <em>why</em> backtests lie is the part worth demonstrating.</p>
-          <span class="repo"><span class="ph">repo link once it's up</span></span>
-        </div>
-
-        <div class="project stub">
-          <h3>ML on astronomical survey data</h3>
-          <div class="meta">
-            <span class="chip soon">Planned</span>
-            <span class="chip">Python · ML</span>
-          </div>
-          <p>Exoplanet transit detection and variable-star classification on TESS and Kepler light
-            curves, using public data from MAST. Severe class imbalance and noisy, irregularly sampled
-            time series make it a genuine modelling problem rather than a tutorial dataset.</p>
-          <span class="repo"><span class="ph">repo link once it's up</span></span>
-        </div>
-
-        <div class="project stub">
-          <h3>Retirement &amp; compound-interest projection tool</h3>
-          <div class="meta">
-            <span class="chip soon">Planned</span>
-            <span class="chip">For Numeraldo</span>
-          </div>
-          <p>A projection tool built for the people who actually attend Numeraldo workshops — real
-            users, real deployment, real data handling. A natural extension of the calculators already
-            running in the crash course.</p>
-          <span class="repo"><span class="ph">repo link once it's up</span></span>
-        </div>
-      </div>
-
-      <div class="note" style="margin-top:26px;max-width:74ch">
-        <b>The three above are planned, not shipped</b> — labelled that way on purpose, so nothing
-        here reads as a claim until there's a repo behind it. Roughly one deep project per term,
-        starting with the backtester. Also exploring: a transformer or reverse-mode autodiff built up
-        from NumPy primitives, and Bayesian optimization over reaction-kinetics parameters. As each
-        one ships, swap its <code>chip soon</code> for <code>chip on</code>, change the text to
-        <code>Live</code>, and wrap the card in an <code>&lt;a href="…"&gt;</code>.
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="wrap bio-grid">
+      <div class="text">
+        <span class="lbl" style="display:block;margin-bottom:26px">About</span>
+        <p>I started Numeraldo because the people who struggle most with numbers are rarely the
+          people offered help with them.</p>
+        <p>That has turned out to be the same instinct behind everything else I work on. In the
+          Strano Lab it meant writing the pipelines that made catalyst data legible rather than
+          waiting for someone else to. At a hedge fund it meant building the back-testing framework
+          from scratch, and learning quickly that the interesting question is not what a backtest
+          claims but why it lies. At Numeraldo it means teaching the session myself every week, not
+          delegating the classroom. I study mathematics and artificial intelligence at MIT starting
+          this August, and I am looking for work where shipping the thing is part of the job.</p>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Education &amp; recognition</span>
-        <div><h2>Where I study.</h2></div>
-      </div>
-      <div class="entries">
-        <article class="entry">
-          <span class="when">Aug 2026 — Jun 2030</span>
-          <div>
-            <h3>Massachusetts Institute of Technology</h3>
-            <div class="org">Cambridge, MA · B.S. expected June 2030</div>
-            <p>Double major in Mathematics (Course 18) and Artificial Intelligence and Decision
-              Making (Course 6-4).</p>
+  <!-- ===================== DETAILS ===================== -->
+  <section id="details">
+    <div class="wrap details">
+      <div class="col-a">
+        <span class="lbl">Education</span>
+        <dl>
+          <div class="d">
+            <dt>Massachusetts Institute of Technology<span class="yr">2030</span></dt>
+            <dd>B.S. candidate, Mathematics and Artificial Intelligence — Course 18 and Course 6-4.
+              Cambridge, MA.</dd>
           </div>
-        </article>
-
-        <article class="entry">
-          <span class="when"><span class="ph">years</span></span>
-          <div>
-            <h3>Gold medalist, USAAAO · Team USA, IOAA</h3>
-            <div class="org">USA Astronomy &amp; Astrophysics Olympiad · International Olympiad on
-              Astronomy and Astrophysics</div>
-            <p>Selected to represent the United States at the international olympiad after a gold
-              medal at the national round.</p>
+          <div class="d">
+            <dt>Stanford University Online High School<span class="yr">2026</span></dt>
+            <dd>3.97 GPA · 1580 SAT (800 M, 780 V) · 36 ACT · 10 perfect AP scores.
+              Redwood City, CA.</dd>
           </div>
-        </article>
+        </dl>
+      </div>
 
-        <article class="entry">
-          <span class="when">2026</span>
-          <div>
-            <h3>Presenter, Leadership Development Workshop</h3>
-            <div class="org">Mensa · Morris County Library, Whippany, NJ</div>
-            <p>Presented Numeraldo's approach to numeracy instruction and recruited volunteers.</p>
+      <div class="col-b">
+        <span class="lbl">Honors</span>
+        <dl>
+          <div class="d">
+            <dt>Gold Medal, USA Astronomy/Astrophysics Olympiad<span class="yr">2025</span></dt>
+            <dd>Top 5 nationally; Team USA at the International Olympiad on Astronomy and
+              Astrophysics.</dd>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Skills</span>
-        <div><h2>What I work with.</h2></div>
-      </div>
-      <div class="skills">
-        <article>
-          <h3>Teaching</h3>
-          <p>Curriculum design, small-group instruction, and adapting the same concept for a
-            ten-year-old and a seventy-six-year-old.</p>
-        </article>
-        <article>
-          <h3>Building</h3>
-          <p>Python for data pipelines, forecasting, and back-testing; machine learning on noisy,
-            imbalanced time series. Static sites, hand-written and dependency-free.</p>
-        </article>
-        <article>
-          <h3>Operations</h3>
-          <p>Nonprofit formation, corporate partnerships, fundraising, and volunteer recruitment.</p>
-        </article>
-        <article>
-          <h3>Astronomy</h3>
-          <p>Olympiad-level astronomy and astrophysics — gold at the USAAAO and a place on Team USA
-            at the IOAA.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Contact</span>
-        <div>
-          <h2>Get in touch.</h2>
-          <p>Open to conversations about numeracy education, partnerships, and interesting problems.</p>
-        </div>
-      </div>
-      <div class="contact-list">
-        <div class="row">
-          <span class="ck">Email</span>
-          <span class="cv"><span class="ph">the address you want public</span></span>
-        </div>
-        <div class="row">
-          <span class="ck">LinkedIn</span>
-          <span class="cv"><span class="ph">linkedin.com/in/…</span></span>
-        </div>
-        <div class="row">
-          <span class="ck">GitHub</span>
-          <span class="cv"><span class="ph">github.com/rohanKraghu</span></span>
-        </div>
-        <a href="resume.pdf">
-          <span class="ck">Resume</span><span class="cv">Download PDF →</span>
-        </a>
-        <a href="numeraldo/">
-          <span class="ck">Numeraldo</span><span class="cv">The nonprofit →</span>
-        </a>
+          <div class="d">
+            <dt>Gold Medal, US Congressional Award<span class="yr">2026</span></dt>
+            <dd>Congress's highest civilian honor for youth.</dd>
+          </div>
+          <div class="d">
+            <dt>First Place, Stanford OHS Science Bowl<span class="yr">2024</span></dt>
+            <dd>First of approximately 390 students.</dd>
+          </div>
+        </dl>
       </div>
 
-      <div class="note noprint" style="margin-top:30px;max-width:72ch">
-        <b>Three rows above are placeholders on purpose.</b> Replace each
-        <span class="ph">dashed box</span> with the real value and change the surrounding
-        <code>&lt;div class="row"&gt;</code> to an <code>&lt;a href="…"&gt;</code> so it becomes
-        clickable — the styling already covers both. Drop your resume in beside this file as
-        <code>resume.pdf</code>, or point those two links somewhere else.
+      <div class="col-c">
+        <span class="lbl">Skills</span>
+        <dl>
+          <div class="d">
+            <dt>Languages</dt>
+            <dd>Python, Java, C/C++, JavaScript, MATLAB, R</dd>
+          </div>
+          <div class="d">
+            <dt>ML &amp; data</dt>
+            <dd>NumPy, pandas, scikit-learn, PyTorch, TensorFlow; regression, forecasting,
+              back-testing</dd>
+          </div>
+          <div class="d">
+            <dt>Tools</dt>
+            <dd>Git/GitHub, Jupyter, SQL, Linux/CLI, LaTeX</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site">
-  <div class="wrap foot">
-    <span>© <span id="yr">2026</span> Rohan K. Raghu</span>
-    <span><a href="numeraldo/">Numeraldo</a> · <a href="numeraldo/crash-course/">Crash Course</a></span>
+<!-- ===================== CONTACT ===================== -->
+<footer class="site" id="contact">
+  <div class="wrap">
+    <span class="lbl">Contact</span>
+    <p class="cta" style="margin-top:24px">Open to internships and work in quantitative research,
+      machine learning, and software. <a href="mailto:rohan.k.raghu@gmail.com">Say hello →</a></p>
+
+    <div class="foot-rows">
+      <div class="c">
+        <span class="lbl">Email</span>
+        <a href="mailto:rohan.k.raghu@gmail.com">rohan.k.raghu@gmail.com</a>
+      </div>
+      <div class="c">
+        <span class="lbl">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">in/rohan-raghu</a>
+      </div>
+      <div class="c">
+        <span class="lbl">GitHub</span>
+        <span class="ph">your GitHub URL</span>
+      </div>
+      <div class="c">
+        <span class="lbl">Resume</span>
+        <a href="resume.pdf">Download PDF</a>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Rohan Raghu</span>
+      <span>Set in Instrument Serif and Inter.</span>
+    </div>
   </div>
 </footer>
 
