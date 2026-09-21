@@ -117,6 +117,8 @@
   .panel:focus{outline:none}
   .intro{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(32px,4.5vw,56px)}
   .intro .lbl{grid-column:1 / 4;padding-top:7px}
+  /* a label with no heading beside it needs less room underneath */
+  .intro.bare{margin-bottom:clamp(18px,2.2vw,28px)}
   .intro h2{grid-column:4 / 11;font-size:clamp(23px,3.2vw,38px)}
   .intro p{grid-column:4 / 10;color:var(--muted);margin-top:13px;max-width:52ch}
 
@@ -379,8 +381,6 @@
       <div class="intro">
         <span class="lbl">Selected work</span>
         <h2>Five things I built, and still keep running.</h2>
-        <p>The first two are a nonprofit and the course it teaches. The other three are
-          repositories, each started because I wanted to check a number somebody had handed me.</p>
       </div>
 
       <div class="work">
@@ -470,13 +470,12 @@
   <!-- ---------- EXPERIENCE ---------- -->
   <section class="panel" role="tabpanel" id="p-exp" aria-labelledby="t-exp" tabindex="-1" hidden>
     <div class="wrap">
-      <div class="intro">
+      <div class="intro bare">
         <span class="lbl">Experience</span>
-        <h2>Three summers, one organization, and the numbers attached.</h2>
       </div>
 
       <article class="role">
-        <span class="when">Sep 2024 —<br>Present</span>
+        <span class="when">Sep 2024 — Present</span>
         <div class="body">
           <h3>Founder</h3>
           <p class="org">Numeraldo · 501(c)(3) nonprofit</p>
@@ -495,7 +494,7 @@
       </article>
 
       <article class="role">
-        <span class="when">Jun —<br>Aug 2025</span>
+        <span class="when">Jun — Aug 2025</span>
         <div class="body">
           <h3>Private Hedge Fund Analyst</h3>
           <p class="org">TruSuccess Investments · Rockaway, NJ</p>
@@ -514,7 +513,7 @@
       </article>
 
       <article class="role">
-        <span class="when">Jun —<br>Aug 2024</span>
+        <span class="when">Jun — Aug 2024</span>
         <div class="body">
           <h3>Research Intern</h3>
           <p class="org">MIT Chemical Engineering · HIP-SAT Program, Michael Strano Lab · Cambridge, MA</p>
