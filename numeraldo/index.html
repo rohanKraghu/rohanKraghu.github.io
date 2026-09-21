@@ -273,15 +273,18 @@
   .portrait .initials{font-family:var(--mono);font-weight:600;font-size:46px;color:var(--accent);letter-spacing:.02em}
   .person-name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em}
   .person-role{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
-  .team-label{display:block;margin-top:34px}
-  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-  .board .card{border:1px solid var(--line);background:var(--surface);padding:18px;border-radius:3px}
-  .board .card .initials{font-family:var(--mono);font-weight:600;font-size:24px;color:var(--accent);letter-spacing:-.02em}
-  .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;margin-top:8px}
-  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:2px;line-height:1.45}
   .person-bio{margin-top:16px;color:var(--muted);max-width:60ch}
-  .join{margin-top:20px;color:var(--muted);max-width:66ch}
-  .join a{color:var(--accent)}
+  .board-label{display:block;margin-top:44px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .board{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px}
+  .board .card{
+    border:1px solid var(--line);background:var(--surface);padding:18px;border-radius:3px;
+    display:flex;flex-direction:column;
+  }
+  .board .card .initials{
+    font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.1em;
+  }
+  .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;margin-top:10px}
+  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.45}
 
   /* ---------- contact ---------- */
   #contact{background:var(--surface)}
@@ -312,7 +315,7 @@
     .event{grid-template-columns:1fr;gap:6px}
     .people{grid-template-columns:1fr}
     .portrait{max-width:160px}
-    .board{grid-template-columns:repeat(2,1fr)}
+    .board{grid-template-columns:repeat(3,1fr)}
     .contact-grid{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:no-preference){
@@ -328,6 +331,7 @@
     .bd-head,.bd-row{grid-template-columns:14px 1fr 92px;gap:10px}
     .bd-pct{display:none}
     .program .body,.program .side{padding:24px 20px}
+    .board{grid-template-columns:repeat(2,1fr)}
     .bar{gap:8px 12px;min-height:0;padding-block:8px 4px}
     .brand{margin-right:auto}
     /* The nav used to be display:none here, which left a phone with no way
@@ -665,16 +669,35 @@
             are rarely the people offered help with them. He leads the organization's programs, teaches
             the weekly sessions at the Boys &amp; Girls Club, and built the Casio partnership.
           </p>
-          <span class="eyebrow team-label">The people who teach</span>
-          <div class="board">
-            <div class="card"><span class="initials">20</span><div class="nm">Volunteers</div><div class="rl">Recruited, trained, and scheduled by Numeraldo</div></div>
-            <div class="card"><span class="initials">3</span><div class="nm">Partner organizations</div><div class="rl">Casio, the Boys &amp; Girls Club, and Mensa</div></div>
-            <div class="card"><span class="initials">$0</span><div class="nm">Charged to anyone</div><div class="rl">Every program, every session, every track</div></div>
-          </div>
-          <p class="join">Numeraldo is always short of instructors before it is short of anything
-            else. If you can explain a percentage to a twelve-year-old or sit patiently with somebody
-            reading their first bank statement, write to
-            <a href="mailto:info@numeraldo.org">info@numeraldo.org</a>.</p>
+        </div>
+      </div>
+
+      <span class="eyebrow board-label">Board of Advisors</span>
+      <div class="board">
+        <div class="card">
+          <span class="initials">DR</span>
+          <div class="nm">Dorairaja Raghu</div>
+          <div class="rl">Professor Emeritus · NJIT</div>
+        </div>
+        <div class="card">
+          <span class="initials">LS</span>
+          <div class="nm">LNV Samy</div>
+          <div class="rl">CEO · ClockOn</div>
+        </div>
+        <div class="card">
+          <span class="initials">SM</span>
+          <div class="nm">Sean McCabe</div>
+          <div class="rl">First Officer · Delta Air Lines</div>
+        </div>
+        <div class="card">
+          <span class="initials">GH</span>
+          <div class="nm">Greg Hoffman</div>
+          <div class="rl">Northern NJ Mensa</div>
+        </div>
+        <div class="card">
+          <span class="initials">LT</span>
+          <div class="nm">Laurie Thomas</div>
+          <div class="rl">Northern NJ Mensa</div>
         </div>
       </div>
     </div>
