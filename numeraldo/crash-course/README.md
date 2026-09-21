@@ -15,6 +15,20 @@ crash-course/
 
 No build step, no dependencies, no framework. Open `index.html` in a browser and it works.
 
+## Getting around
+
+The header nav is not the only way between pages, because on a phone it is a sideways-scrolling
+strip and a reader halfway down a track should not have to go back up to it. Every track page also
+carries:
+
+- a **track-switch button in the hero** (`Teens track →` / `Seniors track →`),
+- a **switch link pinned under the sticky syllabus**, visible the whole way down the page,
+- a **"Keep going" card band** above the fine print, linking the other track, the glossary and the
+  overview,
+- the same **four footer links** on every page.
+
+If you add a page to the folder, add it to all four places.
+
 ## It is built to move to a subdomain
 
 Every internal link and asset reference is **relative** (`teens.html`, `assets/course.css`) — there
@@ -63,7 +77,10 @@ The pages are plain HTML, so there are two sane options:
   scrollspy and progress counter pick it up automatically.
 - **Reusable blocks:** `.domath` (worked example), `.term` (definition list), `.flag` (red-flag
   callout), `.safe` (do-this callout), `.check` (self-saving checklist), `.tool` (calculator),
-  `.q` (quiz question — put the correct option key in `data-answer`).
+  `.q` (quiz question — put the correct option key in `data-answer`), `.cnav` (a card in the
+  "Keep going" band).
+- **No inline styles.** Spacing and color live in `assets/course.css`; the few one-off needs are
+  utility classes there (`.lead`, `.sub-note`, `.aside-note`, `.note.spaced`).
 - **Nothing is collected.** The calculators run in the browser; checklists use `localStorage` on the
   reader's own device, wrapped in try/catch so private browsing degrades gracefully. There is no
   analytics, no form, and no third-party script beyond the Google Fonts stylesheet.

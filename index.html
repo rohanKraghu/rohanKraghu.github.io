@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- ---------------------------------------------------------------------------
-     The resume links point at Google Drive. To swap the PDF without breaking
-     them, open the file in Drive and use "Manage versions" -> "Upload new
-     version" — that keeps the same file ID. Deleting and re-uploading mints a
-     new ID and silently breaks both links.
-     --------------------------------------------------------------------------- -->
+<!-- Resume links point at one Drive file ID. Replace the PDF with Drive's
+     "Manage versions", never by re-uploading: a new upload mints a new ID. -->
 <meta name="description" content="Rohan Raghu — mathematics and artificial intelligence at MIT. Quantitative research, machine learning, and a numeracy nonprofit reaching 1,000+ people.">
 <meta property="og:title" content="Rohan Raghu">
 <meta property="og:description" content="Making numbers mean something.">
 <meta property="og:type" content="profile">
+<meta property="og:url" content="https://rohankraghu.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F3F1EC" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#121009" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://rohankraghu.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
 <title>Rohan Raghu</title>
 <script>document.documentElement.className="js"</script>
@@ -80,25 +81,27 @@
   .top a.mail:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
   /* ---------- hero: short, asymmetric ---------- */
-  .hero{padding-block:clamp(52px,8.5vw,104px) clamp(40px,6vw,72px)}
-  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut) 24px;align-items:end}
+  /* Top-aligned on purpose: the art cell is taller than the copy, and a
+     bottom-aligned row pushed the headline halfway down the screen. */
+  .hero{padding-block:clamp(18px,2.4vw,30px) clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,2.4vw,34px) 24px;align-items:start}
   .hero .lede{grid-column:1 / 7}
   h1.tag{
     font-size:clamp(35px,6.2vw,78px);
-    line-height:1.0;letter-spacing:-.035em;margin-top:20px;
+    line-height:1.0;letter-spacing:-.035em;margin-top:14px;
   }
   h1.tag span{color:var(--accent)}
   .hero .stand{
     margin-top:clamp(22px,2.6vw,32px);max-width:48ch;
     font-size:clamp(16px,1.42vw,18.5px);color:var(--muted);line-height:1.58;
   }
-  .hero .meta{grid-column:11 / 13;display:flex;flex-direction:column;gap:7px;padding-bottom:5px}
+  .hero .meta{grid-column:11 / 13;display:flex;flex-direction:column;gap:7px;padding-top:2px}
   .hero .meta a{font-size:14px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:2px;align-self:flex-start;transition:color .15s,border-color .15s}
   .hero .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .hero .where{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.5}
 
   /* ---------- tab bar ---------- */
-  .tabbar{position:sticky;top:0;z-index:20;background:var(--paper);border-block:1px solid var(--line)}
+  .tabbar{position:sticky;top:0;z-index:20;display:block;background:var(--paper);border-block:1px solid var(--line)}
   .tabs{display:flex;gap:clamp(18px,3vw,42px);overflow-x:auto;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
   .tabs button{
@@ -110,12 +113,10 @@
   .tabs button:hover{color:var(--ink)}
   .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 
-  .panel{padding-block:clamp(44px,6vw,84px)}
-  /* the work panel has no intro block, so it needs less lead-in */
-  #p-work{padding-top:clamp(24px,3vw,44px)}
+  .panel{padding-block:clamp(30px,3.6vw,52px) clamp(44px,6vw,84px)}
   .panel:focus{outline:none}
   .intro{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(32px,4.5vw,56px)}
-  .intro .lbl{grid-column:1 / 3;padding-top:7px}
+  .intro .lbl{grid-column:1 / 4;padding-top:7px}
   .intro h2{grid-column:4 / 11;font-size:clamp(23px,3.2vw,38px)}
   .intro p{grid-column:4 / 10;color:var(--muted);margin-top:13px;max-width:52ch}
 
@@ -127,22 +128,21 @@
   }
   a.item{transition:background-color .2s}
   a.item:hover{background:color-mix(in srgb,var(--ink) 3.5%,transparent)}
-  .item .idx{grid-column:1 / 2;padding-top:6px}
-  .item .main{grid-column:2 / 8}
-  .item .aside{grid-column:9 / 13;display:flex;flex-direction:column;gap:9px;padding-top:6px}
+  .item .idx{grid-column:1 / 4;padding-top:6px}
+  .item .main{grid-column:4 / 10}
+  .item .aside{grid-column:10 / 13;display:flex;flex-direction:column;gap:9px;padding-top:6px}
   .item h3{font-size:clamp(21px,2.5vw,31px)}
   .item .desc{margin-top:13px;color:var(--muted);max-width:46ch;font-size:15.5px}
   .item .stack{font-size:13px;color:var(--muted);line-height:1.5}
   .item .status{display:flex;align-items:center;gap:8px}
   .item .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
-  .item .dot.off{background:var(--line)}
   .item .go{font-size:13px;font-weight:500;color:var(--accent);margin-top:16px;display:inline-block;border-bottom:1px solid transparent;padding-bottom:1px}
   a.item:hover .go{border-bottom-color:var(--accent)}
 
   /* ---------- experience ---------- */
   .role{display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line)}
   .role:first-child{border-top:1px solid var(--line)}
-  .role .when{grid-column:1 / 3;font-size:13px;color:var(--muted);padding-top:8px;line-height:1.45}
+  .role .when{grid-column:1 / 4;font-size:13px;color:var(--muted);padding-top:8px;line-height:1.45}
   .role .body{grid-column:4 / 12}
   .role h3{font-size:clamp(19px,2.2vw,27px)}
   .role .org{font-size:14px;color:var(--muted);margin-top:7px}
@@ -152,7 +152,8 @@
   .role li b{color:var(--ink);font-weight:600}
 
   /* ---------- about ---------- */
-  .bio{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .bio{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px}
+  .bio .lbl{grid-column:1 / 4;padding-top:7px}
   .bio .text{grid-column:4 / 11}
   .bio .big{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.5vw,29px);line-height:1.28;letter-spacing:-.025em}
   .bio .body-copy{margin-top:22px;font-size:16.5px;line-height:1.66;color:var(--muted)}
@@ -162,13 +163,16 @@
   .details dl{margin:0}
   .details .d{padding-block:14px;border-bottom:1px solid var(--line)}
   .details .d:last-child{border-bottom:0}
-  .details dt{font-size:15.5px;font-weight:500;line-height:1.4}
+  .details dt{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    font-size:15.5px;font-weight:500;line-height:1.4;
+  }
   .details dd{margin:5px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
-  .details .yr{float:right;font-size:12px;font-weight:400;color:var(--muted);margin-left:12px}
+  .details .yr{flex:none;font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
 
   /* ---------- contact footer ---------- */
   footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
-  .cta{font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
+  .cta{margin-top:22px;font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
   .cta a{color:var(--accent);border-bottom:2px solid transparent;transition:border-color .15s}
   .cta a:hover{border-bottom-color:var(--accent)}
   .foot-rows{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-top:clamp(40px,5vw,64px)}
@@ -184,7 +188,7 @@
      overlap, so the trace cannot land behind text however the copy reflows. */
   .hero-art{
     grid-column:7 / 11;position:relative;align-self:stretch;
-    min-height:clamp(280px,25vw,440px);
+    min-height:clamp(230px,21vw,340px);
   }
   #lorenz{
     position:absolute;inset:0;width:100%;height:100%;
@@ -235,15 +239,18 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:1000px){
-    .hero-grid{align-items:start}
     .hero .lede{grid-column:1 / 10}
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
-    .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-bottom:0}
+    .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:0}
     .hero .where{width:100%;margin-bottom:0}
     .intro h2,.intro p{grid-column:4 / 13}
-    .item .main{grid-column:2 / 9}
+    .item .main{grid-column:4 / 13}
+    .item .aside{
+      grid-column:4 / 13;flex-direction:row;flex-wrap:wrap;
+      gap:8px 22px;margin-top:14px;padding-top:0;
+    }
     .role .body{grid-column:4 / 13}
-    .bio .text{grid-column:3 / 13}
+    .bio .lbl,.bio .text{grid-column:4 / 13}
     .col-a{grid-column:1 / 7}.col-b{grid-column:7 / 13}.col-c{grid-column:1 / 7}
     .foot-rows .c{grid-column:span 4}
   }
@@ -252,12 +259,11 @@
     .intro .lbl,.intro h2,.intro p{grid-column:1 / 13}
     .hero-art{min-height:clamp(230px,56vw,320px)}
     .item{gap:6px}
-    .item .idx,.item .main{grid-column:1 / 13}
+    .item .idx,.item .main,.item .aside{grid-column:1 / 13}
     .item .idx{padding-top:0}
-    .item .aside{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;gap:8px 20px;margin-top:15px;padding-top:0}
     .role .when,.role .body{grid-column:1 / 13}
     .role .when{padding-top:0}
-    .bio .text{grid-column:1 / 13}
+    .bio .lbl,.bio .text{grid-column:1 / 13}
     .col-a,.col-b,.col-c{grid-column:1 / 13}
     .foot-rows .c{grid-column:span 6}
     .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -265,7 +271,6 @@
   }
 
   /* ---------- no JS: show every panel, drop the tab bar ---------- */
-  .tabbar{display:block}
   html:not(.js) .tabbar{display:none}
   html:not(.js) [role="tabpanel"][hidden]{display:block!important}
 
@@ -359,9 +364,9 @@
 <div class="tabbar">
   <div class="wrap">
     <div class="tabs" role="tablist" aria-label="Sections">
-      <button role="tab" id="t-work" aria-controls="p-work" aria-selected="true" tabindex="0">Work</button>
-      <button role="tab" id="t-exp" aria-controls="p-exp" aria-selected="false" tabindex="-1">Experience</button>
-      <button role="tab" id="t-about" aria-controls="p-about" aria-selected="false" tabindex="-1">About</button>
+      <button role="tab" id="t-work" aria-controls="p-work" data-hash="work" aria-selected="true" tabindex="0">Work</button>
+      <button role="tab" id="t-exp" aria-controls="p-exp" data-hash="experience" aria-selected="false" tabindex="-1">Experience</button>
+      <button role="tab" id="t-about" aria-controls="p-about" data-hash="about" aria-selected="false" tabindex="-1">About</button>
     </div>
   </div>
 </div>
@@ -371,19 +376,26 @@
   <!-- ---------- WORK ---------- -->
   <section class="panel" role="tabpanel" id="p-work" aria-labelledby="t-work" tabindex="-1">
     <div class="wrap">
+      <div class="intro">
+        <span class="lbl">Selected work</span>
+        <h2>Five things I built, and still keep running.</h2>
+        <p>The first two are a nonprofit and the course it teaches. The other three are
+          repositories, each started because I wanted to check a number somebody had handed me.</p>
+      </div>
+
       <div class="work">
         <a class="item" href="numeraldo/">
           <span class="num idx">01</span>
           <div class="main">
             <h3>Numeraldo</h3>
-            <p class="desc">A 501(c)(3) expanding numeracy and financial literacy for underserved
-              youth, seniors, and first-time banking participants. Founded, incorporated, and run —
-              programs, curriculum, partnerships, and the weekly teaching itself.</p>
+            <p class="desc">The numeracy and financial literacy nonprofit I founded and still run.
+              I incorporated the 501(c)(3), wrote the curriculum, built the partnerships, and teach
+              the weekly session myself.</p>
             <span class="go">Visit the site →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Live · 2024—</span></span>
-            <span class="stack">1,000+ workshop attendees · 20 volunteers · Casio partnership</span>
+            <span class="status"><span class="dot"></span><span class="lbl">Running · since 2024</span></span>
+            <span class="stack">1,000+ people taught · 20 volunteers · Casio partnership</span>
           </div>
         </a>
 
@@ -391,63 +403,64 @@
           <span class="num idx">02</span>
           <div class="main">
             <h3>Financial Literacy Crash Course</h3>
-            <p class="desc">Two self-paced courses — one for teens, one for seniors — covering
-              paychecks, credit, compound interest, fixed-income budgeting, and scam recognition.
-              Working calculators, quizzes, and a 47-term glossary. Written and coded end to end.</p>
+            <p class="desc">Sixteen free modules in two tracks — one written for teenagers, one for
+              seniors — on paychecks, bank fees, compound interest, credit, fixed-income budgeting,
+              and the scripts scammers actually use. Every rule comes with the arithmetic under it,
+              so a reader can disagree with the assumption and redo the sum.</p>
             <span class="go">Open the course →</span>
           </div>
           <div class="aside">
             <span class="status"><span class="dot"></span><span class="lbl">Live · 16 modules</span></span>
-            <span class="stack">Hand-written HTML, CSS, JavaScript · no dependencies · printable</span>
+            <span class="stack">Hand-written HTML, CSS, JS · no dependencies · printable</span>
           </div>
         </a>
 
-        <a class="item" href="https://github.com/rohanKraghu/honest-backtest" rel="noopener">
+        <a class="item" href="https://github.com/rohanKraghu/honest-backtest" target="_blank" rel="noopener">
           <span class="num idx">03</span>
           <div class="main">
-            <h3>Honest backtesting framework</h3>
-            <p class="desc">An event-driven backtester built on point-in-time data, explicit slippage
-              and fee models, and walk-forward validation. The headline result is a negative one:
-              the same strategy degrades from Sharpe 6.94 to −0.19 as five comfortable assumptions
-              are removed one at a time. Look-ahead bias alone accounts for 94% of the apparent edge.</p>
+            <h3>Honest backtester</h3>
+            <p class="desc">A trading-strategy simulator built to catch its own false positives. It
+              starts from the comfortable version of a strategy — Sharpe 6.94 — and removes five
+              flattering assumptions one at a time until the same strategy finishes at −0.19.
+              Letting the model see tomorrow's prices accounted for 94% of the edge by itself.</p>
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Live · 115 tests</span></span>
-            <span class="stack">Python · NumPy · event-driven, no pandas in the hot path</span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 115 tests</span></span>
+            <span class="stack">Python · NumPy · event-driven, point-in-time data</span>
           </div>
         </a>
 
-        <a class="item" href="https://github.com/rohanKraghu/transit-detection" rel="noopener">
+        <a class="item" href="https://github.com/rohanKraghu/transit-detection" target="_blank" rel="noopener">
           <span class="num idx">04</span>
           <div class="main">
-            <h3>Exoplanet transit detection</h3>
-            <p class="desc">Detrending, box-least-squares search, and 23 vetting statistics into a
-              gradient-boosted classifier, on light curves with a 4% planet rate. Average precision
-              0.73 against a chance rate of 0.04 — 18× chance and 4× the best single-statistic
-              baseline. Scored on average precision, not accuracy, because accuracy is meaningless
-              at a 4% positive rate.</p>
+            <h3>Finding planets in starlight</h3>
+            <p class="desc">A planet crossing in front of its star dims the light by a fraction of a
+              percent, on a schedule. This pipeline flattens each light curve, searches it for that
+              repeating dip, then scores 23 measurements of every candidate with a gradient-boosted
+              classifier. Planets are 4% of the data, so it is judged on average precision — 0.73,
+              against 0.04 for guessing and 0.18 for the best single measurement.</p>
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Live · 86 tests</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 86 tests</span></span>
             <span class="stack">Python · scikit-learn · NumPy · SciPy</span>
           </div>
         </a>
 
-        <a class="item" href="https://github.com/rohanKraghu/retirement-tool" rel="noopener">
+        <a class="item" href="https://github.com/rohanKraghu/retirement-tool" target="_blank" rel="noopener">
           <span class="num idx">05</span>
           <div class="main">
-            <h3>Retirement projection tool</h3>
-            <p class="desc">A compound-interest and retirement projection tool for the people who
-              attend Numeraldo workshops — the 70+ already walked through Roth IRA planning are the
-              first users. Results in real dollars as well as nominal, because the inflation-adjusted
-              number is the one that decides anything.</p>
+            <h3>Retirement projection calculator</h3>
+            <p class="desc">Written for the people who come to Numeraldo's workshops: what a balance
+              grows into by a chosen age, and what that same balance is actually worth once inflation
+              is taken out. The 70-plus adults I walked through Roth IRA planning were the first
+              users, so it reads at arm's length, works offline, and prints on one page.</p>
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Live · 77 tests</span></span>
-            <span class="stack">Vanilla JS · no dependencies · large type, printable, offline</span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 77 tests</span></span>
+            <span class="stack">Vanilla JS · no dependencies · offline, printable</span>
           </div>
         </a>
       </div>
@@ -459,7 +472,7 @@
     <div class="wrap">
       <div class="intro">
         <span class="lbl">Experience</span>
-        <h2>Three summers, one organisation, and the numbers attached.</h2>
+        <h2>Three summers, one organization, and the numbers attached.</h2>
       </div>
 
       <article class="role">
@@ -476,7 +489,7 @@
             <li>Built a weekly math mentorship partnership with the local Boys &amp; Girls Club
               serving <b>40+ students</b>.</li>
             <li>Recruited and managed <b>20 volunteers</b> and raised <b>$1,000+</b> in grants across
-              two partner organisations.</li>
+              two partner organizations.</li>
           </ul>
         </div>
       </article>
@@ -487,14 +500,14 @@
           <h3>Private Hedge Fund Analyst</h3>
           <p class="org">TruSuccess Investments · Rockaway, NJ</p>
           <ul>
-            <li>Boosted annual returns by <b>5%</b> through quantitative modelling of proprietary
+            <li>Boosted annual returns by <b>5%</b> through quantitative modeling of proprietary
               equity and macroeconomic datasets, applying statistical inference, time-series
               analysis, and predictive analytics.</li>
             <li>Built a Python forecasting and back-testing framework from scratch: regression
               models, volatility and moving-average indicators, sentiment signals, and reusable
               data-ingestion modules.</li>
             <li>Applied machine learning to detect trading patterns and quantify risk exposure,
-              informing <b>$100K+</b> in investment decisions through probability modelling and
+              informing <b>$100K+</b> in investment decisions through probability modeling and
               performance attribution.</li>
           </ul>
         </div>
@@ -509,9 +522,9 @@
             <li>Conducted experimental and computational research on a dual-catalyst methane and
               CO₂ fixation system for sustainable polymer synthesis and carbon sequestration.</li>
             <li>Built Python data-processing and firmware pipelines to model catalyst efficiency;
-              parameter tuning and numerical optimisation raised production efficiency <b>25%</b>,
+              parameter tuning and numerical optimization raised production efficiency <b>25%</b>,
               supporting a paper publication.</li>
-            <li>Presented findings and optimisation results at an MIT Chemical Engineering
+            <li>Presented findings and optimization results at an MIT Chemical Engineering
               symposium.</li>
           </ul>
         </div>
@@ -523,8 +536,8 @@
   <section class="panel" role="tabpanel" id="p-about" aria-labelledby="t-about" tabindex="-1" hidden>
     <div class="wrap">
       <div class="bio">
+        <span class="lbl">About</span>
         <div class="text">
-          <span class="lbl" style="display:block;margin-bottom:22px">About</span>
           <p class="big">I started Numeraldo because the people who struggle most with numbers are
             rarely the people offered help with them.</p>
           <p class="body-copy">That has turned out to be the same instinct behind everything else I
@@ -596,7 +609,7 @@
 <footer class="site" id="contact">
   <div class="wrap">
     <span class="lbl">Contact</span>
-    <p class="cta" style="margin-top:22px">Looking for work in quantitative research, ML, and
+    <p class="cta">Looking for work in quantitative research, ML, and
       software. <a href="mailto:rohansky@mit.edu">Say hello →</a></p>
 
     <div class="foot-rows">
@@ -626,7 +639,14 @@
   if (!tabs.length) return;
   var bar = document.querySelector(".tabbar");
 
-  function select(tab, focus) {
+  function byHash(hash) {
+    for (var i = 0; i < tabs.length; i++) {
+      if (tabs[i].dataset.hash === hash) return tabs[i];
+    }
+    return null;
+  }
+
+  function select(tab, focus, scroll) {
     tabs.forEach(function (t) {
       var on = t === tab;
       t.setAttribute("aria-selected", String(on));
@@ -635,23 +655,41 @@
     });
     // Keep the tab bar in view: if it has scrolled off the top, bring it back
     // so the swapped panel starts where the eye already is.
-    if (bar && bar.getBoundingClientRect().top < 0) {
+    if (scroll !== false && bar && bar.getBoundingClientRect().top < 0) {
       window.scrollTo({ top: bar.offsetTop, behavior: "smooth" });
     }
     if (focus) tab.focus();
   }
 
+  // The panels are real destinations, so they get real URLs: /#work, /#about.
+  // replaceState rather than a location change, which would jump the page.
+  function open(tab, focus) {
+    select(tab, focus);
+    if (window.history && history.replaceState) {
+      history.replaceState(null, "", "#" + tab.dataset.hash);
+    }
+  }
+
   tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () { select(tab, false); });
+    tab.addEventListener("click", function () { open(tab, false); });
     tab.addEventListener("keydown", function (e) {
       var k = e.key, next = null;
       if (k === "ArrowRight") next = tabs[(i + 1) % tabs.length];
       else if (k === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
       else if (k === "Home") next = tabs[0];
       else if (k === "End") next = tabs[tabs.length - 1];
-      if (next) { e.preventDefault(); select(next, true); }
+      if (next) { e.preventDefault(); open(next, true); }
     });
   });
+
+  // A hash that names a panel opens it; anything else (#contact, a module
+  // anchor) is left to the browser.
+  function fromHash(scroll) {
+    var tab = byHash((location.hash || "").replace(/^#/, ""));
+    if (tab) select(tab, false, scroll);
+  }
+  fromHash(false);
+  window.addEventListener("hashchange", function () { fromHash(true); });
 })();
 
 /* ---------------------------------------------------------------------------
@@ -714,7 +752,7 @@
   // non-zero fixed points sit at z = rho - 1, x = +/-sqrt(beta(rho - 1)).
   function reframe() {
     // Fitted to the attractor's measured extent: over rho 24..60 its width and
-    // height both grow very close to linearly in rho, and it sits centred on
+    // height both grow very close to linearly in rho, and it sits centered on
     // z = rho - 3. Deriving the frame from rho rather than from the points
     // matters below rho 24.74, where the orbit collapses onto a fixed point --
     // anything that auto-fits the drawn extent would zoom a dot to fill the page.

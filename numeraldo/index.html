@@ -8,6 +8,9 @@
 <meta property="og:description" content="Expanding world numeracy one number at a time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://numeraldo.org/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#EFF2F0" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0C1412" media="(prefers-color-scheme:dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6E5C'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='600' fill='%23EFF2F0' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <title>Numeraldo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,11 +94,11 @@
     font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
     text-transform:uppercase;color:var(--muted);
   }
-  .rule{height:1px;background:var(--line);border:0;margin:0}
 
   /* ---------- header ---------- */
   header.site{
-    position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+    position:sticky;top:0;z-index:40;
+    padding-top:env(safe-area-inset-top,0px);
     background:color-mix(in srgb, var(--paper) 88%, transparent);
     backdrop-filter:saturate(140%) blur(10px);
     border-bottom:1px solid var(--line);
@@ -108,7 +111,7 @@
     color:var(--accent);background:var(--accent-soft);
   }
   .wordmark{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
-  nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center;min-width:0}
   nav.main a{
     font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
     text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1.5px solid transparent;
@@ -126,9 +129,9 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
   /* ---------- hero ---------- */
-  .hero{padding-block:64px 52px;position:relative;overflow:hidden}
+  .hero{padding-block:30px 52px;position:relative;overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:52px;align-items:end}
-  h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:18px}
+  h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:14px}
   h1.lede em{font-style:normal;color:var(--accent);font-family:var(--mono);font-weight:500;font-size:.82em;letter-spacing:-.01em}
   .hero p.sub{margin-top:22px;max-width:56ch;font-size:19px;color:var(--muted)}
   .hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
@@ -179,6 +182,8 @@
   .program ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
   .program li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--muted);font-size:16px}
   .program li span.n{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:4px}
+  .program li a{color:var(--accent)}
+  .program-cta{margin-top:8px}
   .program .side{
     background:var(--surface-2);border-left:1px solid var(--line);
     padding:34px;display:flex;flex-direction:column;justify-content:center;gap:18px;
@@ -227,6 +232,7 @@
   .swatch{width:12px;height:12px;border-radius:2px}
   .bd-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
   .bd-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
+  .bd-head .r{text-align:right}
   .bd-amt,.bd-pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
   .bd-pct{color:var(--muted);font-size:13px}
   .bd-foot{display:flex;justify-content:space-between;gap:16px;padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--muted);flex-wrap:wrap}
@@ -239,12 +245,11 @@
     padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);
   }
   .logo-slot{
-    height:78px;border:1px dashed var(--line-strong);border-radius:2px;display:grid;place-items:center;
+    min-height:92px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;
     background:var(--surface-2);
-    font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--ink);
-    text-align:center;padding:10px;
+    font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;color:var(--ink);
+    text-align:center;padding:14px;line-height:1.25;
   }
-  .partner h3{font-size:18px}
   .partner p{color:var(--muted);font-size:15px}
   .partner .since{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 
@@ -260,22 +265,31 @@
   .event .what{color:var(--muted);font-size:15.5px;margin-top:6px}
 
   /* ---------- about ---------- */
-  .people{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}
+  .people{display:grid;grid-template-columns:180px 1fr;gap:34px;align-items:start}
   .portrait{
-    aspect-ratio:4/5;max-width:100%;border:1px solid var(--line);background:var(--surface-2);
-    display:grid;place-items:center;border-radius:3px;
+    aspect-ratio:1/1;max-width:100%;border:1.5px solid var(--accent);background:var(--accent-soft);
+    display:grid;place-items:center;border-radius:4px;
   }
-  .portrait .initials{font-family:var(--display);font-weight:800;font-size:46px;color:var(--line-strong);letter-spacing:.04em}
+  .portrait .initials{font-family:var(--mono);font-weight:600;font-size:46px;color:var(--accent);letter-spacing:.02em}
   .person-name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em}
   .person-role{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
-  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-  .board .card{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:3px}
-  .board .card .initials{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
-  .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;margin-top:8px}
-  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:2px}
+  .person-bio{margin-top:16px;color:var(--muted);max-width:60ch}
+  .board-label{display:block;margin-top:44px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .board{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px}
+  .board .card{
+    border:1px solid var(--line);background:var(--surface);padding:18px;border-radius:3px;
+    display:flex;flex-direction:column;
+  }
+  .board .card .initials{
+    font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.1em;
+  }
+  .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;margin-top:10px}
+  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.45}
 
   /* ---------- contact ---------- */
   #contact{background:var(--surface)}
+  .contact-h{margin-top:12px}
+  .contact-p{color:var(--muted);margin-top:14px;max-width:48ch}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
   .contact-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
   .contact-list a{
@@ -286,7 +300,8 @@
   .contact-list .ck{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .contact-list .cv{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
 
-  footer.site{border-top:1px solid var(--line);padding-block:30px 40px;background:var(--paper)}
+  footer.site{border-top:1px solid var(--line);background:var(--paper);
+    padding-block:30px calc(40px + env(safe-area-inset-bottom,0px))}
   .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;
     font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
 
@@ -299,31 +314,39 @@
     .partners{grid-template-columns:1fr}
     .event{grid-template-columns:1fr;gap:6px}
     .people{grid-template-columns:1fr}
-    .portrait{max-width:220px}
-    .board{grid-template-columns:repeat(2,1fr)}
+    .portrait{max-width:160px}
+    .board{grid-template-columns:repeat(3,1fr)}
     .contact-grid{grid-template-columns:1fr}
   }
+  @media (prefers-reduced-motion:no-preference){
+    .seg{transform-origin:left center;animation:grow .9s cubic-bezier(.2,.8,.25,1) both}
+    @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  }
+
   @media (max-width:560px){
     body{font-size:16px}
     .wrap{padding-inline:16px}
     section{padding-block:48px}
     .tracker{padding:22px 18px 26px}
-    .program .body,.program .side{padding:24px 20px}
     .bd-head,.bd-row{grid-template-columns:14px 1fr 92px;gap:10px}
     .bd-pct{display:none}
-    .board{grid-template-columns:1fr}
-    nav.main{display:none}
+    .program .body,.program .side{padding:24px 20px}
+    .board{grid-template-columns:repeat(2,1fr)}
+    .bar{gap:8px 12px;min-height:0;padding-block:8px 4px}
+    .brand{margin-right:auto}
+    /* The nav used to be display:none here, which left a phone with no way
+       to reach any section. It scrolls sideways instead. */
+    nav.main{
+      order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:18px;
+      scrollbar-width:none;-webkit-overflow-scrolling:touch;
+      padding-bottom:4px;margin-inline:-16px;padding-inline:16px;
+      -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent 100%);
+              mask-image:linear-gradient(90deg,#000 88%,transparent 100%);
+    }
+    nav.main::-webkit-scrollbar{display:none}
+    nav.main a{white-space:nowrap}
   }
-  @media (prefers-reduced-motion:no-preference){
-    .seg{animation:grow .9s cubic-bezier(.2,.8,.25,1) both}
-    @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    .seg{transform-origin:left center}
-  }
-</style>
-<style>
-  html,body{margin:0}
-  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-  img{max-width:100%}
+
   [hidden]{display:none!important}
 </style>
 </head>
@@ -422,8 +445,8 @@
         <span class="eyebrow">Programs</span>
         <div>
           <h2>Three programs running now.</h2>
-          <p>Every figure on this page marked in mono type is a placeholder — send us the real numbers
-            and they drop straight in.</p>
+          <p>One partnership that puts hardware in students' hands, one classroom we teach in every
+            week, and one course anybody can open tonight.</p>
         </div>
       </div>
 
@@ -495,11 +518,11 @@
             decisions each group actually faces. Every module shows the arithmetic underneath the rule,
             because a number you can check is a number you can argue with.</p>
           <ul>
-            <li><span class="n">01</span><span><a href="crash-course/teens.html" style="color:var(--accent)">Teens</a> — paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
-            <li><span class="n">02</span><span><a href="crash-course/seniors.html" style="color:var(--accent)">Seniors</a> — fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
+            <li><span class="n">01</span><span><a href="crash-course/teens.html">Teens</a> — paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
+            <li><span class="n">02</span><span><a href="crash-course/seniors.html">Seniors</a> — fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
             <li><span class="n">03</span><span>Calculators, quizzes, and a 47-term glossary. Printable for classroom and community-center handouts.</span></li>
           </ul>
-          <div class="hero-cta" style="margin-top:8px">
+          <div class="hero-cta program-cta">
             <a class="btn" href="crash-course/">Open the crash course</a>
           </div>
         </div>
@@ -546,7 +569,7 @@
 
         <div class="breakdown">
           <div class="bd-head">
-            <span></span><span>Program</span><span style="text-align:right">Allocated</span><span style="text-align:right">Share</span>
+            <span></span><span>Program</span><span class="r">Allocated</span><span class="r">Share</span>
           </div>
           <div id="breakdownRows"></div>
           <div class="bd-foot">
@@ -555,7 +578,7 @@
           </div>
         </div>
 
-        <p class="updated">Last updated <span id="lastUpdated">—</span> · Figures shown are placeholders pending confirmation.</p>
+        <p class="updated">Last updated <span id="lastUpdated">—</span></p>
       </div>
     </div>
   </section>
@@ -572,23 +595,20 @@
       </div>
       <div class="partners">
         <div class="partner">
-          <div class="logo-slot">CASIO</div>
+          <div class="logo-slot">Casio</div>
           <span class="since">Partner since 2026</span>
-          <h3>Casio</h3>
           <p>Donates the scientific and graphing calculators behind our Calculator Access Initiative,
             and supports the training that goes with them.</p>
         </div>
         <div class="partner">
           <div class="logo-slot">Boys &amp; Girls Club<br>of Lower Bergen County</div>
           <span class="since">Partner since 2025</span>
-          <h3>Boys &amp; Girls Club of Lower Bergen County</h3>
           <p>Hosts our weekly Numeracy Club and connects us with the students who benefit most from
             small-group instruction.</p>
         </div>
         <div class="partner">
-          <div class="logo-slot">MENSA</div>
-          <span class="since">Program host</span>
-          <h3>Mensa Leadership Development</h3>
+          <div class="logo-slot">Mensa<br>Leadership Development</div>
+          <span class="since">Program host · 2026</span>
           <p>Hosted Numeraldo at its Leadership Development Workshop at the Morris County Library in
             Whippany, New Jersey.</p>
         </div>
@@ -644,18 +664,40 @@
         <div>
           <div class="person-name">Rohan K. Raghu</div>
           <div class="person-role">Founder</div>
-          <p style="margin-top:16px;color:var(--muted);max-width:60ch">
+          <p class="person-bio">
             Rohan founded Numeraldo on a simple observation: the people who struggle most with numbers
             are rarely the people offered help with them. He leads the organization's programs, teaches
             the weekly sessions at the Boys &amp; Girls Club, and built the Casio partnership.
           </p>
-          <span class="eyebrow" style="display:block;margin-top:34px">Board of Advisors</span>
-          <div class="board">
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-          </div>
+        </div>
+      </div>
+
+      <span class="eyebrow board-label">Board of Advisors</span>
+      <div class="board">
+        <div class="card">
+          <span class="initials">DR</span>
+          <div class="nm">Dorairaja Raghu</div>
+          <div class="rl">Professor Emeritus · NJIT</div>
+        </div>
+        <div class="card">
+          <span class="initials">LS</span>
+          <div class="nm">LNV Samy</div>
+          <div class="rl">CEO · ClockOn</div>
+        </div>
+        <div class="card">
+          <span class="initials">SM</span>
+          <div class="nm">Sean McCabe</div>
+          <div class="rl">First Officer · Delta Air Lines</div>
+        </div>
+        <div class="card">
+          <span class="initials">GH</span>
+          <div class="nm">Greg Hoffman</div>
+          <div class="rl">Northern NJ Mensa</div>
+        </div>
+        <div class="card">
+          <span class="initials">LT</span>
+          <div class="nm">Laurie Thomas</div>
+          <div class="rl">Northern NJ Mensa</div>
         </div>
       </div>
     </div>
@@ -666,8 +708,8 @@
     <div class="wrap contact-grid">
       <div>
         <span class="eyebrow">Contact</span>
-        <h2 style="margin-top:12px">Get in touch.</h2>
-        <p style="color:var(--muted);margin-top:14px;max-width:48ch">
+        <h2 class="contact-h">Get in touch.</h2>
+        <p class="contact-p">
           Schools and community organizations looking to host a program, volunteers who want to teach,
           and donors who want to fund a specific line on the tracker above — all welcome.
         </p>
@@ -770,10 +812,11 @@ const NUMERALDO = {
     const row = document.createElement("div");
     row.className = "bd-row";
     row.innerHTML =
-      '<span class="swatch" style="background:' + p.color + '"></span>' +
+      '<span class="swatch"></span>' +
       '<span><span class="bd-name"></span><span class="bd-desc"></span></span>' +
       '<span class="bd-amt"></span>' +
       '<span class="bd-pct"></span>';
+    row.querySelector(".swatch").style.background = p.color;
     row.querySelector(".bd-name").textContent = p.name;
     const d = row.querySelector(".bd-desc");
     d.textContent = p.desc;
