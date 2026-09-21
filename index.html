@@ -38,14 +38,19 @@
 
     --gut:clamp(22px,5vw,64px);
     --wrap:1240px;
+
+    /* How far the attractor sits behind the type. */
+    --lz-veil:.38;
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
       --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
+      --lz-veil:.34;
     }
   }
   :root[data-theme="dark"]{
     --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;
+    --lz-veil:.34;
   }
 
   *{box-sizing:border-box}
@@ -171,6 +176,58 @@
   .foot-rows .c a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 
+  /* ---------- Lorenz attractor behind the hero ---------- */
+  /* Decorative only: aria-hidden, pointer-events:none, and it carries nothing
+     the text doesn't already say. Type keeps its own layer above it. */
+  .hero{position:relative;overflow:hidden}
+  .hero > .wrap{position:relative;z-index:1}
+  #lorenz{
+    position:absolute;inset:0;width:100%;height:100%;z-index:0;
+    pointer-events:none;opacity:var(--lz-veil);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent 92%);
+            mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent 92%);
+  }
+
+  .lorenz-ui{margin-top:clamp(26px,3.4vw,40px)}
+  .lz-line{
+    display:flex;align-items:baseline;gap:10px 22px;flex-wrap:wrap;
+    padding-top:14px;border-top:1px solid var(--line);
+  }
+  .lz-cap{font-size:13px;line-height:1.55;color:var(--muted);max-width:64ch}
+  .lz-cap b{font-weight:600;color:var(--ink)}
+  .lz-btn{
+    appearance:none;-webkit-appearance:none;background:none;border:0;cursor:pointer;
+    font-family:var(--body);font-size:10.5px;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);white-space:nowrap;
+    padding:0 0 2px;border-bottom:1px solid var(--line);
+    transition:color .15s,border-color .15s;
+  }
+  .lz-line .lz-btn{margin-left:auto}
+  .lz-btn:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .lz-btn[aria-expanded="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+  .lz-panel{padding-top:20px}
+  .lz-eq{font-size:12.5px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
+  .lz-eq span{display:inline-block;margin-right:26px;white-space:nowrap}
+  .lz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 28px;max-width:780px}
+  .lz-ctl{display:flex;flex-direction:column;gap:7px}
+  .lz-ctl .k{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+  /* Greek stays as written: uppercasing turns rho into P and beta into B. */
+  .lz-ctl .k i{font-style:normal;text-transform:none;font-size:12px;letter-spacing:0}
+  .lz-ctl output{
+    font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--accent);font-variant-numeric:tabular-nums;
+  }
+  .lz-ctl input[type=range]{width:100%;margin:0;cursor:pointer;accent-color:var(--accent)}
+  .lz-note{margin-top:16px;font-size:12px;color:var(--muted)}
+  .lz-panel .lz-btn{margin-top:16px}
+
+  /* No JS: nothing draws, so don't leave dead controls on the page. */
+  html:not(.js) .lorenz-ui,html:not(.js) #lorenz{display:none}
+
   /* ---------- responsive ---------- */
   @media (max-width:1000px){
     .hero-grid{align-items:start}
@@ -196,6 +253,9 @@
     .bio .text{grid-column:1 / 13}
     .col-a,.col-b,.col-c{grid-column:1 / 13}
     .foot-rows .c{grid-column:span 6}
+    .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .lz-line .lz-btn{margin-left:0}
+    #lorenz{opacity:calc(var(--lz-veil) * .55)}
   }
 
   /* ---------- no JS: show every panel, drop the tab bar ---------- */
@@ -206,7 +266,7 @@
   /* ---------- print: every panel, no tabs ---------- */
   @media print{
     :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--gut:0}
-    .top,.tabbar,.skip,.item .go,.hero .stand{display:none!important}
+    .top,.tabbar,.skip,.item .go,.hero .stand,#lorenz,.lorenz-ui{display:none!important}
     [role="tabpanel"][hidden]{display:block!important}
     body{font-size:10pt}
     .panel,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
@@ -231,6 +291,8 @@
 
 <!-- ===================== HERO ===================== -->
 <div class="hero">
+  <canvas id="lorenz" aria-hidden="true"></canvas>
+
   <div class="wrap hero-grid">
     <div class="lede">
       <span class="lbl">New Jersey · Mathematics &amp; artificial intelligence</span>
@@ -243,6 +305,44 @@
       <span class="where">Founder at Numeraldo.<br>MIT, from August 2026.</span>
       <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
       <a href="resume.pdf">Resume</a>
+    </div>
+  </div>
+
+  <div class="wrap lorenz-ui">
+    <div class="lz-line">
+      <p class="lz-cap"><b>Lorenz attractor</b>, 1963 — a deterministic system whose path
+        never repeats and never crosses itself. Drag ρ below 24.74 and the wandering
+        stops: sooner or later the trajectory falls into one wing and stays there.</p>
+      <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
+    </div>
+
+    <div class="lz-panel" id="lz-panel" hidden>
+      <p class="lz-eq">
+        <span>dx/dt = σ(y − x)</span>
+        <span>dy/dt = x(ρ − z) − y</span>
+        <span>dz/dt = xy − βz</span>
+      </p>
+      <div class="lz-grid">
+        <div class="lz-ctl">
+          <span class="k"><label for="lz-sigma">Sigma <i>σ</i></label><output for="lz-sigma" id="lz-sigma-v">10.0</output></span>
+          <input id="lz-sigma" type="range" min="1" max="20" step="0.1" value="10">
+        </div>
+        <div class="lz-ctl">
+          <span class="k"><label for="lz-rho">Rho <i>ρ</i></label><output for="lz-rho" id="lz-rho-v">28.0</output></span>
+          <input id="lz-rho" type="range" min="1" max="60" step="0.1" value="28">
+        </div>
+        <div class="lz-ctl">
+          <span class="k"><label for="lz-beta">Beta <i>β</i></label><output for="lz-beta" id="lz-beta-v">2.67</output></span>
+          <input id="lz-beta" type="range" min="0.4" max="6" step="0.01" value="2.67">
+        </div>
+        <div class="lz-ctl">
+          <span class="k"><label for="lz-speed">Speed</label><output for="lz-speed" id="lz-speed-v">5</output></span>
+          <input id="lz-speed" type="range" min="1" max="12" step="1" value="5">
+        </div>
+      </div>
+      <p class="lz-note" id="lz-motion" hidden>Your system is set to reduce motion, so the
+        attractor is drawn once and left still.</p>
+      <button class="lz-btn" id="lz-reset">Reset</button>
     </div>
   </div>
 </div>
@@ -548,6 +648,284 @@
       if (next) { e.preventDefault(); select(next, true); }
     });
   });
+})();
+
+/* ---------------------------------------------------------------------------
+   Lorenz attractor behind the hero.
+
+     dx/dt = sigma(y - x)     dy/dt = x(rho - z) - y     dz/dt = xy - beta*z
+
+   Integrated with RK4. Euler is cheaper but at this step size it drifts off
+   the attractor and the wings pull apart, which is exactly the thing worth
+   looking at.
+
+   The canvas is never cleared while running. Each frame erases a sliver of
+   what is already there (destination-out, so it fades to transparent rather
+   than to a guess at the page color) and then draws the new segment at full
+   strength. The live trajectory reads bright, everywhere it has been settles
+   into a haze, and that haze is the attractor itself.
+   --------------------------------------------------------------------------- */
+(function () {
+  "use strict";
+
+  var canvas = document.getElementById("lorenz");
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  var DEFAULTS = { sigma: 10, rho: 28, beta: 8 / 3, speed: 5 };
+  var P = { sigma: DEFAULTS.sigma, rho: DEFAULTS.rho, beta: DEFAULTS.beta, speed: DEFAULTS.speed };
+
+  var DT = 0.004;      // integration step
+  var FADE = 0.005;    // fraction of the trail erased per frame
+  var FILL = 0.86;     // share of the drawable band the figure is allowed
+  var STATIC_STEPS = 12000;
+
+  // Trail length in steps: it survives ~ln(100)/FADE frames before it is down
+  // to a hundredth, and each frame adds `speed` of them. Drawing that much up
+  // front means the page opens on the attractor instead of slowly accreting it.
+  function trailSteps() { return Math.round(P.speed * 4.6 / FADE); }
+
+  var w = 0, h = 0, scale = 1, ox = 0, oy = 0, zMid = 0;
+  var bandTop = 0, bandH = 0;   // the slice of the hero the figure may use
+  var x = 0, y = 0, z = 0, sx = 0, sy = 0;
+  var accent = "#8A4B2A";
+  var raf = 0, onScreen = true, still = false, pendingResize = 0;
+
+  function mq(q) { return window.matchMedia ? window.matchMedia(q) : null; }
+  var mqReduce = mq("(prefers-reduced-motion: reduce)");
+  var mqDark = mq("(prefers-color-scheme: dark)");
+
+  // Any CSS color -> "#rrggbb", by letting the canvas parse it for us.
+  function readAccent() {
+    var v = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
+    if (!v) return;
+    ctx.fillStyle = "#000000";
+    ctx.fillStyle = v;
+    if (typeof ctx.fillStyle === "string" && ctx.fillStyle.charAt(0) === "#") accent = ctx.fillStyle;
+  }
+
+  /* ---- geometry -------------------------------------------------------- */
+  // The attractor grows with rho, so the frame is derived from it: the two
+  // non-zero fixed points sit at z = rho - 1, x = +/-sqrt(beta(rho - 1)).
+  function reframe() {
+    // Fitted to the attractor's measured extent: over rho 24..60 its width and
+    // height both grow very close to linearly in rho, and it sits centred on
+    // z = rho - 3. Deriving the frame from rho rather than from the points
+    // matters below rho 24.74, where the orbit collapses onto a fixed point --
+    // anything that auto-fits the drawn extent would zoom a dot to fill the page.
+    var xSpan = Math.max(0.72 * P.rho + 16, 18);
+    var zSpan = Math.max(1.25 * P.rho + 8, 16);
+    var narrow = w < 720;
+    scale = Math.min(w / xSpan, bandH / zSpan) * FILL * (narrow ? 0.82 : 1);
+    zMid = P.rho - 3;
+    ox = w * (narrow ? 0.5 : 0.62);   // wide hero: off the headline's mass
+    oy = bandTop + bandH / 2;
+  }
+  // Plotted on the plain x-z plane. Mixing any y into the horizontal reads as
+  // a three-quarter view, but y tracks x closely enough that the two cancel:
+  // a 0.6 rad turn costs 41% of the width and folds the wings into a wishbone.
+  function toX(px) { return ox + px * scale; }
+  function toY(pz) { return oy - (pz - zMid) * scale; }
+
+  function reseed() {
+    x = 0.9; y = 1.0; z = Math.max(P.rho - 1, 1);
+    sx = toX(x); sy = toY(z);
+  }
+
+  function rk4() {
+    var sg = P.sigma, rh = P.rho, bt = P.beta, d = DT, hd = d / 2;
+    var k1x = sg * (y - x), k1y = x * (rh - z) - y, k1z = x * y - bt * z;
+    var ax = x + hd * k1x, ay = y + hd * k1y, az = z + hd * k1z;
+    var k2x = sg * (ay - ax), k2y = ax * (rh - az) - ay, k2z = ax * ay - bt * az;
+    var bx = x + hd * k2x, by = y + hd * k2y, bz = z + hd * k2z;
+    var k3x = sg * (by - bx), k3y = bx * (rh - bz) - by, k3z = bx * by - bt * bz;
+    var cx = x + d * k3x, cy = y + d * k3y, cz = z + d * k3z;
+    var k4x = sg * (cy - cx), k4y = cx * (rh - cz) - cy, k4z = cx * cy - bt * cz;
+    x += d / 6 * (k1x + 2 * k2x + 2 * k3x + k4x);
+    y += d / 6 * (k1y + 2 * k2y + 2 * k3y + k4y);
+    z += d / 6 * (k1z + 2 * k2z + 2 * k3z + k4z);
+  }
+
+  /* ---- drawing --------------------------------------------------------- */
+  function trace(steps, alpha) {
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = accent;
+    ctx.beginPath();
+    ctx.moveTo(sx, sy);
+    for (var i = 0; i < steps; i++) {
+      rk4();
+      // A slider pushed somewhere the step size can't follow: start over
+      // rather than poisoning every later coordinate with NaN.
+      if (!isFinite(x) || !isFinite(y) || !isFinite(z) ||
+          Math.abs(x) > 1e4 || Math.abs(z) > 1e4) {
+        reseed(); ctx.moveTo(sx, sy); continue;
+      }
+      sx = toX(x); sy = toY(z);
+      ctx.lineTo(sx, sy);
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function wipe() { ctx.clearRect(0, 0, w, h); }
+
+  // The caption and the controls sit inside the hero, so the canvas covers them
+  // too. Measure what is left above them and keep the figure -- and the mask
+  // that fades it out -- inside that band. Opening the panel grows the hero by
+  // about the height it adds, so the band, and the figure, barely move.
+  function measureBand() {
+    var ui = document.querySelector(".lorenz-ui");
+    var below = ui ? ui.offsetHeight + 16 : 0;
+    bandTop = h * 0.06;
+    bandH = Math.max(120, h - below - bandTop);
+    var end = Math.min(1, (bandTop + bandH) / h);
+    var hold = Math.max(0.12, end - 0.24);
+    var g = "linear-gradient(180deg,transparent 0,#000 12%,#000 " +
+            (hold * 100).toFixed(1) + "%,transparent " + (end * 100).toFixed(1) + "%)";
+    canvas.style.webkitMaskImage = g;
+    canvas.style.maskImage = g;
+  }
+
+  function drawStill() {           // reduced motion: draw it once, leave it
+    wipe(); reseed(); trace(STATIC_STEPS, 0.62);
+  }
+
+  // Lay down one trail's worth of history in four bands of rising strength, so
+  // the first animated frame continues a fade that is already in progress
+  // rather than starting from an empty canvas.
+  function prefill() {
+    var n = Math.round(trailSteps() / 4), a = [0.22, 0.42, 0.68, 1];
+    for (var i = 0; i < 4; i++) trace(n, a[i]);
+  }
+
+  function restart() {
+    reframe(); wipe(); reseed();
+    if (still) { drawStill(); return; }
+    prefill();
+    schedule();
+  }
+
+  function tick() {
+    raf = 0;
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0,0,0," + FADE + ")";
+    ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = "source-over";
+    trace(P.speed, 1);
+    schedule();
+  }
+  function schedule() {
+    if (!raf && onScreen && !still && !document.hidden) raf = requestAnimationFrame(tick);
+  }
+  function halt() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  /* ---- sizing ---------------------------------------------------------- */
+  function resize() {
+    pendingResize = 0;
+    var r = canvas.getBoundingClientRect();
+    var nw = Math.max(1, Math.round(r.width)), nh = Math.max(1, Math.round(r.height));
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (nw === w && nh === h && canvas.width === Math.round(nw * dpr)) return;
+    w = nw; h = nh;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.lineWidth = 1;
+    ctx.lineJoin = ctx.lineCap = "round";
+    measureBand();
+    restart();
+  }
+  function queueResize() { if (!pendingResize) pendingResize = requestAnimationFrame(resize); }
+
+  /* ---- controls -------------------------------------------------------- */
+  var CTL = [
+    { id: "lz-sigma", key: "sigma", dp: 1 },
+    { id: "lz-rho",   key: "rho",   dp: 1 },
+    { id: "lz-beta",  key: "beta",  dp: 2 },
+    { id: "lz-speed", key: "speed", dp: 0 }
+  ];
+
+  function show(c) {
+    var out = document.getElementById(c.id + "-v");
+    if (out) out.textContent = P[c.key].toFixed(c.dp);
+  }
+
+  // beta's default is 8/3, which a step="0.01" slider cannot hold: assigning
+  // the raw float lets the control snap it silently, leaving the thumb and the
+  // integrator a hair apart. Hand the control the value it can actually take.
+  function sync(c) { if (c.el) c.el.value = P[c.key].toFixed(c.dp); }
+
+  CTL.forEach(function (c) {
+    var el = document.getElementById(c.id);
+    if (!el) return;
+    c.el = el;
+    sync(c);
+    show(c);
+    el.addEventListener("input", function () {
+      var v = parseFloat(el.value);
+      if (!isFinite(v)) return;
+      P[c.key] = v;
+      show(c);
+      // Speed only changes how fast the same curve is walked; the other three
+      // change the curve, so the frame and the trail both have to go.
+      if (c.key === "speed") schedule(); else restart();
+    });
+  });
+
+  var reset = document.getElementById("lz-reset");
+  if (reset) reset.addEventListener("click", function () {
+    CTL.forEach(function (c) {
+      P[c.key] = DEFAULTS[c.key];
+      sync(c);
+      show(c);
+    });
+    restart();
+  });
+
+  var toggle = document.getElementById("lz-toggle"), panel = document.getElementById("lz-panel");
+  if (toggle && panel) toggle.addEventListener("click", function () {
+    var open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+  });
+
+  /* ---- lifecycle ------------------------------------------------------- */
+  function applyMotion() {
+    still = !!(mqReduce && mqReduce.matches);
+    var note = document.getElementById("lz-motion");
+    if (note) note.hidden = !still;
+    halt();
+    restart();
+  }
+
+  function listen(m, fn) {
+    if (!m) return;
+    if (m.addEventListener) m.addEventListener("change", fn);
+    else if (m.addListener) m.addListener(fn);      // Safari < 14
+  }
+  listen(mqReduce, applyMotion);
+  listen(mqDark, function () { readAccent(); });
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) halt(); else schedule();
+  });
+
+  if (window.ResizeObserver) new ResizeObserver(queueResize).observe(canvas);
+  else window.addEventListener("resize", queueResize);
+
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (es) {
+      onScreen = es[0].isIntersecting;
+      if (onScreen) schedule(); else halt();
+    }).observe(canvas);
+  }
+
+  readAccent();
+  still = !!(mqReduce && mqReduce.matches);
+  var note0 = document.getElementById("lz-motion");
+  if (note0) note0.hidden = !still;
+  resize();
 })();
 </script>
 
