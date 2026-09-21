@@ -3,787 +3,499 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Numeraldo expands numeracy for students, seniors, and underserved communities — weekly teaching at the Boys &amp; Girls Club of Lower Bergen County and a calculator access partnership with Casio.">
-<meta property="og:title" content="Numeraldo">
-<meta property="og:description" content="Expanding world numeracy one number at a time.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://numeraldo.org/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6E5C'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='600' fill='%23EFF2F0' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
-<title>Numeraldo</title>
+<!-- ===========================================================================
+     PLACEHOLDERS TO FILL IN
+     Everything wrapped in <span class="ph"> renders with a dashed outline so
+     it's impossible to miss on the live page. Search this file for "ph" and
+     replace each one. The list:
+
+       · one-line intro under your name        · school + expected graduation
+       · coursework / GPA (or delete the line) · any roles besides Numeraldo
+       · awards and recognition                · three side projects
+       · skills and tools                      · public email address
+       · LinkedIn URL                          · GitHub URL
+       · resume PDF (drop it in as resume.pdf)
+
+     Delete any block you don't want rather than leaving it as a placeholder.
+     =========================================================================== -->
+<meta name="description" content="Rohan K. Raghu — founder of Numeraldo, a numeracy education nonprofit teaching math and financial literacy to students, seniors, and underserved communities in New Jersey.">
+<meta property="og:title" content="Rohan K. Raghu">
+<meta property="og:description" content="Founder of Numeraldo. Teaching numeracy where it isn't taught.">
+<meta property="og:type" content="profile">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234338CA'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='600' fill='%23F7F7FB' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<title>Rohan K. Raghu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
   :root{
-    --paper:#EFF2F0;
+    --paper:#FAFAF9;
     --surface:#FFFFFF;
-    --surface-2:#E6EBE8;
-    --ink:#0F1A17;
-    --muted:#566B65;
-    --line:#D3DCD8;
-    --line-strong:#B6C4BF;
-    --accent:#0E6E5C;
-    --accent-ink:#0A473C;
-    --accent-soft:#D7E9E3;
-    --gold:#8A6212;
-    --gold-soft:#EDE1C6;
-    --lcd:#0E6E5C;
-    --shadow:0 1px 2px rgba(15,26,23,.06), 0 12px 28px -18px rgba(15,26,23,.35);
+    --surface-2:#F1F1F4;
+    --ink:#15151A;
+    --muted:#5C5C6B;
+    --line:#E2E2E8;
+    --line-strong:#C6C6D2;
+    --accent:#4338CA;
+    --accent-soft:#EEEDFB;
+    --shadow:0 1px 2px rgba(21,21,26,.05), 0 12px 28px -20px rgba(21,21,26,.35);
 
-    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-    --body:"Source Serif 4",Georgia,"Times New Roman",serif;
-    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
-
-    --wrap:1140px;
+    --display:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+    --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --wrap:1040px;
   }
-  @media (prefers-color-scheme: dark){
+  @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --paper:#0C1412;
-      --surface:#141E1B;
-      --surface-2:#1B2723;
-      --ink:#E9EFEC;
-      --muted:#9AACA6;
-      --line:#25332E;
-      --line-strong:#33453F;
-      --accent:#4ECFAE;
-      --accent-ink:#A6EBD8;
-      --accent-soft:#16302A;
-      --gold:#E0B75F;
-      --gold-soft:#2C2517;
-      --lcd:#4ECFAE;
+      --paper:#0E0E12;--surface:#16161C;--surface-2:#1E1E26;--ink:#ECECF2;--muted:#9C9CAE;
+      --line:#272730;--line-strong:#3A3A47;--accent:#A5B4FC;--accent-soft:#1C1B33;
       --shadow:0 1px 2px rgba(0,0,0,.5), 0 18px 34px -22px rgba(0,0,0,.9);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#0C1412;
-    --surface:#141E1B;
-    --surface-2:#1B2723;
-    --ink:#E9EFEC;
-    --muted:#9AACA6;
-    --line:#25332E;
-    --line-strong:#33453F;
-    --accent:#4ECFAE;
-    --accent-ink:#A6EBD8;
-    --accent-soft:#16302A;
-    --gold:#E0B75F;
-    --gold-soft:#2C2517;
-    --lcd:#4ECFAE;
+    --paper:#0E0E12;--surface:#16161C;--surface-2:#1E1E26;--ink:#ECECF2;--muted:#9C9CAE;
+    --line:#272730;--line-strong:#3A3A47;--accent:#A5B4FC;--accent-soft:#1C1B33;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 18px 34px -22px rgba(0,0,0,.9);
   }
 
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--body);
-    font-size:17px;
-    line-height:1.62;
-    -webkit-font-smoothing:antialiased;
+    margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+    font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.015em}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.02em;text-wrap:balance}
   p{margin:0}
   a{color:inherit}
   img{max-width:100%}
+  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:22px}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .skip{position:absolute;left:-9999px;background:var(--accent);color:#fff;padding:12px 18px;z-index:100;font-family:var(--mono);font-size:13px;text-decoration:none}
+  .skip:focus{left:8px;top:8px}
 
-  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
-  .eyebrow{
-    font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--muted);
+  /* ---- placeholder marker: obvious on the live page, easy to grep ---- */
+  .ph{
+    display:inline-block;font-family:var(--mono);font-size:.88em;color:var(--accent);
+    background:var(--accent-soft);border:1px dashed var(--accent);border-radius:3px;
+    padding:1px 7px;
   }
-  .rule{height:1px;background:var(--line);border:0;margin:0}
 
   /* ---------- header ---------- */
   header.site{
-    position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
-    background:color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter:saturate(140%) blur(10px);
-    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);
+    backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);
   }
-  .bar{display:flex;align-items:center;gap:18px;min-height:62px;flex-wrap:wrap;padding-block:8px}
+  .bar{display:flex;align-items:center;gap:18px;min-height:60px;flex-wrap:wrap;padding-block:8px}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
   .mark{
-    width:30px;height:30px;border:1.5px solid var(--accent);border-radius:7px;
-    display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:15px;
-    color:var(--accent);background:var(--accent-soft);
+    width:29px;height:29px;border:1.5px solid var(--accent);border-radius:7px;display:grid;place-items:center;
+    font-family:var(--mono);font-weight:500;font-size:13px;color:var(--accent);background:var(--accent-soft);flex:none;
   }
-  .wordmark{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
-  nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  .wordmark{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.02em}
+  nav.main{display:flex;gap:19px;flex-wrap:wrap;align-items:center}
   nav.main a{
-    font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
     text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1.5px solid transparent;
   }
   nav.main a:hover{color:var(--ink);border-bottom-color:var(--accent)}
   .btn{
     display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-    font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
-    padding:11px 18px;border-radius:2px;border:1.5px solid var(--accent);
-    background:var(--accent);color:var(--paper);white-space:nowrap;
+    font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;
+    padding:10px 16px;border-radius:3px;border:1.5px solid var(--accent);
+    background:var(--accent);color:#fff;white-space:nowrap;
   }
+  /* in dark mode the accent is light, so solid buttons need dark label text */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .btn{color:#15151A}
+  }
+  :root[data-theme="dark"] .btn{color:#15151A}
   .btn:hover{background:transparent;color:var(--accent)}
+  :root[data-theme="dark"] .btn.ghost{color:var(--ink)}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .btn.ghost{color:var(--ink)}
+  }
+  .btn.ghost:hover{color:var(--accent)}
   .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn.sm{padding:8px 13px;font-size:11px}
 
   /* ---------- hero ---------- */
-  .hero{padding-block:64px 52px;position:relative;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:52px;align-items:end}
-  h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:18px}
-  h1.lede em{font-style:normal;color:var(--accent);font-family:var(--mono);font-weight:500;font-size:.82em;letter-spacing:-.01em}
-  .hero p.sub{margin-top:22px;max-width:56ch;font-size:19px;color:var(--muted)}
-  .hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
-
-  .ledger{
-    background:var(--surface);border:1px solid var(--line);border-radius:3px;
-    box-shadow:var(--shadow);padding:6px 20px 14px;
-  }
-  .ledger .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
-  .ledger .row:last-child{border-bottom:0}
-  .ledger .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .ledger .v{font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-
-  /* ---------- generic section ---------- */
-  section{padding-block:64px;border-top:1px solid var(--line)}
-  .sec-head{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start;margin-bottom:38px}
-  .sec-head h2{font-size:clamp(26px,3.4vw,36px)}
-  .sec-head p{color:var(--muted);max-width:60ch;margin-top:12px}
-
-  /* ---------- mission ---------- */
-  .definition{
-    border-left:3px solid var(--accent);background:var(--surface);
-    padding:22px 24px;margin-top:26px;border-radius:0 3px 3px 0;box-shadow:var(--shadow);
-  }
-  .definition .term{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
-  .definition p{font-size:19px}
-
-  .serve{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
-  .serve article{background:var(--surface);padding:26px 22px 28px;display:flex;flex-direction:column;gap:10px}
-  .serve h3{font-size:20px}
-  .serve p{color:var(--muted);font-size:16px}
-  .serve .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-
-  /* ---------- programs ---------- */
-  .program{
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--line);background:var(--surface);border-radius:3px;overflow:hidden;
-    box-shadow:var(--shadow);margin-bottom:26px;
-  }
-  .program .body{padding:34px 34px 36px;display:flex;flex-direction:column;gap:16px}
-  .program h3{font-size:clamp(23px,2.6vw,30px)}
-  .program .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .hero{padding-block:76px 56px}
+  h1.name{font-size:clamp(40px,7vw,74px);font-weight:700;letter-spacing:-.04em;margin-top:16px}
+  .hero p.sub{margin-top:20px;max-width:60ch;font-size:19px;color:var(--muted)}
+  .hero-cta{display:flex;gap:11px;margin-top:30px;flex-wrap:wrap}
+  .facts{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
   .chip{
-    font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-    border:1px solid var(--line-strong);color:var(--muted);padding:5px 10px;border-radius:999px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+    border:1px solid var(--line-strong);color:var(--muted);padding:5px 11px;border-radius:999px;
   }
   .chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
-  .program ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-  .program li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--muted);font-size:16px}
-  .program li span.n{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:4px}
-  .program .side{
-    background:var(--surface-2);border-left:1px solid var(--line);
-    padding:34px;display:flex;flex-direction:column;justify-content:center;gap:18px;
-  }
-  .stat-line{display:flex;justify-content:space-between;align-items:baseline;gap:14px;border-bottom:1px dashed var(--line-strong);padding-bottom:10px}
-  .stat-line:last-child{border-bottom:0}
-  .stat-line .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .stat-line .v{font-family:var(--display);font-weight:600;font-size:22px;font-variant-numeric:tabular-nums;text-align:right}
 
-  /* ---------- tracker ---------- */
-  #impact{background:var(--surface)}
-  .tracker{
-    border:1px solid var(--line-strong);border-radius:4px;background:var(--paper);
-    padding:30px 30px 34px;box-shadow:var(--shadow);
-  }
-  .readout{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 28px;justify-content:space-between}
-  .raised{display:flex;flex-direction:column;gap:6px}
-  .raised .amount{
-    font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;
-    font-size:clamp(42px,8vw,76px);line-height:1;letter-spacing:-.04em;color:var(--lcd);
-  }
-  .goal-note{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.04em}
-  .goal-note b{color:var(--ink);font-weight:600}
+  /* ---------- sections ---------- */
+  section{padding-block:60px;border-top:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;margin-bottom:34px}
+  .sec-head h2{font-size:clamp(24px,3.2vw,32px)}
+  .sec-head p{color:var(--muted);max-width:60ch;margin-top:10px}
 
-  .meter{margin-top:26px}
-  .meter-track{
-    height:26px;border:1px solid var(--line-strong);background:var(--surface-2);
-    border-radius:2px;overflow:hidden;display:flex;
+  /* ---------- resume entries ---------- */
+  .entries{display:flex;flex-direction:column}
+  .entry{
+    display:grid;grid-template-columns:150px 1fr;gap:26px;
+    padding:24px 0;border-bottom:1px solid var(--line);
   }
-  .seg{height:100%;position:relative}
-  .seg + .seg{border-left:1px solid var(--paper)}
-  .meter-scale{
-    display:flex;justify-content:space-between;margin-top:8px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);
-  }
-  .breakdown{margin-top:30px;display:flex;flex-direction:column}
-  .bd-head{
-    display:grid;grid-template-columns:18px 1fr 110px 74px;gap:14px;
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-    padding-bottom:10px;border-bottom:1px solid var(--line-strong);
-  }
-  .bd-row{
-    display:grid;grid-template-columns:18px 1fr 110px 74px;gap:14px;align-items:center;
-    padding:15px 0;border-bottom:1px solid var(--line);
-  }
-  .swatch{width:12px;height:12px;border-radius:2px}
-  .bd-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .bd-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
-  .bd-amt,.bd-pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
-  .bd-pct{color:var(--muted);font-size:13px}
-  .bd-foot{display:flex;justify-content:space-between;gap:16px;padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-  .updated{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:18px}
+  .entry:first-child{border-top:1px solid var(--line)}
+  .entry .when{font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--accent);padding-top:3px}
+  .entry h3{font-size:19px}
+  .entry .org{color:var(--muted);font-size:14.5px;font-family:var(--mono);margin-top:5px}
+  .entry p{margin-top:11px;color:var(--muted);max-width:66ch}
+  .entry ul{margin:11px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .entry li{display:grid;grid-template-columns:16px 1fr;gap:9px;color:var(--muted);font-size:15.5px;max-width:64ch}
+  .entry li::before{content:"—";color:var(--accent);font-family:var(--mono);font-size:12px;padding-top:3px}
 
-  /* ---------- partners ---------- */
-  .partners{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .partner{
-    border:1px solid var(--line);background:var(--surface);border-radius:3px;
-    padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);
+  /* ---------- projects ---------- */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .project{
+    display:flex;flex-direction:column;gap:12px;background:var(--surface);
+    border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);
+    padding:26px 26px 28px;text-decoration:none;color:inherit;
   }
-  .logo-slot{
-    height:78px;border:1px dashed var(--line-strong);border-radius:2px;display:grid;place-items:center;
-    background:var(--surface-2);
-    font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--ink);
-    text-align:center;padding:10px;
-  }
-  .partner h3{font-size:18px}
-  .partner p{color:var(--muted);font-size:15px}
-  .partner .since{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  a.project:hover{border-color:var(--accent)}
+  .project h3{font-size:21px}
+  .project p{color:var(--muted);font-size:15.5px}
+  .project .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+  .project .go{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-top:auto;padding-top:12px}
+  .project.stub{border-style:dashed;background:transparent;box-shadow:none}
 
-  /* ---------- events ---------- */
-  .events{display:flex;flex-direction:column;border-top:1px solid var(--line)}
-  .event{
-    display:grid;grid-template-columns:150px 1fr 190px;gap:24px;
-    padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline;
-  }
-  .event .when{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--accent)}
-  .event h3{font-size:19px}
-  .event .where{color:var(--muted);font-size:15px}
-  .event .what{color:var(--muted);font-size:15.5px;margin-top:6px}
-
-  /* ---------- about ---------- */
-  .people{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}
-  .portrait{
-    aspect-ratio:4/5;max-width:100%;border:1px solid var(--line);background:var(--surface-2);
-    display:grid;place-items:center;border-radius:3px;
-  }
-  .portrait .initials{font-family:var(--display);font-weight:800;font-size:46px;color:var(--line-strong);letter-spacing:.04em}
-  .person-name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em}
-  .person-role{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
-  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-  .board .card{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:3px}
-  .board .card .initials{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
-  .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;margin-top:8px}
-  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:2px}
+  /* ---------- skills ---------- */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .skills article{background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:10px}
+  .skills h3{font-size:15px;font-family:var(--mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .skills p{color:var(--muted);font-size:15px}
 
   /* ---------- contact ---------- */
   #contact{background:var(--surface)}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-  .contact-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
-  .contact-list a{
-    display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  .contact-list{display:flex;flex-direction:column;gap:0;margin-top:10px}
+  .contact-list a,.contact-list div.row{
+    display:flex;justify-content:space-between;gap:18px;align-items:baseline;
     padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
   }
   .contact-list a:hover .cv{color:var(--accent)}
-  .contact-list .ck{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-  .contact-list .cv{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
+  .ck{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .cv{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
 
-  footer.site{border-top:1px solid var(--line);padding-block:30px 40px;background:var(--paper)}
-  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;
-    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+  .note{border:1px dashed var(--line-strong);border-radius:4px;background:var(--surface);padding:18px 20px;color:var(--muted);font-size:14.5px}
+  .note b{color:var(--ink)}
 
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:34px;align-items:start}
-    .sec-head{grid-template-columns:1fr;gap:10px}
-    .serve{grid-template-columns:1fr}
-    .program{grid-template-columns:1fr}
-    .program .side{border-left:0;border-top:1px solid var(--line)}
-    .partners{grid-template-columns:1fr}
-    .event{grid-template-columns:1fr;gap:6px}
-    .people{grid-template-columns:1fr}
-    .portrait{max-width:220px}
-    .board{grid-template-columns:repeat(2,1fr)}
-    .contact-grid{grid-template-columns:1fr}
+  footer.site{border-top:1px solid var(--line);padding-block:28px 38px}
+  .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted)}
+  .foot a{color:var(--muted)}
+  .foot a:hover{color:var(--accent)}
+
+  @media (max-width:860px){
+    .sec-head{grid-template-columns:1fr;gap:8px}
+    .entry{grid-template-columns:1fr;gap:6px}
+    .entry .when{padding-top:0}
+    .projects{grid-template-columns:1fr}
   }
   @media (max-width:560px){
     body{font-size:16px}
-    .wrap{padding-inline:16px}
-    section{padding-block:48px}
-    .tracker{padding:22px 18px 26px}
-    .program .body,.program .side{padding:24px 20px}
-    .bd-head,.bd-row{grid-template-columns:14px 1fr 92px;gap:10px}
-    .bd-pct{display:none}
-    .board{grid-template-columns:1fr}
+    .wrap{padding-inline:17px}
+    section{padding-block:46px}
+    .hero{padding-block:52px 40px}
     nav.main{display:none}
   }
-  @media (prefers-reduced-motion:no-preference){
-    .seg{animation:grow .9s cubic-bezier(.2,.8,.25,1) both}
-    @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    .seg{transform-origin:left center}
+
+  /* ---------- print: this page doubles as a resume ---------- */
+  @media print{
+    :root{--paper:#fff;--surface:#fff;--surface-2:#fff;--ink:#000;--muted:#333;
+      --line:#bbb;--line-strong:#888;--accent:#4338CA;--shadow:none}
+    header.site,.hero-cta,.noprint,.project .go{display:none!important}
+    body{font-size:10.5pt}
+    section{padding-block:14pt;border-top:0}
+    .hero{padding-block:0 12pt}
+    h1.name{font-size:26pt}
+    .entry,.project{break-inside:avoid}
+    .projects{grid-template-columns:1fr 1fr}
+    .project{border:1px solid #bbb;box-shadow:none;padding:10pt}
+    a[href^="http"]::after,a[href^="mailto"]::after{content:" (" attr(href) ")";font-size:8pt;color:#555;word-break:break-all}
   }
-</style>
-<style>
-  html,body{margin:0}
-  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-  img{max-width:100%}
-  [hidden]{display:none!important}
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="#top">
-      <span class="mark">N</span>
-      <span class="wordmark">Numeraldo</span>
+      <span class="mark">R</span>
+      <span class="wordmark">Rohan K. Raghu</span>
     </a>
     <nav class="main">
-      <a href="#mission">Mission</a>
-      <a href="#programs">Programs</a>
-      <a href="crash-course/">Crash Course</a>
-      <a href="#impact">Impact</a>
-      <a href="#partners">Partners</a>
-      <a href="#events">Events</a>
-      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="btn" href="#impact">Support us</a>
+    <a class="btn sm" href="resume.pdf">Resume</a>
   </div>
 </header>
 
 <main id="top">
 
   <!-- HERO -->
-  <div class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">Numeracy education · 501(c)(3) nonprofit</span>
-        <h1 class="lede">Expanding world numeracy <em>one number at a time.</em></h1>
-        <p class="sub">Numeraldo puts the tools and teaching of everyday math into the hands of people
-          who have been left to work it out alone — students, seniors, and families in
-          underserved communities.</p>
-        <div class="hero-cta">
-          <a class="btn" href="#impact">See where the money goes</a>
-          <a class="btn ghost" href="#programs">Our programs</a>
-        </div>
+  <div class="hero" id="main">
+    <div class="wrap">
+      <span class="eyebrow">Northern New Jersey · <span class="ph">what you do / study</span></span>
+      <h1 class="name">Rohan K. Raghu</h1>
+      <p class="sub">I founded <a href="numeraldo/" style="color:var(--accent)">Numeraldo</a>, a 501(c)(3)
+        nonprofit that teaches numeracy — the everyday math of paychecks, interest, and dosages — to
+        students, seniors, and families who were left to work it out alone. <span class="ph">Add a
+        sentence about what else you're into.</span></p>
+      <div class="facts">
+        <span class="chip on">Founder, Numeraldo</span>
+        <span class="chip">Nonprofit leadership</span>
+        <span class="chip">Curriculum &amp; instruction</span>
+        <span class="chip"><span class="ph">interest</span></span>
       </div>
-      <div class="ledger" id="heroLedger">
-        <div class="row"><span class="k">Raised to date</span><span class="v" id="heroRaised">—</span></div>
-        <div class="row"><span class="k">Students taught weekly</span><span class="v" id="heroStudents">—</span></div>
-        <div class="row"><span class="k">Partner organizations</span><span class="v" id="heroPartners">—</span></div>
+      <div class="hero-cta">
+        <a class="btn" href="resume.pdf">Download resume</a>
+        <a class="btn ghost" href="#projects">See my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
       </div>
     </div>
   </div>
 
-  <!-- MISSION -->
-  <section id="mission">
+  <!-- EXPERIENCE -->
+  <section id="experience">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Our mission</span>
+        <span class="eyebrow">Experience</span>
         <div>
-          <h2>Numeracy is the literacy nobody screens for.</h2>
-          <p>Reading gets tested, tutored, and funded. The ability to handle a number — an interest rate,
-            a dosage, a paycheck, a ballot measure — is assumed. Numeraldo treats it as a skill that can
-            be taught at any age, and builds programs that do exactly that.</p>
-          <div class="definition">
-            <span class="term">Numeracy, n.</span>
-            <p>The ability to use, interpret, and express quantitative ideas in order to understand and
-              manage daily, public, and professional situations.</p>
-          </div>
+          <h2>What I've built and led.</h2>
+          <p>The short version: I started an organization to solve a problem I kept noticing, and then
+            did the unglamorous work of actually running it every week.</p>
         </div>
       </div>
 
-      <span class="eyebrow">Who we serve</span>
-      <div class="serve">
-        <article>
-          <span class="tag">Seniors</span>
-          <h3>Financial security and independence</h3>
-          <p>Reading a statement, spotting a scam, understanding a fixed-income budget. Workshops
-            designed for people who were never taught this and are too often asked to trust someone else with it.</p>
-        </article>
-        <article>
-          <span class="tag">Youth</span>
-          <h3>Academic preparation and analytical thinking</h3>
-          <p>Weekly small-group instruction that rebuilds arithmetic fluency, then pushes into the
-            estimation, proportion, and data reasoning that standardized tests and adult life both demand.</p>
-        </article>
-        <article>
-          <span class="tag">Underserved communities</span>
-          <h3>Economic empowerment and upward mobility</h3>
-          <p>Calculators, curriculum, and instruction delivered where cost is the barrier — so a missing
-            $130 device never decides who takes the advanced class.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROGRAMS -->
-  <section id="programs">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Programs</span>
-        <div>
-          <h2>Three programs running now.</h2>
-          <p>Every figure on this page marked in mono type is a placeholder — send us the real numbers
-            and they drop straight in.</p>
-        </div>
-      </div>
-
-      <!-- Casio -->
-      <article class="program">
-        <div class="body">
-          <span class="eyebrow">Partnership</span>
-          <h3>The Casio Calculator Access Initiative</h3>
-          <div class="meta">
-            <span class="chip on">Active partnership</span>
-            <span class="chip">Est. 2026</span>
-            <span class="chip">Device donation + training</span>
-          </div>
-          <p>Numeraldo has partnered with Casio to close the calculator gap. Casio supplies scientific
-            and graphing calculators at no cost to the student; Numeraldo handles distribution, and —
-            the part that usually gets skipped — teaches students how to actually use the machine.</p>
-          <ul>
-            <li><span class="n">01</span><span>Calculators placed directly with students through our partner sites, not warehoused.</span></li>
-            <li><span class="n">02</span><span>A two-session onboarding: the keys that matter, and the ones that quietly cost you points.</span></li>
-            <li><span class="n">03</span><span>Classroom sets loaned to teachers running units that require a graphing device.</span></li>
-          </ul>
-        </div>
-        <div class="side">
-          <div class="stat-line"><span class="k">Calculators placed</span><span class="v">120</span></div>
-          <div class="stat-line"><span class="k">Schools &amp; sites served</span><span class="v">4</span></div>
-          <div class="stat-line"><span class="k">Retail value donated</span><span class="v">$6,400</span></div>
-          <div class="stat-line"><span class="k">Cost to the student</span><span class="v">$0</span></div>
-        </div>
-      </article>
-
-      <!-- Boys and Girls Club -->
-      <article class="program">
-        <div class="body">
-          <span class="eyebrow">Weekly instruction</span>
-          <h3>Numeracy Club at the Boys &amp; Girls Club of Lower Bergen County</h3>
-          <div class="meta">
-            <span class="chip on">Every week</span>
-            <span class="chip">Tuesdays · 4:00–5:15 pm</span>
-            <span class="chip">Grades 4–8</span>
-          </div>
-          <p>Numeraldo teaches at the Boys &amp; Girls Club of Lower Bergen County every week during
-            the school year. Sessions are small-group and hands-on: no lecture, no worksheets handed
-            out and collected, just students doing math out loud until the number sense sticks.</p>
-          <ul>
-            <li><span class="n">01</span><span>Mental math and estimation drills to open — fast, competitive, loud.</span></li>
-            <li><span class="n">02</span><span>A real-world block: unit pricing, percentages, sports statistics, budgets.</span></li>
-            <li><span class="n">03</span><span>Homework support for whatever students walked in the door carrying.</span></li>
-          </ul>
-        </div>
-        <div class="side">
-          <div class="stat-line"><span class="k">Students per session</span><span class="v">18</span></div>
-          <div class="stat-line"><span class="k">Sessions delivered</span><span class="v">32</span></div>
-          <div class="stat-line"><span class="k">Volunteer hours</span><span class="v">96</span></div>
-          <div class="stat-line"><span class="k">Cost to families</span><span class="v">$0</span></div>
-        </div>
-      </article>
-
-      <!-- Crash Course -->
-      <article class="program">
-        <div class="body">
-          <span class="eyebrow">Free online course</span>
-          <h3>The Financial Literacy Crash Course</h3>
-          <div class="meta">
-            <span class="chip on">Open to everyone</span>
-            <span class="chip">Two tracks · 16 modules</span>
-            <span class="chip">No sign-up</span>
-          </div>
-          <p>Two self-paced courses — one written for teenagers, one for seniors — covering the money
-            decisions each group actually faces. Every module shows the arithmetic underneath the rule,
-            because a number you can check is a number you can argue with.</p>
-          <ul>
-            <li><span class="n">01</span><span><a href="crash-course/teens.html" style="color:var(--accent)">Teens</a> — paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
-            <li><span class="n">02</span><span><a href="crash-course/seniors.html" style="color:var(--accent)">Seniors</a> — fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
-            <li><span class="n">03</span><span>Calculators, quizzes, and a 47-term glossary. Printable for classroom and community-center handouts.</span></li>
-          </ul>
-          <div class="hero-cta" style="margin-top:8px">
-            <a class="btn" href="crash-course/">Open the crash course</a>
-          </div>
-        </div>
-        <div class="side">
-          <div class="stat-line"><span class="k">Modules</span><span class="v">16</span></div>
-          <div class="stat-line"><span class="k">Calculators</span><span class="v">3</span></div>
-          <div class="stat-line"><span class="k">Glossary terms</span><span class="v">47</span></div>
-          <div class="stat-line"><span class="k">Cost to the reader</span><span class="v">$0</span></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- TRACKER -->
-  <section id="impact">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Money raised</span>
-        <div>
-          <h2>Every dollar, and the program it went to.</h2>
-          <p>We publish the full allocation rather than a total. If you gave, this page shows you
-            what your gift is doing.</p>
-        </div>
-      </div>
-
-      <div class="tracker">
-        <div class="readout">
-          <div class="raised">
-            <span class="eyebrow">Raised toward this year's goal</span>
-            <span class="amount" id="amountRaised">$0</span>
-          </div>
-          <div class="goal-note">
-            <b id="pctOfGoal">0%</b> of a <b id="goalAmount">$0</b> goal<br>
-            <span id="remaining">—</span>
-          </div>
-        </div>
-
-        <div class="meter">
-          <div class="meter-track" id="meterTrack" role="img" aria-label="Allocation of funds raised by program"></div>
-          <div class="meter-scale">
-            <span>$0</span><span id="scaleMid">—</span><span id="scaleEnd">—</span>
-          </div>
-        </div>
-
-        <div class="breakdown">
-          <div class="bd-head">
-            <span></span><span>Program</span><span style="text-align:right">Allocated</span><span style="text-align:right">Share</span>
-          </div>
-          <div id="breakdownRows"></div>
-          <div class="bd-foot">
-            <span>Total allocated</span>
-            <span id="totalAllocated">—</span>
-          </div>
-        </div>
-
-        <p class="updated">Last updated <span id="lastUpdated">—</span> · Figures shown are placeholders pending confirmation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PARTNERS -->
-  <section id="partners">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Partners</span>
-        <div>
-          <h2>Who we work with.</h2>
-          <p>Partners provide the room, the students, or the hardware. Numeraldo provides the teaching.</p>
-        </div>
-      </div>
-      <div class="partners">
-        <div class="partner">
-          <div class="logo-slot">CASIO</div>
-          <span class="since">Partner since 2026</span>
-          <h3>Casio</h3>
-          <p>Donates the scientific and graphing calculators behind our Calculator Access Initiative,
-            and supports the training that goes with them.</p>
-        </div>
-        <div class="partner">
-          <div class="logo-slot">Boys &amp; Girls Club<br>of Lower Bergen County</div>
-          <span class="since">Partner since 2025</span>
-          <h3>Boys &amp; Girls Club of Lower Bergen County</h3>
-          <p>Hosts our weekly Numeracy Club and connects us with the students who benefit most from
-            small-group instruction.</p>
-        </div>
-        <div class="partner">
-          <div class="logo-slot">MENSA</div>
-          <span class="since">Program host</span>
-          <h3>Mensa Leadership Development</h3>
-          <p>Hosted Numeraldo at its Leadership Development Workshop at the Morris County Library in
-            Whippany, New Jersey.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTS -->
-  <section id="events">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Recent events</span>
-        <div><h2>Where we've been.</h2></div>
-      </div>
-      <div class="events">
-        <article class="event">
-          <span class="when">Weekly · School year</span>
+      <div class="entries">
+        <article class="entry">
+          <span class="when">2025 — present</span><!-- confirm the founding year -->
           <div>
-            <h3>Numeracy Club sessions</h3>
-            <p class="what">Small-group instruction for grades 4–8, every week.</p>
+            <h3>Founder</h3>
+            <div class="org">Numeraldo · 501(c)(3) nonprofit</div>
+            <p>Founded a numeracy education nonprofit on a simple observation: the people who struggle
+              most with numbers are rarely the people offered help with them.</p>
+            <ul>
+              <li>Built the organization from scratch — programs, curriculum, partnerships, and 501(c)(3) structure.</li>
+              <li>Negotiated a corporate partnership with Casio to supply scientific and graphing calculators at no cost to students.</li>
+              <li>Teach weekly small-group sessions personally, rather than delegating the classroom work.</li>
+              <li>Publish a free two-track financial literacy course used by teens, seniors, and the families who sit down with them.</li>
+            </ul>
           </div>
-          <span class="where">Boys &amp; Girls Club of Lower Bergen County</span>
         </article>
-        <article class="event">
+
+        <article class="entry">
+          <span class="when">Weekly · school year</span>
+          <div>
+            <h3>Instructor, Numeracy Club</h3>
+            <div class="org">Boys &amp; Girls Club of Lower Bergen County</div>
+            <p>Small-group instruction for grades 4–8 — mental math and estimation, then real-world
+              blocks on unit pricing, percentages, and budgets, then homework support for whatever
+              students walked in carrying. No lecture, no worksheets collected.</p>
+          </div>
+        </article>
+
+        <article class="entry">
           <span class="when">2026</span>
           <div>
-            <h3>Mensa Leadership Development Workshop</h3>
-            <p class="what">Numeraldo presented its approach to numeracy instruction and recruited volunteers.</p>
+            <h3>Presenter, Leadership Development Workshop</h3>
+            <div class="org">Mensa · Morris County Library, Whippany, NJ</div>
+            <p>Presented Numeraldo's approach to numeracy instruction and recruited volunteers.</p>
           </div>
-          <span class="where">Morris County Library · Whippany, NJ</span>
         </article>
-        <article class="event">
-          <span class="when">2026</span>
+
+        <article class="entry">
+          <span class="when"><span class="ph">dates</span></span>
           <div>
-            <h3>Casio partnership launch</h3>
-            <p class="what">First calculators distributed to students at partner sites.</p>
+            <h3><span class="ph">Another role, job, or internship</span></h3>
+            <div class="org"><span class="ph">Organization</span></div>
+            <p><span class="ph">What you did and what came of it — one or two sentences, or a few
+              bullets like the entry above. Delete this whole block if Numeraldo is the story you want
+              to tell.</span></p>
           </div>
-          <span class="where">Lower Bergen County, NJ</span>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
+  <!-- PROJECTS -->
+  <section id="projects">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">About</span>
-        <div><h2>Who runs Numeraldo.</h2></div>
-      </div>
-      <div class="people">
-        <div class="portrait"><span class="initials">RKR</span></div>
+        <span class="eyebrow">Projects</span>
         <div>
-          <div class="person-name">Rohan K. Raghu</div>
-          <div class="person-role">Founder</div>
-          <p style="margin-top:16px;color:var(--muted);max-width:60ch">
-            Rohan founded Numeraldo on a simple observation: the people who struggle most with numbers
-            are rarely the people offered help with them. He leads the organization's programs, teaches
-            the weekly sessions at the Boys &amp; Girls Club, and built the Casio partnership.
-          </p>
-          <span class="eyebrow" style="display:block;margin-top:34px">Board of Advisors</span>
-          <div class="board">
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-          </div>
+          <h2>Things I've made.</h2>
+          <p>Live links, not descriptions of things that once existed.</p>
         </div>
+      </div>
+
+      <div class="projects">
+        <a class="project" href="numeraldo/">
+          <h3>Numeraldo</h3>
+          <div class="meta">
+            <span class="chip on">Live</span>
+            <span class="chip">Nonprofit</span>
+          </div>
+          <p>A numeracy education nonprofit expanding world numeracy one number at a time — weekly
+            teaching at the Boys &amp; Girls Club of Lower Bergen County, a calculator access
+            partnership with Casio, and workshops for seniors.</p>
+          <span class="go">Visit the site →</span>
+        </a>
+
+        <a class="project" href="numeraldo/crash-course/">
+          <h3>Financial Literacy Crash Course</h3>
+          <div class="meta">
+            <span class="chip on">Live</span>
+            <span class="chip">16 modules</span>
+          </div>
+          <p>Two free self-paced courses — one for teens, one for seniors — covering paychecks, credit,
+            compound interest, scam recognition, and fixed-income budgeting. Built with working
+            calculators, quizzes, and a 47-term glossary. Written and coded end to end.</p>
+          <span class="go">Open the course →</span>
+        </a>
+
+        <div class="project stub">
+          <h3><span class="ph">Side project</span></h3>
+          <div class="meta"><span class="chip"><span class="ph">tech / type</span></span></div>
+          <p><span class="ph">What it is, who it's for, and what was interesting about building it.
+            Two or three sentences. Wrap the whole card in an &lt;a href="…" class="project stub"&gt;
+            if it has a link.</span></p>
+        </div>
+
+        <div class="project stub">
+          <h3><span class="ph">Side project</span></h3>
+          <div class="meta"><span class="chip"><span class="ph">tech / type</span></span></div>
+          <p><span class="ph">Another one. Copy this block for as many as you want — the grid reflows
+            on its own.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Education</span>
+        <div><h2>Where I study.</h2></div>
+      </div>
+      <div class="entries">
+        <article class="entry">
+          <span class="when"><span class="ph">years</span></span>
+          <div>
+            <h3><span class="ph">School name</span></h3>
+            <div class="org"><span class="ph">City, State · expected graduation</span></div>
+            <p><span class="ph">Relevant coursework, GPA, or a line about what you focus on — whichever
+              is worth saying. Delete this sentence if none of it is.</span></p>
+          </div>
+        </article>
+        <article class="entry">
+          <span class="when">Recognition</span>
+          <div>
+            <h3><span class="ph">Awards, honors, or recognition</span></h3>
+            <div class="org"><span class="ph">Granting body · year</span></div>
+            <p><span class="ph">Delete this block if there's nothing to list yet — an empty section
+              reads worse than no section.</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Skills</span>
+        <div><h2>What I work with.</h2></div>
+      </div>
+      <div class="skills">
+        <article>
+          <h3>Teaching</h3>
+          <p>Curriculum design, small-group instruction, and adapting the same concept for a
+            ten-year-old and a seventy-six-year-old.</p>
+        </article>
+        <article>
+          <h3>Building</h3>
+          <p><span class="ph">Languages, frameworks, and tools you actually use.</span></p>
+        </article>
+        <article>
+          <h3>Operations</h3>
+          <p>Nonprofit formation, corporate partnerships, fundraising, and volunteer recruitment.</p>
+        </article>
+        <article>
+          <h3><span class="ph">Category</span></h3>
+          <p><span class="ph">Anything else worth listing.</span></p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <div class="wrap contact-grid">
-      <div>
+    <div class="wrap">
+      <div class="sec-head">
         <span class="eyebrow">Contact</span>
-        <h2 style="margin-top:12px">Get in touch.</h2>
-        <p style="color:var(--muted);margin-top:14px;max-width:48ch">
-          Schools and community organizations looking to host a program, volunteers who want to teach,
-          and donors who want to fund a specific line on the tracker above — all welcome.
-        </p>
+        <div>
+          <h2>Get in touch.</h2>
+          <p>Open to conversations about numeracy education, partnerships, and interesting problems.</p>
+        </div>
       </div>
       <div class="contact-list">
-        <a href="mailto:info@numeraldo.org">
-          <span class="ck">Email</span><span class="cv">info@numeraldo.org</span>
+        <div class="row">
+          <span class="ck">Email</span>
+          <span class="cv"><span class="ph">the address you want public</span></span>
+        </div>
+        <div class="row">
+          <span class="ck">LinkedIn</span>
+          <span class="cv"><span class="ph">linkedin.com/in/…</span></span>
+        </div>
+        <div class="row">
+          <span class="ck">GitHub</span>
+          <span class="cv"><span class="ph">github.com/rohanKraghu</span></span>
+        </div>
+        <a href="resume.pdf">
+          <span class="ck">Resume</span><span class="cv">Download PDF →</span>
         </a>
-        <a href="tel:+16094908008">
-          <span class="ck">Phone</span><span class="cv">(609) 490-8008</span>
+        <a href="numeraldo/">
+          <span class="ck">Numeraldo</span><span class="cv">The nonprofit →</span>
         </a>
-        <a href="#programs">
-          <span class="ck">Volunteer</span><span class="cv">Teach with us →</span>
-        </a>
+      </div>
+
+      <div class="note noprint" style="margin-top:30px;max-width:72ch">
+        <b>Three rows above are placeholders on purpose.</b> Replace each
+        <span class="ph">dashed box</span> with the real value and change the surrounding
+        <code>&lt;div class="row"&gt;</code> to an <code>&lt;a href="…"&gt;</code> so it becomes
+        clickable — the styling already covers both. Drop your resume in beside this file as
+        <code>resume.pdf</code>, or point those two links somewhere else.
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="site">
   <div class="wrap foot">
-    <span>© 2026 Numeraldo. All rights reserved.</span>
-    <span>Expanding world numeracy one number at a time.</span>
+    <span>© <span id="yr">2026</span> Rohan K. Raghu</span>
+    <span><a href="numeraldo/">Numeraldo</a> · <a href="numeraldo/crash-course/">Crash Course</a></span>
   </div>
 </footer>
 
-<script>
-/* =========================================================================
-   EDIT THIS BLOCK TO UPDATE THE SITE'S NUMBERS.
-   Everything below the block renders from it — no other changes needed.
-   ========================================================================= */
-const NUMERALDO = {
-  goal: 25000,                 // fundraising goal for the year, in dollars
-  lastUpdated: "September 2026",
-  studentsWeekly: "40+",       // shown in the hero ledger
-  partnerCount: "3",           // shown in the hero ledger
-  programs: [
-    {
-      name: "Casio Calculator Access Initiative",
-      amount: 5800,
-      color: "#0E6E5C",
-      desc: "Distribution, onboarding sessions, and classroom loaner sets for donated calculators."
-    },
-    {
-      name: "Weekly Numeracy Club — Boys & Girls Club",
-      amount: 4300,
-      color: "#2E9E7E",
-      desc: "Materials, workbooks, and instructor support for weekly sessions in Lower Bergen County."
-    },
-    {
-      name: "Senior Financial Literacy Workshops",
-      amount: 2600,
-      color: "#8A6212",
-      desc: "Community-center workshops on statements, budgeting, and scam recognition."
-    },
-    {
-      name: "Curriculum & Operations",
-      amount: 1550,
-      color: "#6C7F79",
-      desc: "Lesson development, insurance, transportation, and the cost of keeping the lights on."
-    }
-  ]
-};
-/* ===================== end of editable block ============================ */
-
-(function () {
-  const money = n => "$" + n.toLocaleString("en-US");
-  const raised = NUMERALDO.programs.reduce((s, p) => s + p.amount, 0);
-  const goal = NUMERALDO.goal;
-  const pct = Math.min(100, (raised / goal) * 100);
-
-  document.getElementById("amountRaised").textContent = money(raised);
-  document.getElementById("goalAmount").textContent = money(goal);
-  document.getElementById("pctOfGoal").textContent = pct.toFixed(0) + "%";
-  document.getElementById("remaining").textContent =
-    raised >= goal ? "Goal met — thank you." : money(goal - raised) + " to go";
-  document.getElementById("heroRaised").textContent = money(raised);
-  document.getElementById("heroStudents").textContent = NUMERALDO.studentsWeekly;
-  document.getElementById("heroPartners").textContent = NUMERALDO.partnerCount;
-  document.getElementById("lastUpdated").textContent = NUMERALDO.lastUpdated;
-  document.getElementById("totalAllocated").textContent = money(raised);
-  document.getElementById("scaleMid").textContent = money(Math.round(goal / 2));
-  document.getElementById("scaleEnd").textContent = money(goal);
-
-  // stacked allocation meter, drawn to the goal scale
-  const track = document.getElementById("meterTrack");
-  NUMERALDO.programs.forEach((p, i) => {
-    const seg = document.createElement("div");
-    seg.className = "seg";
-    seg.style.width = (p.amount / goal) * 100 + "%";
-    seg.style.background = p.color;
-    seg.style.animationDelay = (i * 90) + "ms";
-    seg.title = p.name + " — " + money(p.amount);
-    track.appendChild(seg);
-  });
-
-  // breakdown table
-  const rows = document.getElementById("breakdownRows");
-  NUMERALDO.programs.forEach(p => {
-    const row = document.createElement("div");
-    row.className = "bd-row";
-    row.innerHTML =
-      '<span class="swatch" style="background:' + p.color + '"></span>' +
-      '<span><span class="bd-name"></span><span class="bd-desc"></span></span>' +
-      '<span class="bd-amt"></span>' +
-      '<span class="bd-pct"></span>';
-    row.querySelector(".bd-name").textContent = p.name;
-    const d = row.querySelector(".bd-desc");
-    d.textContent = p.desc;
-    d.style.display = "block";
-    row.querySelector(".bd-amt").textContent = money(p.amount);
-    row.querySelector(".bd-pct").textContent = ((p.amount / raised) * 100).toFixed(0) + "%";
-    rows.appendChild(row);
-  });
-})();
-</script>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
 
 </body>
 </html>

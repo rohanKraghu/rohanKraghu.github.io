@@ -20,9 +20,13 @@ No build step, no dependencies, no framework. Open `index.html` in a browser and
 Every internal link and asset reference is **relative** (`teens.html`, `assets/course.css`) — there
 are no absolute `/` paths anywhere. That means the same files work unchanged at:
 
-- `numeraldo.org/crash-course/` (where it lives today, via GitHub Pages)
+- `rohankraghu.github.io/numeraldo/crash-course/` (where it lives today)
+- `numeraldo.org/crash-course/` (once the Numeraldo site moves to its own domain)
 - `learn.numeraldo.org/` or `money.numeraldo.org/` (a subdomain root, later)
 - a local folder, a USB stick, or any static host
+
+The folder has already been moved once — from the repository root into `numeraldo/` — without a
+single edit. That is the design working as intended.
 
 The only absolute URLs are deliberate outbound ones: the main site, Google Fonts, and the government
 resources in the seniors track.
@@ -30,14 +34,14 @@ resources in the seniors track.
 ### Moving it to Cloudflare Pages
 
 1. Point the subdomain's DNS at Cloudflare and create a Pages project from this repository.
-2. Set the **build output directory** to `crash-course` and leave the build command empty — it is
-   already static.
+2. Set the **build output directory** to `numeraldo/crash-course` and leave the build command
+   empty — it is already static.
 3. Add the custom domain (e.g. `learn.numeraldo.org`) in the Pages project.
 
 The folder becomes the site root; `index.html` becomes the landing page. Nothing in the HTML changes.
 
-If the old paths are already indexed, add a redirect from `numeraldo.org/crash-course/*` to the new
-subdomain so links keep working.
+If the old paths are already indexed, add a redirect from the previous location to the new one so
+links keep working.
 
 ### Moving it into WordPress
 
