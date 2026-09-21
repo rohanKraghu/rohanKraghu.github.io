@@ -8,6 +8,9 @@
 <meta property="og:description" content="Expanding world numeracy one number at a time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://numeraldo.org/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#EFF2F0" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0C1412" media="(prefers-color-scheme:dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E6E5C'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='600' fill='%23EFF2F0' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <title>Numeraldo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -91,11 +94,11 @@
     font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;
     text-transform:uppercase;color:var(--muted);
   }
-  .rule{height:1px;background:var(--line);border:0;margin:0}
 
   /* ---------- header ---------- */
   header.site{
-    position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+    position:sticky;top:0;z-index:40;
+    padding-top:env(safe-area-inset-top,0px);
     background:color-mix(in srgb, var(--paper) 88%, transparent);
     backdrop-filter:saturate(140%) blur(10px);
     border-bottom:1px solid var(--line);
@@ -108,7 +111,7 @@
     color:var(--accent);background:var(--accent-soft);
   }
   .wordmark{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
-  nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center;min-width:0}
   nav.main a{
     font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
     text-decoration:none;color:var(--muted);padding:6px 0;border-bottom:1.5px solid transparent;
@@ -126,9 +129,9 @@
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
   /* ---------- hero ---------- */
-  .hero{padding-block:64px 52px;position:relative;overflow:hidden}
+  .hero{padding-block:30px 52px;position:relative;overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:52px;align-items:end}
-  h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:18px}
+  h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:14px}
   h1.lede em{font-style:normal;color:var(--accent);font-family:var(--mono);font-weight:500;font-size:.82em;letter-spacing:-.01em}
   .hero p.sub{margin-top:22px;max-width:56ch;font-size:19px;color:var(--muted)}
   .hero-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
@@ -179,6 +182,8 @@
   .program ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
   .program li{display:grid;grid-template-columns:22px 1fr;gap:10px;color:var(--muted);font-size:16px}
   .program li span.n{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:4px}
+  .program li a{color:var(--accent)}
+  .program-cta{margin-top:8px}
   .program .side{
     background:var(--surface-2);border-left:1px solid var(--line);
     padding:34px;display:flex;flex-direction:column;justify-content:center;gap:18px;
@@ -188,49 +193,63 @@
   .stat-line .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .stat-line .v{font-family:var(--display);font-weight:600;font-size:22px;font-variant-numeric:tabular-nums;text-align:right}
 
-  /* ---------- tracker ---------- */
+  /* ---------- impact panel ---------- */
   #impact{background:var(--surface)}
   .tracker{
     border:1px solid var(--line-strong);border-radius:4px;background:var(--paper);
     padding:30px 30px 34px;box-shadow:var(--shadow);
   }
-  .readout{display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 28px;justify-content:space-between}
-  .raised{display:flex;flex-direction:column;gap:6px}
-  .raised .amount{
+  .readout{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 34px;justify-content:space-between}
+  .headline{display:flex;flex-direction:column;gap:6px}
+  .headline .amount{
     font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;
-    font-size:clamp(42px,8vw,76px);line-height:1;letter-spacing:-.04em;color:var(--lcd);
+    font-size:clamp(46px,8vw,84px);line-height:1;letter-spacing:-.04em;color:var(--lcd);
   }
-  .goal-note{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+  .headline .cap{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
+  .goal-note{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.04em;line-height:1.7;max-width:34ch}
   .goal-note b{color:var(--ink);font-weight:600}
 
-  .meter{margin-top:26px}
-  .meter-track{
-    height:26px;border:1px solid var(--line-strong);background:var(--surface-2);
-    border-radius:2px;overflow:hidden;display:flex;
-  }
-  .seg{height:100%;position:relative}
-  .seg + .seg{border-left:1px solid var(--paper)}
-  .meter-scale{
-    display:flex;justify-content:space-between;margin-top:8px;
-    font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);
-  }
-  .breakdown{margin-top:30px;display:flex;flex-direction:column}
-  .bd-head{
-    display:grid;grid-template-columns:18px 1fr 110px 74px;gap:14px;
+  .reach{margin-top:34px;display:flex;flex-direction:column}
+  .reach-head{
+    display:grid;grid-template-columns:1fr 168px;gap:24px;
     font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
     padding-bottom:10px;border-bottom:1px solid var(--line-strong);
   }
-  .bd-row{
-    display:grid;grid-template-columns:18px 1fr 110px 74px;gap:14px;align-items:center;
-    padding:15px 0;border-bottom:1px solid var(--line);
+  .reach-head .reach-val{text-align:right}
+  .reach-row{
+    display:grid;grid-template-columns:1fr 168px;gap:24px;align-items:baseline;
+    padding:17px 0;border-bottom:1px solid var(--line);
   }
-  .swatch{width:12px;height:12px;border-radius:2px}
-  .bd-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .bd-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
-  .bd-amt,.bd-pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
-  .bd-pct{color:var(--muted);font-size:13px}
-  .bd-foot{display:flex;justify-content:space-between;gap:16px;padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-  .updated{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:18px}
+  .reach-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
+  .reach-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px;display:block;max-width:68ch}
+  .reach-val{text-align:right}
+  .reach-val .v{
+    font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;display:block;line-height:1.1;
+  }
+  .reach-val .share{
+    font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);
+    display:block;margin-top:4px;
+  }
+
+  .also{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin-top:34px;
+  }
+  .also div{background:var(--paper);padding:18px 18px 20px;display:flex;flex-direction:column;gap:5px}
+  .also .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .also .v{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .updated{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:22px}
+
+  /* ---------- what funding covers ---------- */
+  .covers{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:40px;align-items:start}
+  .covers ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+  .covers li{display:grid;grid-template-columns:20px 1fr;gap:10px;color:var(--muted);font-size:16px}
+  .covers li span.n{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:4px}
+  .covers .ask h3{margin-top:8px;font-size:22px}
+  .covers .ask{border-left:3px solid var(--accent);background:var(--surface);padding:22px 24px;border-radius:0 3px 3px 0;box-shadow:var(--shadow)}
+  .covers .ask p{color:var(--muted);margin-top:10px}
+  .covers .ask .hero-cta{margin-top:20px}
 
   /* ---------- partners ---------- */
   .partners{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -239,12 +258,11 @@
     padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);
   }
   .logo-slot{
-    height:78px;border:1px dashed var(--line-strong);border-radius:2px;display:grid;place-items:center;
+    min-height:92px;border:1px solid var(--line);border-radius:2px;display:grid;place-items:center;
     background:var(--surface-2);
-    font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.02em;color:var(--ink);
-    text-align:center;padding:10px;
+    font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;color:var(--ink);
+    text-align:center;padding:14px;line-height:1.25;
   }
-  .partner h3{font-size:18px}
   .partner p{color:var(--muted);font-size:15px}
   .partner .since{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 
@@ -260,22 +278,28 @@
   .event .what{color:var(--muted);font-size:15.5px;margin-top:6px}
 
   /* ---------- about ---------- */
-  .people{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}
+  .people{display:grid;grid-template-columns:180px 1fr;gap:34px;align-items:start}
   .portrait{
-    aspect-ratio:4/5;max-width:100%;border:1px solid var(--line);background:var(--surface-2);
-    display:grid;place-items:center;border-radius:3px;
+    aspect-ratio:1/1;max-width:100%;border:1.5px solid var(--accent);background:var(--accent-soft);
+    display:grid;place-items:center;border-radius:4px;
   }
-  .portrait .initials{font-family:var(--display);font-weight:800;font-size:46px;color:var(--line-strong);letter-spacing:.04em}
+  .portrait .initials{font-family:var(--mono);font-weight:600;font-size:46px;color:var(--accent);letter-spacing:.02em}
   .person-name{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.02em}
   .person-role{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:6px}
-  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-  .board .card{border:1px solid var(--line);background:var(--surface);padding:16px;border-radius:3px}
-  .board .card .initials{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+  .team-label{display:block;margin-top:34px}
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+  .board .card{border:1px solid var(--line);background:var(--surface);padding:18px;border-radius:3px}
+  .board .card .initials{font-family:var(--mono);font-weight:600;font-size:24px;color:var(--accent);letter-spacing:-.02em}
   .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;margin-top:8px}
-  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:2px}
+  .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:2px;line-height:1.45}
+  .person-bio{margin-top:16px;color:var(--muted);max-width:60ch}
+  .join{margin-top:20px;color:var(--muted);max-width:66ch}
+  .join a{color:var(--accent)}
 
   /* ---------- contact ---------- */
   #contact{background:var(--surface)}
+  .contact-h{margin-top:12px}
+  .contact-p{color:var(--muted);margin-top:14px;max-width:48ch}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
   .contact-list{display:flex;flex-direction:column;gap:2px;margin-top:8px}
   .contact-list a{
@@ -286,7 +310,8 @@
   .contact-list .ck{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   .contact-list .cv{font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
 
-  footer.site{border-top:1px solid var(--line);padding-block:30px 40px;background:var(--paper)}
+  footer.site{border-top:1px solid var(--line);background:var(--paper);
+    padding-block:30px calc(40px + env(safe-area-inset-bottom,0px))}
   .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;
     font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
 
@@ -299,31 +324,34 @@
     .partners{grid-template-columns:1fr}
     .event{grid-template-columns:1fr;gap:6px}
     .people{grid-template-columns:1fr}
-    .portrait{max-width:220px}
+    .portrait{max-width:160px}
     .board{grid-template-columns:repeat(2,1fr)}
     .contact-grid{grid-template-columns:1fr}
+    .covers{grid-template-columns:1fr}
+    .also{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:560px){
     body{font-size:16px}
     .wrap{padding-inline:16px}
     section{padding-block:48px}
     .tracker{padding:22px 18px 26px}
+    .reach-head,.reach-row{grid-template-columns:1fr 104px;gap:14px}
     .program .body,.program .side{padding:24px 20px}
-    .bd-head,.bd-row{grid-template-columns:14px 1fr 92px;gap:10px}
-    .bd-pct{display:none}
-    .board{grid-template-columns:1fr}
-    nav.main{display:none}
+    .bar{gap:8px 12px;min-height:0;padding-block:8px 4px}
+    .brand{margin-right:auto}
+    /* The nav used to be display:none here, which left a phone with no way
+       to reach any section. It scrolls sideways instead. */
+    nav.main{
+      order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:18px;
+      scrollbar-width:none;-webkit-overflow-scrolling:touch;
+      padding-bottom:4px;margin-inline:-16px;padding-inline:16px;
+      -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent 100%);
+              mask-image:linear-gradient(90deg,#000 88%,transparent 100%);
+    }
+    nav.main::-webkit-scrollbar{display:none}
+    nav.main a{white-space:nowrap}
   }
-  @media (prefers-reduced-motion:no-preference){
-    .seg{animation:grow .9s cubic-bezier(.2,.8,.25,1) both}
-    @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    .seg{transform-origin:left center}
-  }
-</style>
-<style>
-  html,body{margin:0}
-  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-  img{max-width:100%}
+
   [hidden]{display:none!important}
 </style>
 </head>
@@ -361,14 +389,14 @@
           who have been left to work it out alone — students, seniors, and families in
           underserved communities.</p>
         <div class="hero-cta">
-          <a class="btn" href="#impact">See where the money goes</a>
-          <a class="btn ghost" href="#programs">Our programs</a>
+          <a class="btn" href="#programs">See our programs</a>
+          <a class="btn ghost" href="#impact">What we've done</a>
         </div>
       </div>
       <div class="ledger" id="heroLedger">
-        <div class="row"><span class="k">Raised to date</span><span class="v" id="heroRaised">—</span></div>
-        <div class="row"><span class="k">Students taught weekly</span><span class="v" id="heroStudents">—</span></div>
-        <div class="row"><span class="k">Partner organizations</span><span class="v" id="heroPartners">—</span></div>
+        <div class="row"><span class="k">People taught since 2024</span><span class="v" id="heroTaught">—</span></div>
+        <div class="row"><span class="k">Students in the weekly club</span><span class="v" id="heroStudents">—</span></div>
+        <div class="row"><span class="k">Cost to attend, always</span><span class="v" id="heroCost">—</span></div>
       </div>
     </div>
   </div>
@@ -422,8 +450,8 @@
         <span class="eyebrow">Programs</span>
         <div>
           <h2>Three programs running now.</h2>
-          <p>Every figure on this page marked in mono type is a placeholder — send us the real numbers
-            and they drop straight in.</p>
+          <p>One partnership that puts hardware in students' hands, one classroom we teach in every
+            week, and one course anybody can open tonight.</p>
         </div>
       </div>
 
@@ -447,10 +475,10 @@
           </ul>
         </div>
         <div class="side">
-          <div class="stat-line"><span class="k">Calculators placed</span><span class="v">120</span></div>
-          <div class="stat-line"><span class="k">Schools &amp; sites served</span><span class="v">4</span></div>
-          <div class="stat-line"><span class="k">Retail value donated</span><span class="v">$6,400</span></div>
           <div class="stat-line"><span class="k">Cost to the student</span><span class="v">$0</span></div>
+          <div class="stat-line"><span class="k">Devices supplied</span><span class="v">Scientific &amp; graphing</span></div>
+          <div class="stat-line"><span class="k">Onboarding</span><span class="v">2 sessions</span></div>
+          <div class="stat-line"><span class="k">Partner since</span><span class="v">2026</span></div>
         </div>
       </article>
 
@@ -474,9 +502,9 @@
           </ul>
         </div>
         <div class="side">
-          <div class="stat-line"><span class="k">Students per session</span><span class="v">18</span></div>
-          <div class="stat-line"><span class="k">Sessions delivered</span><span class="v">32</span></div>
-          <div class="stat-line"><span class="k">Volunteer hours</span><span class="v">96</span></div>
+          <div class="stat-line"><span class="k">Students reached</span><span class="v">40+</span></div>
+          <div class="stat-line"><span class="k">Grades</span><span class="v">4–8</span></div>
+          <div class="stat-line"><span class="k">Cadence</span><span class="v">Weekly</span></div>
           <div class="stat-line"><span class="k">Cost to families</span><span class="v">$0</span></div>
         </div>
       </article>
@@ -495,17 +523,17 @@
             decisions each group actually faces. Every module shows the arithmetic underneath the rule,
             because a number you can check is a number you can argue with.</p>
           <ul>
-            <li><span class="n">01</span><span><a href="crash-course/teens.html" style="color:var(--accent)">Teens</a> — paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
-            <li><span class="n">02</span><span><a href="crash-course/seniors.html" style="color:var(--accent)">Seniors</a> — fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
+            <li><span class="n">01</span><span><a href="crash-course/teens.html">Teens</a> — paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
+            <li><span class="n">02</span><span><a href="crash-course/seniors.html">Seniors</a> — fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
             <li><span class="n">03</span><span>Calculators, quizzes, and a 47-term glossary. Printable for classroom and community-center handouts.</span></li>
           </ul>
-          <div class="hero-cta" style="margin-top:8px">
+          <div class="hero-cta program-cta">
             <a class="btn" href="crash-course/">Open the crash course</a>
           </div>
         </div>
         <div class="side">
           <div class="stat-line"><span class="k">Modules</span><span class="v">16</span></div>
-          <div class="stat-line"><span class="k">Calculators</span><span class="v">3</span></div>
+          <div class="stat-line"><span class="k">Interactive tools</span><span class="v">4</span></div>
           <div class="stat-line"><span class="k">Glossary terms</span><span class="v">47</span></div>
           <div class="stat-line"><span class="k">Cost to the reader</span><span class="v">$0</span></div>
         </div>
@@ -513,49 +541,65 @@
     </div>
   </section>
 
-  <!-- TRACKER -->
+  <!-- IMPACT -->
   <section id="impact">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">Money raised</span>
+        <span class="eyebrow">Impact</span>
         <div>
-          <h2>Every dollar, and the program it went to.</h2>
-          <p>We publish the full allocation rather than a total. If you gave, this page shows you
-            what your gift is doing.</p>
+          <h2>What the teaching has added up to.</h2>
+          <p>Numeraldo counts people, not impressions. Every figure below is somebody who sat
+            through a session, opened an account, or walked out with a plan.</p>
         </div>
       </div>
 
       <div class="tracker">
         <div class="readout">
-          <div class="raised">
-            <span class="eyebrow">Raised toward this year's goal</span>
-            <span class="amount" id="amountRaised">$0</span>
+          <div class="headline">
+            <span class="eyebrow">Since 2024</span>
+            <span class="amount" id="taughtTotal">—</span>
+            <span class="cap" id="taughtCap">—</span>
           </div>
-          <div class="goal-note">
-            <b id="pctOfGoal">0%</b> of a <b id="goalAmount">$0</b> goal<br>
-            <span id="remaining">—</span>
-          </div>
+          <p class="goal-note">
+            Workshops in quantitative reasoning and financial literacy, run by
+            <b>volunteers</b> and free to everyone who attends. The rows below are the
+            decisions people left with.
+          </p>
         </div>
 
-        <div class="meter">
-          <div class="meter-track" id="meterTrack" role="img" aria-label="Allocation of funds raised by program"></div>
-          <div class="meter-scale">
-            <span>$0</span><span id="scaleMid">—</span><span id="scaleEnd">—</span>
+        <div class="reach">
+          <div class="reach-head">
+            <span>What people walked out with</span>
+            <span class="reach-val">How many</span>
           </div>
+          <div id="reachRows"></div>
         </div>
 
-        <div class="breakdown">
-          <div class="bd-head">
-            <span></span><span>Program</span><span style="text-align:right">Allocated</span><span style="text-align:right">Share</span>
-          </div>
-          <div id="breakdownRows"></div>
-          <div class="bd-foot">
-            <span>Total allocated</span>
-            <span id="totalAllocated">—</span>
+        <div class="also" id="alsoRow"></div>
+
+        <p class="updated">Last updated <span id="lastUpdated">—</span></p>
+      </div>
+
+      <div class="covers">
+        <div>
+          <span class="eyebrow">What funding covers</span>
+          <ul>
+            <li><span class="n">01</span><span>Calculators and classroom loaner sets, so cost never decides who takes the advanced class.</span></li>
+            <li><span class="n">02</span><span>Workbooks, printed handouts, and the large-type materials the senior workshops run on.</span></li>
+            <li><span class="n">03</span><span>Getting instructors and equipment to partner sites each week.</span></li>
+            <li><span class="n">04</span><span>The unglamorous half: insurance, filings, and keeping a 501(c)(3) in good standing.</span></li>
+          </ul>
+        </div>
+        <div class="ask">
+          <span class="eyebrow">Support us</span>
+          <h3>Fund a room full of students.</h3>
+          <p>Numeraldo has raised <b>$1,000+</b> in grants across two partner organizations, and
+            every program is free to the people in it. If you want to fund a specific line above,
+            write to us and we will tell you exactly what it buys.</p>
+          <div class="hero-cta">
+            <a class="btn" href="mailto:info@numeraldo.org?subject=Supporting%20Numeraldo">Email us about giving</a>
           </div>
         </div>
-
-        <p class="updated">Last updated <span id="lastUpdated">—</span> · Figures shown are placeholders pending confirmation.</p>
       </div>
     </div>
   </section>
@@ -572,23 +616,20 @@
       </div>
       <div class="partners">
         <div class="partner">
-          <div class="logo-slot">CASIO</div>
+          <div class="logo-slot">Casio</div>
           <span class="since">Partner since 2026</span>
-          <h3>Casio</h3>
           <p>Donates the scientific and graphing calculators behind our Calculator Access Initiative,
             and supports the training that goes with them.</p>
         </div>
         <div class="partner">
           <div class="logo-slot">Boys &amp; Girls Club<br>of Lower Bergen County</div>
           <span class="since">Partner since 2025</span>
-          <h3>Boys &amp; Girls Club of Lower Bergen County</h3>
           <p>Hosts our weekly Numeracy Club and connects us with the students who benefit most from
             small-group instruction.</p>
         </div>
         <div class="partner">
-          <div class="logo-slot">MENSA</div>
-          <span class="since">Program host</span>
-          <h3>Mensa Leadership Development</h3>
+          <div class="logo-slot">Mensa<br>Leadership Development</div>
+          <span class="since">Program host · 2026</span>
           <p>Hosted Numeraldo at its Leadership Development Workshop at the Morris County Library in
             Whippany, New Jersey.</p>
         </div>
@@ -644,18 +685,21 @@
         <div>
           <div class="person-name">Rohan K. Raghu</div>
           <div class="person-role">Founder</div>
-          <p style="margin-top:16px;color:var(--muted);max-width:60ch">
+          <p class="person-bio">
             Rohan founded Numeraldo on a simple observation: the people who struggle most with numbers
             are rarely the people offered help with them. He leads the organization's programs, teaches
             the weekly sessions at the Boys &amp; Girls Club, and built the Casio partnership.
           </p>
-          <span class="eyebrow" style="display:block;margin-top:34px">Board of Advisors</span>
+          <span class="eyebrow team-label">The people who teach</span>
           <div class="board">
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
-            <div class="card"><span class="initials">—</span><div class="nm">Advisor name</div><div class="rl">Role · affiliation</div></div>
+            <div class="card"><span class="initials">20</span><div class="nm">Volunteers</div><div class="rl">Recruited, trained, and scheduled by Numeraldo</div></div>
+            <div class="card"><span class="initials">3</span><div class="nm">Partner organizations</div><div class="rl">Casio, the Boys &amp; Girls Club, and Mensa</div></div>
+            <div class="card"><span class="initials">$0</span><div class="nm">Charged to anyone</div><div class="rl">Every program, every session, every track</div></div>
           </div>
+          <p class="join">Numeraldo is always short of instructors before it is short of anything
+            else. If you can explain a percentage to a twelve-year-old or sit patiently with somebody
+            reading their first bank statement, write to
+            <a href="mailto:info@numeraldo.org">info@numeraldo.org</a>.</p>
         </div>
       </div>
     </div>
@@ -666,8 +710,8 @@
     <div class="wrap contact-grid">
       <div>
         <span class="eyebrow">Contact</span>
-        <h2 style="margin-top:12px">Get in touch.</h2>
-        <p style="color:var(--muted);margin-top:14px;max-width:48ch">
+        <h2 class="contact-h">Get in touch.</h2>
+        <p class="contact-p">
           Schools and community organizations looking to host a program, volunteers who want to teach,
           and donors who want to fund a specific line on the tracker above — all welcome.
         </p>
@@ -697,91 +741,82 @@
 <script>
 /* =========================================================================
    EDIT THIS BLOCK TO UPDATE THE SITE'S NUMBERS.
-   Everything below the block renders from it — no other changes needed.
+   The hero ledger and the impact panel render from it — nothing else to change.
+   `reach` rows are subsets of `taught`, which is what the share bars measure.
    ========================================================================= */
 const NUMERALDO = {
-  goal: 25000,                 // fundraising goal for the year, in dollars
   lastUpdated: "September 2026",
-  studentsWeekly: "40+",       // shown in the hero ledger
-  partnerCount: "3",           // shown in the hero ledger
-  programs: [
+  taught: { count: 1000, display: "1,000+", caption: "people taught" },
+  weeklyStudents: "40+",
+  reach: [
     {
-      name: "Casio Calculator Access Initiative",
-      amount: 5800,
-      color: "#0E6E5C",
-      desc: "Distribution, onboarding sessions, and classroom loaner sets for donated calculators."
+      name: "A first bank account",
+      count: 120,
+      display: "120+",
+      desc: "Walked through choosing an account, the paperwork, and the fee settings that quietly cost money."
     },
     {
-      name: "Weekly Numeracy Club — Boys & Girls Club",
-      amount: 4300,
-      color: "#2E9E7E",
-      desc: "Materials, workbooks, and instructor support for weekly sessions in Lower Bergen County."
+      name: "A retirement plan they understand",
+      count: 70,
+      display: "70+",
+      desc: "Roth IRA planning with seniors and near-retirees, one conversation at a time."
     },
     {
-      name: "Senior Financial Literacy Workshops",
-      amount: 2600,
-      color: "#8A6212",
-      desc: "Community-center workshops on statements, budgeting, and scam recognition."
-    },
-    {
-      name: "Curriculum & Operations",
-      amount: 1550,
-      color: "#6C7F79",
-      desc: "Lesson development, insurance, transportation, and the cost of keeping the lights on."
+      name: "A weekly place to do math",
+      count: 40,
+      display: "40+",
+      desc: "Grades 4–8 in small groups at the Boys & Girls Club of Lower Bergen County."
     }
+  ],
+  also: [
+    { k: "Volunteers", v: "20" },
+    { k: "Partner organizations", v: "3" },
+    { k: "Grants raised", v: "$1,000+" },
+    { k: "Cost to attend", v: "$0" }
   ]
 };
 /* ===================== end of editable block ============================ */
 
 (function () {
-  const money = n => "$" + n.toLocaleString("en-US");
-  const raised = NUMERALDO.programs.reduce((s, p) => s + p.amount, 0);
-  const goal = NUMERALDO.goal;
-  const pct = Math.min(100, (raised / goal) * 100);
+  var set = function (id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
 
-  document.getElementById("amountRaised").textContent = money(raised);
-  document.getElementById("goalAmount").textContent = money(goal);
-  document.getElementById("pctOfGoal").textContent = pct.toFixed(0) + "%";
-  document.getElementById("remaining").textContent =
-    raised >= goal ? "Goal met — thank you." : money(goal - raised) + " to go";
-  document.getElementById("heroRaised").textContent = money(raised);
-  document.getElementById("heroStudents").textContent = NUMERALDO.studentsWeekly;
-  document.getElementById("heroPartners").textContent = NUMERALDO.partnerCount;
-  document.getElementById("lastUpdated").textContent = NUMERALDO.lastUpdated;
-  document.getElementById("totalAllocated").textContent = money(raised);
-  document.getElementById("scaleMid").textContent = money(Math.round(goal / 2));
-  document.getElementById("scaleEnd").textContent = money(goal);
+  set("heroTaught", NUMERALDO.taught.display);
+  set("heroStudents", NUMERALDO.weeklyStudents);
+  set("heroCost", "$0");
+  set("taughtTotal", NUMERALDO.taught.display);
+  set("taughtCap", NUMERALDO.taught.caption);
+  set("lastUpdated", NUMERALDO.lastUpdated);
 
-  // stacked allocation meter, drawn to the goal scale
-  const track = document.getElementById("meterTrack");
-  NUMERALDO.programs.forEach((p, i) => {
-    const seg = document.createElement("div");
-    seg.className = "seg";
-    seg.style.width = (p.amount / goal) * 100 + "%";
-    seg.style.background = p.color;
-    seg.style.animationDelay = (i * 90) + "ms";
-    seg.title = p.name + " — " + money(p.amount);
-    track.appendChild(seg);
-  });
+  var rows = document.getElementById("reachRows");
+  if (rows) {
+    NUMERALDO.reach.forEach(function (r) {
+      var share = Math.round((r.count / NUMERALDO.taught.count) * 100);
+      var row = document.createElement("div");
+      row.className = "reach-row";
+      row.innerHTML =
+        '<span><span class="reach-name"></span><span class="reach-desc"></span></span>' +
+        '<span class="reach-val"><span class="v"></span><span class="share"></span></span>';
+      row.querySelector(".reach-name").textContent = r.name;
+      row.querySelector(".reach-desc").textContent = r.desc;
+      row.querySelector(".reach-val .v").textContent = r.display;
+      row.querySelector(".reach-val .share").textContent = share + "% of attendees";
+      rows.appendChild(row);
+    });
+  }
 
-  // breakdown table
-  const rows = document.getElementById("breakdownRows");
-  NUMERALDO.programs.forEach(p => {
-    const row = document.createElement("div");
-    row.className = "bd-row";
-    row.innerHTML =
-      '<span class="swatch" style="background:' + p.color + '"></span>' +
-      '<span><span class="bd-name"></span><span class="bd-desc"></span></span>' +
-      '<span class="bd-amt"></span>' +
-      '<span class="bd-pct"></span>';
-    row.querySelector(".bd-name").textContent = p.name;
-    const d = row.querySelector(".bd-desc");
-    d.textContent = p.desc;
-    d.style.display = "block";
-    row.querySelector(".bd-amt").textContent = money(p.amount);
-    row.querySelector(".bd-pct").textContent = ((p.amount / raised) * 100).toFixed(0) + "%";
-    rows.appendChild(row);
-  });
+  var also = document.getElementById("alsoRow");
+  if (also) {
+    NUMERALDO.also.forEach(function (a) {
+      var cell = document.createElement("div");
+      cell.innerHTML = '<span class="k"></span><span class="v"></span>';
+      cell.querySelector(".k").textContent = a.k;
+      cell.querySelector(".v").textContent = a.v;
+      also.appendChild(cell);
+    });
+  }
 })();
 </script>
 
