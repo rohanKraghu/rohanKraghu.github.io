@@ -686,6 +686,7 @@
 
   var DT = 0.004;      // integration step
   var FADE = 0.005;    // fraction of the trail erased per frame
+  var SETTLE = 220;    // ms of quiet before the figure is rebuilt
   var FILL = 0.94;     // share of its own cell the figure is allowed
   var STATIC_STEPS = 12000;
 
@@ -697,7 +698,7 @@
   var w = 0, h = 0, scale = 1, ox = 0, oy = 0, zMid = 0;
   var x = 0, y = 0, z = 0, sx = 0, sy = 0;
   var accent = "#8A4B2A";
-  var raf = 0, onScreen = true, still = false, pendingResize = 0;
+  var raf = 0, onScreen = true, still = false, pendingResize = 0, settleTimer = 0;
 
   function mq(q) { return window.matchMedia ? window.matchMedia(q) : null; }
   var mqReduce = mq("(prefers-reduced-motion: reduce)");
@@ -789,6 +790,7 @@
   }
 
   function restart() {
+    if (settleTimer) { clearTimeout(settleTimer); settleTimer = 0; }
     reframe(); wipe(); reseed();
     if (still) { drawStill(); return; }
     prefill();
@@ -805,9 +807,22 @@
     schedule();
   }
   function schedule() {
-    if (!raf && onScreen && !still && !document.hidden) raf = requestAnimationFrame(tick);
+    if (!raf && onScreen && !still && !document.hidden && !settleTimer) {
+      raf = requestAnimationFrame(tick);
+    }
   }
   function halt() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+  // Rebuilding the figure on every input event is what made the trace restart
+  // sixty times a second under a drag: each one wiped the canvas and began a
+  // new line that never got anywhere before the next event wiped it again.
+  // Nothing is redrawn while the numbers are moving now -- the last figure
+  // simply holds -- and the new one is built once, SETTLE ms after the last
+  // change. Held rather than cleared, so the panel never goes empty mid-drag.
+  function settle() {
+    if (settleTimer) clearTimeout(settleTimer);
+    settleTimer = setTimeout(function () { settleTimer = 0; restart(); }, SETTLE);
+  }
 
   /* ---- sizing ---------------------------------------------------------- */
   function resize() {
@@ -855,18 +870,12 @@
       if (!isFinite(v)) return;
       P[c.key] = v;
       show(c);
-      // Speed only changes how fast the same curve is walked; the other three
-      // change the curve, so the frame and the trail both have to go. Refilling
-      // the trail here would redraw thousands of segments on every step of the
-      // drag, which is what made it stutter -- that waits for `change` below.
-      if (c.key !== "speed") { reframe(); wipe(); reseed(); }
-      if (!still) schedule();
-    });
-
-    // Thumb released (or committed from the keyboard): now do the costly part.
-    el.addEventListener("change", function () {
-      if (still) { drawStill(); return; }
-      wipe(); reseed(); prefill(); schedule();
+      // Speed only changes how fast the same curve is walked, so it takes
+      // effect at once. The other three change the curve itself: hold the
+      // figure exactly as it is and rebuild it once the numbers stop moving.
+      if (c.key === "speed") { schedule(); return; }
+      halt();
+      settle();
     });
   });
 
