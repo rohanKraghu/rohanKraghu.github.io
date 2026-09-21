@@ -365,8 +365,9 @@
     <div class="wrap">
       <div class="intro">
         <span class="lbl">Selected work</span>
-        <h2>Four are live. One is being built.</h2>
-        <p>Listed as such — a portfolio that blurs the difference is worth less than one that doesn't.</p>
+        <h2>Five projects, all live.</h2>
+        <p>Each one is running code with a test suite and a README that reports what did not work
+          alongside what did.</p>
       </div>
 
       <div class="work">
@@ -416,20 +417,22 @@
           </div>
         </a>
 
-        <div class="item">
+        <a class="item" href="https://github.com/rohanKraghu/transit-detection" rel="noopener">
           <span class="num idx">04</span>
           <div class="main">
-            <h3>ML on astronomical survey data</h3>
-            <p class="desc">Transit detection and variable-star classification on TESS and Kepler
-              light curves from the MAST archive. Severe class imbalance and irregularly sampled,
-              noisy series — a real modelling problem rather than a tutorial set.</p>
+            <h3>Exoplanet transit detection</h3>
+            <p class="desc">Detrending, box-least-squares search, and 23 vetting statistics into a
+              gradient-boosted classifier, on light curves with a 4% planet rate. Average precision
+              0.73 against a chance rate of 0.04 — 18× chance and 4× the best single-statistic
+              baseline. Scored on average precision, not accuracy, because accuracy is meaningless
+              at a 4% positive rate.</p>
+            <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot off"></span><span class="lbl">In progress</span></span>
-            <span class="stack">Python · scikit-learn · PyTorch</span>
-            <span class="stack"><span class="ph">repo link when it's public</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Live · 86 tests</span></span>
+            <span class="stack">Python · scikit-learn · NumPy · SciPy</span>
           </div>
-        </div>
+        </a>
 
         <a class="item" href="https://github.com/rohanKraghu/retirement-tool" rel="noopener">
           <span class="num idx">05</span>
