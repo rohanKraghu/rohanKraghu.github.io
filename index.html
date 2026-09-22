@@ -90,7 +90,6 @@
     font-size:clamp(35px,6.2vw,78px);
     line-height:1.0;letter-spacing:-.035em;margin-top:14px;
   }
-  h1.tag span{color:var(--accent)}
   .hero .stand{
     margin-top:clamp(22px,2.6vw,32px);max-width:48ch;
     font-size:clamp(16px,1.42vw,18.5px);color:var(--muted);line-height:1.58;
@@ -130,7 +129,8 @@
   }
   a.item{transition:background-color .2s}
   a.item:hover{background:color-mix(in srgb,var(--ink) 3.5%,transparent)}
-  .item .idx{grid-column:1 / 4;padding-top:6px}
+  .item .rail{grid-column:1 / 4;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+  .item .rail .idx{padding-top:6px}
   .item .main{grid-column:4 / 10}
   .item .aside{grid-column:10 / 13;display:flex;flex-direction:column;gap:9px;padding-top:6px}
   .item h3{font-size:clamp(21px,2.5vw,31px)}
@@ -140,6 +140,24 @@
   .item .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
   .item .go{font-size:13px;font-weight:500;color:var(--accent);margin-top:16px;display:inline-block;border-bottom:1px solid transparent;padding-bottom:1px}
   a.item:hover .go{border-bottom-color:var(--accent)}
+
+  /* One frame for all five, so a photograph and a plot sit in the same rhythm.
+     The plots are drawn in var(--accent), so they follow the theme. */
+  .shot{
+    width:100%;aspect-ratio:3 / 2;overflow:hidden;
+    border:1px solid var(--line);
+    background:color-mix(in srgb,var(--ink) 2.5%,transparent);
+    transition:border-color .2s;
+  }
+  .shot img,.shot svg{display:block;width:100%;height:100%}
+  .shot svg.ledger text{font-family:var(--body);dominant-baseline:middle}
+  .shot svg.ledger .l{font-size:9px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;fill:var(--muted)}
+  .shot svg.ledger .v,.shot svg.ledger .t{font-size:13px;font-weight:500;
+    font-variant-numeric:tabular-nums;text-anchor:end;fill:var(--ink)}
+  .shot svg.ledger .t{font-weight:600;fill:var(--accent)}
+  .shot img{object-fit:cover}
+  a.item:hover .shot{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
 
   /* ---------- experience ---------- */
   .role{display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line)}
@@ -261,8 +279,8 @@
     .intro .lbl,.intro h2,.intro p{grid-column:1 / 13}
     .hero-art{min-height:clamp(230px,56vw,320px)}
     .item{gap:6px}
-    .item .idx,.item .main,.item .aside{grid-column:1 / 13}
-    .item .idx{padding-top:0}
+    .item .rail,.item .main,.item .aside{grid-column:1 / 13}
+    .item .rail .idx{padding-top:0}
     .role .when,.role .body{grid-column:1 / 13}
     .role .when{padding-top:0}
     .bio .lbl,.bio .text{grid-column:1 / 13}
@@ -279,7 +297,7 @@
   /* ---------- print: every panel, no tabs ---------- */
   @media print{
     :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--gut:0}
-    .top,.tabbar,.skip,.item .go,.hero .stand,.hero-art,.lorenz-ui{display:none!important}
+    .top,.tabbar,.skip,.item .go,.hero .stand,.hero-art,.lorenz-ui,.shot{display:none!important}
     [role="tabpanel"][hidden]{display:block!important}
     body{font-size:10pt}
     .panel,footer.site{padding-block:14pt;border-top:1px solid #c4c4c4}
@@ -306,11 +324,11 @@
 <div class="hero">
   <div class="wrap hero-grid">
     <div class="lede">
-      <span class="lbl">New Jersey · Mathematics &amp; artificial intelligence</span>
-      <h1 class="tag">Making numbers mean something<span>.</span></h1>
+      <span class="lbl">Mathematics &amp; artificial intelligence</span>
+      <h1 class="tag">Making numbers mean something</h1>
       <p class="stand">I'm interested in the moment a number stops being noise and becomes a
-        decision — in a catalyst model, a market forecast, or somebody's first bank account.
-        Closing that gap is the thread through everything I build.</p>
+        decision. Closing the gap is the thread through everything I build: in a catalyst model,
+        a market forecast, or somebody's first bank account.</p>
     </div>
 
     <div class="hero-art"><canvas id="lorenz" aria-hidden="true"></canvas></div>
@@ -385,7 +403,10 @@
 
       <div class="work">
         <a class="item" href="numeraldo/">
-          <span class="num idx">01</span>
+          <div class="rail">
+            <span class="num idx">01</span>
+            <div class="shot"><img src="assets/numeraldo-workshop.webp" width="700" height="470" loading="lazy" decoding="async" alt="A Numeraldo session at the Boys &amp; Girls Club: students at tables, a whiteboard behind reading Earn, Save, Share, Spend."></div>
+          </div>
           <div class="main">
             <h3>Numeraldo</h3>
             <p class="desc">The numeracy and financial literacy nonprofit I founded and still run.
@@ -400,7 +421,18 @@
         </a>
 
         <a class="item" href="numeraldo/crash-course/">
-          <span class="num idx">02</span>
+          <div class="rail">
+            <span class="num idx">02</span>
+            <div class="shot"><svg viewBox="0 0 300 200" class="ledger" aria-hidden="true" focusable="false">
+      <text class="l" x="14" y="34">Gross pay</text><text class="v" x="286" y="34">320.00</text>
+      <text class="l" x="14" y="56">Social Security</text><text class="v" x="286" y="56">−19.84</text>
+      <text class="l" x="14" y="78">Medicare</text><text class="v" x="286" y="78">−4.64</text>
+      <text class="l" x="14" y="100">Federal</text><text class="v" x="286" y="100">−19.20</text>
+      <text class="l" x="14" y="122">State</text><text class="v" x="286" y="122">−7.92</text>
+      <line x1="14" y1="136" x2="286" y2="136" stroke="var(--line-strong,var(--line))" stroke-width="1"/>
+      <text class="l" x="14" y="160">Take home</text><text class="t" x="286" y="160">268.40</text>
+    </svg></div>
+          </div>
           <div class="main">
             <h3>Financial Literacy Crash Course</h3>
             <p class="desc">Sixteen free modules in two tracks — one written for teenagers, one for
@@ -416,7 +448,15 @@
         </a>
 
         <a class="item" href="https://github.com/rohanKraghu/honest-backtest" target="_blank" rel="noopener">
-          <span class="num idx">03</span>
+          <div class="rail">
+            <span class="num idx">03</span>
+            <div class="shot"><svg viewBox="0 0 300 200" aria-hidden="true" focusable="false">
+      <line x1="14" y1="164" x2="286" y2="164" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polyline points="14,25.2 68.4,25.2 68.4,155.6 122.8,155.6 122.8,158.8 177.2,158.8 177.2,161.8 231.6,161.8 231.6,164.8 286,164.8 286,167.8" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="14" cy="25.2" r="2.6" fill="var(--accent)"/>
+      <circle cx="286" cy="167.8" r="2.6" fill="var(--accent)"/>
+    </svg></div>
+          </div>
           <div class="main">
             <h3>Honest backtester</h3>
             <p class="desc">A trading-strategy simulator built to catch its own false positives. It
@@ -432,7 +472,13 @@
         </a>
 
         <a class="item" href="https://github.com/rohanKraghu/transit-detection" target="_blank" rel="noopener">
-          <span class="num idx">04</span>
+          <div class="rail">
+            <span class="num idx">04</span>
+            <div class="shot"><svg viewBox="0 0 300 200" aria-hidden="true" focusable="false">
+      <line x1="14" y1="63" x2="286" y2="63" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polyline points="14,61.1 15.5,59.2 17,64.7 18.6,58.3 20.1,63.4 21.6,61.6 23.1,58.1 24.6,63.1 26.2,57.9 27.7,62.3 29.2,58.3 30.7,58.5 32.2,62.2 33.8,66.7 35.3,58.9 36.8,60 38.3,64.5 39.8,68 41.4,63.9 42.9,61.9 44.4,68.3 45.9,58 47.4,67 48.9,60.7 50.5,59.1 52,151.2 53.5,153.3 55,158.9 56.5,151.9 58.1,156.3 59.6,157 61.1,154 62.6,156 64.1,150.6 65.7,58.2 67.2,59.8 68.7,65 70.2,62.2 71.7,61 73.3,64 74.8,62.5 76.3,60.8 77.8,66.3 79.3,65.2 80.9,60.2 82.4,63.9 83.9,63.3 85.4,67.2 86.9,65.6 88.5,60.7 90,68.4 91.5,58.8 93,62.1 94.5,65.9 96.1,59.2 97.6,62.9 99.1,57.9 100.6,64.9 102.1,66 103.7,63.8 105.2,67.2 106.7,61 108.2,65.2 109.7,64.1 111.3,63.9 112.8,62.6 114.3,66.8 115.8,68 117.3,62.8 118.8,64.9 120.4,58.2 121.9,65.3 123.4,64.7 124.9,68.5 126.4,66.6 128,60.7 129.5,61.8 131,64.9 132.5,57.7 134,62.6 135.6,151.8 137.1,151.2 138.6,150.5 140.1,158.4 141.6,151.3 143.2,152.6 144.7,154.2 146.2,159.6 147.7,150.8 149.2,62.5 150.8,63.6 152.3,67.3 153.8,66.6 155.3,67.1 156.8,60.6 158.4,62.1 159.9,61.5 161.4,67.3 162.9,68.1 164.4,59.2 166,59.4 167.5,60.1 169,60.1 170.5,62.9 172,64 173.6,60.4 175.1,57.5 176.6,62.1 178.1,61.6 179.6,63.8 181.2,68.1 182.7,65.2 184.2,63.2 185.7,64.3 187.2,65 188.7,58.1 190.3,67.5 191.8,66.1 193.3,67.2 194.8,66.3 196.3,61.8 197.9,61.9 199.4,58.6 200.9,64.5 202.4,58.2 203.9,58.2 205.5,59.8 207,59.3 208.5,61.3 210,58.1 211.5,57.5 213.1,59.2 214.6,58.6 216.1,61.5 217.6,57.8 219.1,159.6 220.7,156.7 222.2,151.5 223.7,152.7 225.2,153.7 226.7,153.9 228.3,151.3 229.8,159.3 231.3,160.9 232.8,62.7 234.3,62.9 235.9,58.4 237.4,58.6 238.9,61.3 240.4,60.4 241.9,66.7 243.5,59.3 245,57.8 246.5,68 248,63.4 249.5,59.1 251.1,63.5 252.6,57.8 254.1,63.4 255.6,68.3 257.1,67.1 258.6,65.2 260.2,60.4 261.7,61.6 263.2,59.3 264.7,66.1 266.2,63.4 267.8,66.1 269.3,61.2 270.8,60 272.3,66.5 273.8,68.4 275.4,66.9 276.9,66.4 278.4,66.6 279.9,65.7 281.4,60 283,63.2 284.5,61.4 286,57.8" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg></div>
+          </div>
           <div class="main">
             <h3>Finding planets in starlight</h3>
             <p class="desc">A planet crossing in front of its star dims the light by a fraction of a
@@ -449,7 +495,14 @@
         </a>
 
         <a class="item" href="https://github.com/rohanKraghu/retirement-tool" target="_blank" rel="noopener">
-          <span class="num idx">05</span>
+          <div class="rail">
+            <span class="num idx">05</span>
+            <div class="shot"><svg viewBox="0 0 300 200" aria-hidden="true" focusable="false">
+      <polyline points="14,184 20.8,183.3 27.6,182.5 34.4,181.6 41.2,180.7 48,179.7 54.8,178.6 61.6,177.5 68.4,176.3 75.2,175 82,173.6 88.8,172.1 95.6,170.5 102.4,168.8 109.2,166.9 116,164.9 122.8,162.8 129.6,160.5 136.4,158.1 143.2,155.5 150,152.7 156.8,149.6 163.6,146.4 170.4,143 177.2,139.2 184,135.3 190.8,131 197.6,126.4 204.4,121.5 211.2,116.2 218,110.6 224.8,104.5 231.6,98.1 238.4,91.1 245.2,83.6 252,75.6 258.8,67.1 265.6,57.9 272.4,48 279.2,37.4 286,26.1" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+      <polyline points="14,184 20.8,183.3 27.6,182.5 34.4,181.8 41.2,181 48,180.3 54.8,179.5 61.6,178.7 68.4,177.9 75.2,177.1 82,176.3 88.8,175.4 95.6,174.5 102.4,173.6 109.2,172.7 116,171.8 122.8,170.8 129.6,169.8 136.4,168.8 143.2,167.7 150,166.6 156.8,165.5 163.6,164.4 170.4,163.2 177.2,162 184,160.7 190.8,159.4 197.6,158.1 204.4,156.7 211.2,155.2 218,153.8 224.8,152.2 231.6,150.6 238.4,149 245.2,147.3 252,145.5 258.8,143.7 265.6,141.7 272.4,139.8 279.2,137.7 286,135.6" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 3" stroke-linecap="round" opacity=".62"/>
+      <line x1="14" y1="184" x2="286" y2="184" stroke="var(--line)" stroke-width="1"/>
+    </svg></div>
+          </div>
           <div class="main">
             <h3>Retirement projection calculator</h3>
             <p class="desc">Written for the people who come to Numeraldo's workshops: what a balance
