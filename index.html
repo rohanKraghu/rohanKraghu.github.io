@@ -271,7 +271,13 @@
     }
     .role .body{grid-column:4 / 13}
     .bio .lbl,.bio .text{grid-column:4 / 13}
-    .col-a{grid-column:1 / 7}.col-b{grid-column:7 / 13}.col-c{grid-column:1 / 7}
+    /* Education and Skills stack in the left column and Honors takes the
+       right one outright, so the longest list cannot leave a hole under the
+       shortest. */
+    .details{grid-template-columns:repeat(2,1fr)}
+    .col-a{grid-column:1;grid-row:1}
+    .col-c{grid-column:1;grid-row:2}
+    .col-b{grid-column:2;grid-row:1 / span 2}
     .foot-rows .c{grid-column:span 4}
   }
   @media (max-width:680px){
@@ -284,7 +290,8 @@
     .role .when,.role .body{grid-column:1 / 13}
     .role .when{padding-top:0}
     .bio .lbl,.bio .text{grid-column:1 / 13}
-    .col-a,.col-b,.col-c{grid-column:1 / 13}
+    .details{grid-template-columns:1fr}
+    .col-a,.col-b,.col-c{grid-column:1;grid-row:auto}
     .foot-rows .c{grid-column:span 6}
     .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .lz-line .lz-btn{margin-left:0}
@@ -633,8 +640,16 @@
               <dd>Congress's highest civilian honor for youth.</dd>
             </div>
             <div class="d">
-              <dt>First Place, Stanford OHS Science Bowl<span class="yr">2024</span></dt>
-              <dd>First of approximately 390 students.</dd>
+              <dt>Winner, Estimathon — Traders@MIT<span class="yr">2026</span></dt>
+              <dd>Estimation contest at MIT’s annual trading conference.</dd>
+            </div>
+            <div class="d">
+              <dt>First Place, Stanford OHS Science Bowl<span class="yr">2024, 2025</span></dt>
+              <dd>First in consecutive years; the 2024 field was approximately 390 students.</dd>
+            </div>
+            <div class="d">
+              <dt>First Place, Messier Object Observation Challenge<span class="yr">2025</span></dt>
+              <dd>Observed 40 deep-sky objects from the Messier catalogue.</dd>
             </div>
           </dl>
         </div>
