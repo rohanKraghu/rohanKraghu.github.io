@@ -1,7 +1,7 @@
 /* =========================================================================
-   Numeraldo — Financial Literacy Crash Course
+   Numeraldo · Financial Literacy Crash Course
    Shared behavior for every page in this folder. No dependencies, no build
-   step, all paths relative — drop the folder anywhere and it works.
+   step, all paths relative: drop the folder anywhere and it works.
    ========================================================================= */
 (function () {
   "use strict";
@@ -9,7 +9,7 @@
   /* ---------- formatting helpers, exported for page scripts ---------- */
   var fmt = {
     money: function (n, cents) {
-      if (!isFinite(n)) return "—";
+      if (!isFinite(n)) return "–";
       return n.toLocaleString("en-US", {
         style: "currency", currency: "USD",
         minimumFractionDigits: cents ? 2 : 0,
@@ -17,7 +17,7 @@
       });
     },
     pct: function (n, places) {
-      if (!isFinite(n)) return "—";
+      if (!isFinite(n)) return "–";
       return n.toFixed(places === undefined ? 1 : places) + "%";
     },
     num: function (el) {
@@ -86,7 +86,7 @@
     var key = "numeraldo.course." + (document.body.dataset.track || "page") + "." + box.id;
     try {
       if (localStorage.getItem(key) === "1") box.checked = true;
-    } catch (e) { /* storage unavailable — checkbox still works, just won't persist */ }
+    } catch (e) { /* storage unavailable; checkbox still works, just won't persist */ }
     box.addEventListener("change", function () {
       try {
         if (box.checked) localStorage.setItem(key, "1");

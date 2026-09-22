@@ -4,9 +4,9 @@ A self-contained static mini-site: two free courses, one for teens and one for s
 
 ```
 crash-course/
-├── index.html        Hub — overview, both tracks, notes for facilitators
-├── teens.html        Track 1 — 8 modules + 2 calculators + 8-question quiz
-├── seniors.html      Track 2 — 8 modules + worksheet + scam checker + quiz
+├── index.html        Hub: overview, both tracks, notes for facilitators
+├── teens.html        Track 1: 8 modules + 2 calculators + 8-question quiz
+├── seniors.html      Track 2: 8 modules + worksheet + scam checker + quiz
 ├── glossary.html     47 terms, searchable, filterable by track
 └── assets/
     ├── course.css    Design tokens (inherited from numeraldo.org) + all layout
@@ -31,7 +31,7 @@ If you add a page to the folder, add it to all four places.
 
 ## It is built to move to a subdomain
 
-Every internal link and asset reference is **relative** (`teens.html`, `assets/course.css`) — there
+Every internal link and asset reference is **relative** (`teens.html`, `assets/course.css`); there
 are no absolute `/` paths anywhere. That means the same files work unchanged at:
 
 - `rohankraghu.github.io/numeraldo/crash-course/` (where it lives today)
@@ -39,7 +39,7 @@ are no absolute `/` paths anywhere. That means the same files work unchanged at:
 - `learn.numeraldo.org/` or `money.numeraldo.org/` (a subdomain root, later)
 - a local folder, a USB stick, or any static host
 
-The folder has already been moved once — from the repository root into `numeraldo/` — without a
+The folder has already been moved once, from the repository root into `numeraldo/`, without a
 single edit. That is the design working as intended.
 
 The only absolute URLs are deliberate outbound ones: the main site, Google Fonts, and the government
@@ -49,7 +49,7 @@ resources in the seniors track.
 
 1. Point the subdomain's DNS at Cloudflare and create a Pages project from this repository.
 2. Set the **build output directory** to `numeraldo/crash-course` and leave the build command
-   empty — it is already static.
+   empty; it is already static.
 3. Add the custom domain (e.g. `learn.numeraldo.org`) in the Pages project.
 
 The folder becomes the site root; `index.html` becomes the landing page. Nothing in the HTML changes.
@@ -65,7 +65,7 @@ The pages are plain HTML, so there are two sane options:
   directory) and link to it from WordPress. Fastest, and nothing breaks.
 - **Port the content.** Paste each module into the editor and load `assets/course.css` via the theme.
   The calculators, quizzes, and checklists need `assets/course.js` plus the per-page scripts at the
-  bottom of `teens.html` and `seniors.html` — most WordPress themes require a plugin to allow inline
+  bottom of `teens.html` and `seniors.html`; most WordPress themes require a plugin to allow inline
   `<script>`, so the static option is usually less work.
 
 ## Editing
@@ -73,11 +73,11 @@ The pages are plain HTML, so there are two sane options:
 - **Design tokens** (colors, fonts, spacing) live at the top of `assets/course.css` and match the main
   Numeraldo site. Change them in one place and both tracks follow. Dark mode is handled there too.
 - **Module content** is plain HTML in each track file, wrapped in `<article class="module" id="mN">`.
-  Adding a module means copying that block and adding a matching entry to the `.toc` list — the
+  Adding a module means copying that block and adding a matching entry to the `.toc` list, and the
   scrollspy and progress counter pick it up automatically.
 - **Reusable blocks:** `.domath` (worked example), `.term` (definition list), `.flag` (red-flag
   callout), `.safe` (do-this callout), `.check` (self-saving checklist), `.tool` (calculator),
-  `.q` (quiz question — put the correct option key in `data-answer`), `.cnav` (a card in the
+  `.q` (quiz question: put the correct option key in `data-answer`), `.cnav` (a card in the
   "Keep going" band).
 - **No inline styles.** Spacing and color live in `assets/course.css`; the few one-off needs are
   utility classes there (`.lead`, `.sub-note`, `.aside-note`, `.note.spaced`).
@@ -89,7 +89,7 @@ The pages are plain HTML, so there are two sane options:
 
 Worked examples were computed rather than estimated; the compound-interest method was checked against
 the standard published figure for $100/month at 7% over 40 years ($262,481). Figures that change with
-legislation — contribution limits, RMD ages, tax brackets — are deliberately described qualitatively
+legislation (contribution limits, RMD ages, tax brackets) are deliberately described qualitatively
 with a note to confirm current numbers, so the pages don't go stale or wrong.
 
 Every page carries an educational-use disclaimer. The material describes United States rules.

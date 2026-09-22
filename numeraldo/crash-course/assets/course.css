@@ -1,5 +1,5 @@
 /* =========================================================================
-   Numeraldo — Financial Literacy Crash Course
+   Numeraldo · Financial Literacy Crash Course
    Shared stylesheet for every page in this folder.
 
    Design tokens are inherited from the main Numeraldo site so the course
@@ -239,7 +239,7 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 .term dd{margin:6px 0 0}
 .term dd + dt{margin-top:16px}
 
-/* worked example — the numeracy of it */
+/* worked example: the numeracy of it */
 .domath{
   border:1px solid var(--line-strong);border-radius:3px;background:var(--paper);
   padding:20px 22px;margin-top:22px;
@@ -365,7 +365,7 @@ section{padding-block:56px;border-top:1px solid var(--line)}
 .teach-list{display:flex;flex-direction:column;gap:12px;max-width:70ch;padding-left:1.1em}
 .teach-note{margin-top:28px;max-width:70ch}
 
-/* small utilities — these replace the inline styles that used to be
+/* small utilities: these replace the inline styles that used to be
    sprinkled through the module copy */
 .module p.lead{font-size:1.1em}
 .sub-note{color:var(--muted)}
