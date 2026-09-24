@@ -36,7 +36,6 @@
 
 <main id="top">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="wrap">
       <span class="eyebrow">Crash course · Track one · Ages 13–19</span>
@@ -60,7 +59,6 @@
   <section id="course">
     <div class="wrap course">
 
-      <!-- SYLLABUS -->
       <aside class="toc noprint" aria-label="Course syllabus">
         <span class="eyebrow">Syllabus</span>
         <ol>
@@ -83,7 +81,6 @@
 
       <div class="modules">
 
-        <!-- ============ MODULE 1 ============ -->
         <article class="module" id="m1">
           <span class="num">Module 01</span>
           <h2>Where the money actually goes</h2>
@@ -143,7 +140,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 2 ============ -->
         <article class="module" id="m2">
           <span class="num">Module 02</span>
           <h2>Banking without paying for it</h2>
@@ -200,7 +196,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 3 ============ -->
         <article class="module" id="m3">
           <span class="num">Module 03</span>
           <h2>A budget you'll actually keep</h2>
@@ -254,7 +249,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 4 ============ -->
         <article class="module" id="m4">
           <span class="num">Module 04</span>
           <h2>Compound interest: the whole reason to start now</h2>
@@ -341,7 +335,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 5 ============ -->
         <article class="module" id="m5">
           <span class="num">Module 05</span>
           <h2>Credit cards and credit scores</h2>
@@ -440,7 +433,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 6 ============ -->
         <article class="module" id="m6">
           <span class="num">Module 06</span>
           <h2>Paying for what comes next</h2>
@@ -503,7 +495,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 7 ============ -->
         <article class="module" id="m7">
           <span class="num">Module 07</span>
           <h2>Investing, minus the hype</h2>
@@ -560,7 +551,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 8 ============ -->
         <article class="module" id="m8">
           <span class="num">Module 08</span>
           <h2>Getting scammed is a math problem</h2>
@@ -614,7 +604,6 @@
           </div>
         </article>
 
-        <!-- ============ QUIZ ============ -->
         <article class="module" id="quiz">
           <span class="num">Exit quiz</span>
           <h2>Eight questions</h2>
@@ -740,7 +729,6 @@
     </div>
   </section>
 
-  <!-- KEEP GOING -->
   <section id="keepgoing">
     <div class="wrap">
       <div class="sec-head">
@@ -797,7 +785,7 @@
 
 <script src="assets/course.js"></script>
 <script>
-/* ---------- Module 04: compound growth ---------- */
+
 (function () {
   var f = window.NumeraldoCourse.fmt;
   var ids = ["c-start", "c-month", "c-rate", "c-years"];
@@ -844,7 +832,6 @@
   run();
 })();
 
-/* ---------- Module 05: minimum payment ---------- */
 (function () {
   var f = window.NumeraldoCourse.fmt;
   var ids = ["k-bal", "k-apr", "k-fixed"];
@@ -852,20 +839,18 @@
   ids.forEach(function (id) { el[id] = document.getElementById(id); });
   if (!el["k-bal"]) return;
 
-  var MIN_PCT = 0.01, MIN_FLOOR = 25, CAP = 12000; // months; CAP is a runaway guard
+  var MIN_PCT = 0.01, MIN_FLOOR = 25, CAP = 12000;
 
-  // The common issuer minimum: 1% of principal plus the month's interest, floored at $25.
   function minimum(balance, monthlyRate) {
     return Math.max(MIN_FLOOR, balance * MIN_PCT + balance * monthlyRate);
   }
 
-  // Amortize a balance. payFn(balance, monthlyRate) returns that month's payment.
   function payoff(balance, aprPct, payFn) {
     var r = (aprPct / 100) / 12, months = 0, interest = 0;
     while (balance > 0.005 && months < CAP) {
       var charge = balance * r;
       var pay = Math.min(payFn(balance, r), balance + charge);
-      if (pay <= charge) return null;          // payment never touches principal
+      if (pay <= charge) return null;
       interest += charge;
       balance = balance + charge - pay;
       months++;
