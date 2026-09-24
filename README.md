@@ -5,7 +5,7 @@ files here are served exactly as they are.
 
 ```
 index.html                  Portfolio. Work, Experience, About, contact.
-assets/                     Images used by the portfolio page.
+assets/                     Images and documents linked from the portfolio.
 numeraldo/index.html        Numeraldo, the nonprofit.
 numeraldo/crash-course/     Financial Literacy Crash Course (its own README).
 ```
