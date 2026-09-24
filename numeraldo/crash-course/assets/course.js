@@ -1,12 +1,7 @@
-/* =========================================================================
-   Numeraldo · Financial Literacy Crash Course
-   Shared behavior for every page in this folder. No dependencies, no build
-   step, all paths relative: drop the folder anywhere and it works.
-   ========================================================================= */
+
 (function () {
   "use strict";
 
-  /* ---------- formatting helpers, exported for page scripts ---------- */
   var fmt = {
     money: function (n, cents) {
       if (!isFinite(n)) return "–";
@@ -27,7 +22,6 @@
   };
   window.NumeraldoCourse = { fmt: fmt };
 
-  /* ---------- text size control (larger type without zooming layout) ----- */
   var SIZE_KEY = "numeraldo.course.textscale";
   var sizeBtns = document.querySelectorAll("[data-scale]");
   function applyScale(scale) {
@@ -38,22 +32,20 @@
   }
   if (sizeBtns.length) {
     var saved = null;
-    try { saved = localStorage.getItem(SIZE_KEY); } catch (e) { /* private mode */ }
+    try { saved = localStorage.getItem(SIZE_KEY); } catch (e) {  }
     applyScale(saved || "1");
     sizeBtns.forEach(function (b) {
       b.addEventListener("click", function () {
         applyScale(b.dataset.scale);
-        try { localStorage.setItem(SIZE_KEY, b.dataset.scale); } catch (e) { /* ignore */ }
+        try { localStorage.setItem(SIZE_KEY, b.dataset.scale); } catch (e) {  }
       });
     });
   }
 
-  /* ---------- print buttons ---------- */
   document.querySelectorAll("[data-print]").forEach(function (b) {
     b.addEventListener("click", function (e) { e.preventDefault(); window.print(); });
   });
 
-  /* ---------- syllabus scrollspy + progress ---------- */
   var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".toc a[href^='#']"));
   var modules = Array.prototype.slice.call(document.querySelectorAll(".module[id]"));
   var progOut = document.querySelector("[data-progress]");
@@ -81,25 +73,19 @@
     progOut.textContent = "Module 1 of " + modules.length;
   }
 
-  /* ---------- checklists remember themselves per page ---------- */
   document.querySelectorAll(".check input[type='checkbox'][id]").forEach(function (box) {
     var key = "numeraldo.course." + (document.body.dataset.track || "page") + "." + box.id;
     try {
       if (localStorage.getItem(key) === "1") box.checked = true;
-    } catch (e) { /* storage unavailable; checkbox still works, just won't persist */ }
+    } catch (e) {  }
     box.addEventListener("change", function () {
       try {
         if (box.checked) localStorage.setItem(key, "1");
         else localStorage.removeItem(key);
-      } catch (e) { /* ignore */ }
+      } catch (e) {  }
     });
   });
 
-  /* ---------- quizzes ----------
-     Markup contract:
-       <div class="q" data-answer="b"> ... <button data-opt="a">…</button> …
-       <p class="ans" hidden>explanation</p></div>
-  -------------------------------------------------------------------- */
   var quizzes = document.querySelectorAll(".quiz");
   quizzes.forEach(function (quiz) {
     var qs = Array.prototype.slice.call(quiz.querySelectorAll(".q"));
@@ -131,7 +117,6 @@
     });
   });
 
-  /* ---------- year stamp ---------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });

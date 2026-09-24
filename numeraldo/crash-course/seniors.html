@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
 <link rel="stylesheet" href="assets/course.css">
 <style>
-  /* This track ships at a larger base size; the control in the header goes further. */
+
   :root{--base:19px}
   .module h3{margin-top:30px}
 </style>
@@ -47,7 +47,6 @@
 
 <main id="top">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="wrap">
       <span class="eyebrow">Crash course · Track two · Retirement and beyond</span>
@@ -77,7 +76,6 @@
   <section id="course">
     <div class="wrap course">
 
-      <!-- SYLLABUS -->
       <aside class="toc noprint" aria-label="Course syllabus">
         <span class="eyebrow">Syllabus</span>
         <ol>
@@ -100,7 +98,6 @@
 
       <div class="modules">
 
-        <!-- ============ MODULE 1 ============ -->
         <article class="module" id="m1">
           <span class="num">Module 01</span>
           <h2>The fixed-income month</h2>
@@ -184,7 +181,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 2 ============ -->
         <article class="module" id="m2">
           <span class="num">Module 02</span>
           <h2>What the mail actually says</h2>
@@ -236,7 +232,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 3 ============ -->
         <article class="module" id="m3">
           <span class="num">Module 03</span>
           <h2>What your bank is charging you</h2>
@@ -287,7 +282,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 4 ============ -->
         <article class="module" id="m4">
           <span class="num">Module 04</span>
           <h2>Safe interest, and the inflation you can't see</h2>
@@ -353,7 +347,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 5 ============ -->
         <article class="module" id="m5">
           <span class="num">Module 05</span>
           <h2>Taking money out</h2>
@@ -418,7 +411,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 6 ============ -->
         <article class="module" id="m6">
           <span class="num">Module 06 · The important one</span>
           <h2>Recognizing a scam</h2>
@@ -526,7 +518,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 7 ============ -->
         <article class="module" id="m7">
           <span class="num">Module 07</span>
           <h2>Locking down your accounts</h2>
@@ -595,7 +586,6 @@
           </div>
         </article>
 
-        <!-- ============ MODULE 8 ============ -->
         <article class="module" id="m8">
           <span class="num">Module 08</span>
           <h2>Who to call</h2>
@@ -650,7 +640,6 @@
           </div>
         </article>
 
-        <!-- ============ QUIZ ============ -->
         <article class="module" id="quiz">
           <span class="num">Exit quiz</span>
           <h2>Eight questions</h2>
@@ -785,7 +774,6 @@
     </div>
   </section>
 
-  <!-- KEEP GOING -->
   <section id="keepgoing">
     <div class="wrap">
       <div class="sec-head">
@@ -843,7 +831,7 @@
 
 <script src="assets/course.js"></script>
 <script>
-/* ---------- Module 01: monthly worksheet ---------- */
+
 (function () {
   var f = window.NumeraldoCourse.fmt;
   var inc = ["s-ss", "s-pen", "s-draw"], exp = ["s-home", "s-food", "s-med", "s-other"];
@@ -887,7 +875,6 @@
   run();
 })();
 
-/* ---------- Module 06: red-flag checker ---------- */
 (function () {
   var boxes = document.querySelectorAll("#rf input[data-rf]");
   if (!boxes.length) return;

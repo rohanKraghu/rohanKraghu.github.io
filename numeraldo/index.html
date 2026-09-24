@@ -95,7 +95,6 @@
     text-transform:uppercase;color:var(--muted);
   }
 
-  /* ---------- header ---------- */
   header.site{
     position:sticky;top:0;z-index:40;
     padding-top:env(safe-area-inset-top,0px);
@@ -128,7 +127,6 @@
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-  /* ---------- hero ---------- */
   .hero{padding-block:30px 52px;position:relative;overflow:hidden}
   .hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:52px;align-items:end}
   h1.lede{font-size:clamp(38px,6vw,68px);font-weight:600;letter-spacing:-.03em;margin-top:14px}
@@ -145,13 +143,11 @@
   .ledger .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .ledger .v{font-family:var(--display);font-weight:600;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 
-  /* ---------- generic section ---------- */
   section{padding-block:64px;border-top:1px solid var(--line)}
   .sec-head{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:start;margin-bottom:38px}
   .sec-head h2{font-size:clamp(26px,3.4vw,36px)}
   .sec-head p{color:var(--muted);max-width:60ch;margin-top:12px}
 
-  /* ---------- mission ---------- */
   .definition{
     border-left:3px solid var(--accent);background:var(--surface);
     padding:22px 24px;margin-top:26px;border-radius:0 3px 3px 0;box-shadow:var(--shadow);
@@ -165,7 +161,6 @@
   .serve p{color:var(--muted);font-size:16px}
   .serve .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 
-  /* ---------- programs ---------- */
   .program{
     display:grid;grid-template-columns:1fr 1fr;gap:0;
     border:1px solid var(--line);background:var(--surface);border-radius:3px;overflow:hidden;
@@ -193,7 +188,6 @@
   .stat-line .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .stat-line .v{font-family:var(--display);font-weight:600;font-size:22px;font-variant-numeric:tabular-nums;text-align:right}
 
-  /* ---------- tracker ---------- */
   #impact{background:var(--surface)}
   .tracker{
     border:1px solid var(--line-strong);border-radius:4px;background:var(--paper);
@@ -238,7 +232,6 @@
   .bd-foot{display:flex;justify-content:space-between;gap:16px;padding-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--muted);flex-wrap:wrap}
   .updated{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:18px}
 
-  /* ---------- partners ---------- */
   .partners{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .partner{
     border:1px solid var(--line);background:var(--surface);border-radius:3px;
@@ -253,7 +246,6 @@
   .partner p{color:var(--muted);font-size:15px}
   .partner .since{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 
-  /* ---------- events ---------- */
   .events{display:flex;flex-direction:column;border-top:1px solid var(--line)}
   .event{
     display:grid;grid-template-columns:150px 1fr 190px;gap:24px;
@@ -264,7 +256,6 @@
   .event .where{color:var(--muted);font-size:15px}
   .event .what{color:var(--muted);font-size:15.5px;margin-top:6px}
 
-  /* ---------- about ---------- */
   .people{display:grid;grid-template-columns:180px 1fr;gap:34px;align-items:start}
   .portrait{
     aspect-ratio:1/1;max-width:100%;border:1.5px solid var(--accent);background:var(--accent-soft);
@@ -286,7 +277,6 @@
   .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;margin-top:10px}
   .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.45}
 
-  /* ---------- contact ---------- */
   #contact{background:var(--surface)}
   .contact-h{margin-top:12px}
   .contact-p{color:var(--muted);margin-top:14px;max-width:48ch}
@@ -334,8 +324,7 @@
     .board{grid-template-columns:repeat(2,1fr)}
     .bar{gap:8px 12px;min-height:0;padding-block:8px 4px}
     .brand{margin-right:auto}
-    /* The nav used to be display:none here, which left a phone with no way
-       to reach any section. It scrolls sideways instead. */
+
     nav.main{
       order:3;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:18px;
       scrollbar-width:none;-webkit-overflow-scrolling:touch;
@@ -351,7 +340,6 @@
 </style>
 </head>
 <body>
-
 
 <header class="site">
   <div class="wrap bar">
@@ -374,7 +362,6 @@
 
 <main id="top">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -396,7 +383,6 @@
     </div>
   </div>
 
-  <!-- MISSION -->
   <section id="mission">
     <div class="wrap">
       <div class="sec-head">
@@ -438,7 +424,6 @@
     </div>
   </section>
 
-  <!-- PROGRAMS -->
   <section id="programs">
     <div class="wrap">
       <div class="sec-head">
@@ -450,7 +435,6 @@
         </div>
       </div>
 
-      <!-- Casio -->
       <article class="program">
         <div class="body">
           <span class="eyebrow">Partnership</span>
@@ -477,7 +461,6 @@
         </div>
       </article>
 
-      <!-- Boys and Girls Club -->
       <article class="program">
         <div class="body">
           <span class="eyebrow">Weekly instruction</span>
@@ -504,7 +487,6 @@
         </div>
       </article>
 
-      <!-- Crash Course -->
       <article class="program">
         <div class="body">
           <span class="eyebrow">Free online course</span>
@@ -536,7 +518,6 @@
     </div>
   </section>
 
-  <!-- TRACKER -->
   <section id="impact">
     <div class="wrap">
       <div class="sec-head">
@@ -583,7 +564,6 @@
     </div>
   </section>
 
-  <!-- PARTNERS -->
   <section id="partners">
     <div class="wrap">
       <div class="sec-head">
@@ -616,7 +596,6 @@
     </div>
   </section>
 
-  <!-- EVENTS -->
   <section id="events">
     <div class="wrap">
       <div class="sec-head">
@@ -652,7 +631,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <div class="sec-head">
@@ -703,7 +681,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="wrap contact-grid">
       <div>
@@ -737,15 +714,12 @@
 </footer>
 
 <script>
-/* =========================================================================
-   EDIT THIS BLOCK TO UPDATE THE SITE'S NUMBERS.
-   Everything below the block renders from it; no other changes needed.
-   ========================================================================= */
+
 const NUMERALDO = {
-  goal: 25000,                 // fundraising goal for the year, in dollars
+  goal: 25000,
   lastUpdated: "September 2026",
-  studentsWeekly: "40+",       // shown in the hero ledger
-  partnerCount: "3",           // shown in the hero ledger
+  studentsWeekly: "40+",
+  partnerCount: "3",
   programs: [
     {
       name: "Casio Calculator Access Initiative",
@@ -773,7 +747,6 @@ const NUMERALDO = {
     }
   ]
 };
-/* ===================== end of editable block ============================ */
 
 (function () {
   const money = n => "$" + n.toLocaleString("en-US");
@@ -794,7 +767,6 @@ const NUMERALDO = {
   document.getElementById("scaleMid").textContent = money(Math.round(goal / 2));
   document.getElementById("scaleEnd").textContent = money(goal);
 
-  // stacked allocation meter, drawn to the goal scale
   const track = document.getElementById("meterTrack");
   NUMERALDO.programs.forEach((p, i) => {
     const seg = document.createElement("div");
@@ -806,7 +778,6 @@ const NUMERALDO = {
     track.appendChild(seg);
   });
 
-  // breakdown table
   const rows = document.getElementById("breakdownRows");
   NUMERALDO.programs.forEach(p => {
     const row = document.createElement("div");
