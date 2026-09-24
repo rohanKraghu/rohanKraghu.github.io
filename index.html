@@ -184,11 +184,17 @@
     padding-block:11px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;
   }
   .courselist li:last-child{border-bottom:0}
-  .courselist.plain li{grid-template-columns:1fr}
+  .courselist.plain li{display:block}
   .courselist .cn{
     font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.04em;
     color:var(--accent);font-variant-numeric:tabular-nums;
   }
+  .courselist .ta{font-size:11.5px;font-weight:600;color:var(--accent);margin-left:7px;white-space:nowrap}
+  .courselist .paper{
+    display:block;width:fit-content;margin-top:5px;font-size:13px;color:var(--accent);
+    border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .15s;
+  }
+  .courselist .paper:hover{border-bottom-color:var(--accent)}
 
   footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
   .cta{margin-top:22px;font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
@@ -668,26 +674,28 @@
             <li>Linear Algebra</li>
             <li>Differential Equations</li>
             <li>Multivariable Calculus</li>
-            <li>Number Theory</li>
-            <li>Logic</li>
+            <li>Number Theory<span class="ta">(TA)</span></li>
+            <li>Logic<span class="ta">(TA)</span></li>
           </ul>
           <span class="lbl sub">Advanced electives</span>
           <ul class="courselist plain">
-            <li>Astrophysics</li>
+            <li>Astrophysics<span class="ta">(TA)</span></li>
             <li>Astronomy Research Seminar</li>
-            <li>Advanced Topics in Microeconomics</li>
+            <li>Advanced Topics in Microeconomics
+              <a class="paper" href="assets/microeconomics-of-the-space-market.pdf" target="_blank" rel="noopener">The Microeconomics of the Space Market &rarr;</a>
+            </li>
           </ul>
         </div>
 
         <div class="col-c">
           <span class="lbl">Advanced Placement · Stanford OHS</span>
           <ul class="courselist plain">
-            <li>Calculus BC</li>
-            <li>Statistics</li>
+            <li>Calculus BC<span class="ta">(TA)</span></li>
+            <li>Statistics<span class="ta">(TA)</span></li>
             <li>Physics C: Mechanics</li>
             <li>Physics C: Electricity &amp; Magnetism</li>
-            <li>Chemistry</li>
-            <li>Microeconomics</li>
+            <li>Chemistry<span class="ta">(TA)</span></li>
+            <li>Microeconomics<span class="ta">(TA)</span></li>
           </ul>
         </div>
       </div>
