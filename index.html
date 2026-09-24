@@ -3,9 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- The resume and CV each point at one Drive file ID. Replace a PDF with
-     Drive's "Manage versions", never by re-uploading: a new upload mints a
-     new ID and silently breaks every link to it. -->
+
 <meta name="description" content="Rohan Raghu. Mathematics and artificial intelligence at MIT. Quantitative research, machine learning, and a numeracy nonprofit reaching 1,000+ people.">
 <meta property="og:title" content="Rohan Raghu">
 <meta property="og:description" content="Making numbers mean something.">
@@ -22,11 +20,11 @@
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Ranade (Fontshare) for display; Inter for text. Both sans. -->
+
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=ranade@500,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* ---------- three colors, two sans faces ---------- */
+
   :root{
     --paper:#F3F1EC;
     --ink:#16130F;
@@ -34,15 +32,12 @@
     --line:#DCD6CB;
     --accent:#8A4B2A;
 
-    /* Ranade is wide and low-contrast; the fallbacks match that proportion
-       so the layout doesn't jump if Fontshare is slow or unreachable. */
     --display:"Ranade","Helvetica Neue",Helvetica,Arial,sans-serif;
     --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
 
     --gut:clamp(22px,5vw,64px);
     --wrap:1600px;
 
-    /* How far the attractor sits behind the type. */
     --lz-veil:.72;
   }
   @media (prefers-color-scheme:dark){
@@ -74,16 +69,12 @@
   .skip:focus{left:10px;top:10px}
   a:focus-visible,button:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
 
-  /* ---------- top bar ---------- */
   .top{border-bottom:1px solid var(--line)}
   .top .wrap{display:flex;align-items:center;gap:20px;padding-block:16px}
   .top .me{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin-right:auto}
   .top a.mail{font-size:13.5px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .15s,border-color .15s}
   .top a.mail:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
-  /* ---------- hero: short, asymmetric ---------- */
-  /* Top-aligned on purpose: the art cell is taller than the copy, and a
-     bottom-aligned row pushed the headline halfway down the screen. */
   .hero{padding-block:clamp(18px,2.4vw,30px) clamp(40px,6vw,72px)}
   .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,2.4vw,34px) 24px;align-items:start}
   .hero .lede{grid-column:1 / 7}
@@ -100,7 +91,6 @@
   .hero .meta a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .hero .where{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.5}
 
-  /* ---------- tab bar ---------- */
   .tabbar{position:sticky;top:0;z-index:20;display:block;background:var(--paper);border-block:1px solid var(--line)}
   .tabs{display:flex;gap:clamp(18px,3vw,42px);overflow-x:auto;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
@@ -117,12 +107,11 @@
   .panel:focus{outline:none}
   .intro{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(32px,4.5vw,56px)}
   .intro .lbl{grid-column:1 / 4;padding-top:7px}
-  /* a label with no heading beside it needs less room underneath */
+
   .intro.bare{margin-bottom:clamp(18px,2.2vw,28px)}
   .intro h2{grid-column:4 / 11;font-size:clamp(23px,3.2vw,38px)}
   .intro p{grid-column:4 / 10;color:var(--muted);margin-top:13px;max-width:52ch}
 
-  /* ---------- work items ---------- */
   .work{border-top:1px solid var(--line)}
   .item{
     display:grid;grid-template-columns:repeat(12,1fr);gap:10px 24px;
@@ -142,8 +131,6 @@
   .item .go{font-size:13px;font-weight:500;color:var(--accent);margin-top:16px;display:inline-block;border-bottom:1px solid transparent;padding-bottom:1px}
   a.item:hover .go{border-bottom-color:var(--accent)}
 
-  /* One frame for all five, so a photograph and a plot sit in the same rhythm.
-     The plots are drawn in var(--accent), so they follow the theme. */
   .shot{
     width:100%;aspect-ratio:3 / 2;overflow:hidden;
     border:1px solid var(--line);
@@ -160,7 +147,6 @@
   .shot img{object-fit:cover}
   a.item:hover .shot{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
 
-  /* ---------- experience ---------- */
   .role{display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line)}
   .role:first-child{border-top:1px solid var(--line)}
   .role .when{grid-column:1 / 4;font-size:13px;color:var(--muted);padding-top:8px;line-height:1.45}
@@ -172,7 +158,6 @@
   .role li::before{content:"";position:absolute;left:0;top:11px;width:11px;height:1px;background:var(--accent)}
   .role li b{color:var(--ink);font-weight:600}
 
-  /* ---------- about ---------- */
   .bio{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px}
   .bio .lbl{grid-column:1 / 4;padding-top:7px}
   .bio .text{grid-column:4 / 11}
@@ -191,7 +176,6 @@
   .details dd{margin:5px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
   .details .yr{flex:none;font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
 
-  /* ---------- coursework ---------- */
   .courses{margin-top:clamp(34px,4vw,52px)}
   .courses .lbl.sub{margin-top:26px}
   .courselist{display:flex;flex-direction:column}
@@ -206,7 +190,6 @@
     color:var(--accent);font-variant-numeric:tabular-nums;
   }
 
-  /* ---------- contact footer ---------- */
   footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
   .cta{margin-top:22px;font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
   .cta a{color:var(--accent);border-bottom:2px solid transparent;transition:border-color .15s}
@@ -217,11 +200,6 @@
   .foot-rows .c a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 
-  /* ---------- Lorenz attractor behind the hero ---------- */
-  /* Decorative only: aria-hidden, pointer-events:none, and it carries nothing
-     the text doesn't already say. Type keeps its own layer above it. */
-  /* Its own grid cell between the lede and the meta column. Grid items do not
-     overlap, so the trace cannot land behind text however the copy reflows. */
   .hero-art{
     grid-column:7 / 11;position:relative;align-self:stretch;
     min-height:clamp(230px,21vw,340px);
@@ -260,7 +238,7 @@
     display:flex;justify-content:space-between;align-items:baseline;gap:10px;
     font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
   }
-  /* Greek stays as written: uppercasing turns rho into P and beta into B. */
+
   .lz-ctl .k i{font-style:normal;text-transform:none;font-size:12px;letter-spacing:0}
   .lz-ctl output{
     font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;
@@ -270,10 +248,8 @@
   .lz-note{margin-top:16px;font-size:12px;color:var(--muted)}
   .lz-panel .lz-btn{margin-top:16px}
 
-  /* No JS: nothing draws, so don't leave dead controls on the page. */
   html:not(.js) .lorenz-ui,html:not(.js) .hero-art{display:none}
 
-  /* ---------- responsive ---------- */
   @media (max-width:1000px){
     .hero .lede{grid-column:1 / 10}
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
@@ -287,9 +263,7 @@
     }
     .role .body{grid-column:4 / 13}
     .bio .lbl,.bio .text{grid-column:4 / 13}
-    /* Education and Skills stack in the left column and Honors takes the
-       right one outright, so the longest list cannot leave a hole under the
-       shortest. */
+
     .details{grid-template-columns:repeat(2,1fr)}
     .col-a{grid-column:1;grid-row:1}
     .col-c{grid-column:1;grid-row:2}
@@ -313,11 +287,9 @@
     .lz-line .lz-btn{margin-left:0}
   }
 
-  /* ---------- no JS: show every panel, drop the tab bar ---------- */
   html:not(.js) .tabbar{display:none}
   html:not(.js) [role="tabpanel"][hidden]{display:block!important}
 
-  /* ---------- print: every panel, no tabs ---------- */
   @media print{
     :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--gut:0}
     .top,.tabbar,.skip,.item .go,.hero .stand,.hero-art,.lorenz-ui,.shot{display:none!important}
@@ -343,7 +315,6 @@
   </div>
 </div>
 
-<!-- ===================== HERO ===================== -->
 <div class="hero">
   <div class="wrap hero-grid">
     <div class="lede">
@@ -404,7 +375,6 @@
   </div>
 </div>
 
-<!-- ===================== TABS ===================== -->
 <div class="tabbar">
   <div class="wrap">
     <div class="tabs" role="tablist" aria-label="Sections">
@@ -417,7 +387,6 @@
 
 <main id="panels">
 
-  <!-- ---------- WORK ---------- -->
   <section class="panel" role="tabpanel" id="p-work" aria-labelledby="t-work" tabindex="-1">
     <div class="wrap">
       <div class="intro">
@@ -544,7 +513,6 @@
     </div>
   </section>
 
-  <!-- ---------- EXPERIENCE ---------- -->
   <section class="panel" role="tabpanel" id="p-exp" aria-labelledby="t-exp" tabindex="-1" hidden>
     <div class="wrap">
       <div class="intro bare">
@@ -608,7 +576,6 @@
     </div>
   </section>
 
-  <!-- ---------- ABOUT ---------- -->
   <section class="panel" role="tabpanel" id="p-about" aria-labelledby="t-about" tabindex="-1" hidden>
     <div class="wrap">
       <div class="bio">
@@ -729,7 +696,6 @@
 
 </main>
 
-<!-- ===================== CONTACT ===================== -->
 <footer class="site" id="contact">
   <div class="wrap">
     <span class="lbl">Contact</span>
@@ -778,16 +744,13 @@
       t.tabIndex = on ? 0 : -1;
       document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
     });
-    // Keep the tab bar in view: if it has scrolled off the top, bring it back
-    // so the swapped panel starts where the eye already is.
+
     if (scroll !== false && bar && bar.getBoundingClientRect().top < 0) {
       window.scrollTo({ top: bar.offsetTop, behavior: "smooth" });
     }
     if (focus) tab.focus();
   }
 
-  // The panels are real destinations, so they get real URLs: /#work, /#about.
-  // replaceState rather than a location change, which would jump the page.
   function open(tab, focus) {
     select(tab, focus);
     if (window.history && history.replaceState) {
@@ -807,8 +770,6 @@
     });
   });
 
-  // A hash that names a panel opens it; anything else (#contact, a module
-  // anchor) is left to the browser.
   function fromHash(scroll) {
     var tab = byHash((location.hash || "").replace(/^#/, ""));
     if (tab) select(tab, false, scroll);
@@ -817,21 +778,6 @@
   window.addEventListener("hashchange", function () { fromHash(true); });
 })();
 
-/* ---------------------------------------------------------------------------
-   Lorenz attractor behind the hero.
-
-     dx/dt = sigma(y - x)     dy/dt = x(rho - z) - y     dz/dt = xy - beta*z
-
-   Integrated with RK4. Euler is cheaper but at this step size it drifts off
-   the attractor and the wings pull apart, which is exactly the thing worth
-   looking at.
-
-   The canvas is never cleared while running. Each frame erases a sliver of
-   what is already there (destination-out, so it fades to transparent rather
-   than to a guess at the page color) and then draws the new segment at full
-   strength. The live trajectory reads bright, everywhere it has been settles
-   into a haze, and that haze is the attractor itself.
-   --------------------------------------------------------------------------- */
 (function () {
   "use strict";
 
@@ -843,15 +789,12 @@
   var DEFAULTS = { sigma: 10, rho: 28, beta: 8 / 3, speed: 5 };
   var P = { sigma: DEFAULTS.sigma, rho: DEFAULTS.rho, beta: DEFAULTS.beta, speed: DEFAULTS.speed };
 
-  var DT = 0.004;      // integration step
-  var FADE = 0.005;    // fraction of the trail erased per frame
-  var SETTLE = 220;    // ms of quiet before the figure is rebuilt
-  var FILL = 0.94;     // share of its own cell the figure is allowed
+  var DT = 0.004;
+  var FADE = 0.005;
+  var SETTLE = 220;
+  var FILL = 0.94;
   var STATIC_STEPS = 12000;
 
-  // Trail length in steps: it survives ~ln(100)/FADE frames before it is down
-  // to a hundredth, and each frame adds `speed` of them. Drawing that much up
-  // front means the page opens on the attractor instead of slowly accreting it.
   function trailSteps() { return Math.min(9000, Math.round(P.speed * 4.6 / FADE)); }
 
   var w = 0, h = 0, scale = 1, ox = 0, oy = 0, zMid = 0;
@@ -863,7 +806,6 @@
   var mqReduce = mq("(prefers-reduced-motion: reduce)");
   var mqDark = mq("(prefers-color-scheme: dark)");
 
-  // Any CSS color -> "#rrggbb", by letting the canvas parse it for us.
   function readAccent() {
     var v = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
     if (!v) return;
@@ -872,15 +814,8 @@
     if (typeof ctx.fillStyle === "string" && ctx.fillStyle.charAt(0) === "#") accent = ctx.fillStyle;
   }
 
-  /* ---- geometry -------------------------------------------------------- */
-  // The attractor grows with rho, so the frame is derived from it: the two
-  // non-zero fixed points sit at z = rho - 1, x = +/-sqrt(beta(rho - 1)).
   function reframe() {
-    // Fitted to the attractor's measured extent: over rho 24..60 its width and
-    // height both grow very close to linearly in rho, and it sits centered on
-    // z = rho - 3. Deriving the frame from rho rather than from the points
-    // matters below rho 24.74, where the orbit collapses onto a fixed point --
-    // anything that auto-fits the drawn extent would zoom a dot to fill the page.
+
     var xSpan = Math.max(0.72 * P.rho + 16, 18);
     var zSpan = Math.max(1.25 * P.rho + 8, 16);
     scale = Math.min(w / xSpan, h / zSpan) * FILL;
@@ -888,9 +823,7 @@
     ox = w * 0.5;
     oy = h * 0.5;
   }
-  // Plotted on the plain x-z plane. Mixing any y into the horizontal reads as
-  // a three-quarter view, but y tracks x closely enough that the two cancel:
-  // a 0.6 rad turn costs 41% of the width and folds the wings into a wishbone.
+
   function toX(px) { return ox + px * scale; }
   function toY(pz) { return oy - (pz - zMid) * scale; }
 
@@ -913,7 +846,6 @@
     z += d / 6 * (k1z + 2 * k2z + 2 * k3z + k4z);
   }
 
-  /* ---- drawing --------------------------------------------------------- */
   function trace(steps, alpha) {
     ctx.globalAlpha = alpha;
     ctx.strokeStyle = accent;
@@ -921,8 +853,7 @@
     ctx.moveTo(sx, sy);
     for (var i = 0; i < steps; i++) {
       rk4();
-      // A slider pushed somewhere the step size can't follow: start over
-      // rather than poisoning every later coordinate with NaN.
+
       if (!isFinite(x) || !isFinite(y) || !isFinite(z) ||
           Math.abs(x) > 1e4 || Math.abs(z) > 1e4) {
         reseed(); ctx.moveTo(sx, sy); continue;
@@ -936,13 +867,10 @@
 
   function wipe() { ctx.clearRect(0, 0, w, h); }
 
-  function drawStill() {           // reduced motion: draw it once, leave it
+  function drawStill() {
     wipe(); reseed(); trace(STATIC_STEPS, 0.62);
   }
 
-  // Lay down one trail's worth of history in four bands of rising strength, so
-  // the first animated frame continues a fade that is already in progress
-  // rather than starting from an empty canvas.
   function prefill() {
     var n = Math.round(trailSteps() / 4), a = [0.22, 0.42, 0.68, 1];
     for (var i = 0; i < 4; i++) trace(n, a[i]);
@@ -972,18 +900,11 @@
   }
   function halt() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
 
-  // Rebuilding the figure on every input event is what made the trace restart
-  // sixty times a second under a drag: each one wiped the canvas and began a
-  // new line that never got anywhere before the next event wiped it again.
-  // Nothing is redrawn while the numbers are moving now -- the last figure
-  // simply holds -- and the new one is built once, SETTLE ms after the last
-  // change. Held rather than cleared, so the panel never goes empty mid-drag.
   function settle() {
     if (settleTimer) clearTimeout(settleTimer);
     settleTimer = setTimeout(function () { settleTimer = 0; restart(); }, SETTLE);
   }
 
-  /* ---- sizing ---------------------------------------------------------- */
   function resize() {
     pendingResize = 0;
     var r = canvas.getBoundingClientRect();
@@ -1000,7 +921,6 @@
   }
   function queueResize() { if (!pendingResize) pendingResize = requestAnimationFrame(resize); }
 
-  /* ---- controls -------------------------------------------------------- */
   var CTL = [
     { id: "lz-sigma", key: "sigma", dp: 1 },
     { id: "lz-rho",   key: "rho",   dp: 1 },
@@ -1013,9 +933,6 @@
     if (out) out.textContent = P[c.key].toFixed(c.dp);
   }
 
-  // beta's default is 8/3, which a step="0.01" slider cannot hold: assigning
-  // the raw float lets the control snap it silently, leaving the thumb and the
-  // integrator a hair apart. Hand the control the value it can actually take.
   function sync(c) { if (c.el) c.el.value = P[c.key].toFixed(c.dp); }
 
   CTL.forEach(function (c) {
@@ -1029,9 +946,7 @@
       if (!isFinite(v)) return;
       P[c.key] = v;
       show(c);
-      // Speed only changes how fast the same curve is walked, so it takes
-      // effect at once. The other three change the curve itself: hold the
-      // figure exactly as it is and rebuild it once the numbers stop moving.
+
       if (c.key === "speed") { schedule(); return; }
       halt();
       settle();
@@ -1055,7 +970,6 @@
     panel.hidden = open;
   });
 
-  /* ---- lifecycle ------------------------------------------------------- */
   function applyMotion() {
     still = !!(mqReduce && mqReduce.matches);
     var note = document.getElementById("lz-motion");
@@ -1067,7 +981,7 @@
   function listen(m, fn) {
     if (!m) return;
     if (m.addEventListener) m.addEventListener("change", fn);
-    else if (m.addListener) m.addListener(fn);      // Safari < 14
+    else if (m.addListener) m.addListener(fn);
   }
   listen(mqReduce, applyMotion);
   listen(mqDark, function () { readAccent(); });
