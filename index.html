@@ -191,6 +191,21 @@
   .details dd{margin:5px 0 0;font-size:13.5px;color:var(--muted);line-height:1.5}
   .details .yr{flex:none;font-size:12px;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
 
+  /* ---------- coursework ---------- */
+  .courses{margin-top:clamp(34px,4vw,52px)}
+  .courses .lbl.sub{margin-top:26px}
+  .courselist{display:flex;flex-direction:column}
+  .courselist li{
+    display:grid;grid-template-columns:58px 1fr;gap:10px;align-items:baseline;
+    padding-block:11px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;
+  }
+  .courselist li:last-child{border-bottom:0}
+  .courselist.plain li{grid-template-columns:1fr}
+  .courselist .cn{
+    font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.04em;
+    color:var(--accent);font-variant-numeric:tabular-nums;
+  }
+
   /* ---------- contact footer ---------- */
   footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
   .cta{margin-top:22px;font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:20ch}
@@ -667,6 +682,47 @@
             <div class="d"><dt>Tools</dt>
               <dd>Git/GitHub, Jupyter, SQL, Linux/CLI, LaTeX</dd></div>
           </dl>
+        </div>
+      </div>
+
+      <div class="details courses">
+        <div class="col-a">
+          <span class="lbl">Coursework · MIT</span>
+          <ul class="courselist">
+            <li><span class="cn">18.701</span><span>Algebra I</span></li>
+            <li><span class="cn">18.C20</span><span>Introduction to Computational Science and Engineering</span></li>
+            <li><span class="cn">6.1010</span><span>Fundamentals of Programming</span></li>
+            <li><span class="cn">3.091</span><span>Introduction to Solid-State Chemistry</span></li>
+          </ul>
+        </div>
+
+        <div class="col-b">
+          <span class="lbl">University-level · Stanford OHS</span>
+          <ul class="courselist plain">
+            <li>Linear Algebra</li>
+            <li>Differential Equations</li>
+            <li>Multivariable Calculus</li>
+            <li>Number Theory</li>
+            <li>Logic</li>
+          </ul>
+          <span class="lbl sub">Advanced electives</span>
+          <ul class="courselist plain">
+            <li>Astrophysics</li>
+            <li>Astronomy Research Seminar</li>
+            <li>Advanced Topics in Microeconomics</li>
+          </ul>
+        </div>
+
+        <div class="col-c">
+          <span class="lbl">Advanced Placement · Stanford OHS</span>
+          <ul class="courselist plain">
+            <li>Calculus BC</li>
+            <li>Statistics</li>
+            <li>Physics C: Mechanics</li>
+            <li>Physics C: Electricity &amp; Magnetism</li>
+            <li>Chemistry</li>
+            <li>Microeconomics</li>
+          </ul>
         </div>
       </div>
     </div>
