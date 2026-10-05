@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="description" content="Countersign, a security layer for AI agents that handle money. It scans what an agent reads for hidden instructions and checks what the agent does before a payment goes out. Built by Rohan Raghu.">
+<meta property="og:title" content="Countersign · Rohan Raghu">
+<meta property="og:description" content="A second signature on every move an AI agent makes with money.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rohankraghu.github.io/countersign/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F3F1EC" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#121009" media="(prefers-color-scheme:dark)">
+<link rel="canonical" href="https://rohankraghu.github.io/countersign/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<title>Countersign · Rohan Raghu</title>
+<script>document.documentElement.className="js"</script>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=ranade@500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>
+
+  :root{
+    --paper:#F3F1EC;
+    --ink:#16130F;
+    --muted:#6E675C;
+    --line:#DCD6CB;
+    --accent:#8A4B2A;
+    --hold:#9A6B12;
+
+    --display:"Ranade","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --body:"Inter",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+
+    --gut:clamp(22px,5vw,64px);
+    --wrap:1600px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;--hold:#D9AE57;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#121009;--ink:#EBE7DF;--muted:#948D80;--line:#2A251D;--accent:#CE8F63;--hold:#D9AE57;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.06}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  ul,ol{margin:0;padding:0;list-style:none}
+  .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+
+  .lbl{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .num{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--accent)}
+  .skip{position:absolute;left:-9999px;background:var(--ink);color:var(--paper);padding:12px 18px;z-index:99;font-size:13px}
+  .skip:focus{left:10px;top:10px}
+  a:focus-visible,button:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
+  .link{border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .15s,border-color .15s}
+  .link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  .top{border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:20px;padding-block:16px}
+  .top .me{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin-right:auto}
+  .top .me span{color:var(--muted);font-weight:500}
+  .top a.mail{white-space:nowrap;font-size:13.5px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .15s,border-color .15s}
+  .top a.mail:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  .hero{padding-block:clamp(26px,3.4vw,44px) clamp(40px,6vw,72px)}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(24px,3vw,40px) 24px;align-items:start}
+  .hero .lede{grid-column:1 / 7}
+  h1.tag{font-size:clamp(40px,7vw,92px);line-height:1.0;letter-spacing:-.04em;margin-top:14px}
+  .hero .kicker{
+    margin-top:clamp(14px,1.8vw,22px);font-family:var(--display);font-weight:700;
+    font-size:clamp(20px,2.3vw,28px);line-height:1.22;letter-spacing:-.025em;max-width:24ch;
+  }
+  .hero .stand{
+    margin-top:clamp(18px,2.2vw,26px);max-width:50ch;
+    font-size:clamp(16px,1.42vw,18.5px);color:var(--muted);line-height:1.58;
+  }
+  .hero .facts{grid-column:8 / 13;border-top:1px solid var(--line)}
+  .fact{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:13px;border-bottom:1px solid var(--line)}
+  .fact .v{font-size:14.5px;font-weight:500;text-align:right}
+  .status{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+
+  .trace{margin:clamp(22px,2.6vw,30px) 0 0;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2.5%,transparent)}
+  .trace svg{display:block;width:100%;height:auto}
+  .trace text{font-family:var(--body);dominant-baseline:middle}
+  .trace .k{font-size:8.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;fill:var(--muted)}
+  .trace .c{font-size:12px;font-weight:500;fill:var(--ink)}
+  .trace .d{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-anchor:end}
+  .trace .ok{fill:var(--muted)}
+  .trace .hd{fill:var(--hold)}
+  .trace .bk{fill:var(--accent)}
+  .trace .rule{stroke:var(--line);stroke-width:1}
+  .trace-cap{font-size:12.5px;color:var(--muted);padding:12px 14px;border-top:1px solid var(--line);line-height:1.5}
+
+  section.block{border-top:1px solid var(--line);padding-block:clamp(36px,4.6vw,64px)}
+  .intro{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-bottom:clamp(26px,3.6vw,44px)}
+  .intro .lbl{grid-column:1 / 4;padding-top:7px}
+  .intro h2{grid-column:4 / 11;font-size:clamp(23px,3.2vw,38px)}
+  .intro p{grid-column:4 / 10;color:var(--muted);margin-top:13px;max-width:56ch}
+
+  .parts{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .part{border-top:1px solid var(--line);padding-top:20px}
+  .parts .spacer{grid-column:1 / 4}
+  .parts .pair{grid-column:4 / 13;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .part h3{font-size:clamp(19px,2.2vw,26px);margin-top:12px}
+  .part .ep{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+  .part p{margin-top:12px;color:var(--muted);font-size:15.5px;max-width:48ch}
+
+  .prose{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px}
+  .prose .text{grid-column:4 / 11;display:flex;flex-direction:column;gap:18px}
+  .prose .big{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.5vw,29px);line-height:1.28;letter-spacing:-.025em}
+  .prose .body-copy{font-size:16.5px;line-height:1.66;color:var(--muted);max-width:64ch}
+  .prose .body-copy a{color:var(--ink)}
+
+  .meter{grid-column:4 / 13;margin-bottom:clamp(22px,2.8vw,34px)}
+  .meter-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .meter-head .count{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.2vw,26px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .meter-head .count span{color:var(--muted);font-weight:500}
+  .track{display:flex;gap:3px;margin-top:12px;height:8px}
+  .track i{flex:1;background:var(--line)}
+  .track i.done{background:var(--accent)}
+  .track i.now{background:color-mix(in srgb,var(--accent) 40%,var(--line))}
+  .legend{display:flex;gap:8px 22px;flex-wrap:wrap;margin-top:12px}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend i{width:12px;height:6px;background:var(--line);display:inline-block}
+  .legend i.done{background:var(--accent)}
+  .legend i.now{background:color-mix(in srgb,var(--accent) 40%,var(--line))}
+
+  .progress-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0 24px}
+  .milestones{grid-column:4 / 13;border-top:1px solid var(--line)}
+  .ms{display:grid;grid-template-columns:44px 1fr 150px;gap:6px 20px;padding-block:20px;border-bottom:1px solid var(--line);align-items:baseline}
+  .ms .n{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+  .ms h3{font-size:clamp(17px,1.8vw,21px);letter-spacing:-.02em}
+  .ms p{margin-top:7px;color:var(--muted);font-size:15px;max-width:60ch}
+  .ms .st{display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right}
+  .ms .when{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .ms .pill{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  }
+  .ms .pill::before{content:"";width:7px;height:7px;border-radius:50%;border:1.5px solid var(--line)}
+  .ms.done .n,.ms.done .pill{color:var(--accent)}
+  .ms.done .pill::before{background:var(--accent);border-color:var(--accent)}
+  .ms.now .pill{color:var(--ink)}
+  .ms.now .pill::before{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 40%,transparent)}
+  .ms.now h3::after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-left:10px;vertical-align:middle}
+
+  .log{grid-column:4 / 13;margin-top:clamp(34px,4vw,52px)}
+  .log .lbl{display:block;padding-bottom:13px;border-bottom:1px solid var(--line)}
+  .log li{display:grid;grid-template-columns:120px 1fr;gap:6px 20px;padding-block:14px;border-bottom:1px solid var(--line)}
+  .log li:last-child{border-bottom:0}
+  .log time{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+  .log span{font-size:15px;line-height:1.5}
+  .updated{grid-column:4 / 13;margin-top:18px;font-size:12px;color:var(--muted)}
+
+  .principles{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  .principles .list{grid-column:4 / 13;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .principle{border-top:1px solid var(--line);padding-top:18px}
+  .principle h3{font-size:clamp(17px,1.8vw,21px);margin-top:10px}
+  .principle p{margin-top:10px;color:var(--muted);font-size:15px}
+
+  footer.site{border-top:1px solid var(--line);padding-block:clamp(48px,6vw,84px) 40px}
+  .cta{margin-top:22px;font-family:var(--display);font-weight:700;font-size:clamp(24px,4.4vw,52px);line-height:1.08;letter-spacing:-.03em;max-width:22ch}
+  .cta a{color:var(--accent);border-bottom:2px solid transparent;transition:border-color .15s}
+  .cta a:hover{border-bottom-color:var(--accent)}
+  .foot-rows{display:grid;grid-template-columns:repeat(12,1fr);gap:16px 24px;margin-top:clamp(40px,5vw,64px)}
+  .foot-rows .c{grid-column:span 3;display:flex;flex-direction:column;gap:6px}
+  .foot-rows .c a{font-size:14.5px;font-weight:500;border-bottom:1px solid var(--line);align-self:flex-start;padding-bottom:1px;transition:color .15s,border-color .15s}
+  .foot-rows .c a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .colophon{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+
+  .nojs{grid-column:4 / 13;color:var(--muted);font-size:15px;padding-block:16px;border-top:1px solid var(--line)}
+  html.js .nojs{display:none}
+
+  @media (max-width:1000px){
+    .hero .lede{grid-column:1 / 13}
+    .hero .facts{grid-column:1 / 13}
+    .intro h2,.intro p{grid-column:4 / 13}
+    .parts .pair{grid-column:1 / 13}
+    .parts .spacer{display:none}
+    .prose .text{grid-column:4 / 13}
+    .principles .list{grid-template-columns:1fr 1fr}
+    .foot-rows .c{grid-column:span 4}
+  }
+  @media (max-width:680px){
+    body{font-size:15.5px}
+    .intro .lbl,.intro h2,.intro p{grid-column:1 / 13}
+    .parts .pair{grid-template-columns:1fr}
+    .prose .text{grid-column:1 / 13}
+    .meter,.milestones,.log,.updated,.nojs{grid-column:1 / 13}
+    .ms{grid-template-columns:34px 1fr}
+    .ms .st{grid-column:2;flex-direction:row;align-items:baseline;gap:14px;text-align:left;order:3}
+    .log li{grid-template-columns:1fr;gap:2px}
+    .principles .list{grid-column:1 / 13;grid-template-columns:1fr}
+    .foot-rows .c{grid-column:span 6}
+  }
+
+  @media print{
+    :root{--paper:#fff;--ink:#000;--muted:#333;--line:#c4c4c4;--accent:#000;--hold:#000;--gut:0}
+    .top,.skip,.trace{display:none!important}
+    body{font-size:10pt}
+    section.block,footer.site{padding-block:14pt}
+    h1.tag{font-size:30pt}
+    .ms,.principle{break-inside:avoid}
+    .cta{font-size:15pt}
+    a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="top">
+  <div class="wrap">
+    <a class="me" href="../">Rohan Raghu <span>/ Countersign</span></a>
+    <a class="mail" href="../#work">All work</a>
+    <a class="mail" href="#contact">Contact</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="lede">
+        <span class="lbl">Startup · in development</span>
+        <h1 class="tag">Countersign</h1>
+        <p class="kicker">A second signature on every move an AI agent makes with money.</p>
+        <p class="stand">AI agents are starting to read invoices, answer customer email and act on
+          financial news, then pay, trade and move data on their own. Every document they read is a
+          chance for someone to slip in an instruction. Countersign checks what an agent reads, and
+          what it does next, before the money leaves.</p>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><span class="lbl">Status</span><span class="v status"><span class="dot"></span><span id="heroStatus">Building</span></span></div>
+        <div class="fact"><span class="lbl" id="heroNowLabel">Next milestone</span><span class="v" id="heroNow">Scanner v1</span></div>
+        <div class="fact"><span class="lbl">Started</span><span class="v">October 2026</span></div>
+        <div class="fact"><span class="lbl">Role</span><span class="v">Founder</span></div>
+        <div class="fact"><span class="lbl">Stack</span><span class="v">Python · PyTorch · ONNX · FastAPI</span></div>
+
+        <figure class="trace" aria-labelledby="trace-cap">
+          <svg viewBox="0 0 360 150" aria-hidden="true" focusable="false">
+            <text class="k" x="14" y="24">Read</text>
+            <text class="c" x="70" y="24">invoice_0418.pdf</text>
+            <text class="d bk" x="346" y="24">Injection</text>
+            <line class="rule" x1="14" y1="48" x2="346" y2="48"/>
+            <text class="k" x="14" y="72">Action</text>
+            <text class="c" x="70" y="72">update_payee(V-104)</text>
+            <text class="d hd" x="346" y="72">Hold</text>
+            <line class="rule" x1="14" y1="96" x2="346" y2="96"/>
+            <text class="k" x="14" y="120">Action</text>
+            <text class="c" x="70" y="120">pay_invoice(V-104)</text>
+            <text class="d bk" x="346" y="120">Block</text>
+          </svg>
+          <figcaption class="trace-cap" id="trace-cap">One session, three decisions: a hidden instruction
+            in an invoice is flagged, the bank-detail change it asks for is held, and the payment to
+            the changed account is blocked.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <section class="block" id="what">
+    <div class="wrap">
+      <div class="intro">
+        <span class="lbl">What it is</span>
+        <h2>Two checks, one API.</h2>
+      </div>
+      <div class="parts">
+        <div class="spacer"></div>
+        <div class="pair">
+          <article class="part">
+            <span class="num">01</span>
+            <h3>Scanner</h3>
+            <span class="ep">POST /v1/scan</span>
+            <p>Reads untrusted content before the agent does and looks for instructions aimed at the
+              agent: hidden in HTML, zero-width characters, look-alike letters, footers or another
+              language. It returns a risk score and points at the exact span it flagged.</p>
+          </article>
+          <article class="part">
+            <span class="num">02</span>
+            <h3>Monitor</h3>
+            <span class="ep">POST /v1/events</span>
+            <p>Watches the agent's sequence of actions and answers allow, hold or block. A single
+              message can look harmless; a payee change right after reading an outside document,
+              followed by a payment to that payee, does not.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="why">
+    <div class="wrap">
+      <div class="intro">
+        <span class="lbl">Why</span>
+      </div>
+      <div class="prose">
+        <div class="text">
+          <p class="big">General guardrails ask whether one piece of text looks malicious. Fraud in
+            finance usually looks like ordinary paperwork, one step at a time.</p>
+          <p class="body-copy">Countersign is built around a finance-specific threat model:
+            accounts-payable agents that pay invoices, fintech copilots that read customer email,
+            and research agents at funds that read filings and news. The question it answers is not
+            only "is this text an attack?" but "should this agent be allowed to do this, given
+            everything it has read in this session?"</p>
+          <p class="body-copy">It also comes out of the same lesson as my
+            <a class="link" href="https://github.com/rohanKraghu/honest-backtest" target="_blank" rel="noopener">honest backtester</a>:
+            a number that looks good on the data you tuned it on means very little. Security tools
+            are easy to make look perfect in a demo, so the evaluation here is designed to be hard to
+            fool, starting with the model's own author.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="progress">
+    <div class="wrap">
+      <div class="intro">
+        <span class="lbl">Progress</span>
+        <h2>Where the build is.</h2>
+        <p>Milestones in the order they are being built. This page is updated as each one lands.</p>
+      </div>
+
+      <div class="progress-grid">
+        <div class="meter">
+          <div class="meter-head">
+            <span class="count" id="msCount">0 <span>of 0 milestones done</span></span>
+            <span class="lbl" id="msNowLabel"></span>
+          </div>
+          <div class="track" id="msTrack" role="img" aria-label="Milestones completed"></div>
+          <div class="legend">
+            <span class="lbl"><i class="done"></i>Done</span>
+            <span class="lbl"><i class="now"></i>In progress</span>
+            <span class="lbl"><i></i>Up next</span>
+          </div>
+        </div>
+
+        <p class="nojs">The milestone list needs JavaScript to display.</p>
+        <ol class="milestones" id="msList"></ol>
+
+        <div class="log">
+          <span class="lbl">Build log</span>
+          <ul id="logList"></ul>
+        </div>
+
+        <p class="updated">Last updated <span id="lastUpdated">–</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="principles">
+    <div class="wrap">
+      <div class="intro">
+        <span class="lbl">How it is built</span>
+        <h2>Rules I am holding the project to.</h2>
+      </div>
+      <div class="principles">
+        <div class="list">
+          <article class="principle">
+            <span class="num">01</span>
+            <h3>Judge it on attacks it has never seen</h3>
+            <p>Thresholds are set on a validation split only. Results are reported separately for
+              held-out attack types, document types and hiding techniques, because in-distribution
+              scores flatter every model.</p>
+          </article>
+          <article class="principle">
+            <span class="num">02</span>
+            <h3>Fast enough to sit in the loop</h3>
+            <p>A check that slows the agent down gets turned off. The scanner is built to run on an
+              ordinary CPU in milliseconds, not on a GPU behind a queue.</p>
+          </article>
+          <article class="principle">
+            <span class="num">03</span>
+            <h3>Private by default</h3>
+            <p>Countersign stores hashes and lengths of what it scans, not the raw text, unless a
+              customer explicitly turns that on.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site" id="contact">
+  <div class="wrap">
+    <span class="lbl">Contact</span>
+    <p class="cta">Building agents that touch money, or want to talk about agent security?
+      <a href="mailto:rohansky@mit.edu">Say hello →</a></p>
+
+    <div class="foot-rows">
+      <div class="c"><span class="lbl">Email</span>
+        <a href="mailto:rohansky@mit.edu">rohansky@mit.edu</a></div>
+      <div class="c"><span class="lbl">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">in/rohan-raghu</a></div>
+      <div class="c"><span class="lbl">GitHub</span>
+        <a href="https://github.com/rohanKraghu" target="_blank" rel="noopener">rohanKraghu</a></div>
+      <div class="c"><span class="lbl">More</span>
+        <a href="../">rohankraghu.github.io</a></div>
+    </div>
+
+    <div class="colophon">
+      <span>© <span id="yr">2026</span> Rohan Raghu</span>
+      <span>Set in Ranade and Inter.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const COUNTERSIGN = {
+  lastUpdated: "October 5, 2026",
+  milestones: [
+    {
+      name: "Threat model and attack generator",
+      status: "done",
+      when: "Oct 2026",
+      desc: "A generator for realistic finance documents (invoices, statements, vendor email) with injected instructions, labeled down to the character span, plus benign look-alikes that sound like instructions but are not."
+    },
+    {
+      name: "Scanner v0: a lexical baseline",
+      status: "done",
+      when: "Oct 2026",
+      desc: "A fast n-gram model, evaluated on held-out attack families, document types and hiding techniques. It showed exactly where word-matching breaks, which sets the bar for the next model."
+    },
+    {
+      name: "Reproducible setup",
+      status: "done",
+      when: "Oct 2026",
+      desc: "Versioned code, a fixed-seed dataset that regenerates byte for byte, and baseline results that reproduce exactly from a clean checkout."
+    },
+    {
+      name: "Monitor v0: action rules engine",
+      status: "done",
+      when: "Oct 2026",
+      desc: "Session-aware rules over an agent's actions: payee changes after outside content, payments to changed or unknown payees, limits, exports to untrusted destinations and trades after outside content. Every rule unit-tested."
+    },
+    {
+      name: "API v1",
+      status: "done",
+      when: "Oct 2026",
+      desc: "A FastAPI service for scanning and events, with API keys, rate limits, usage metering, session traces and signed webhooks on hold or block. Tested end to end: a doctored invoice is flagged, the payee change it asks for is held, and the payment is blocked."
+    },
+    {
+      name: "Python SDK",
+      status: "done",
+      when: "Oct 2026",
+      desc: "A small sync and async client. Wrapping a tool in one decorator means a payment raises Held or Blocked before it runs."
+    },
+    {
+      name: "Scanner v1: fine-tuned encoder",
+      status: "next",
+      when: "Target: Dec 2026",
+      desc: "A small transformer fine-tuned in PyTorch and exported to ONNX for CPU, compared against v0 on every held-out split."
+    },
+    {
+      name: "Benchmark against a public detector",
+      status: "next",
+      when: "Target: Dec 2026",
+      desc: "Beat an openly available prompt-injection detector on held-out finance attacks, under the same splits and thresholds."
+    },
+    {
+      name: "Design partner pilots",
+      status: "next",
+      when: "Target: spring 2027",
+      desc: "Integrate with teams building finance agents and run Countersign against their real traffic."
+    }
+  ],
+  log: [
+    { date: "Oct 5, 2026", text: "Built the action monitor, API v1 and the Python SDK, each with its own test suite. The full invoice attack is now caught end to end through the real API. Next: the fine-tuned scanner." },
+    { date: "Oct 5, 2026", text: "Clean setup on a new machine; the dataset regenerated byte for byte and every baseline result reproduced exactly." },
+    { date: "Oct 4, 2026", text: "Scanner v0 trained and evaluated on all held-out splits. Encoder training script written." },
+    { date: "Oct 3, 2026", text: "Picked the direction: a security API for AI agents that handle money." }
+  ]
+};
+
+(function () {
+  "use strict";
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var labels = { done: "Done", now: "In progress", next: "Up next" };
+  var ms = COUNTERSIGN.milestones;
+  var done = ms.filter(function (m) { return m.status === "done"; }).length;
+  var now = ms.filter(function (m) { return m.status === "now"; });
+  var next = ms.filter(function (m) { return m.status === "next"; });
+  var focus = now[0] || next[0];
+
+  var count = document.getElementById("msCount");
+  count.firstChild.nodeValue = done + " ";
+  count.querySelector("span").textContent = "of " + ms.length + " milestones done";
+  document.getElementById("msTrack").setAttribute("aria-label", done + " of " + ms.length + " milestones done");
+  if (focus) {
+    document.getElementById("msNowLabel").textContent = (now.length ? "Now: " : "Next: ") + focus.name;
+    document.getElementById("heroNow").textContent = focus.name.split(":")[0];
+    document.getElementById("heroNowLabel").textContent = now.length ? "Current milestone" : "Next milestone";
+  }
+  document.getElementById("heroStatus").textContent = done === ms.length ? "Shipped" : "Building";
+  document.getElementById("lastUpdated").textContent = COUNTERSIGN.lastUpdated;
+
+  var track = document.getElementById("msTrack");
+  var list = document.getElementById("msList");
+  ms.forEach(function (m, i) {
+    var seg = document.createElement("i");
+    seg.className = m.status;
+    track.appendChild(seg);
+
+    var li = document.createElement("li");
+    li.className = "ms " + m.status;
+    li.innerHTML =
+      '<span class="n"></span>' +
+      '<div><h3></h3><p></p></div>' +
+      '<div class="st"><span class="pill"></span><span class="when"></span></div>';
+    li.querySelector(".n").textContent = String(i + 1).padStart(2, "0");
+    li.querySelector("h3").textContent = m.name;
+    li.querySelector("p").textContent = m.desc;
+    li.querySelector(".pill").textContent = labels[m.status] || m.status;
+    li.querySelector(".when").textContent = m.when;
+    list.appendChild(li);
+  });
+
+  var log = document.getElementById("logList");
+  COUNTERSIGN.log.forEach(function (e) {
+    var li = document.createElement("li");
+    li.innerHTML = "<time></time><span></span>";
+    li.querySelector("time").textContent = e.date;
+    li.querySelector("span").textContent = e.text;
+    log.appendChild(li);
+  });
+})();
+</script>
+
+</body>
+</html>
