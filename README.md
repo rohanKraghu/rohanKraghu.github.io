@@ -57,7 +57,9 @@ const COUNTERSIGN = { lastUpdated: "...", milestones: [ ... ], log: [ ... ] };
 
 When a milestone lands, set its `status` from `"now"` to `"done"`, set the
 next one to `"now"`, add a line to the top of `log`, and change
-`lastUpdated`. Status is one of `"done"`, `"now"` or `"next"`.
+`lastUpdated`. Status is one of `"done"`, `"now"` or `"next"`. With no
+`"now"` milestone, the page shows the first `"next"` one as the next
+milestone.
 
 Keep it high level: no unreleased evaluation numbers, licensing plans or
 customer names.
