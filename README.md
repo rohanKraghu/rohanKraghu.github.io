@@ -6,6 +6,7 @@ files here are served exactly as they are.
 ```
 index.html                  Portfolio. Work, Experience, About, contact.
 assets/                     Images and documents linked from the portfolio.
+countersign/index.html      Countersign, the startup: what it is and build progress.
 numeraldo/index.html        Numeraldo, the nonprofit.
 numeraldo/crash-course/     Financial Literacy Crash Course (its own README).
 ```
@@ -43,6 +44,23 @@ const NUMERALDO = { goal: 25000, lastUpdated: "...", programs: [ ... ] };
 
 The hero ledger, the fundraising meter, the allocation table and its
 percentages all derive from it. Edit that block and nothing else.
+
+## Updating the Countersign progress
+
+The milestone list, the progress bar, the hero's "Current milestone" and
+the build log on the Countersign page all render from one object near the
+bottom of `countersign/index.html`:
+
+```js
+const COUNTERSIGN = { lastUpdated: "...", milestones: [ ... ], log: [ ... ] };
+```
+
+When a milestone lands, set its `status` from `"now"` to `"done"`, set the
+next one to `"now"`, add a line to the top of `log`, and change
+`lastUpdated`. Status is one of `"done"`, `"now"` or `"next"`.
+
+Keep it high level: no unreleased evaluation numbers, licensing plans or
+customer names.
 
 ## Conventions
 
