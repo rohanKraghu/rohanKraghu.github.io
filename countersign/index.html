@@ -248,7 +248,7 @@
 
       <div class="facts">
         <div class="fact"><span class="lbl">Status</span><span class="v status"><span class="dot"></span><span id="heroStatus">Building</span></span></div>
-        <div class="fact"><span class="lbl" id="heroNowLabel">Current milestone</span><span class="v" id="heroNow">Broader coverage of direct injections</span></div>
+        <div class="fact"><span class="lbl" id="heroNowLabel">Current milestone</span><span class="v" id="heroNow">Quieter on routine payment changes</span></div>
         <div class="fact"><span class="lbl">Started</span><span class="v">October 2026</span></div>
         <div class="fact"><span class="lbl">Role</span><span class="v">Founder</span></div>
         <div class="fact"><span class="lbl">Stack</span><span class="v">Python · PyTorch · ONNX · FastAPI</span></div>
@@ -424,7 +424,7 @@
 
 <script>
 const COUNTERSIGN = {
-  lastUpdated: "October 6, 2026",
+  lastUpdated: "October 7, 2026",
   milestones: [
     {
       name: "Threat model and attack generator",
@@ -488,9 +488,15 @@ const COUNTERSIGN = {
     },
     {
       name: "Broader coverage of direct injections",
+      status: "done",
+      when: "Oct 2026",
+      desc: "The scanner now catches generic chat-style injections as well as finance-specific ones, including attacks hidden inside support and chat replies, without raising false alarms on that kind of text."
+    },
+    {
+      name: "Quieter on routine payment changes",
       status: "now",
       when: "Oct 2026",
-      desc: "Teaching the scanner to catch generic chat-style injections as well as finance-specific ones, without raising false alarms on support and chat text."
+      desc: "Cutting false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment, which read a lot like the attacks they resemble."
     },
     {
       name: "Independent evaluation",
@@ -506,6 +512,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 7, 2026", text: "Scanner v1.5: trained on direct injections hidden inside assistant-style text and checked on a new test set frozen beforehand. Best model so far. Next: fewer false alarms on routine payment changes." },
     { date: "Oct 6, 2026", text: "Scanner v1.4: trained on assistant-voiced text so harmless support and chat replies stop raising false alarms, and added decoding for attacks hidden as character codes." },
     { date: "Oct 5, 2026", text: "Scanner v1.3: added public injection data and decoding for invisible Unicode characters. Every version is checked on a test set frozen before its training data existed." },
     { date: "Oct 5, 2026", text: "Fine-tuned scanner trained on real-world data and benchmarked against two public detectors; it wins on held-out finance attacks." },
