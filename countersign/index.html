@@ -248,7 +248,7 @@
 
       <div class="facts">
         <div class="fact"><span class="lbl">Status</span><span class="v status"><span class="dot"></span><span id="heroStatus">Building</span></span></div>
-        <div class="fact"><span class="lbl" id="heroNowLabel">Current milestone</span><span class="v" id="heroNow">Quieter on routine payment changes</span></div>
+        <div class="fact"><span class="lbl" id="heroNowLabel">Next milestone</span><span class="v" id="heroNow">Independent evaluation</span></div>
         <div class="fact"><span class="lbl">Started</span><span class="v">October 2026</span></div>
         <div class="fact"><span class="lbl">Role</span><span class="v">Founder</span></div>
         <div class="fact"><span class="lbl">Stack</span><span class="v">Python · PyTorch · ONNX · FastAPI</span></div>
@@ -494,9 +494,9 @@ const COUNTERSIGN = {
     },
     {
       name: "Quieter on routine payment changes",
-      status: "now",
+      status: "done",
       when: "Oct 2026",
-      desc: "Cutting false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment, which read a lot like the attacks they resemble. The hardest case is real support inboxes, where customers legitimately ask the reader to do things."
+      desc: "Far fewer false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment. Support inboxes get their own cutoff: callers tag content as a customer ticket, and the scanner allows for customers legitimately asking the reader to do things, while every other source is scored exactly as before."
     },
     {
       name: "Independent evaluation",
@@ -512,6 +512,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 8, 2026", text: "Per-source cutoffs: the scanner now takes the kind of content it is reading into account, starting with customer support tickets, where false alarms dropped to the target level. Checked on a fresh set of real tickets frozen beforehand." },
     { date: "Oct 8, 2026", text: "Scanner v1.6: trained on harmless invoice and payment-change notes and checked on a new frozen test set that includes real billing tickets. Fewer false alarms on billing mail, with some trade-offs elsewhere, so it is kept as a separate model while those are weighed." },
     { date: "Oct 7, 2026", text: "Scanner v1.5: trained on direct injections hidden inside assistant-style text and checked on a new test set frozen beforehand. Best model so far. Next: fewer false alarms on routine payment changes." },
     { date: "Oct 6, 2026", text: "Scanner v1.4: trained on assistant-voiced text so harmless support and chat replies stop raising false alarms, and added decoding for attacks hidden as character codes." },
