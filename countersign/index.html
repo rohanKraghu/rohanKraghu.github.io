@@ -424,7 +424,7 @@
 
 <script>
 const COUNTERSIGN = {
-  lastUpdated: "October 7, 2026",
+  lastUpdated: "October 8, 2026",
   milestones: [
     {
       name: "Threat model and attack generator",
@@ -496,7 +496,7 @@ const COUNTERSIGN = {
       name: "Quieter on routine payment changes",
       status: "now",
       when: "Oct 2026",
-      desc: "Cutting false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment, which read a lot like the attacks they resemble."
+      desc: "Cutting false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment, which read a lot like the attacks they resemble. The hardest case is real support inboxes, where customers legitimately ask the reader to do things."
     },
     {
       name: "Independent evaluation",
@@ -512,6 +512,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 8, 2026", text: "Scanner v1.6: trained on harmless invoice and payment-change notes and checked on a new frozen test set that includes real billing tickets. Fewer false alarms on billing mail, with some trade-offs elsewhere, so it is kept as a separate model while those are weighed." },
     { date: "Oct 7, 2026", text: "Scanner v1.5: trained on direct injections hidden inside assistant-style text and checked on a new test set frozen beforehand. Best model so far. Next: fewer false alarms on routine payment changes." },
     { date: "Oct 6, 2026", text: "Scanner v1.4: trained on assistant-voiced text so harmless support and chat replies stop raising false alarms, and added decoding for attacks hidden as character codes." },
     { date: "Oct 5, 2026", text: "Scanner v1.3: added public injection data and decoding for invisible Unicode characters. Every version is checked on a test set frozen before its training data existed." },
