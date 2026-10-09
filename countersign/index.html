@@ -512,7 +512,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
-    { date: "Oct 9, 2026", text: "Reset v1.8's support-ticket cutoff on a much larger pool of fresh tickets. On a new frozen test set it now catches more attacks inside tickets than v1.7 with about the same false-alarm rate. v1.7 stays the default while the switch is decided." },
+    { date: "Oct 9, 2026", text: "Reset v1.8's support-ticket cutoff on a much larger pool of fresh tickets. On a new frozen test set it now catches more attacks inside tickets than v1.7 with about the same false-alarm rate. It is now the default model." },
     { date: "Oct 9, 2026", text: "Found that two of the support-ticket test sets shared some tickets, fixed how they are split and re-scored them cleanly; the conclusions held. Scanner v1.8, trained on richer generated tickets, catches more attacks inside tickets but raises a few more false alarms, so it stays a candidate while v1.7 remains the default." },
     { date: "Oct 8, 2026", text: "Scanner v1.7: trained on generated support-ticket text, so no real customer tickets go into training. On a fresh set of real tickets frozen beforehand it catches more attacks with fewer false alarms than v1.6, and it holds up on every earlier test. It is now the default model." },
     { date: "Oct 8, 2026", text: "Per-source cutoffs: the scanner now takes the kind of content it is reading into account, starting with customer support tickets, where false alarms dropped to the target level. Checked on a fresh set of real tickets frozen beforehand." },
