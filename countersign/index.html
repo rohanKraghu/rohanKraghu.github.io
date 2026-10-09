@@ -251,6 +251,7 @@
         <div class="fact"><span class="lbl" id="heroNowLabel">Next milestone</span><span class="v" id="heroNow">Independent evaluation</span></div>
         <div class="fact"><span class="lbl">Started</span><span class="v">October 2026</span></div>
         <div class="fact"><span class="lbl">Role</span><span class="v">Founder</span></div>
+        <div class="fact"><span class="lbl">Open source</span><span class="v"><a class="link" href="https://github.com/rohanKraghu/countersign-attacks" target="_blank" rel="noopener">Attack library and SDK</a></span></div>
         <div class="fact"><span class="lbl">Stack</span><span class="v">Python · PyTorch · ONNX · FastAPI</span></div>
 
         <figure class="trace" aria-labelledby="trace-cap">
@@ -499,6 +500,12 @@ const COUNTERSIGN = {
       desc: "Far fewer false alarms on harmless notes about everyday finance work, such as invoice amendments, standing orders and early payment. Support inboxes get their own cutoff: callers tag content as a customer ticket, and the scanner allows for customers legitimately asking the reader to do things, while every other source is scored exactly as before."
     },
     {
+      name: "Open-source attack library and SDK",
+      status: "done",
+      when: "Oct 2026",
+      desc: "The finance attack generator and the Python client are public on GitHub, so anyone can generate the same kinds of attacks to test their own agents. The test sets used to score the scanner stay private so they remain unseen."
+    },
+    {
       name: "Independent evaluation",
       status: "next",
       when: "Target: Dec 2026",
@@ -512,6 +519,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 9, 2026", text: "Published the attack library and the Python SDK as an open-source repo, countersign-attacks. The scanner, the monitor and the private test sets stay closed." },
     { date: "Oct 9, 2026", text: "Reset v1.8's support-ticket cutoff on a much larger pool of fresh tickets. On a new frozen test set it now catches more attacks inside tickets than v1.7 with about the same false-alarm rate. It is now the default model." },
     { date: "Oct 9, 2026", text: "Found that two of the support-ticket test sets shared some tickets, fixed how they are split and re-scored them cleanly; the conclusions held. Scanner v1.8, trained on richer generated tickets, catches more attacks inside tickets but raises a few more false alarms, so it stays a candidate while v1.7 remains the default." },
     { date: "Oct 8, 2026", text: "Scanner v1.7: trained on generated support-ticket text, so no real customer tickets go into training. On a fresh set of real tickets frozen beforehand it catches more attacks with fewer false alarms than v1.6, and it holds up on every earlier test. It is now the default model." },
