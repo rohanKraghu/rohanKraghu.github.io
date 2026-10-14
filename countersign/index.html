@@ -425,7 +425,7 @@
 
 <script>
 const COUNTERSIGN = {
-  lastUpdated: "October 9, 2026",
+  lastUpdated: "October 14, 2026",
   milestones: [
     {
       name: "Threat model and attack generator",
@@ -519,6 +519,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 14, 2026", text: "Speed under load: measured how the scanner holds up with many requests at once and tried a smaller, much faster model. It missed too many attacks to ship, so the current model stays the default while a better way to shrink it is tested." },
     { date: "Oct 9, 2026", text: "Published the attack library and the Python SDK as an open-source repo, countersign-attacks. The scanner, the monitor and the private test sets stay closed." },
     { date: "Oct 9, 2026", text: "Reset v1.8's support-ticket cutoff on a much larger pool of fresh tickets. On a new frozen test set it now catches more attacks inside tickets than v1.7 with about the same false-alarm rate. It is now the default model." },
     { date: "Oct 9, 2026", text: "Found that two of the support-ticket test sets shared some tickets, fixed how they are split and re-scored them cleanly; the conclusions held. Scanner v1.8, trained on richer generated tickets, catches more attacks inside tickets but raises a few more false alarms, so it stays a candidate while v1.7 remains the default." },
