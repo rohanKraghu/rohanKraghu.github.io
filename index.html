@@ -327,14 +327,15 @@
       <span class="lbl">Mathematics &amp; artificial intelligence</span>
       <h1 class="tag">Making numbers mean something</h1>
       <p class="stand">I'm interested in the moment a number stops being noise and becomes a
-        decision. Closing the gap is the thread through everything I build: in a catalyst model,
+        decision.
+        Most of what I build is about getting from one to the other, whether it is a catalyst model,
         a market forecast, or somebody's first bank account.</p>
     </div>
 
     <div class="hero-art"><canvas id="lorenz" aria-hidden="true"></canvas></div>
 
     <div class="meta">
-      <span class="where">Founder at Numeraldo.<br>MIT, from August 2026.</span>
+      <span class="where">Founder at Numeraldo.<br>MIT, Class of 2030.</span>
       <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
       <a href="https://drive.google.com/file/d/1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc/view" target="_blank" rel="noopener">Resume</a>
       <a href="https://drive.google.com/file/d/1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg/view" target="_blank" rel="noopener">CV</a>
@@ -343,10 +344,9 @@
 
   <div class="wrap lorenz-ui">
     <div class="lz-line">
-      <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations, zero randomness,
-        and yet forecasting still fails. It's the exact same arithmetic behind a backtest that
-        fakes an edge. An example of why it is critical to consider the moment a number stops
-        meaning anything… but drag ρ below 24.74 and the wandering stops.</p>
+      <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
+        forecasting still fails. A backtest that fakes an edge falls into the same trap: a precise
+        number that has stopped meaning anything. Drag ρ below 24.74 and the wandering stops.</p>
       <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
     </div>
 
@@ -489,7 +489,7 @@
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Open source · 115 tests</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 347 tests</span></span>
             <span class="stack">Python · NumPy · event-driven, point-in-time data</span>
           </div>
         </a>
@@ -507,12 +507,12 @@
             <p class="desc">A planet crossing in front of its star dims the light by a fraction of a
               percent, on a schedule. This pipeline flattens each light curve, searches it for that
               repeating dip, then scores 23 measurements of every candidate with a gradient-boosted
-              classifier. Planets are 4% of the data, so it is judged on average precision: 0.73,
+              classifier. Planets are 4% of the data, so it is judged on average precision: 0.745,
               against 0.04 for guessing and 0.18 for the best single measurement.</p>
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Open source · 86 tests</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 566 tests</span></span>
             <span class="stack">Python · scikit-learn · NumPy · SciPy</span>
           </div>
         </a>
@@ -613,13 +613,12 @@
         <div class="text">
           <p class="big">I started Numeraldo because the people who struggle most with numbers are
             rarely the people offered help with them.</p>
-          <p class="body-copy">That has turned out to be the same instinct behind everything else I
-            work on. In the Strano Lab it meant writing the pipelines that made catalyst data legible
-            rather than waiting for someone else to. At a hedge fund it meant building the
-            back-testing framework from scratch, and learning quickly that the interesting question
-            is not what a backtest claims but why it lies. At Numeraldo it means teaching the session
-            myself every week, not delegating the classroom. I study mathematics and artificial
-            intelligence at MIT starting this August, and I'm looking for work where shipping the
+          <p class="body-copy">The same instinct shows up in the rest of my work. In the Strano Lab I wrote the pipelines
+            that made the catalyst data readable instead of waiting for someone else to. At a hedge
+            fund I built the back-testing framework from scratch and learned quickly to ask how a
+            backtest is lying before asking what it claims. At Numeraldo I still teach the weekly
+            session myself. I study mathematics and artificial
+            intelligence at MIT, and I'm looking for work where shipping the
             thing is part of the job.</p>
         </div>
       </div>
@@ -1016,7 +1015,7 @@
     else if (m.addListener) m.addListener(fn);
   }
   listen(mqReduce, applyMotion);
-  listen(mqDark, function () { readAccent(); });
+  listen(mqDark, function () { readAccent(); if (still) drawStill(); });
 
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) halt(); else schedule();
