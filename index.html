@@ -334,7 +334,7 @@
     <div class="hero-art"><canvas id="lorenz" aria-hidden="true"></canvas></div>
 
     <div class="meta">
-      <span class="where">Founder at Numeraldo.<br>MIT, from August 2026.</span>
+      <span class="where">Founder at Numeraldo.<br>MIT, Class of 2030.</span>
       <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
       <a href="https://drive.google.com/file/d/1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc/view" target="_blank" rel="noopener">Resume</a>
       <a href="https://drive.google.com/file/d/1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg/view" target="_blank" rel="noopener">CV</a>
@@ -489,7 +489,7 @@
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Open source · 115 tests</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 347 tests</span></span>
             <span class="stack">Python · NumPy · event-driven, point-in-time data</span>
           </div>
         </a>
@@ -507,12 +507,12 @@
             <p class="desc">A planet crossing in front of its star dims the light by a fraction of a
               percent, on a schedule. This pipeline flattens each light curve, searches it for that
               repeating dip, then scores 23 measurements of every candidate with a gradient-boosted
-              classifier. Planets are 4% of the data, so it is judged on average precision: 0.73,
+              classifier. Planets are 4% of the data, so it is judged on average precision: 0.745,
               against 0.04 for guessing and 0.18 for the best single measurement.</p>
             <span class="go">View the repo →</span>
           </div>
           <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Open source · 86 tests</span></span>
+            <span class="status"><span class="dot"></span><span class="lbl">Open source · 566 tests</span></span>
             <span class="stack">Python · scikit-learn · NumPy · SciPy</span>
           </div>
         </a>
@@ -619,7 +619,7 @@
             back-testing framework from scratch, and learning quickly that the interesting question
             is not what a backtest claims but why it lies. At Numeraldo it means teaching the session
             myself every week, not delegating the classroom. I study mathematics and artificial
-            intelligence at MIT starting this August, and I'm looking for work where shipping the
+            intelligence at MIT, and I'm looking for work where shipping the
             thing is part of the job.</p>
         </div>
       </div>
@@ -1016,7 +1016,7 @@
     else if (m.addListener) m.addListener(fn);
   }
   listen(mqReduce, applyMotion);
-  listen(mqDark, function () { readAccent(); });
+  listen(mqDark, function () { readAccent(); if (still) drawStill(); });
 
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) halt(); else schedule();
