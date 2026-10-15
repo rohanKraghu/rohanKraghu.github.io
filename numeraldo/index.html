@@ -225,7 +225,7 @@
   }
   .swatch{width:12px;height:12px;border-radius:2px}
   .bd-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .bd-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
+  .bd-desc{display:block;color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
   .bd-head .r{text-align:right}
   .bd-amt,.bd-pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
   .bd-pct{color:var(--muted);font-size:13px}
@@ -789,9 +789,7 @@ const NUMERALDO = {
       '<span class="bd-pct"></span>';
     row.querySelector(".swatch").style.background = p.color;
     row.querySelector(".bd-name").textContent = p.name;
-    const d = row.querySelector(".bd-desc");
-    d.textContent = p.desc;
-    d.style.display = "block";
+    row.querySelector(".bd-desc").textContent = p.desc;
     row.querySelector(".bd-amt").textContent = money(p.amount);
     row.querySelector(".bd-pct").textContent = ((p.amount / raised) * 100).toFixed(0) + "%";
     rows.appendChild(row);
