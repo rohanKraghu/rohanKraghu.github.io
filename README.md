@@ -80,3 +80,8 @@ customer names.
 GitHub Pages builds from `main`. A push deploys; there is nothing else to
 run. Check the run under the repository's Actions tab if a change does not
 appear.
+
+If every page shows GitHub's "There isn't a GitHub Pages site here", Pages
+has been switched off, and no commit will fix it. In the repository's
+Settings, under Pages, set Source to "Deploy from a branch", branch `main`,
+folder `/ (root)`, and save. The next build brings the site back.
