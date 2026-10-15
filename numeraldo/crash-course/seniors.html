@@ -844,7 +844,7 @@
   }
 
   function run() {
-    var income = sum(inc), spend = sum(exp), gap = income - spend;
+    var income = sum(inc), spend = sum(exp), gap = Math.round(income - spend);
     document.getElementById("s-in").textContent = f.money(income);
     document.getElementById("s-out").textContent = f.money(spend);
     document.getElementById("s-gap").textContent = f.money(Math.abs(gap));

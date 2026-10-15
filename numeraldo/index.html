@@ -225,7 +225,7 @@
   }
   .swatch{width:12px;height:12px;border-radius:2px}
   .bd-name{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .bd-desc{color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
+  .bd-desc{display:block;color:var(--muted);font-size:14.5px;line-height:1.5;margin-top:3px}
   .bd-head .r{text-align:right}
   .bd-amt,.bd-pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;font-size:15px}
   .bd-pct{color:var(--muted);font-size:13px}
@@ -471,8 +471,8 @@
             <span class="chip">Grades 4–8</span>
           </div>
           <p>Numeraldo teaches at the Boys &amp; Girls Club of Lower Bergen County every week during
-            the school year. Sessions are small-group and hands-on: no lecture, no worksheets handed
-            out and collected, just students doing math out loud until the number sense sticks.</p>
+            the school year. Sessions are small-group and hands-on, with students doing math out loud
+          until the number sense sticks instead of filling in worksheets.</p>
           <ul>
             <li><span class="n">01</span><span>Mental math and estimation drills to open: fast, competitive, loud.</span></li>
             <li><span class="n">02</span><span>A real-world block: unit pricing, percentages, sports statistics, budgets.</span></li>
@@ -497,8 +497,8 @@
             <span class="chip">No sign-up</span>
           </div>
           <p>Two self-paced courses, one written for teenagers and one for seniors, covering the money
-            decisions each group actually faces. Every module shows the arithmetic underneath the rule,
-            because a number you can check is a number you can argue with.</p>
+            decisions each group actually faces. Every module shows the arithmetic underneath the rule, so a reader
+          can check the number and argue with it.</p>
           <ul>
             <li><span class="n">01</span><span><a href="crash-course/teens.html">Teens</a>: paychecks, bank fees, budgeting, compound interest, credit, paying for college, investing, scams.</span></li>
             <li><span class="n">02</span><span><a href="crash-course/seniors.html">Seniors</a>: fixed-income budgeting, reading statements, safe interest, withdrawals, scam recognition, who to call.</span></li>
@@ -789,9 +789,7 @@ const NUMERALDO = {
       '<span class="bd-pct"></span>';
     row.querySelector(".swatch").style.background = p.color;
     row.querySelector(".bd-name").textContent = p.name;
-    const d = row.querySelector(".bd-desc");
-    d.textContent = p.desc;
-    d.style.display = "block";
+    row.querySelector(".bd-desc").textContent = p.desc;
     row.querySelector(".bd-amt").textContent = money(p.amount);
     row.querySelector(".bd-pct").textContent = ((p.amount / raised) * 100).toFixed(0) + "%";
     rows.appendChild(row);
