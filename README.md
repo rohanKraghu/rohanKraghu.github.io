@@ -5,6 +5,7 @@ files here are served exactly as they are.
 
 ```
 index.html                  Portfolio. Work, Experience, About, contact.
+robots.txt, sitemap.xml     For search engines. Add new top-level pages to the sitemap.
 assets/                     Images and documents linked from the portfolio.
 countersign/index.html      Countersign, the startup: what it is and build progress.
 numeraldo/index.html        Numeraldo, the nonprofit.
