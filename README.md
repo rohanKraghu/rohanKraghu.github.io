@@ -5,7 +5,8 @@ files here are served exactly as they are.
 
 ```
 index.html                  Portfolio. Professional mode (Work gallery, Experience, About) and Personal mode (#personal).
-robots.txt, sitemap.xml     For search engines. Add new top-level pages to the sitemap.
+robots.txt, sitemap.xml     For search engines. Add new top-level pages to sitemap.xml
+sitemap.txt                 and sitemap.txt (a plain-text copy Search Console reads more easily).
 assets/                     Images and documents linked from the portfolio.
 countersign/index.html      Countersign, the startup: what it is and build progress.
 numeraldo/index.html        Numeraldo, the nonprofit.
