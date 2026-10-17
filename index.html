@@ -238,7 +238,7 @@
   .lz-btn:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .lz-btn[aria-expanded="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 
-  .lz-panel{padding-top:20px}
+  .lz-panel{padding-bottom:20px}
   .lz-eq{font-size:12.5px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
   .lz-eq span{display:inline-block;margin-right:26px;white-space:nowrap}
   .lz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 32px;max-width:1080px}
@@ -297,18 +297,16 @@
   }
 
   .mode{position:relative;display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--paper)}
-  /* the "pop": a quick bounce plus a ring of short rays that burst outward */
-  .mode::before{
-    content:"";position:absolute;inset:-30px;border-radius:50%;pointer-events:none;opacity:0;
-    background:repeating-conic-gradient(var(--accent) 0 4deg,transparent 4deg 22.5deg);
-    -webkit-mask:radial-gradient(closest-side,transparent 80%,#000 82%,#000 96%,transparent 98%);
-            mask:radial-gradient(closest-side,transparent 80%,#000 82%,#000 96%,transparent 98%);
+  /* the "pop": a quick bounce plus a scatter of sprinkles that burst outward */
+  .mode .spr{
+    position:absolute;left:50%;top:50%;width:280px;height:104px;translate:-50% -50%;
+    pointer-events:none;overflow:visible;opacity:0;
   }
   .mode.pop{animation:mode-pop .6s cubic-bezier(.3,1.6,.5,1)}
-  .mode.pop::before{animation:mode-rays .7s ease-out}
+  .mode.pop .spr{animation:mode-spr .8s ease-out}
   @keyframes mode-pop{0%{transform:scale(1)}35%{transform:scale(1.12)}100%{transform:scale(1)}}
-  @keyframes mode-rays{0%{opacity:.9;transform:scale(.7)}100%{opacity:0;transform:scale(1.25)}}
-  @media (prefers-reduced-motion:reduce){.mode.pop,.mode.pop::before{animation:none}}
+  @keyframes mode-spr{0%{opacity:1;scale:.75}100%{opacity:0;scale:1.2}}
+  @media (prefers-reduced-motion:reduce){.mode.pop,.mode.pop .spr{animation:none}}
   .mode button{
     appearance:none;background:none;border:0;cursor:pointer;color:var(--muted);
     font-family:var(--body);font-size:12.5px;font-weight:500;padding:4px 12px;border-radius:999px;
@@ -440,6 +438,7 @@
     <div class="mode" role="group" aria-label="Site mode">
       <button type="button" data-mode="professional" aria-pressed="true">Professional</button>
       <button type="button" data-mode="personal" aria-pressed="false">Personal</button>
+      <svg class="spr" viewBox="-140 -52 280 104" aria-hidden="true" focusable="false"><g stroke-width="2.4" stroke-linecap="round"><line x1="117.2" y1="0.6" x2="122.6" y2="-3.8" stroke="var(--accent)"/><line x1="112.1" y1="9.8" x2="117.8" y2="11.9" stroke="#3F8F8A"/><line x1="91.4" y1="22.2" x2="95.3" y2="25.5" stroke="#D6A43A"/><line x1="45.2" y1="33.9" x2="50.1" y2="35.9" stroke="var(--accent)"/><line x1="3.6" y1="35.7" x2="0.7" y2="40.3" stroke="#3F8F8A"/><line x1="-36.4" y1="32.7" x2="-40.5" y2="39.3" stroke="#D6A43A"/><line x1="-84.1" y1="23.1" x2="-88.7" y2="29.6" stroke="var(--accent)"/><line x1="-102.3" y1="18.7" x2="-108.1" y2="17.8" stroke="#3F8F8A"/><line x1="-117.4" y1="1.2" x2="-121.7" y2="5.3" stroke="#D6A43A"/><line x1="-103.7" y1="-17.5" x2="-110.4" y2="-16.8" stroke="var(--accent)"/><line x1="-79.2" y1="-25.9" x2="-84.7" y2="-29.6" stroke="#3F8F8A"/><line x1="-54.6" y1="-32.6" x2="-60.0" y2="-34.2" stroke="#D6A43A"/><line x1="5.5" y1="-35.0" x2="4.9" y2="-40.9" stroke="var(--accent)"/><line x1="47.2" y1="-32.0" x2="49.1" y2="-37.6" stroke="#3F8F8A"/><line x1="87.9" y1="-23.9" x2="93.3" y2="-25.9" stroke="#D6A43A"/><line x1="108.1" y1="-12.7" x2="115.3" y2="-15.1" stroke="var(--accent)"/></g></svg>
     </div>
     <a class="mail" href="#contact">Contact</a>
   </div>
@@ -467,13 +466,6 @@
   </div>
 
   <div class="wrap lorenz-ui">
-    <div class="lz-line">
-      <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
-        forecasting still fails. A backtest that fakes an edge falls into the same trap: a precise
-        number that has stopped meaning anything. Drag ρ below 24.74 and the wandering stops.</p>
-      <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
-    </div>
-
     <div class="lz-panel" id="lz-panel" hidden>
       <p class="lz-eq">
         <span>dx/dt = σ(y − x)</span>
@@ -502,6 +494,14 @@
         attractor is drawn once and left still.</p>
       <button class="lz-btn" id="lz-reset">Reset</button>
     </div>
+
+    <div class="lz-line">
+      <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
+        forecasting still fails. A backtest that fakes an edge falls into the same trap: a precise
+        number that has stopped meaning anything. Drag ρ below 24.74 and the wandering stops.</p>
+      <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
+    </div>
+
   </div>
 </div>
 
@@ -644,6 +644,19 @@
       </article>
 
       <article class="role">
+        <span class="when">Present</span>
+        <div class="body">
+          <h3>Citizen Scientist</h3>
+          <p class="org">Exoplanet Watch · NASA Jet Propulsion Laboratory</p>
+          <ul>
+            <li>Contribute to Exoplanet Watch, NASA JPL's citizen science project that uses
+              volunteers' transit observations to keep the predicted transit times of known
+              exoplanets accurate.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role">
         <span class="when">Jun – Aug 2025</span>
         <div class="body">
           <h3>Private Hedge Fund Analyst</h3>
@@ -709,6 +722,10 @@
               <dt>Stanford University Online High School<span class="yr">2026</span></dt>
               <dd>3.97 GPA · 1580 SAT (800 M, 780 V) · 36 ACT · 10 perfect AP scores.
                 Redwood City, CA.</dd>
+            </div>
+            <div class="d">
+              <dt>Y Combinator Startup School</dt>
+              <dd>YC's program for early-stage founders.</dd>
             </div>
           </dl>
         </div>
@@ -815,17 +832,20 @@
     <div class="bio">
       <span class="lbl">About me</span>
       <div class="text">
-        <!-- Draft prose drawn from the photos and the About tab; rewrite in your own words. -->
-        <p class="big">Most of what I do for fun involves a deck of cards or a dark sky.</p>
-        <p class="body-copy">Card magic is the one I practice most. I learn a sleight at the coffee
-          table and repeat it until nobody watching can spot it, which is also why that table holds
-          more decks than it needs.</p>
-        <p class="body-copy">Astronomy started in a classroom and moved outside. For an observation
-          challenge I logged 40 Messier objects, mostly through a telescope set up on a park path
-          after dark.</p>
-        <p class="body-copy">I also hike, sometimes early enough to need a headlamp. Before any of
-          this began, I've been skiing and practicing karate since I was 5; the trophy in the last
-          photo is from a 2014 tournament.</p>
+        <p class="big">Mostly cards and dark skies.</p>
+        <p class="body-copy">Card magic is the hobby I practice the most. I learn a sleight at the
+          coffee table and repeat it until nobody watching can spot it, which is also why my table
+          and dorm room have far more decks than they need. I play poker too, and I keep the two
+          apart: I never stack the deck in a real game.</p>
+        <p class="body-copy">Astrophotography started in a classroom and moved outside. For an
+          observation challenge I logged 40 Messier objects, mostly through a telescope set up on a
+          park path after dark. I'm also a citizen scientist with NASA JPL's Exoplanet Watch, which
+          uses volunteers' observations to keep the predicted transit times of known exoplanets
+          accurate.</p>
+        <p class="body-copy">I've been skiing and practicing karate since I was 5; the trophy in the
+          last photo is from a 2014 tournament.</p>
+        <p class="body-copy">Recently, I've been hiking, sometimes early enough to need a headlamp.
+          I've also been practicing cubing, down to sub-30 on the 3x3 and sub-10 on the Pyraminx.</p>
       </div>
     </div>
   </div>
