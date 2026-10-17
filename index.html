@@ -355,19 +355,25 @@
   }
   .stage:focus-visible{outline:1.5px solid var(--accent);outline-offset:6px}
   .float{
-    position:absolute;width:clamp(170px,20vw,300px);aspect-ratio:4 / 5;padding:10px 10px 0;
-    background:var(--paper);border:1px solid var(--line);
-    box-shadow:0 18px 40px -18px color-mix(in srgb,var(--ink) 35%,transparent);
+    position:absolute;width:clamp(140px,15vw,230px);aspect-ratio:4 / 5;padding:10px 10px 0;
+    background:var(--paper);border:1px solid var(--line);translate:0 0;
+    box-shadow:0 14px 30px -18px color-mix(in srgb,var(--ink) 30%,transparent);
+    filter:blur(1.5px) saturate(.75);opacity:.6;
     animation:drift 18s ease-in-out infinite;
-    transition:scale .5s ease,box-shadow .5s ease;
+    transition:left .7s ease,top .7s ease,width .7s ease,translate .7s ease,filter .7s ease,opacity .7s ease;
   }
-  .float.front{scale:1.12;box-shadow:0 30px 60px -20px color-mix(in srgb,var(--ink) 45%,transparent)}
+  /* the front photo leaves its spot for the centre; the rest sit back, small and soft */
+  .float.front{
+    left:50%!important;top:50%!important;translate:-50% -50%;width:clamp(260px,29vw,430px);
+    filter:none;opacity:1;
+    box-shadow:0 34px 70px -24px color-mix(in srgb,var(--ink) 50%,transparent);
+  }
   .float .slot{height:calc(100% - 10px)}
-  .float:nth-child(1){left:2%;top:10%;--dx:26px;--dy:18px}
-  .float:nth-child(2){left:20%;top:32%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
-  .float:nth-child(3){left:40%;top:2%;--dx:20px;--dy:-26px;animation-duration:20s;animation-delay:-11s}
-  .float:nth-child(4){left:59%;top:28%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
-  .float:nth-child(5){right:2%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
+  .float:nth-child(1){left:2%;top:6%;--dx:26px;--dy:18px}
+  .float:nth-child(2){left:13%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
+  .float:nth-child(3){left:42%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(4){left:70%;top:50%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
+  .float:nth-child(5){left:82%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
   /* no rotation: frames stay straight and only drift back and forth */
   @keyframes drift{
     0%,100%{transform:translate(0,0)}
@@ -388,12 +394,14 @@
 
   @media (max-width:680px){
     .work .item{flex-basis:84%}
-    .float{width:42%}
+    .stage{height:460px}
+    .float{width:32%}
+    .float.front{width:64%}
     .float:nth-child(1){left:0;top:2%}
-    .float:nth-child(2){left:30%;top:20%}
-    .float:nth-child(3){left:auto;right:0;top:0}
-    .float:nth-child(4){left:4%;top:46%}
-    .float:nth-child(5){right:4%;top:50%}
+    .float:nth-child(2){left:0;top:64%}
+    .float:nth-child(3){left:34%;top:0}
+    .float:nth-child(4){left:68%;top:64%}
+    .float:nth-child(5){left:68%;top:2%}
     .top .wrap{gap:12px}
     .mode button{padding:4px 9px}
   }
