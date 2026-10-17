@@ -75,7 +75,7 @@
 
   .top{border-bottom:1px solid var(--line)}
   .top .wrap{display:flex;align-items:center;gap:20px;padding-block:16px}
-  .top .me{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin-right:auto}
+  .top .me{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em;margin-right:auto;white-space:nowrap}
   .top a.mail{font-size:13.5px;font-weight:500;border-bottom:1px solid var(--line);padding-bottom:1px;transition:color .15s,border-color .15s}
   .top a.mail:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
@@ -296,6 +296,109 @@
     .lz-line .lz-btn{margin-left:0}
   }
 
+  .mode{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+  .mode button{
+    appearance:none;background:none;border:0;cursor:pointer;color:var(--muted);
+    font-family:var(--body);font-size:12.5px;font-weight:500;padding:4px 12px;border-radius:999px;
+    transition:color .15s,background-color .15s;
+  }
+  .mode button:hover{color:var(--ink)}
+  .mode button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  html:not(.js) .mode{display:none}
+
+  .gallery{position:relative}
+  .work{
+    display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;overscroll-behavior-x:contain;padding-bottom:18px;
+    scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+  }
+  .work .item{
+    flex:0 0 clamp(280px,31%,460px);display:flex;flex-direction:column;gap:14px;
+    padding:0;border-bottom:0;scroll-snap-align:start;
+  }
+  .work .item .rail{flex-direction:column-reverse;gap:12px}
+  .work .item .rail .idx{padding-top:0}
+  .work .item .main{flex:1}
+  .work .item-link{display:flex;flex-direction:column;gap:14px;flex:1}
+  .item-link:hover .go{border-bottom-color:var(--accent)}
+  .item-link:hover .shot{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+  .subs{display:flex;flex-direction:column;gap:2px}
+  .subs .lbl{margin-bottom:6px}
+  .sub{display:flex;align-items:center;gap:12px;padding:8px 0;border-top:1px solid var(--line)}
+  .sub img{width:64px;height:43px;object-fit:cover;border:1px solid var(--line);flex:none}
+  .sub b{display:block;font-weight:500;font-size:14.5px;line-height:1.35;transition:color .15s}
+  .sub span span{font-size:13px;color:var(--muted)}
+  .sub:hover b{color:var(--accent)}
+  .work .item .aside{align-self:stretch}
+  .work .item .desc{font-size:15px}
+  .work .item .aside{flex-direction:column;padding-top:12px;border-top:1px solid var(--line);margin-top:0}
+  a.item:hover{background:none}
+  .gal-nav{display:flex;align-items:center;gap:10px;margin-bottom:clamp(16px,2vw,24px)}
+  .gal-nav .hint{font-size:13px;color:var(--muted);margin-right:auto}
+  .gal-nav button{
+    appearance:none;background:none;cursor:pointer;color:var(--ink);
+    width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+    font-size:16px;line-height:1;transition:border-color .15s,color .15s,opacity .15s;
+  }
+  .gal-nav button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .gal-nav button:disabled{opacity:.35;cursor:default}
+  html:not(.js) .gal-nav button{display:none}
+
+  #personal{display:none}
+  html[data-mode="personal"] #personal{display:block}
+  html[data-mode="personal"] .hero,
+  html[data-mode="personal"] .tabbar,
+  html[data-mode="personal"] #panels{display:none}
+  .stage{
+    position:relative;height:clamp(420px,44vw,640px);margin-bottom:12px;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .stage:focus-visible{outline:1.5px solid var(--accent);outline-offset:6px}
+  .float{
+    position:absolute;width:clamp(140px,15vw,230px);aspect-ratio:4 / 5;padding:10px 10px 0;
+    background:var(--paper);border:1px solid var(--line);translate:0 0;
+    box-shadow:0 14px 30px -18px color-mix(in srgb,var(--ink) 30%,transparent);
+    filter:blur(1.5px) saturate(.75);opacity:.6;
+    animation:drift 18s ease-in-out infinite;
+    transition:left .7s ease,top .7s ease,width .7s ease,translate .7s ease,filter .7s ease,opacity .7s ease;
+  }
+  /* the front photo leaves its spot for the centre; the rest sit back, small and soft */
+  .float.front{
+    left:50%!important;top:50%!important;translate:-50% -50%;width:clamp(260px,29vw,430px);
+    filter:none;opacity:1;
+    box-shadow:0 34px 70px -24px color-mix(in srgb,var(--ink) 50%,transparent);
+  }
+  .float img{display:block;width:100%;height:calc(100% - 10px);object-fit:cover}
+  .float:nth-child(1){left:2%;top:6%;--dx:26px;--dy:18px}
+  .float:nth-child(2){left:13%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
+  .float:nth-child(3){left:24%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(4){left:70%;top:50%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
+  .float:nth-child(5){left:82%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
+  /* no rotation: frames stay straight and only drift back and forth */
+  @keyframes drift{
+    0%,100%{transform:translate(0,0)}
+    25%{transform:translate(var(--dx),calc(var(--dy) * -1))}
+    50%{transform:translate(calc(var(--dx) * .4),var(--dy))}
+    75%{transform:translate(calc(var(--dx) * -1),calc(var(--dy) * .3))}
+  }
+  @media (prefers-reduced-motion:reduce){.float{animation:none}}
+  .stage-hint{font-size:13px;color:var(--muted);margin-bottom:clamp(44px,5.5vw,72px)}
+  html:not(.js) .stage-hint{display:none}
+
+  @media (max-width:680px){
+    .work .item{flex-basis:84%}
+    .stage{height:460px}
+    .float{width:32%}
+    .float.front{width:64%}
+    .float:nth-child(1){left:0;top:2%}
+    .float:nth-child(2){left:0;top:64%}
+    .float:nth-child(3){left:34%;top:0}
+    .float:nth-child(4){left:68%;top:64%}
+    .float:nth-child(5){left:68%;top:2%}
+    .top .wrap{gap:12px}
+    .mode button{padding:4px 9px}
+  }
+
   html:not(.js) .tabbar{display:none}
   html:not(.js) [role="tabpanel"][hidden]{display:block!important}
 
@@ -308,6 +411,8 @@
     .hero{padding-block:0 12pt}
     h1.tag{font-size:24pt}
     .item,.role{break-inside:avoid}
+    .work{display:block;overflow:visible}
+    .gal-nav,.mode,#personal{display:none!important}
     .cta{font-size:15pt}
     a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
   }
@@ -320,6 +425,10 @@
 <div class="top">
   <div class="wrap">
     <span class="me">Rohan Raghu</span>
+    <div class="mode" role="group" aria-label="Site mode">
+      <button type="button" data-mode="professional" aria-pressed="true">Professional</button>
+      <button type="button" data-mode="personal" aria-pressed="false">Personal</button>
+    </div>
     <a class="mail" href="#contact">Contact</a>
   </div>
 </div>
@@ -399,7 +508,12 @@
   <section class="panel" role="tabpanel" id="p-work" aria-labelledby="t-work" tabindex="-1">
     <div class="wrap">
 
-      <div class="work">
+      <div class="gal-nav">
+        <span class="hint">Swipe to see each project.</span>
+        <button type="button" id="gal-prev" aria-label="Previous project" aria-controls="work-gallery">&larr;</button>
+        <button type="button" id="gal-next" aria-label="Next project" aria-controls="work-gallery">&rarr;</button>
+      </div>
+      <div class="work" id="work-gallery" tabindex="0" aria-label="Projects">
         <a class="item" href="countersign/">
           <div class="rail">
             <span class="num idx">01</span>
@@ -418,7 +532,8 @@
           </div>
         </a>
 
-        <a class="item" href="numeraldo/">
+        <div class="item">
+          <a class="item-link" href="numeraldo/">
           <div class="rail">
             <span class="num idx">02</span>
             <div class="shot"><img src="assets/proto-numeraldo.webp" width="1050" height="705" loading="lazy" decoding="async" alt="A cartoon of a Numeraldo session at the Boys &amp; Girls Club: students at tables, a whiteboard behind reading Earn, Save, Share, Spend."></div>
@@ -430,34 +545,27 @@
               the weekly session myself.</p>
             <span class="go">Visit the site →</span>
           </div>
+          </a>
+          <div class="subs">
+            <span class="lbl">Subprojects</span>
+            <a class="sub" href="numeraldo/crash-course/">
+              <img src="assets/proto-crash-course.webp" width="1200" height="800" loading="lazy" decoding="async" alt="">
+              <span><b>Financial Literacy Crash Course</b><span>16 free modules for teenagers and seniors</span></span>
+            </a>
+            <a class="sub" href="https://github.com/rohanKraghu/retirement-tool" target="_blank" rel="noopener">
+              <img src="assets/proto-retirement.webp" width="1200" height="800" loading="lazy" decoding="async" alt="">
+              <span><b>Retirement projection calculator</b><span>Built for workshop attendees · 77 tests</span></span>
+            </a>
+          </div>
           <div class="aside">
             <span class="status"><span class="dot"></span><span class="lbl">Running · since 2024</span></span>
             <span class="stack">1,000+ people taught · 20 volunteers · Casio partnership</span>
           </div>
-        </a>
-
-        <a class="item" href="numeraldo/crash-course/">
-          <div class="rail">
-            <span class="num idx">03</span>
-            <div class="shot"><img src="assets/proto-crash-course.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
-          </div>
-          <div class="main">
-            <h3>Financial Literacy Crash Course</h3>
-            <p class="desc">Sixteen free modules in two tracks, one written for teenagers and one
-              for seniors, covering paychecks, bank fees, compound interest, credit, fixed-income budgeting,
-              and the scripts scammers actually use. Every rule comes with the arithmetic under it,
-              so a reader can disagree with the assumption and redo the sum.</p>
-            <span class="go">Open the course →</span>
-          </div>
-          <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Live · 16 modules</span></span>
-            <span class="stack">Hand-written HTML, CSS, JS · no dependencies · printable</span>
-          </div>
-        </a>
+        </div>
 
         <a class="item" href="honest-backtest/">
           <div class="rail">
-            <span class="num idx">04</span>
+            <span class="num idx">03</span>
             <div class="shot"><img src="assets/proto-honest-backtest.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
           </div>
           <div class="main">
@@ -476,7 +584,7 @@
 
         <a class="item" href="https://github.com/rohanKraghu/transit-detection" target="_blank" rel="noopener">
           <div class="rail">
-            <span class="num idx">05</span>
+            <span class="num idx">04</span>
             <div class="shot"><img src="assets/proto-transit.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
           </div>
           <div class="main">
@@ -494,24 +602,6 @@
           </div>
         </a>
 
-        <a class="item" href="https://github.com/rohanKraghu/retirement-tool" target="_blank" rel="noopener">
-          <div class="rail">
-            <span class="num idx">06</span>
-            <div class="shot"><img src="assets/proto-retirement.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
-          </div>
-          <div class="main">
-            <h3>Retirement projection calculator</h3>
-            <p class="desc">Written for the people who come to Numeraldo's workshops: what a balance
-              grows into by a chosen age, and what that same balance is actually worth once inflation
-              is taken out. The 70-plus adults I walked through Roth IRA planning were the first
-              users, so it reads at arm's length, works offline, and prints on one page.</p>
-            <span class="go">View the repo →</span>
-          </div>
-          <div class="aside">
-            <span class="status"><span class="dot"></span><span class="lbl">Open source · 77 tests</span></span>
-            <span class="stack">Vanilla JS · no dependencies · offline, printable</span>
-          </div>
-        </a>
       </div>
     </div>
   </section>
@@ -698,6 +788,37 @@
 
 </main>
 
+<!-- Personal mode. Anything here is public: it is only hidden until a visitor picks Personal. -->
+<section id="personal" class="panel" aria-label="Personal">
+  <div class="wrap">
+    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Bring the next photo to the front">
+      <div class="float front"><img src="assets/me-hike.webp" width="800" height="1000" alt="Me in a hood and headlamp on a foggy granite summit."></div>
+      <div class="float"><img src="assets/me-cards.webp" width="800" height="1000" loading="lazy" alt="Me doing a card trick at a table covered in decks."></div>
+      <div class="float"><img src="assets/me-telescope.webp" width="800" height="1000" loading="lazy" alt="Me at night beside a telescope on a tripod."></div>
+      <div class="float"><img src="assets/me-ski.webp" width="800" height="1000" loading="lazy" alt="Me as a kid on skis in a green jacket at the top of a run."></div>
+      <div class="float"><img src="assets/me-karate.webp" width="800" height="1000" loading="lazy" alt="Me as a young kid in a karate uniform holding a trophy and a sparring helmet."></div>
+    </div>
+    <p class="stage-hint">Click or tap the photos to bring the next one forward.</p>
+
+    <div class="bio">
+      <span class="lbl">About me</span>
+      <div class="text">
+        <!-- Draft prose drawn from the photos and the About tab; rewrite in your own words. -->
+        <p class="big">Most of what I do for fun involves a deck of cards or a dark sky.</p>
+        <p class="body-copy">Card magic is the one I practice most. I learn a sleight at the coffee
+          table and repeat it until nobody watching can spot it, which is also why that table holds
+          more decks than it needs.</p>
+        <p class="body-copy">Astronomy started in a classroom and moved outside. For an observation
+          challenge I logged 40 Messier objects, mostly through a telescope set up on a park path
+          after dark.</p>
+        <p class="body-copy">I also hike, sometimes early enough to need a headlamp. Before any of
+          this began, I've been skiing and practicing karate since I was 5; the trophy in the last
+          photo is from a 2014 tournament.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site" id="contact">
   <div class="wrap">
     <span class="lbl">Contact</span>
@@ -778,6 +899,68 @@
   }
   fromHash(false);
   window.addEventListener("hashchange", function () { fromHash(true); });
+})();
+
+(function () {
+  "use strict";
+  // Personal mode is reached by #personal so it can be linked; Professional is the default.
+  var root = document.documentElement;
+  var btns = [].slice.call(document.querySelectorAll(".mode button"));
+  function setMode(mode) {
+    root.dataset.mode = mode;
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.mode === mode)); });
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var personal = b.dataset.mode === "personal";
+      setMode(b.dataset.mode);
+      history.replaceState(null, "", personal ? "#personal" : location.pathname);
+      window.scrollTo(0, 0);
+    });
+  });
+  function fromHash() { setMode(location.hash === "#personal" ? "personal" : "professional"); }
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
+
+  // Photos stack by recency: clicking puts the next in sequence on top.
+  var stage = document.getElementById("stage");
+  if (stage) {
+    var pics = [].slice.call(stage.querySelectorAll(".float")), front = 0;
+    function stack() {
+      pics.forEach(function (el, i) {
+        el.style.zIndex = pics.length - ((front - i + pics.length) % pics.length);
+        el.classList.toggle("front", i === front);
+      });
+    }
+    function advance() { front = (front + 1) % pics.length; stack(); }
+    stage.addEventListener("click", advance);
+    stage.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); advance(); }
+    });
+    stack();
+  }
+
+  var track = document.getElementById("work-gallery");
+  var prev = document.getElementById("gal-prev"), next = document.getElementById("gal-next");
+  if (!track || !prev || !next) return;
+  function step(dir) {
+    var card = track.querySelector(".item");
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: "smooth" });
+  }
+  function update() {
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+  }
+  prev.addEventListener("click", function () { step(-1); });
+  next.addEventListener("click", function () { step(1); });
+  track.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+  });
+  track.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
 })();
 
 (function () {
