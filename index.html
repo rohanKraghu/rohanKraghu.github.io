@@ -349,22 +349,35 @@
   html[data-mode="personal"] .hero,
   html[data-mode="personal"] .tabbar,
   html[data-mode="personal"] #panels{display:none}
-  .stage{position:relative;height:clamp(380px,42vw,600px);margin-bottom:clamp(44px,5.5vw,72px)}
+  .stage{
+    position:relative;height:clamp(420px,44vw,640px);margin-bottom:12px;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+  .stage:focus-visible{outline:1.5px solid var(--accent);outline-offset:6px}
   .float{
-    position:absolute;width:clamp(200px,26vw,380px);aspect-ratio:4 / 5;padding:10px 10px 0;
+    position:absolute;width:clamp(170px,20vw,300px);aspect-ratio:4 / 5;padding:10px 10px 0;
     background:var(--paper);border:1px solid var(--line);
     box-shadow:0 18px 40px -18px color-mix(in srgb,var(--ink) 35%,transparent);
-    animation:drift 9s ease-in-out infinite alternate;
+    animation:drift 18s ease-in-out infinite;
+    transition:scale .5s ease,box-shadow .5s ease;
   }
+  .float.front{scale:1.12;box-shadow:0 30px 60px -20px color-mix(in srgb,var(--ink) 45%,transparent)}
   .float .slot{height:calc(100% - 10px)}
-  .float:nth-child(1){left:4%;top:6%;--r:-4deg}
-  .float:nth-child(2){left:36%;top:0;--r:3deg;animation-duration:11s;animation-delay:-3s;z-index:1}
-  .float:nth-child(3){right:4%;top:12%;--r:-2deg;animation-duration:10s;animation-delay:-6s}
+  .float:nth-child(1){left:2%;top:10%;--dx:26px;--dy:18px}
+  .float:nth-child(2){left:20%;top:32%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
+  .float:nth-child(3){left:40%;top:2%;--dx:20px;--dy:-26px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(4){left:59%;top:28%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
+  .float:nth-child(5){right:2%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
+  /* no rotation: frames stay straight and only drift back and forth */
   @keyframes drift{
-    from{transform:translate(0,0) rotate(var(--r))}
-    to{transform:translate(8px,-16px) rotate(calc(var(--r) * -0.5))}
+    0%,100%{transform:translate(0,0)}
+    25%{transform:translate(var(--dx),calc(var(--dy) * -1))}
+    50%{transform:translate(calc(var(--dx) * .4),var(--dy))}
+    75%{transform:translate(calc(var(--dx) * -1),calc(var(--dy) * .3))}
   }
-  @media (prefers-reduced-motion:reduce){.float{animation:none;transform:rotate(var(--r))}}
+  @media (prefers-reduced-motion:reduce){.float{animation:none}}
+  .stage-hint{font-size:13px;color:var(--muted);margin-bottom:clamp(44px,5.5vw,72px)}
+  html:not(.js) .stage-hint{display:none}
   .slot{
     display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
     border:1px dashed var(--line);color:var(--muted);font-size:13px;
@@ -375,10 +388,12 @@
 
   @media (max-width:680px){
     .work .item{flex-basis:84%}
-    .float{width:46%}
-    .float:nth-child(1){left:0;top:4%}
-    .float:nth-child(2){left:27%;top:30%}
-    .float:nth-child(3){right:0;top:0}
+    .float{width:42%}
+    .float:nth-child(1){left:0;top:2%}
+    .float:nth-child(2){left:30%;top:20%}
+    .float:nth-child(3){left:auto;right:0;top:0}
+    .float:nth-child(4){left:4%;top:46%}
+    .float:nth-child(5){right:4%;top:50%}
     .top .wrap{gap:12px}
     .mode button{padding:4px 9px}
   }
@@ -776,11 +791,14 @@
 <section id="personal" class="panel" aria-label="Personal">
   <div class="wrap">
     <!-- To add a photo, replace a slot's text with <img src="assets/your-photo.webp" alt="..."> -->
-    <div class="stage">
-      <div class="float"><div class="slot">Photo of you</div></div>
-      <div class="float"><div class="slot">Photo</div></div>
-      <div class="float"><div class="slot">Photo</div></div>
+    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Bring the next photo to the front">
+      <div class="float front"><div class="slot">Photo of you</div></div>
+      <div class="float"><div class="slot">Photo 2</div></div>
+      <div class="float"><div class="slot">Photo 3</div></div>
+      <div class="float"><div class="slot">Photo 4</div></div>
+      <div class="float"><div class="slot">Photo 5</div></div>
     </div>
+    <p class="stage-hint">Click or tap the photos to bring the next one forward.</p>
 
     <div class="bio">
       <span class="lbl">About me</span>
@@ -896,6 +914,24 @@
   function fromHash() { setMode(location.hash === "#personal" ? "personal" : "professional"); }
   fromHash();
   window.addEventListener("hashchange", fromHash);
+
+  // Photos stack by recency: clicking puts the next in sequence on top.
+  var stage = document.getElementById("stage");
+  if (stage) {
+    var pics = [].slice.call(stage.querySelectorAll(".float")), front = 0;
+    function stack() {
+      pics.forEach(function (el, i) {
+        el.style.zIndex = pics.length - ((front - i + pics.length) % pics.length);
+        el.classList.toggle("front", i === front);
+      });
+    }
+    function advance() { front = (front + 1) % pics.length; stack(); }
+    stage.addEventListener("click", advance);
+    stage.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); advance(); }
+    });
+    stack();
+  }
 
   var track = document.getElementById("work-gallery");
   var prev = document.getElementById("gal-prev"), next = document.getElementById("gal-next");
