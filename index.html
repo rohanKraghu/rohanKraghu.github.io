@@ -368,10 +368,10 @@
     filter:none;opacity:1;
     box-shadow:0 34px 70px -24px color-mix(in srgb,var(--ink) 50%,transparent);
   }
-  .float .slot{height:calc(100% - 10px)}
+  .float img{display:block;width:100%;height:calc(100% - 10px);object-fit:cover}
   .float:nth-child(1){left:2%;top:6%;--dx:26px;--dy:18px}
   .float:nth-child(2){left:13%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
-  .float:nth-child(3){left:42%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(3){left:24%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
   .float:nth-child(4){left:70%;top:50%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
   .float:nth-child(5){left:82%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
   /* no rotation: frames stay straight and only drift back and forth */
@@ -384,12 +384,6 @@
   @media (prefers-reduced-motion:reduce){.float{animation:none}}
   .stage-hint{font-size:13px;color:var(--muted);margin-bottom:clamp(44px,5.5vw,72px)}
   html:not(.js) .stage-hint{display:none}
-  .slot{
-    display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
-    border:1px dashed var(--line);color:var(--muted);font-size:13px;
-    background:color-mix(in srgb,var(--ink) 2.5%,transparent);
-  }
-  .slot img{width:100%;height:100%;object-fit:cover}
   .bio .todo{font-style:italic}
 
   @media (max-width:680px){
@@ -798,13 +792,12 @@
 <!-- Personal mode. Anything here is public: it is only hidden until a visitor picks Personal. -->
 <section id="personal" class="panel" aria-label="Personal">
   <div class="wrap">
-    <!-- To add a photo, replace a slot's text with <img src="assets/your-photo.webp" alt="..."> -->
     <div class="stage" id="stage" role="button" tabindex="0" aria-label="Bring the next photo to the front">
-      <div class="float front"><div class="slot">Photo of you</div></div>
-      <div class="float"><div class="slot">Photo 2</div></div>
-      <div class="float"><div class="slot">Photo 3</div></div>
-      <div class="float"><div class="slot">Photo 4</div></div>
-      <div class="float"><div class="slot">Photo 5</div></div>
+      <div class="float front"><img src="assets/me-hike.webp" width="800" height="1000" alt="Me in a hood and headlamp on a foggy granite summit."></div>
+      <div class="float"><img src="assets/me-cards.webp" width="800" height="1000" loading="lazy" alt="Me doing a card trick at a table covered in decks."></div>
+      <div class="float"><img src="assets/me-telescope.webp" width="800" height="1000" loading="lazy" alt="Me at night beside a telescope on a tripod."></div>
+      <div class="float"><img src="assets/me-ski.webp" width="800" height="1000" loading="lazy" alt="Me as a kid on skis in a green jacket at the top of a run."></div>
+      <div class="float"><img src="assets/me-karate.webp" width="800" height="1000" loading="lazy" alt="Me as a young kid in a karate uniform holding a trophy and a sparring helmet."></div>
     </div>
     <p class="stage-hint">Click or tap the photos to bring the next one forward.</p>
 
