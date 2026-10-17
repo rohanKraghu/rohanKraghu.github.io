@@ -238,7 +238,9 @@
   .lz-btn:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .lz-btn[aria-expanded="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 
-  .lz-panel{padding-bottom:20px}
+  .lz-panel{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .lz-panel .lz-grid{grid-template-columns:1fr;gap:12px}
+  .lz-panel .lz-eq span{display:block;margin:0 0 2px}
   .lz-eq{font-size:12.5px;color:var(--muted);margin-bottom:18px;font-variant-numeric:tabular-nums}
   .lz-eq span{display:inline-block;margin-right:26px;white-space:nowrap}
   .lz-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px 32px;max-width:1080px}
@@ -264,6 +266,8 @@
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
     .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:0}
     .hero .where{width:100%;margin-bottom:0}
+    .lz-panel{width:100%}
+    .lz-panel .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
     .intro h2,.intro p{grid-column:4 / 13}
     .item .main{grid-column:4 / 13}
     .item .aside{
@@ -462,39 +466,38 @@
       <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
       <a href="https://drive.google.com/file/d/1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc/view" target="_blank" rel="noopener">Resume</a>
       <a href="https://drive.google.com/file/d/1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg/view" target="_blank" rel="noopener">CV</a>
+      <div class="lz-panel" id="lz-panel" hidden>
+        <p class="lz-eq">
+          <span>dx/dt = σ(y − x)</span>
+          <span>dy/dt = x(ρ − z) − y</span>
+          <span>dz/dt = xy − βz</span>
+        </p>
+        <div class="lz-grid">
+          <div class="lz-ctl">
+            <span class="k"><label for="lz-sigma">Sigma <i>σ</i></label><output for="lz-sigma" id="lz-sigma-v">10.0</output></span>
+            <input id="lz-sigma" type="range" min="2" max="20" step="0.5" value="10">
+          </div>
+          <div class="lz-ctl">
+            <span class="k"><label for="lz-rho">Rho <i>ρ</i></label><output for="lz-rho" id="lz-rho-v">28.0</output></span>
+            <input id="lz-rho" type="range" min="2" max="50" step="0.5" value="28">
+          </div>
+          <div class="lz-ctl">
+            <span class="k"><label for="lz-beta">Beta <i>β</i></label><output for="lz-beta" id="lz-beta-v">2.67</output></span>
+            <input id="lz-beta" type="range" min="0.3333" max="5" step="0.1667" value="2.6667">
+          </div>
+          <div class="lz-ctl">
+            <span class="k"><label for="lz-speed">Speed</label><output for="lz-speed" id="lz-speed-v">5</output></span>
+            <input id="lz-speed" type="range" min="1" max="10" step="1" value="5">
+          </div>
+        </div>
+        <p class="lz-note" id="lz-motion" hidden>Your system is set to reduce motion, so the
+          attractor is drawn once and left still.</p>
+        <button class="lz-btn" id="lz-reset">Reset</button>
+      </div>
     </div>
   </div>
 
   <div class="wrap lorenz-ui">
-    <div class="lz-panel" id="lz-panel" hidden>
-      <p class="lz-eq">
-        <span>dx/dt = σ(y − x)</span>
-        <span>dy/dt = x(ρ − z) − y</span>
-        <span>dz/dt = xy − βz</span>
-      </p>
-      <div class="lz-grid">
-        <div class="lz-ctl">
-          <span class="k"><label for="lz-sigma">Sigma <i>σ</i></label><output for="lz-sigma" id="lz-sigma-v">10.0</output></span>
-          <input id="lz-sigma" type="range" min="2" max="20" step="0.5" value="10">
-        </div>
-        <div class="lz-ctl">
-          <span class="k"><label for="lz-rho">Rho <i>ρ</i></label><output for="lz-rho" id="lz-rho-v">28.0</output></span>
-          <input id="lz-rho" type="range" min="2" max="50" step="0.5" value="28">
-        </div>
-        <div class="lz-ctl">
-          <span class="k"><label for="lz-beta">Beta <i>β</i></label><output for="lz-beta" id="lz-beta-v">2.67</output></span>
-          <input id="lz-beta" type="range" min="0.3333" max="5" step="0.1667" value="2.6667">
-        </div>
-        <div class="lz-ctl">
-          <span class="k"><label for="lz-speed">Speed</label><output for="lz-speed" id="lz-speed-v">5</output></span>
-          <input id="lz-speed" type="range" min="1" max="10" step="1" value="5">
-        </div>
-      </div>
-      <p class="lz-note" id="lz-motion" hidden>Your system is set to reduce motion, so the
-        attractor is drawn once and left still.</p>
-      <button class="lz-btn" id="lz-reset">Reset</button>
-    </div>
-
     <div class="lz-line">
       <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
         forecasting still fails. A backtest that fakes an edge falls into the same trap: a precise
@@ -724,7 +727,7 @@
                 Redwood City, CA.</dd>
             </div>
             <div class="d">
-              <dt>Y Combinator Startup School</dt>
+              <dt>Y Combinator Startup School<span class="yr">2026</span></dt>
               <dd>YC's program for early-stage founders.</dd>
             </div>
           </dl>
@@ -835,8 +838,8 @@
         <p class="big">Mostly cards and dark skies.</p>
         <p class="body-copy">Card magic is the hobby I practice the most. I learn a sleight at the
           coffee table and repeat it until nobody watching can spot it, which is also why my table
-          and dorm room have far more decks than they need. I play poker too, and I keep the two
-          apart: I never stack the deck in a real game.</p>
+          and dorm room have far more decks than they need. I play poker too, but I always keep the
+          two apart: I never stack the deck in a real game.</p>
         <p class="body-copy">Astrophotography started in a classroom and moved outside. For an
           observation challenge I logged 40 Messier objects, mostly through a telescope set up on a
           park path after dark. I'm also a citizen scientist with NASA JPL's Exoplanet Watch, which
