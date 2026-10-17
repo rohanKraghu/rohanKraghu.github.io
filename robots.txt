@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://rohankraghu.github.io/sitemap.xml
+Sitemap: https://rohankraghu.github.io/sitemap.txt
