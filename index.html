@@ -296,7 +296,19 @@
     .lz-line .lz-btn{margin-left:0}
   }
 
-  .mode{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+  .mode{position:relative;display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--paper)}
+  /* the "pop": a quick bounce plus a ring of short rays that burst outward */
+  .mode::before{
+    content:"";position:absolute;inset:-30px;border-radius:50%;pointer-events:none;opacity:0;
+    background:repeating-conic-gradient(var(--accent) 0 4deg,transparent 4deg 22.5deg);
+    -webkit-mask:radial-gradient(closest-side,transparent 80%,#000 82%,#000 96%,transparent 98%);
+            mask:radial-gradient(closest-side,transparent 80%,#000 82%,#000 96%,transparent 98%);
+  }
+  .mode.pop{animation:mode-pop .6s cubic-bezier(.3,1.6,.5,1)}
+  .mode.pop::before{animation:mode-rays .7s ease-out}
+  @keyframes mode-pop{0%{transform:scale(1)}35%{transform:scale(1.12)}100%{transform:scale(1)}}
+  @keyframes mode-rays{0%{opacity:.9;transform:scale(.7)}100%{opacity:0;transform:scale(1.25)}}
+  @media (prefers-reduced-motion:reduce){.mode.pop,.mode.pop::before{animation:none}}
   .mode button{
     appearance:none;background:none;border:0;cursor:pointer;color:var(--muted);
     font-family:var(--body);font-size:12.5px;font-weight:500;padding:4px 12px;border-radius:999px;
@@ -921,6 +933,20 @@
   function fromHash() { setMode(location.hash === "#personal" ? "personal" : "professional"); }
   fromHash();
   window.addEventListener("hashchange", fromHash);
+
+  // Draw the eye to the mode switch on load and every so often, until it has been used.
+  var sw = document.querySelector(".mode"), popTimer = 0;
+  function pop() {
+    if (!sw || document.hidden) return;
+    sw.classList.remove("pop");
+    void sw.offsetWidth; // restart the animation
+    sw.classList.add("pop");
+  }
+  if (sw && !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    setTimeout(pop, 700);
+    popTimer = setInterval(pop, 8000);
+    sw.addEventListener("click", function () { clearInterval(popTimer); });
+  }
 
   // Photos stack by recency: clicking puts the next in sequence on top.
   var stage = document.getElementById("stage");
