@@ -519,6 +519,7 @@ const COUNTERSIGN = {
   ],
   log: [
     { date: "Oct 18, 2026", text: "New default model, Scanner v1.14: trained on generated support replies instead of real ones, after several rounds of testing ways to drop that data. On a fresh set of real tickets frozen beforehand it catches more attacks inside tickets and more generic injections than v1.8, with a small trade-off on attacks hidden in assistant-style text. v1.8 stays available." },
+    { date: "Oct 15, 2026", text: "Hardened the API for scaling out: each API key now has one rate limit shared by every server process using the same database, and alert webhooks are sent only to public internet addresses, never to private or internal ones." },
     { date: "Oct 15, 2026", text: "Settled the speed question: a distilled smaller model also missed too many attacks, so the full model stays and the service scales by adding machines, each comfortably within the latency budget." },
     { date: "Oct 14, 2026", text: "Speed under load: measured how the scanner holds up with many requests at once and tried a smaller, much faster model. It missed too many attacks to ship, so the current model stays the default while a better way to shrink it is tested." },
     { date: "Oct 9, 2026", text: "Published the attack library and the Python SDK as an open-source repo, countersign-attacks. The scanner, the monitor and the private test sets stay closed." },
