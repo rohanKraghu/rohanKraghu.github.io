@@ -94,7 +94,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
     <div class="meta">
       <span>Rohan Raghu</span>
       <span><a href="https://github.com/rohanKraghu/honest-backtest">github.com/rohanKraghu/honest-backtest</a></span>
-      <span>347 tests</span>
+      <span>350 tests</span>
       <span>MIT license</span>
     </div>
   </header>
@@ -228,7 +228,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
 
   <section>
     <h2>Testing</h2>
-    <p>The 347 tests target what would invalidate the result if it were wrong: that no strategy is ever shown a future bar at any cursor position, that equity reconciles to cash plus positions at every bar, that every slippage model is adverse in both directions, that walk-forward training always ends before testing begins, and that the headline degradation itself holds, so the claim cannot drift away from the code. Results are deterministic to the last digit for a given seed.</p>
+    <p>The 350 tests target what would invalidate the result if it were wrong: that no strategy is ever shown a future bar at any cursor position, that equity reconciles to cash plus positions at every bar, that every slippage model is adverse in both directions, that walk-forward training always ends before testing begins, and that the headline degradation itself holds, so the claim cannot drift away from the code. Results are deterministic to the last digit for a given seed.</p>
     <p>Writing the tests caught two real bugs: a constant return series reported a Sharpe ratio around 10<sup>16</sup> because an exact zero check missed floating-point residue, and zero-quantity orders were becoming fills and inflating the trade count.</p>
   </section>
 
@@ -239,7 +239,7 @@ pip install -r requirements.txt
 python run_experiment.py --seeds 1    # the headline path, a few seconds
 python run_experiment.py              # plus 12 paths, about 30 seconds
 python run_experiment.py --seeds 200 --fast --workers 4   # the 200 paths, under a minute
-pytest                                # 347 tests</pre>
+pytest                                # 350 tests</pre>
     <p>Every number on this page was rerun on the current code (commit <code>f2081a2</code>) on 16 October 2026.</p>
   </section>
 
