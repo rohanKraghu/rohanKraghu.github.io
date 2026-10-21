@@ -198,6 +198,11 @@ footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem
   </section>
 
   <section>
+    <h2>On real prices</h2>
+    <p>The same ladder on 21 years of real SPY daily prices (2005 to 2025, from Yahoo Finance, scored over the same 18 years at every stage) tells the same story. The momentum strategy that can see one bar ahead reports a Sharpe of <span class="num">4.10</span>. Without that one bar it earns <span class="num">0.05</span>, and walk-forward out of sample <span class="num">&minus;0.16</span>, below simply holding SPY at <span class="num">0.59</span>. A slow moving-average crossover, by contrast, keeps <span class="num">0.79</span> out of sample: honest testing does not sink everything, only what was never there. That beats zero, but one 18-year history cannot show it beats holding the index.</p>
+  </section>
+
+  <section>
     <h2>The cost that matters is the one nobody invoices</h2>
     <p>On the headline path, commissions cost 0.01 of Sharpe and slippage 0.16. Over <span class="num">$462M</span> of traded notional, a half-cent per-share commission came to 0.31bp, against 5.74bp of spread plus square-root market impact. Across the 200 paths, costs together took about 0.22 of Sharpe, nearly all of it slippage.</p>
     <figure>
@@ -246,7 +251,7 @@ pytest                                # 350 tests</pre>
   <section>
     <h2>Limits</h2>
     <ul class="points">
-      <li><strong>Synthetic data with one planted effect.</strong> Real prices have fat tails, regime changes and many weak effects at once. The study tests the method, not a market, and makes no claim that this strategy would make money on real prices.</li>
+      <li><strong>Synthetic data with one planted effect.</strong> Real prices have fat tails, regime changes and many weak effects at once. The study tests the method, not a market. The SPY run above shows the same look-ahead collapse on real data, but there is no oracle there, so the size of the true edge is only known on synthetic prices.</li>
       <li><strong>One instrument, one parameter.</strong> A seven-value grid is a mild search. Real research tries far more ideas, and no statistic can count the ideas tried before this one, so real overfitting is usually worse than shown here.</li>
       <li><strong>Assumed costs.</strong> The spread, impact and commission settings are plausible defaults for a liquid stock, not measured from a venue. Each is a setting.</li>
       <li><strong>Sharpe scaling.</strong> Annualising by the square root of 252 assumes independent returns; the planted drift makes returns slightly autocorrelated, so every Sharpe here is a mild approximation.</li>
