@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<title>Open Graph card: Honest Backtest</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=ranade@500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px}
+body{
+  background:#F3F1EC;color:#16130F;overflow:hidden;
+  font-family:Inter,Helvetica,Arial,sans-serif;
+  display:grid;grid-template-columns:1fr 438px;align-items:center;gap:50px;padding:0 76px;
+}
+.eyebrow{font-size:14px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#6E675C}
+h1{font-family:"Ranade","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;font-size:66px;line-height:1;letter-spacing:-.04em;margin-top:22px;white-space:nowrap}
+.kicker{margin-top:22px;font-size:22px;line-height:1.4;letter-spacing:-.006em;max-width:17.5em;color:#16130F}
+.foot{display:flex;align-items:baseline;gap:18px;margin-top:40px;padding-top:22px;border-top:1px solid #DCD6CB}
+.name{font-family:"Ranade","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em}
+.url{font-size:15px;color:#6E675C}
+.ladder{border:1px solid #DCD6CB;background:#F9F8F4}
+.cap{font-size:11px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:#6E675C;padding:16px 22px;border-bottom:1px solid #DCD6CB}
+.r{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:17px 22px;border-bottom:1px solid #DCD6CB}
+.r:last-child{border-bottom:0}
+.r.hl{background:rgba(138,75,42,.05)}
+.s{font-size:15.5px;font-weight:500;color:#16130F}
+.n{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;font-weight:600;font-size:17px;font-variant-numeric:tabular-nums}
+.n.big{color:#8A4B2A}
+.n.neg{color:#B23A2A}
+</style></head><body>
+<div>
+  <div class="eyebrow">Backtesting engine &middot; quantitative research</div>
+  <h1>Honest Backtest</h1>
+  <p class="kicker">What a strategy's Sharpe ratio is worth once the usual shortcuts are removed, one at a time.</p>
+  <div class="foot"><span class="name">Rohan Raghu</span><span class="url">rohankraghu.github.io/honest-backtest</span></div>
+</div>
+<div class="ladder">
+  <div class="cap">Sharpe, stage by stage</div>
+  <div class="r"><span class="s">1 Naive backtest</span><span class="n big">6.94</span></div>
+  <div class="r"><span class="s">2 + point-in-time data</span><span class="n">0.43</span></div>
+  <div class="r"><span class="s">3 + slippage</span><span class="n">0.27</span></div>
+  <div class="r"><span class="s">4 + commissions</span><span class="n">0.26</span></div>
+  <div class="r hl"><span class="s">5 + walk-forward OOS</span><span class="n neg">&minus;0.19</span></div>
+</div>
+</body></html>
