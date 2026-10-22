@@ -13,6 +13,7 @@ countersign/index.html      Countersign, the startup: what it is and build progr
 honest-backtest/index.html  Honest Backtest, the engine and the Sharpe study.
 numeraldo/index.html        Numeraldo, the nonprofit.
 numeraldo/crash-course/     Financial Literacy Crash Course (its own README).
+transit-detection/          Finding Planets in Starlight, the TESS vetting pipeline.
 ```
 
 ## Replacing the resume or the CV
@@ -106,6 +107,7 @@ iMessage, LinkedIn and X show when the link is posted.
 | `numeraldo/crash-course/`, all four pages | `assets/og-crash-course.png` |
 | `countersign/index.html` | `assets/og-countersign.png` |
 | `honest-backtest/index.html` | `assets/og-honest-backtest.png` |
+| `transit-detection/index.html` | `assets/og-transit-detection.png` |
 
 Each card is drawn by the page of the same name in `assets/og-src/`, using
 that section's own palette, typefaces and figures. To change one: edit its

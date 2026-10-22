@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Finding planets in starlight, a transit-detection pipeline for TESS light curves, tested on real TESS candidates that follow-up has since resolved. Built by Rohan Raghu.">
+<meta property="og:title" content="Finding Planets in Starlight · Rohan Raghu">
+<meta property="og:description" content="A transit-detection pipeline for TESS light curves, judged on 766 real candidates that follow-up has since resolved.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rohankraghu.github.io/transit-detection/">
+<meta property="og:image" content="https://rohankraghu.github.io/assets/og-transit-detection.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Finding planets in starlight. Average precision on 766 resolved TESS hosts: chance 0.491, light curve 0.766, with later sectors 0.818, with the centroid test 0.842.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://rohankraghu.github.io/assets/og-transit-detection.png">
+<link rel="canonical" href="https://rohankraghu.github.io/transit-detection/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<title>Finding Planets in Starlight · Rohan Raghu</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=ranade@500,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --bg: #F3F1EC; --surface: #F9F8F4; --fg: #16130F; --muted: #6E675C; --rule: #DCD6CB;
+  --ink: #8A4B2A; --loss: #B23A2A; --ceiling: #9A6B12;
+  --display: "Ranade", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121009; --surface: #1A1711; --fg: #EBE7DF; --muted: #948D80; --rule: #2A251D;
+  --ink: #CE8F63; --loss: #F07F6C; --ceiling: #D9AE57; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121009; --surface: #1A1711; --fg: #EBE7DF; --muted: #948D80; --rule: #2A251D;
+  --ink: #CE8F63; --loss: #F07F6C; --ceiling: #D9AE57; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 48px 16px 72px; display: flex; flex-direction: column; gap: 44px; }
+section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.45rem; font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; max-width: 65ch; }
+a { color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+code { font-family: var(--mono); font-size: 0.88em; }
+.eyebrow { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.2rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.neg { color: var(--loss); }
+
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+figcaption { font-size: 0.9rem; color: var(--muted); }
+.chart { overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 520px; height: auto; }
+.chart text { font-family: var(--mono); fill: var(--muted); font-size: 12px; }
+.chart .val { fill: var(--fg); font-weight: 600; font-size: 13px; }
+.chart .val.neg { fill: var(--loss); }
+.chart .grid { stroke: var(--rule); stroke-width: 1; }
+.chart .zero { stroke: var(--muted); stroke-width: 1; }
+.chart .bar { fill: var(--ink); }
+.chart .bar.neg { fill: var(--loss); }
+.chart .oracle { stroke: var(--ceiling); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.chart .oracle-lbl { fill: var(--ceiling); }
+
+.table { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 7px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { font-weight: 600; color: var(--muted); font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase; }
+tr.hl td { font-weight: 600; }
+
+ul.points { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; max-width: 65ch; }
+
+.pipe { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.85rem; }
+.pipe span.ev { border: 1px solid var(--ink); color: var(--ink); padding: 4px 10px; border-radius: 4px; }
+.pipe span.ar { color: var(--muted); }
+
+.cost { display: grid; grid-template-columns: 9.5em 1fr auto; gap: 8px 12px; align-items: center; font-family: var(--mono); font-size: 0.85rem; }
+.cost .track { height: 14px; background: var(--bg); border-radius: 2px; min-width: 0; }
+.cost .fill { height: 100%; background: var(--ink); border-radius: 2px; }
+.cost .fill.small { background: var(--muted); min-width: 2px; }
+
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 28px; }
+.split > div { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.split p { font-size: 0.96rem; }
+
+pre { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; overflow-x: auto; font-family: var(--mono); font-size: 0.82rem; line-height: 1.55; }
+footer { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="eyebrow" href="../#work" style="text-decoration:none">&larr; All work</a>
+  <header style="display:flex;flex-direction:column;gap:16px">
+    <div class="eyebrow">Project write up &middot; Python, scikit-learn, NumPy, SciPy</div>
+    <h1>Finding planets in starlight</h1>
+    <p class="lede">A pipeline that searches TESS light curves for the small, repeating dip of a transiting planet and decides whether it is one. Judged on <span class="num">766</span> real TESS candidates that follow-up has since resolved, it ranks the confirmed planets above the false positives with an average precision of <span class="num">0.84</span>, where guessing scores <span class="num">0.49</span>. A version trained only on simulated planets scored <span class="num">0.61</span>, barely better than ranking by signal strength.</p>
+    <div class="meta">
+      <span>Rohan Raghu</span>
+      <span><a href="https://github.com/rohanKraghu/transit-detection">github.com/rohanKraghu/transit-detection</a></span>
+      <span>574 tests</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>The problem</h2>
+    <p>A planet crossing in front of its star dims the light by 0.05 to 1% for a few hours, once per orbit. Only a few per cent of stars host one that can be seen, and the dip sits on top of stellar variability ten to a hundred times deeper. Most dips that do repeat are not planets: eclipsing binaries, a binary on a neighbouring star blended into the same pixel, or the spacecraft itself. Every candidate a pipeline flags costs nights of telescope time to check, so what matters is how cleanly the real planets rise to the top of the list.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="pipe" aria-label="Pipeline stages">
+      <span class="ev">download</span><span class="ar">&rarr;</span>
+      <span class="ev">detrend</span><span class="ar">&rarr;</span>
+      <span class="ev">search</span><span class="ar">&rarr;</span>
+      <span class="ev">vet</span><span class="ar">&rarr;</span>
+      <span class="ev">fit</span>
+    </div>
+    <p>Each light curve is flattened with a robust spline that is shown to keep a transit's depth to within 5% while removing variability ten times deeper, then refitted with the transits masked. A box least squares search finds the strongest repeating dip. The classifier, gradient boosting on 23 vetting measurements (odd against even transit depths, a search for a secondary eclipse, transit shape, how much the dip stands out from the rest of the periodogram), scores how planet-like the signal is. A centroid test checks the pixel images to see whether the dip is on the target star or a neighbour. For candidates worth a closer look, a limb-darkened transit model is fitted with MCMC to give the planet's size, impact parameter and the stellar density the transit implies.</p>
+    <p>The same code vets one star (<code>python -m transitml.vet "TIC 100100827"</code>, which is WASP-18) or a whole sector with a cache and a ranked dashboard.</p>
+  </section>
+
+  <section>
+    <h2>On real TESS data</h2>
+    <p>The test that matters is the one a vetting tool faces in use: real TESS signals that follow-up observers have since resolved as confirmed planet or false positive, labels nobody in this project chose. Both classes have already passed TESS's own detection and automated vetting, so the false positives are the hard ones that got through.</p>
+    <figure>
+      <div class="cost" role="img" aria-label="Average precision on 766 resolved TOI hosts of sectors 14 to 26: chance 0.491, light curve from the sectors observed 0.766, with later sectors joined 0.818, adding the centroid test 0.842">
+        <span>chance</span><div class="track"><div class="fill small" style="width:49.1%"></div></div><span class="num">0.491</span>
+        <span>light curve</span><div class="track"><div class="fill" style="width:76.6%"></div></div><span class="num">0.766</span>
+        <span>+ later sectors</span><div class="track"><div class="fill" style="width:81.8%"></div></div><span class="num">0.818</span>
+        <span>+ centroid test</span><div class="track"><div class="fill" style="width:84.2%"></div></div><span class="num">0.842</span>
+      </div>
+      <figcaption>Average precision on the 766 resolved TOI hosts of sectors 14 to 26, for a model trained on the real dispositions of sectors 1 to 13. "Later sectors" joins each star's observations from sectors 27 to 102, up to five years of data.</figcaption>
+    </figure>
+    <div class="table">
+      <table>
+        <thead><tr><th>Test on real data</th><th>Result</th><th>Chance</th></tr></thead>
+        <tbody>
+          <tr><td>746 resolved TOIs, model trained on synthetic curves</td><td>AP 0.61</td><td>0.50</td></tr>
+          <tr><td>&nbsp;&nbsp;ranking the same stars by BLS SNR</td><td>AP 0.60</td><td>0.50</td></tr>
+          <tr class="hl"><td>766 hosts of sectors 14 to 26, trained on 1 to 13</td><td>AP 0.842</td><td>0.491</td></tr>
+          <tr class="hl"><td>857 hosts of sectors 1 to 13, trained on 14 to 26</td><td>AP 0.876</td><td>0.536</td></tr>
+          <tr><td>101 open TOIs since confirmed, among 1,856 ranked</td><td>ROC-AUC 0.63</td><td>0.50</td></tr>
+          <tr><td>Synthetic planets injected into real sector 14 noise</td><td>AP 0.46</td><td>0.04</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="points">
+      <li><strong>A model that only saw simulated planets did not transfer.</strong> Trained on synthetic light curves it scored 0.61 on real TOIs, against 0.60 for simply ranking by signal-to-noise. On that population it was mostly a signal-strength ranking. That result is why the later models learn from real follow-up labels instead, trained on one half of the TESS mission and scored on the other.</li>
+      <li><strong>More data per star helps the most.</strong> Joining each star's later sectors finds the catalogued period for 88% of hosts instead of 81%, and is worth 0.04 to 0.07 of average precision. The centroid test adds a little more by catching dips that sit on a neighbouring star.</li>
+      <li><strong>The open candidates.</strong> Turned on 1,856 TOIs still awaiting a verdict, the model ranks the 101 that the NASA Exoplanet Archive has since confirmed above the rest with a ROC-AUC of 0.63, against 0.51 for the TOI's own signal-to-noise. None of them was in training. The other open TOIs still hold many planets, so 0.63 is a floor on the separation.</li>
+      <li><strong>Fitted sizes hold up.</strong> Fifteen known TESS planets, each fitted from one sector, put 69% of their radius, impact, duration and density values within one sigma of the published ones and 95% within three, close to what honest intervals should give. LHS 3844 b, on an 11-hour orbit, was found at twice its period because the search grid starts at half a day.</li>
+      <li><strong>Real noise is much harder than the simulator.</strong> Planets injected into real sector 14 photometry drop average precision from 0.74 on synthetic data to 0.46.</li>
+    </ul>
+    <p>What these numbers do not say: the follow-up labels carry the follow-up programme's own choices, and about half of TOIs are planets, far more than in the sky. So the 0.8s measure how well the model ranks TOIs like the resolved ones, not the precision of a survey.</p>
+  </section>
+
+  <section>
+    <h2>The synthetic benchmark</h2>
+    <p>Before any real data, the pipeline was built against 2,400 simulated light curves in which 4% of stars host a transiting planet, with eclipsing binaries and variable stars as the false positives and 35% held out. Here the truth is known for every star.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Scorer</th><th>Average precision</th><th>ROC-AUC</th><th>Top 20</th></tr></thead>
+        <tbody>
+          <tr><td>Random ranking (chance)</td><td>0.040</td><td>0.500</td><td></td></tr>
+          <tr><td>Rank by BLS depth</td><td>0.097</td><td>0.752</td><td>0 of 20</td></tr>
+          <tr><td>Rank by BLS depth SNR</td><td>0.179</td><td>0.831</td><td>2 of 20</td></tr>
+          <tr class="hl"><td>Gradient boosting on vetting features</td><td>0.745</td><td>0.921</td><td>18 of 20</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="points">
+      <li><strong>Accuracy is never computed.</strong> At a 4% planet rate, a classifier that always says "no planet" is 96% accurate and finds nothing. Average precision, quoted against its own chance level, is the headline, because precision has the number of flagged stars in its denominator, and that is what turns into telescope nights.</li>
+      <li><strong>The threshold is chosen inside the training split</strong>, as the highest-recall point whose cross-validated precision is at least 0.50 at a one-sided lower confidence bound, then frozen. The first version applied the 0.50 floor to the point estimate and delivered 0.41 on held-out data; the confidence bound fixed that selection bias.</li>
+      <li><strong>One test set is one draw.</strong> On three fresh simulated sectors the model never saw, average precision was 0.62, 0.73 and 0.59. With 34 planets in the test set, the third decimal of 0.745 means nothing.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Reproduce it</h2>
+    <pre>git clone https://github.com/rohanKraghu/transit-detection && cd transit-detection
+pip install -r requirements.txt
+python run_pipeline.py      # the synthetic benchmark, about 3 minutes on 4 cores
+pytest                      # 574 tests</pre>
+    <p>The real-data runs download thousands of light curves from MAST through lightkurve, which takes hours the first time; the README gives the command for each result above. Numbers on this page are from the README at commit <code>8f0c69f</code> (21 October 2026).</p>
+  </section>
+
+  <section>
+    <h2>Limits</h2>
+    <ul class="points">
+      <li><strong>Catalogue labels, not the sky.</strong> Every real benchmark here scores TOIs, which a TESS pipeline already chose, at about a 50% planet rate. Recall on confirmed planets and the share of false positives rejected transfer to other populations; precision does not.</li>
+      <li><strong>The brightest stars only.</strong> Rankings read TESS-SPOC photometry, which covers about half the open TOI hosts. The fainter half is filled in from QLP photometry with a separate option.</li>
+      <li><strong>Long periods are hard.</strong> A planet that transits once or twice in a 27-day sector is often missed by the search before the classifier ever sees it. Joining later sectors recovers many of these, not all.</li>
+      <li><strong>Small labelled sets.</strong> With a few hundred stars on each side, average precision moves by a few points from one split to another, so differences under about 0.03 are noise.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Rohan Raghu &middot; MIT, Mathematics and Artificial Intelligence</span>
+    <span>Source: <a href="https://github.com/rohanKraghu/transit-detection">github.com/rohanKraghu/transit-detection</a></span>
+  </footer>
+</main>
+</body>
+</html>
