@@ -229,15 +229,16 @@
   .lz-cap b{font-weight:600;color:var(--ink)}
   .lz-btn{
     appearance:none;-webkit-appearance:none;background:none;border:0;cursor:pointer;
-    font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:.18em;
+    font-family:var(--body);font-size:10.5px;font-weight:600;letter-spacing:.18em;
     text-transform:uppercase;color:var(--muted);white-space:nowrap;
-    padding:10px 0 3px;border-bottom:1px solid var(--line);
+    padding:0 0 2px;border-bottom:1px solid var(--line);
     transition:color .15s,border-color .15s;
   }
   .hero .meta{align-self:stretch}
   .hero .meta .lz-btn{align-self:flex-start;margin-top:auto}
   .hero .meta .lz-panel{margin-top:auto}
   .lz-btn:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  #lz-toggle{font-size:20px;padding:12px 0 4px;border-bottom-width:2px}
 
   .lz-panel{margin-top:10px;padding-top:14px;border-top:1px solid var(--line)}
   .lz-panel .lz-grid{grid-template-columns:1fr;gap:12px}
@@ -267,6 +268,9 @@
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
     .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:0}
     .hero .where{width:100%;margin-bottom:0}
+    /* on narrow screens Adjust sits in the LinkedIn / Resume / CV row, so it takes their style */
+    #lz-toggle{font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;line-height:inherit;color:var(--ink);padding:0 0 2px;border-bottom-width:1px}
+    #lz-toggle:hover{color:var(--accent)}
     .lz-panel{width:100%}
     .lz-panel .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
     .intro h2,.intro p{grid-column:4 / 13}
