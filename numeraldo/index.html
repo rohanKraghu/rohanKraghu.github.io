@@ -110,12 +110,7 @@
   }
   .bar{display:flex;align-items:center;gap:18px;min-height:62px;flex-wrap:wrap;padding-block:8px}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
-  .mark{
-    width:30px;height:30px;border:1.5px solid var(--accent);border-radius:7px;
-    display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:15px;
-    color:var(--accent);background:var(--accent-soft);
-  }
-  .wordmark{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em}
+  .logo{display:block;height:44px;width:auto;border-radius:5px}
   nav.main{display:flex;gap:20px;flex-wrap:wrap;align-items:center;min-width:0}
   nav.main a{
     font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;
@@ -261,6 +256,9 @@
   .event h3{font-size:19px}
   .event .where{color:var(--muted);font-size:15px}
   .event .what{color:var(--muted);font-size:15.5px;margin-top:6px}
+  .event .pics{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .event .pics img{display:block;height:auto;max-width:100%;width:420px;border:1px solid var(--line);border-radius:3px}
+  .event .pics img.tall{width:200px}
 
   .people{display:grid;grid-template-columns:180px 1fr;gap:34px;align-items:start}
   .portrait{
@@ -278,9 +276,7 @@
     border:1px solid var(--line);background:var(--surface);padding:18px;border-radius:3px;
     display:flex;flex-direction:column;
   }
-  .board .card .initials{
-    font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.1em;
-  }
+  .board .card img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:2px}
   .board .card .nm{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.01em;margin-top:10px}
   .board .card .rl{color:var(--muted);font-size:13.5px;margin-top:3px;line-height:1.45}
 
@@ -351,8 +347,7 @@
 <header class="site">
   <div class="wrap bar">
     <a class="brand" href="#top">
-      <span class="mark">N</span>
-      <span class="wordmark">Numeraldo</span>
+      <img class="logo" src="../assets/numeraldo-logo.webp" width="434" height="197" alt="Numeraldo, a 501(c)(3) organization">
     </a>
     <nav class="main">
       <a href="#mission">Mission</a>
@@ -362,6 +357,7 @@
       <a href="#partners">Partners</a>
       <a href="#events">Events</a>
       <a href="#about">About</a>
+      <a href="https://numeraldo.org" rel="noopener">numeraldo.org ↗</a>
     </nav>
     <a class="btn" href="#impact">Support us</a>
   </div>
@@ -401,8 +397,8 @@
             be taught at any age, and builds programs that do exactly that.</p>
           <div class="definition">
             <span class="term">Numeracy, n.</span>
-            <p>The ability to use, interpret, and express quantitative ideas in order to understand and
-              manage daily, public, and professional situations.</p>
+            <p>The numerical counterpart of literacy: the ability to use, interpret, and express quantitative
+              ideas to understand and manage the demands of everyday situations, public life, and professional contexts.</p>
           </div>
         </div>
       </div>
@@ -614,7 +610,8 @@
           <span class="when">Weekly · School year</span>
           <div>
             <h3>Numeracy Club sessions</h3>
-            <p class="what">Small-group instruction for grades 4–8, every week.</p>
+            <p class="what">Small-group instruction for grades 4–8, every week. Photos from the Oct 6 and Dec 22, 2025 sessions at the Boys &amp; Girls Club of Lower Bergen County.</p>
+            <div class="pics"><img src="../assets/numeraldo-ev-2025-10-bgc.webp" width="1000" height="504" loading="lazy" decoding="async" alt="Students at tables during a Numeraldo session at the Boys &amp; Girls Club, October 6, 2025."><img src="../assets/numeraldo-ev-2025-12-bgc.webp" width="1000" height="542" loading="lazy" decoding="async" alt="Students working at whiteboards during a Numeraldo session at the Boys &amp; Girls Club, December 22, 2025."></div>
           </div>
           <span class="where">Boys &amp; Girls Club of Lower Bergen County · Hackensack, NJ<br>
             Mount Olive Public Library<br>Mount Olive High School</span>
@@ -634,6 +631,7 @@
           <div>
             <h3>Teen Finance Workshop</h3>
             <p class="what">Covered job offers, working papers, opening a bank account, direct deposit and a Roth IRA.</p>
+            <div class="pics"><img class="tall" src="../assets/numeraldo-ev-2026-02-teen.webp" width="525" height="777" loading="lazy" decoding="async" alt="Rohan Raghu teaching at a whiteboard at the Teen Finance Workshop."></div>
           </div>
           <span class="where">Mount Olive Public Library · Mount Olive, NJ</span>
         </article>
@@ -642,6 +640,7 @@
           <span class="when">Jan 24, 2026</span>
           <div>
             <h3>BLAST Regional Mensa Gathering</h3>
+            <div class="pics"><img src="../assets/numeraldo-ev-2026-01-blast.webp" width="1000" height="728" loading="lazy" decoding="async" alt="Photos of the Numeraldo session at the BLAST Regional Mensa Gathering."></div>
           </div>
           <span class="where">Marriott Hotel · Newark, NJ</span>
         </article>
@@ -650,6 +649,7 @@
           <span class="when">Nov 8, 2025</span>
           <div>
             <h3>IGNYTE! National Youth Leadership Gathering</h3>
+            <div class="pics"><img src="../assets/numeraldo-ev-2025-11-ignyte.webp" width="1000" height="565" loading="lazy" decoding="async" alt="Numeraldo presenting to a full lecture room at IGNYTE! at County College of Morris."></div>
           </div>
           <span class="where">County College of Morris · Randolph, NJ</span>
         </article>
@@ -659,6 +659,7 @@
           <div>
             <h3>Mensa Leadership Development Workshop</h3>
             <p class="what">Numeraldo presented its approach to numeracy instruction and recruited volunteers.</p>
+            <div class="pics"><img src="../assets/numeraldo-ev-2025-09-mensa.webp" width="1000" height="705" loading="lazy" decoding="async" alt="Numeraldo presenting at the Mensa Leadership Development Workshop."></div>
           </div>
           <span class="where">Morris County Library · Whippany, NJ</span>
         </article>
@@ -673,7 +674,7 @@
         <div><h2>Who runs Numeraldo.</h2></div>
       </div>
       <div class="people">
-        <div class="portrait"><img src="../assets/numeraldo-founder.webp" width="240" height="240" alt="Rohan Raghu teaching at a whiteboard headed Numeraldo."></div>
+        <div class="portrait"><img src="../assets/numeraldo-founder-headshot.webp" width="400" height="473" alt="Rohan K. Raghu."></div>
         <div>
           <div class="person-name">Rohan K. Raghu</div>
           <div class="person-role">Founder</div>
@@ -688,27 +689,27 @@
       <span class="eyebrow board-label">Board of Advisors</span>
       <div class="board">
         <div class="card">
-          <span class="initials">DR</span>
+          <img src="../assets/numeraldo-board-dr.webp" width="200" height="200" loading="lazy" decoding="async" alt="Dorairaja Raghu.">
           <div class="nm">Dorairaja Raghu</div>
           <div class="rl">Professor Emeritus · NJIT</div>
         </div>
         <div class="card">
-          <span class="initials">LS</span>
+          <img src="../assets/numeraldo-board-ls.webp" width="200" height="200" loading="lazy" decoding="async" alt="LNV Samy.">
           <div class="nm">LNV Samy</div>
           <div class="rl">CEO · ClockOn</div>
         </div>
         <div class="card">
-          <span class="initials">SM</span>
+          <img src="../assets/numeraldo-board-sm.webp" width="200" height="200" loading="lazy" decoding="async" alt="Sean McCabe.">
           <div class="nm">Sean McCabe</div>
           <div class="rl">First Officer · Delta Air Lines</div>
         </div>
         <div class="card">
-          <span class="initials">GH</span>
+          <img src="../assets/numeraldo-board-gh.webp" width="200" height="200" loading="lazy" decoding="async" alt="Greg Hoffman.">
           <div class="nm">Greg Hoffman</div>
           <div class="rl">Northern NJ Mensa</div>
         </div>
         <div class="card">
-          <span class="initials">LT</span>
+          <img src="../assets/numeraldo-board-lt.webp" width="200" height="200" loading="lazy" decoding="async" alt="Laurie Thomas.">
           <div class="nm">Laurie Thomas</div>
           <div class="rl">Northern NJ Mensa</div>
         </div>
@@ -733,6 +734,9 @@
         <a href="tel:+16094908008">
           <span class="ck">Phone</span><span class="cv">(609) 490-8008</span>
         </a>
+        <a href="https://numeraldo.org" rel="noopener">
+          <span class="ck">Website</span><span class="cv">numeraldo.org</span>
+        </a>
         <a href="#programs">
           <span class="ck">Volunteer</span><span class="cv">Teach with us →</span>
         </a>
@@ -743,7 +747,7 @@
 
 <footer class="site">
   <div class="wrap foot">
-    <span>© 2026 Numeraldo. All rights reserved.</span>
+    <span>© 2026 Numeraldo. All rights reserved. <a href="https://numeraldo.org" rel="noopener">numeraldo.org</a></span>
     <span>Expanding world numeracy one number at a time.</span>
   </div>
 </footer>
