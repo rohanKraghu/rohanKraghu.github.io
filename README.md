@@ -11,8 +11,6 @@ assets/                     Images and documents linked from the portfolio.
 assets/og-src/              Source pages for the social share cards. Not linked from the site.
 countersign/index.html      Countersign, the startup: what it is and build progress.
 honest-backtest/index.html  Honest Backtest, the engine and the Sharpe study.
-numeraldo/index.html        Numeraldo, the nonprofit.
-numeraldo/crash-course/     Financial Literacy Crash Course (its own README).
 transit-detection/          Finding Planets in Starlight, the TESS vetting pipeline.
 ```
 
@@ -38,43 +36,13 @@ If a file ID does have to change, each document is referenced twice in
 | Resume | `1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc` |
 | CV | `1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg` |
 
-## Updating the Numeraldo figures
+## Numeraldo
 
-Every number on the Numeraldo page renders from one object near the bottom
-of `numeraldo/index.html`:
-
-```js
-const NUMERALDO = { goal: 25000, lastUpdated: "...", programs: [ ... ] };
-```
-
-The hero ledger, the fundraising meter, the allocation table and its
-percentages all derive from it. Edit that block and nothing else.
-
-One exception: the share card `assets/og-numeraldo.png` repeats the three
-hero figures and is a flat image, so it does not follow. Regenerate it when
-they change, as below.
-
-## If numeraldo.org starts serving this site
-
-Right now it does not. `numeraldo.org` resolves to a separate placeholder,
-and paths like `numeraldo.org/crash-course/` return 404, so everything a
-crawler is told about the Numeraldo pages points at `rohankraghu.github.io`
-instead. The pages still link out to `numeraldo.org` in their footers, and
-`info@numeraldo.org` is unaffected either way: email does not depend on who
-serves the web pages.
-
-When the domain does serve these files, four things move:
-
-1. `numeraldo/index.html`: `og:url` and `<link rel="canonical">`.
-2. `sitemap.xml` and `sitemap.txt`: the five Numeraldo and crash course
-   entries belong in that domain's own sitemap instead.
-3. `assets/og-src/numeraldo.html` and `assets/og-src/crash-course.html`
-   print the URL in their footers. Change it and regenerate both PNGs.
-4. The crash course has its own README on serving the folder from a
-   subdomain. Read that first; its paths are relative by design.
-
-Leave the `og:image` URLs on `rohankraghu.github.io`. They resolve from any
-domain, and moving them means moving the files.
+Numeraldo and its crash course live at [numeraldo.org](https://numeraldo.org),
+from the separate repository `rohanKraghu/numeraldo`. Because that
+repository has a custom domain, `rohankraghu.github.io/numeraldo/` redirects
+there automatically, so do not add a `numeraldo/` folder here: GitHub Pages
+would ignore it. Link to `https://numeraldo.org` instead.
 
 ## Updating the Countersign progress
 
@@ -103,8 +71,6 @@ iMessage, LinkedIn and X show when the link is posted.
 | Page | Card |
 |---|---|
 | `index.html` | `assets/og.png` |
-| `numeraldo/index.html` | `assets/og-numeraldo.png` |
-| `numeraldo/crash-course/`, all four pages | `assets/og-crash-course.png` |
 | `countersign/index.html` | `assets/og-countersign.png` |
 | `honest-backtest/index.html` | `assets/og-honest-backtest.png` |
 | `transit-detection/index.html` | `assets/og-transit-detection.png` |
@@ -114,9 +80,7 @@ that section's own palette, typefaces and figures. To change one: edit its
 source, open it in a browser sized to exactly 1200 x 630, screenshot it, and
 replace the PNG. Nothing links to these sources and nothing imports them.
 
-The `og:image` URLs are absolute and all point at `rohankraghu.github.io`,
-including the ones on the Numeraldo pages. `numeraldo.org` is a separate
-site and does not serve these files.
+The `og:image` URLs are absolute and all point at `rohankraghu.github.io`.
 
 ## Conventions
 
