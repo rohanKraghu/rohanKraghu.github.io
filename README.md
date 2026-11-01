@@ -95,6 +95,25 @@ milestone.
 Keep it high level: no unreleased evaluation numbers, licensing plans or
 customer names.
 
+## Adding a photo to the Personal stage
+
+The scattered frames under `#personal` are plain `.float` divs. Each one
+needs three things, and the third is easy to miss:
+
+1. An 800 x 1000 WebP in `assets/`, named `me-<thing>.webp`. The frame is
+   4:5 and the image is `object-fit:cover`, so crop to 4:5 first rather than
+   letting the browser choose what to cut.
+2. A `<span class="when">` with the year, after the `<img>`. Every frame
+   carries one.
+3. A `.float:nth-child(N)` rule giving it `left` and `top`, in the main
+   block **and** in the `max-width:680px` block. Without it the frame has no
+   position of its own and stacks in the corner.
+
+Frames are in reverse date order and the karate photo stays last, because
+the About text refers to it as the last photo. Keep `top` at or below 54%
+on desktop and 70% on mobile, or the frame hangs off the bottom of the
+stage.
+
 ## Social share cards
 
 Every page carries an Open Graph image: the 1200 x 630 card that Slack,
