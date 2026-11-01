@@ -368,12 +368,12 @@
   html[data-mode="personal"] .tabbar,
   html[data-mode="personal"] #panels{display:none}
   .stage{
-    position:relative;height:clamp(420px,44vw,640px);margin-bottom:12px;
+    position:relative;height:clamp(460px,48vw,700px);margin-bottom:12px;
     cursor:pointer;-webkit-tap-highlight-color:transparent;
   }
   .stage:focus-visible{outline:1.5px solid var(--accent);outline-offset:6px}
   .float{
-    position:absolute;width:clamp(140px,15vw,230px);aspect-ratio:4 / 5;padding:10px 10px 0;
+    position:absolute;width:clamp(126px,13vw,200px);aspect-ratio:4 / 5;padding:10px 10px 0;
     background:var(--paper);border:1px solid var(--line);translate:0 0;
     display:flex;flex-direction:column;
     box-shadow:0 14px 30px -18px color-mix(in srgb,var(--ink) 30%,transparent);
@@ -394,13 +394,16 @@
     transition:font-size .7s ease,letter-spacing .7s ease,padding .7s ease;
   }
   .float.front .when{font-size:12px;letter-spacing:.2em;padding:9px 0 11px}
-  .float:nth-child(1){left:0;top:5%;--dx:26px;--dy:18px}
-  .float:nth-child(2){left:19%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
-  .float:nth-child(3){left:3%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
-  .float:nth-child(4){left:21%;top:47%;--dx:18px;--dy:-20px;animation-duration:21s;animation-delay:-14s}
-  .float:nth-child(5){left:64%;top:1%;--dx:-20px;--dy:18px;animation-duration:23s;animation-delay:-17s}
-  .float:nth-child(6){left:83%;top:7%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
-  .float:nth-child(7){left:67%;top:51%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
+  .float:nth-child(1){left:0;top:1%;--dx:26px;--dy:18px;animation-duration:18s;animation-delay:0s}
+  .float:nth-child(2){left:65.5%;top:1%;--dx:-20px;--dy:18px;animation-duration:23s;animation-delay:-17s}
+  .float:nth-child(3){left:17%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(4){left:83%;top:4%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
+  .float:nth-child(5){left:1%;top:33%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
+  .float:nth-child(6){left:66%;top:34%;--dx:-26px;--dy:-14px;animation-duration:25s;animation-delay:-20s}
+  .float:nth-child(7){left:18%;top:35%;--dx:18px;--dy:-20px;animation-duration:21s;animation-delay:-14s}
+  .float:nth-child(8){left:84%;top:36%;--dx:22px;--dy:16px;animation-duration:18s;animation-delay:-2s}
+  .float:nth-child(9){left:0;top:64%;--dx:-18px;--dy:-22px;animation-duration:24s;animation-delay:-3s}
+  .float:nth-child(10){left:67%;top:64%;--dx:-28px;--dy:-16px;animation-duration:26s;animation-delay:-9s}
   @keyframes drift{
     0%,100%{transform:translate(0,0)}
     25%{transform:translate(var(--dx),calc(var(--dy) * -1))}
@@ -413,18 +416,21 @@
 
   @media (max-width:680px){
     .work .item{flex-basis:84%}
-    .stage{height:460px}
-    .float{width:32%}
-    .float.front{width:64%}
+    .stage{height:560px}
+    .float{width:29%}
+    .float.front{width:62%}
     .float .when{font-size:7px;letter-spacing:.14em;padding:4px 0 5px}
     .float.front .when{font-size:11px;padding:8px 0 9px}
-    .float:nth-child(1){left:0;top:1%}
-    .float:nth-child(2){left:34%;top:0}
-    .float:nth-child(3){left:68%;top:2%}
-    .float:nth-child(4){left:0;top:35%}
-    .float:nth-child(5){left:68%;top:35%}
-    .float:nth-child(6){left:0;top:70%}
-    .float:nth-child(7){left:68%;top:69%}
+    .float:nth-child(1){left:0;top:0}
+    .float:nth-child(2){left:71%;top:0}
+    .float:nth-child(3){left:35.5%;top:0}
+    .float:nth-child(4){left:0;top:26%}
+    .float:nth-child(5){left:71%;top:26%}
+    .float:nth-child(6){left:0;top:52%}
+    .float:nth-child(7){left:71%;top:52%}
+    .float:nth-child(8){left:0;top:78%}
+    .float:nth-child(9){left:35.5%;top:78%}
+    .float:nth-child(10){left:71%;top:78%}
     .top .wrap{gap:12px}
     .mode button{padding:4px 9px}
   }
@@ -841,7 +847,10 @@
       <div class="float"><img src="assets/me-cards.webp" width="800" height="1000" loading="lazy" alt="Me doing a card trick at a table covered in decks."><span class="when">2025</span></div>
       <div class="float"><img src="assets/me-car.webp" width="800" height="1000" loading="lazy" alt="Me in a suit and lanyard beside a red Mercedes-AMG on display under an AMG sign."><span class="when">2025</span></div>
       <div class="float"><img src="assets/me-river.webp" width="800" height="1000" loading="lazy" alt="Me waving from a rock in the middle of a rushing river, framed by bare branches."><span class="when">2025</span></div>
+      <div class="float"><img src="assets/me-tree.webp" width="800" height="1000" loading="lazy" alt="Me holding a netted Christmas tree over my head beside a car."><span class="when">2024</span></div>
       <div class="float"><img src="assets/me-telescope.webp" width="800" height="1000" loading="lazy" alt="Me at night beside a telescope on a tripod."><span class="when">2023</span></div>
+      <div class="float"><img src="assets/astro-moon.webp" width="800" height="1000" loading="lazy" alt="The gibbous moon through my telescope, craters and bright ray systems across the disc."><span class="when">2023</span></div>
+      <div class="float"><img src="assets/astro-sun.webp" width="800" height="1000" loading="lazy" alt="The sun in hydrogen-alpha through my telescope, dark filaments winding across the disc."><span class="when">2023</span></div>
       <div class="float"><img src="assets/me-ski.webp" width="800" height="1000" loading="lazy" alt="Me as a kid on skis in a green jacket at the top of a run."><span class="when">2018</span></div>
       <div class="float"><img src="assets/me-karate.webp" width="800" height="1000" loading="lazy" alt="Me as a young kid in a karate uniform holding a trophy and a sparring helmet."><span class="when">2014</span></div>
     </div>
