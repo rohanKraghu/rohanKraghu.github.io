@@ -18,7 +18,9 @@
 <meta name="theme-color" content="#F3F1EC" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#121009" media="(prefers-color-scheme:dark)">
 <link rel="canonical" href="https://rohankraghu.github.io/countersign/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
 <title>Countersign · Rohan Raghu</title>
 <script>document.documentElement.className="js"</script>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -429,7 +431,7 @@
 
 <script>
 const COUNTERSIGN = {
-  lastUpdated: "October 18, 2026",
+  lastUpdated: "October 23, 2026",
   milestones: [
     {
       name: "Threat model and attack generator",
@@ -523,6 +525,7 @@ const COUNTERSIGN = {
     }
   ],
   log: [
+    { date: "Oct 23, 2026", text: "New default model, Scanner v1.15: trained on harmless remittance and bank-detail lines, so routine invoice text like \"remit to the account on file\" now rarely raises a false alarm. It catches slightly fewer attacks inside support tickets, so tickets are still scored by v1.14, each model with its own cutoffs." },
     { date: "Oct 18, 2026", text: "Built a kit for the first design partners: a five-minute quickstart, an example invoice-paying agent where a hidden bank-change note gets the bank change held and the payment blocked, a one-call way to send support tickets, and a self-contained server that partners run on their own machines. It is shared with partners directly." },
     { date: "Oct 18, 2026", text: "New default model, Scanner v1.14: trained on generated support replies instead of real ones, after several rounds of testing ways to drop that data. On a fresh set of real tickets frozen beforehand it catches more attacks inside tickets and more generic injections than v1.8, with a small trade-off on attacks hidden in assistant-style text. v1.8 stays available." },
     { date: "Oct 15, 2026", text: "Hardened the API for scaling out: each API key now has one rate limit shared by every server process using the same database, and alert webhooks are sent only to public internet addresses, never to private or internal ones." },

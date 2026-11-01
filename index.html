@@ -12,13 +12,15 @@
 <meta property="og:image" content="https://rohankraghu.github.io/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Making numbers mean something. Rohan Raghu, rohankraghu.github.io.">
+<meta property="og:image:alt" content="The Lorenz attractor, drawn in rust on a cream background.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://rohankraghu.github.io/assets/og.png">
 <meta name="theme-color" content="#F3F1EC" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#121009" media="(prefers-color-scheme:dark)">
 <link rel="canonical" href="https://rohankraghu.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F3F1EC'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%2316130F' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/favicon.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
 <meta name="google-site-verification" content="42YtfBqmxAqDq9PHRiOHN3wxSfsTmyrHmE06wV-AMxU">
 <title>Rohan Raghu</title>
 <script type="application/ld+json">
@@ -238,6 +240,7 @@
   .hero .meta .lz-btn{align-self:flex-start;margin-top:auto}
   .hero .meta .lz-panel{margin-top:auto}
   .lz-btn:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  #lz-toggle{font-size:20px;padding:12px 0 4px;border-bottom-width:2px}
 
   .lz-panel{margin-top:10px;padding-top:14px;border-top:1px solid var(--line)}
   .lz-panel .lz-grid{grid-template-columns:1fr;gap:12px}
@@ -267,6 +270,9 @@
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
     .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:0}
     .hero .where{width:100%;margin-bottom:0}
+    /* on narrow screens Adjust sits in the LinkedIn / Resume / CV row, so it takes their style */
+    #lz-toggle{font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;line-height:inherit;color:var(--ink);padding:0 0 2px;border-bottom-width:1px}
+    #lz-toggle:hover{color:var(--accent)}
     .lz-panel{width:100%}
     .lz-panel .lz-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
     .intro h2,.intro p{grid-column:4 / 13}
@@ -553,7 +559,7 @@
         </a>
 
         <div class="item">
-          <a class="item-link" href="numeraldo/">
+          <a class="item-link" href="https://numeraldo.org">
           <div class="rail">
             <span class="num idx">02</span>
             <div class="shot"><img src="assets/proto-numeraldo.webp" width="1050" height="705" loading="lazy" decoding="async" alt="A cartoon of a Numeraldo session at the Boys &amp; Girls Club: students at tables, a whiteboard behind reading Earn, Save, Share, Spend."></div>
@@ -568,7 +574,7 @@
           </a>
           <div class="subs">
             <span class="lbl">Subprojects</span>
-            <a class="sub" href="numeraldo/crash-course/">
+            <a class="sub" href="https://numeraldo.org/crash-course/">
               <img src="assets/proto-crash-course.webp" width="1200" height="800" loading="lazy" decoding="async" alt="">
               <span><b>Financial Literacy Crash Course</b><span>16 free modules for teenagers and seniors</span></span>
             </a>
@@ -638,7 +644,7 @@
         <span class="when">Sep 2024 – Present</span>
         <div class="body">
           <h3>Founder</h3>
-          <p class="org">Numeraldo · 501(c)(3) nonprofit</p>
+          <p class="org"><a href="https://numeraldo.org" rel="noopener">Numeraldo</a> · 501(c)(3) nonprofit</p>
           <ul>
             <li>Founded and grew a 501(c)(3) that teaches numeracy and financial literacy to
               underserved youth, seniors, and people opening their first bank account.</li>
