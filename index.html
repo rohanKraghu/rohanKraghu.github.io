@@ -270,7 +270,6 @@
     .hero-art{grid-column:1 / 13;min-height:clamp(260px,34vw,380px)}
     .hero .meta{grid-column:1 / 13;flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:0}
     .hero .where{width:100%;margin-bottom:0}
-    /* on narrow screens Adjust sits in the LinkedIn / Resume / CV row, so it takes their style */
     #lz-toggle{font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;line-height:inherit;color:var(--ink);padding:0 0 2px;border-bottom-width:1px}
     #lz-toggle:hover{color:var(--accent)}
     .lz-panel{width:100%}
@@ -307,7 +306,6 @@
   }
 
   .mode{position:relative;display:flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--paper)}
-  /* the "pop": a quick bounce plus a scatter of sprinkles that burst outward */
   .mode .spr{
     position:absolute;left:50%;top:50%;width:280px;height:104px;translate:-50% -50%;
     pointer-events:none;overflow:visible;opacity:0;
@@ -377,24 +375,32 @@
   .float{
     position:absolute;width:clamp(140px,15vw,230px);aspect-ratio:4 / 5;padding:10px 10px 0;
     background:var(--paper);border:1px solid var(--line);translate:0 0;
+    display:flex;flex-direction:column;
     box-shadow:0 14px 30px -18px color-mix(in srgb,var(--ink) 30%,transparent);
     filter:blur(1.5px) saturate(.75);opacity:.6;
     animation:drift 18s ease-in-out infinite;
     transition:left .7s ease,top .7s ease,width .7s ease,translate .7s ease,filter .7s ease,opacity .7s ease;
   }
-  /* the front photo leaves its spot for the centre; the rest sit back, small and soft */
   .float.front{
     left:50%!important;top:50%!important;translate:-50% -50%;width:clamp(260px,29vw,430px);
     filter:none;opacity:1;
     box-shadow:0 34px 70px -24px color-mix(in srgb,var(--ink) 50%,transparent);
   }
-  .float img{display:block;width:100%;height:calc(100% - 10px);object-fit:cover}
-  .float:nth-child(1){left:2%;top:6%;--dx:26px;--dy:18px}
-  .float:nth-child(2){left:13%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
-  .float:nth-child(3){left:24%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
-  .float:nth-child(4){left:70%;top:50%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
-  .float:nth-child(5){left:82%;top:6%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
-  /* no rotation: frames stay straight and only drift back and forth */
+  .float img{display:block;width:100%;flex:1 1 0;min-height:0;object-fit:cover}
+  .float .when{
+    flex:0 0 auto;text-align:center;color:var(--muted);
+    font-size:8px;font-weight:600;line-height:1;letter-spacing:.16em;padding:5px 0 6px;
+    font-variant-numeric:tabular-nums;
+    transition:font-size .7s ease,letter-spacing .7s ease,padding .7s ease;
+  }
+  .float.front .when{font-size:12px;letter-spacing:.2em;padding:9px 0 11px}
+  .float:nth-child(1){left:0;top:5%;--dx:26px;--dy:18px}
+  .float:nth-child(2){left:19%;top:0;--dx:20px;--dy:-14px;animation-duration:20s;animation-delay:-11s}
+  .float:nth-child(3){left:3%;top:52%;--dx:-22px;--dy:24px;animation-duration:22s;animation-delay:-5s}
+  .float:nth-child(4){left:21%;top:47%;--dx:18px;--dy:-20px;animation-duration:21s;animation-delay:-14s}
+  .float:nth-child(5){left:64%;top:1%;--dx:-20px;--dy:18px;animation-duration:23s;animation-delay:-17s}
+  .float:nth-child(6){left:83%;top:7%;--dx:24px;--dy:22px;animation-duration:19s;animation-delay:-8s}
+  .float:nth-child(7){left:67%;top:51%;--dx:-28px;--dy:-16px;animation-duration:24s;animation-delay:-3s}
   @keyframes drift{
     0%,100%{transform:translate(0,0)}
     25%{transform:translate(var(--dx),calc(var(--dy) * -1))}
@@ -410,11 +416,15 @@
     .stage{height:460px}
     .float{width:32%}
     .float.front{width:64%}
-    .float:nth-child(1){left:0;top:2%}
-    .float:nth-child(2){left:0;top:64%}
-    .float:nth-child(3){left:34%;top:0}
-    .float:nth-child(4){left:68%;top:64%}
-    .float:nth-child(5){left:68%;top:2%}
+    .float .when{font-size:7px;letter-spacing:.14em;padding:4px 0 5px}
+    .float.front .when{font-size:11px;padding:8px 0 9px}
+    .float:nth-child(1){left:0;top:1%}
+    .float:nth-child(2){left:34%;top:0}
+    .float:nth-child(3){left:68%;top:2%}
+    .float:nth-child(4){left:0;top:35%}
+    .float:nth-child(5){left:68%;top:35%}
+    .float:nth-child(6){left:0;top:70%}
+    .float:nth-child(7){left:68%;top:69%}
     .top .wrap{gap:12px}
     .mode button{padding:4px 9px}
   }
@@ -824,15 +834,16 @@
 
 </main>
 
-<!-- Personal mode. Anything here is public: it is only hidden until a visitor picks Personal. -->
 <section id="personal" class="panel" aria-label="Personal">
   <div class="wrap">
     <div class="stage" id="stage" role="button" tabindex="0" aria-label="Bring the next photo to the front">
-      <div class="float front"><img src="assets/me-hike.webp" width="800" height="1000" alt="Me in a hood and headlamp on a foggy granite summit."></div>
-      <div class="float"><img src="assets/me-cards.webp" width="800" height="1000" loading="lazy" alt="Me doing a card trick at a table covered in decks."></div>
-      <div class="float"><img src="assets/me-telescope.webp" width="800" height="1000" loading="lazy" alt="Me at night beside a telescope on a tripod."></div>
-      <div class="float"><img src="assets/me-ski.webp" width="800" height="1000" loading="lazy" alt="Me as a kid on skis in a green jacket at the top of a run."></div>
-      <div class="float"><img src="assets/me-karate.webp" width="800" height="1000" loading="lazy" alt="Me as a young kid in a karate uniform holding a trophy and a sparring helmet."></div>
+      <div class="float front"><img src="assets/me-hike.webp" width="800" height="1000" alt="Me in a hood and headlamp on a foggy granite summit."><span class="when">2026</span></div>
+      <div class="float"><img src="assets/me-cards.webp" width="800" height="1000" loading="lazy" alt="Me doing a card trick at a table covered in decks."><span class="when">2025</span></div>
+      <div class="float"><img src="assets/me-car.webp" width="800" height="1000" loading="lazy" alt="Me in a suit and lanyard beside a red Mercedes-AMG on display under an AMG sign."><span class="when">2025</span></div>
+      <div class="float"><img src="assets/me-river.webp" width="800" height="1000" loading="lazy" alt="Me waving from a rock in the middle of a rushing river, framed by bare branches."><span class="when">2025</span></div>
+      <div class="float"><img src="assets/me-telescope.webp" width="800" height="1000" loading="lazy" alt="Me at night beside a telescope on a tripod."><span class="when">2023</span></div>
+      <div class="float"><img src="assets/me-ski.webp" width="800" height="1000" loading="lazy" alt="Me as a kid on skis in a green jacket at the top of a run."><span class="when">2018</span></div>
+      <div class="float"><img src="assets/me-karate.webp" width="800" height="1000" loading="lazy" alt="Me as a young kid in a karate uniform holding a trophy and a sparring helmet."><span class="when">2014</span></div>
     </div>
     <p class="stage-hint">Click or tap the photos to bring the next one forward.</p>
 
@@ -942,7 +953,6 @@
 
 (function () {
   "use strict";
-  // Personal mode is reached by #personal so it can be linked; Professional is the default.
   var root = document.documentElement;
   var btns = [].slice.call(document.querySelectorAll(".mode button"));
   function setMode(mode) {
@@ -961,7 +971,6 @@
   fromHash();
   window.addEventListener("hashchange", fromHash);
 
-  // Draw the eye to the mode switch on load and every so often, until it has been used.
   var sw = document.querySelector(".mode"), popTimer = 0;
   function pop() {
     if (!sw || document.hidden) return;
@@ -975,7 +984,6 @@
     sw.addEventListener("click", function () { clearInterval(popTimer); });
   }
 
-  // Photos stack by recency: clicking puts the next in sequence on top.
   var stage = document.getElementById("stage");
   if (stage) {
     var pics = [].slice.call(stage.querySelectorAll(".float")), front = 0;
