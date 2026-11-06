@@ -94,7 +94,7 @@ needs the frames made smaller or the stage made taller, which is what
 On every load the page assembles itself: six cursors fan out across the
 header, the hero and the tab bar, each drawing a box around an element with
 a size badge on it, and each element fades up as its box completes. It runs
-about a second and then removes itself from the DOM.
+for about one and three quarter seconds and then removes itself from the DOM.
 
 Thirteen elements carry `data-build`. At animation time only the ones
 inside the viewport are animated, so on a phone that is about eight and the
@@ -109,7 +109,7 @@ It does not run when the visitor asked for reduced motion, or when
 JavaScript is off, in which case the markup renders as written. It stops
 early and shows everything the moment the visitor scrolls, clicks, types or
 taps. If the main script never runs, the inline script in `<head>` clears
-the holding class after three seconds anyway, so the page can never be left
+the holding class after four seconds anyway, so the page can never be left
 invisible. No content is created by JavaScript: crawlers and reader modes
 see the full markup.
 
