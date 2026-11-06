@@ -26,7 +26,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Rohan Raghu","alternateName":"Rohan K. Raghu","url":"https://rohankraghu.github.io/","description":"Mathematics and artificial intelligence at MIT. Quantitative research, machine learning, and a numeracy nonprofit.","affiliation":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"sameAs":["https://www.linkedin.com/in/rohan-raghu/","https://github.com/rohanKraghu"]}
 </script>
-<script>(function(e){var c="js";try{if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&!location.hash&&!sessionStorage.getItem("built")){c+=" building";setTimeout(function(){e.classList.remove("building")},3000)}}catch(x){}e.className=c})(document.documentElement)</script>
+<script>(function(e){var c="js";try{if(!matchMedia("(prefers-reduced-motion:reduce)").matches){c+=" building";setTimeout(function(){e.classList.remove("building")},3000)}}catch(x){}e.className=c})(document.documentElement)</script>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -465,20 +465,34 @@
     .cta{font-size:15pt}
     a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
   }
-  html.js [data-build]{transition:opacity .42s ease,transform .42s cubic-bezier(.22,1,.36,1)}
-  html.js.building [data-build]{opacity:0;transform:translateY(9px)}
-  .build{position:fixed;inset:0;z-index:18;pointer-events:none;overflow:hidden;transition:opacity .3s ease}
-  .build .cur{position:absolute;top:0;left:0;opacity:0;transform:translate3d(-80px,-80px,0);
-    transition:transform .5s cubic-bezier(.33,1,.5,1),opacity .26s ease;will-change:transform}
-  .build .cur svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}
+  html.js [data-build]{transition:opacity .3s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+  html.js.building [data-build]{opacity:0;transform:translateY(10px)}
+  .build{position:fixed;inset:0;z-index:18;pointer-events:none;overflow:hidden;transition:opacity .26s ease}
+  .build .cur{position:absolute;top:0;left:0;opacity:0;transform:translate3d(-90px,-90px,0);
+    transition:transform .2s cubic-bezier(.4,.85,.3,1),opacity .13s ease;will-change:transform}
+  .build .cur svg{display:block;filter:drop-shadow(0 2px 3px rgba(0,0,0,.32))}
   .build .c1 path{fill:var(--accent)}
-  .build .c2 path{fill:var(--ink)}
-  .build .c3 path{fill:var(--muted)}
-  .build .box{position:absolute;border:1px solid var(--accent);opacity:0;clip-path:inset(0 100% 100% 0);
-    transition:opacity .15s ease,clip-path .19s ease}
-  .build .dim{position:absolute;font-size:10px;font-weight:600;letter-spacing:.05em;line-height:1;
+  .build .c2 path{fill:#3F8F8A}
+  .build .c3 path{fill:#D6A43A}
+  .build .c4 path{fill:var(--ink)}
+  .build .c5 path{fill:#8A6212}
+  .build .c6 path{fill:var(--muted)}
+  .build .box{position:absolute;border:1.5px solid var(--accent);opacity:0;clip-path:inset(0 100% 100% 0);
+    background:color-mix(in srgb,var(--accent) 8%,transparent);
+    transition:opacity .12s ease,clip-path .16s ease}
+  .build .b2{border-color:#3F8F8A;background:color-mix(in srgb,#3F8F8A 8%,transparent)}
+  .build .b3{border-color:#D6A43A;background:color-mix(in srgb,#D6A43A 8%,transparent)}
+  .build .b4{border-color:var(--ink);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+  .build .b5{border-color:#8A6212;background:color-mix(in srgb,#8A6212 8%,transparent)}
+  .build .b6{border-color:var(--muted);background:color-mix(in srgb,var(--muted) 8%,transparent)}
+  .build .dim{position:absolute;font-size:10px;font-weight:600;letter-spacing:.04em;line-height:1;
     color:var(--paper);background:var(--accent);padding:3px 5px;white-space:nowrap;opacity:0;
-    transition:opacity .15s ease}
+    transition:opacity .12s ease}
+  .build .d2{background:#3F8F8A}
+  .build .d3{background:#D6A43A;color:var(--ink)}
+  .build .d4{background:var(--ink)}
+  .build .d5{background:#8A6212}
+  .build .d6{background:var(--muted)}
   @media (prefers-reduced-motion:reduce){.build{display:none}html.js [data-build]{transition:none}}
 </style>
 </head>
@@ -488,13 +502,13 @@
 
 <div class="top">
   <div class="wrap">
-    <span class="me">Rohan Raghu</span>
-    <div class="mode" role="group" aria-label="Site mode">
+    <span class="me" data-build>Rohan Raghu</span>
+    <div class="mode" role="group" aria-label="Site mode" data-build>
       <button type="button" data-mode="professional" aria-pressed="true">Professional</button>
       <button type="button" data-mode="personal" aria-pressed="false">Personal</button>
       <svg class="spr" viewBox="-140 -52 280 104" aria-hidden="true" focusable="false"><g stroke-width="2.4" stroke-linecap="round"><line x1="117.2" y1="0.6" x2="122.6" y2="-3.8" stroke="var(--accent)"/><line x1="112.1" y1="9.8" x2="117.8" y2="11.9" stroke="#3F8F8A"/><line x1="91.4" y1="22.2" x2="95.3" y2="25.5" stroke="#D6A43A"/><line x1="45.2" y1="33.9" x2="50.1" y2="35.9" stroke="var(--accent)"/><line x1="3.6" y1="35.7" x2="0.7" y2="40.3" stroke="#3F8F8A"/><line x1="-36.4" y1="32.7" x2="-40.5" y2="39.3" stroke="#D6A43A"/><line x1="-84.1" y1="23.1" x2="-88.7" y2="29.6" stroke="var(--accent)"/><line x1="-102.3" y1="18.7" x2="-108.1" y2="17.8" stroke="#3F8F8A"/><line x1="-117.4" y1="1.2" x2="-121.7" y2="5.3" stroke="#D6A43A"/><line x1="-103.7" y1="-17.5" x2="-110.4" y2="-16.8" stroke="var(--accent)"/><line x1="-79.2" y1="-25.9" x2="-84.7" y2="-29.6" stroke="#3F8F8A"/><line x1="-54.6" y1="-32.6" x2="-60.0" y2="-34.2" stroke="#D6A43A"/><line x1="5.5" y1="-35.0" x2="4.9" y2="-40.9" stroke="var(--accent)"/><line x1="47.2" y1="-32.0" x2="49.1" y2="-37.6" stroke="#3F8F8A"/><line x1="87.9" y1="-23.9" x2="93.3" y2="-25.9" stroke="#D6A43A"/><line x1="108.1" y1="-12.7" x2="115.3" y2="-15.1" stroke="var(--accent)"/></g></svg>
     </div>
-    <a class="mail" href="#contact">Contact</a>
+    <a class="mail" href="#contact" data-build>Contact</a>
   </div>
 </div>
 
@@ -507,18 +521,18 @@
         decision.
         Most of what I build is about getting from one to the other, whether it is a catalyst model,
         a market forecast, or somebody's first bank account.</p>
-      <p class="lz-cap"><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
+      <p class="lz-cap" data-build><b>Lorenz Attractor</b>, 1963: three simple equations with no randomness in them, and
         forecasting still fails. A backtest that fakes an edge falls into the same trap: a precise
         number that has stopped meaning anything. Drag ρ below 24.74 and the wandering stops.</p>
     </div>
 
-    <div class="hero-art"><canvas id="lorenz" aria-hidden="true"></canvas></div>
+    <div class="hero-art" data-build><canvas id="lorenz" aria-hidden="true"></canvas></div>
 
     <div class="meta">
-      <span class="where">Founder at Numeraldo.<br>MIT, Class of 2030.</span>
-      <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener">LinkedIn</a>
-      <a href="https://drive.google.com/file/d/1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc/view" target="_blank" rel="noopener">Resume</a>
-      <a href="https://drive.google.com/file/d/1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg/view" target="_blank" rel="noopener">CV</a>
+      <span class="where" data-build>Founder at Numeraldo.<br>MIT, Class of 2030.</span>
+      <a href="https://www.linkedin.com/in/rohan-raghu/" rel="noopener" data-build>LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1UW79_YkT75EXo4CSBRI5zAsjaoH72mxc/view" target="_blank" rel="noopener" data-build>Resume</a>
+      <a href="https://drive.google.com/file/d/1a4m2MELCSOLzXVYQ5rJhc83yZAnm_Ekg/view" target="_blank" rel="noopener" data-build>CV</a>
       <button class="lz-btn" id="lz-toggle" aria-expanded="false" aria-controls="lz-panel">Adjust</button>
       <div class="lz-panel" id="lz-panel" hidden>
         <p class="lz-eq">
@@ -554,7 +568,7 @@
 
 <div class="tabbar">
   <div class="wrap">
-    <div class="tabs" role="tablist" aria-label="Sections">
+    <div class="tabs" role="tablist" aria-label="Sections" data-build>
       <button role="tab" id="t-work" aria-controls="p-work" data-hash="work" aria-selected="true" tabindex="0">Work</button>
       <button role="tab" id="t-exp" aria-controls="p-exp" data-hash="experience" aria-selected="false" tabindex="-1">Experience</button>
       <button role="tab" id="t-about" aria-controls="p-about" data-hash="about" aria-selected="false" tabindex="-1">About</button>
@@ -1365,83 +1379,90 @@
   "use strict";
   var root = document.documentElement;
   if (!root.classList.contains("building")) return;
-  try { sessionStorage.setItem("built", "1"); } catch (e) {}
 
-  var marks = [].slice.call(document.querySelectorAll("[data-build]"));
-  if (!marks.length || !document.body) { root.classList.remove("building"); return; }
+  var all = [].slice.call(document.querySelectorAll("[data-build]"));
+  if (!all.length || !document.body) { root.classList.remove("building"); return; }
 
-  var ARROW = '<svg width="14" height="17" viewBox="0 0 14 17" aria-hidden="true">'
+  var vh = window.innerHeight, vw = window.innerWidth;
+  var queue = all.filter(function (m) {
+    var r = m.getBoundingClientRect();
+    return r.bottom > 4 && r.top < vh - 4 && r.right > 0 && r.left < vw && r.width > 10 && r.height > 8;
+  });
+  if (!queue.length) { root.classList.remove("building"); return; }
+
+  var ARROW = '<svg width="21" height="25" viewBox="0 0 14 17" aria-hidden="true">'
             + '<path d="M1 1l11.2 7-5 1.2L4.6 15z"/></svg>';
   var layer = document.createElement("div");
   layer.className = "build";
   layer.setAttribute("aria-hidden", "true");
 
-  var box = document.createElement("div");
-  box.className = "box";
-  var dim = document.createElement("div");
-  dim.className = "dim";
-  layer.appendChild(box);
-  layer.appendChild(dim);
-
-  var curs = [];
-  for (var i = 0; i < 3; i++) {
-    var c = document.createElement("div");
-    c.className = "cur c" + (i + 1);
-    c.innerHTML = ARROW;
-    layer.appendChild(c);
-    curs.push(c);
+  var K = Math.min(6, queue.length), crews = [], i;
+  for (i = 0; i < K; i++) {
+    var n = i + 1;
+    var box = document.createElement("div"); box.className = "box b" + n;
+    var dim = document.createElement("div"); dim.className = "dim d" + n;
+    var cur = document.createElement("div"); cur.className = "cur c" + n; cur.innerHTML = ARROW;
+    layer.appendChild(box); layer.appendChild(dim); layer.appendChild(cur);
+    crews.push({ cur: cur, box: box, dim: dim });
   }
   document.body.appendChild(layer);
 
-  var STEP = 175, done = false, timers = [];
+  var STEP = 320, done = false, timers = [];
 
   function finish() {
     if (done) return;
     done = true;
     timers.forEach(clearTimeout);
-    marks.forEach(function (m) { m.style.opacity = ""; m.style.transform = ""; });
+    all.forEach(function (m) { m.style.opacity = ""; m.style.transform = ""; });
     root.classList.remove("building");
     layer.style.opacity = "0";
     setTimeout(function () {
       if (layer.parentNode) layer.parentNode.removeChild(layer);
-    }, 320);
+    }, 280);
   }
 
   ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (ev) {
     window.addEventListener(ev, finish, { once: true, passive: true });
   });
 
-  marks.forEach(function (m, i) {
+  function visit(crew, el, delay) {
     timers.push(setTimeout(function () {
       if (done) return;
-      var r = m.getBoundingClientRect(), c = curs[i % curs.length];
-      c.style.transform = "translate3d(" + (r.left - 5) + "px," + (r.top - 7) + "px,0)";
-      c.style.opacity = "1";
-      box.style.left = r.left + "px";
-      box.style.top = r.top + "px";
-      box.style.width = r.width + "px";
-      box.style.height = r.height + "px";
-      box.style.transition = "none";
-      box.style.clipPath = "inset(0 100% 100% 0)";
-      void box.offsetWidth;
-      box.style.transition = "";
-      box.style.opacity = "1";
-      box.style.clipPath = "inset(0)";
-      dim.textContent = Math.round(r.width) + " x " + Math.round(r.height);
-      dim.style.left = r.left + "px";
-      dim.style.top = Math.max(2, r.top - 16) + "px";
-      dim.style.opacity = "1";
+      var r = el.getBoundingClientRect(), b = crew.box, d = crew.dim;
+      crew.cur.style.transform = "translate3d(" + (r.left - 4) + "px," + (r.top - 6) + "px,0)";
+      crew.cur.style.opacity = "1";
+      b.style.left = r.left + "px"; b.style.top = r.top + "px";
+      b.style.width = r.width + "px"; b.style.height = r.height + "px";
+      b.style.transition = "none"; b.style.clipPath = "inset(0 100% 100% 0)";
+      void b.offsetWidth;
+      b.style.transition = "";
       timers.push(setTimeout(function () {
         if (done) return;
-        m.style.opacity = "1";
-        m.style.transform = "none";
-        box.style.opacity = "0";
-        dim.style.opacity = "0";
-      }, 165));
-    }, 110 + i * STEP));
+        b.style.opacity = "1"; b.style.clipPath = "inset(0)";
+        d.textContent = Math.round(r.width) + " x " + Math.round(r.height);
+        d.style.left = r.left + "px";
+        d.style.top = (r.top > 20 ? r.top - 15 : r.bottom + 3) + "px";
+        d.style.opacity = "1";
+      }, 105));
+      timers.push(setTimeout(function () {
+        if (done) return;
+        el.style.opacity = "1"; el.style.transform = "none";
+      }, 180));
+      timers.push(setTimeout(function () {
+        if (done) return;
+        b.style.opacity = "0"; d.style.opacity = "0";
+      }, 245));
+    }, delay));
+  }
+
+  var last = 0;
+  queue.forEach(function (el, idx) {
+    var crew = idx % K, delay = crew * 45 + Math.floor(idx / K) * STEP;
+    if (delay > last) last = delay;
+    visit(crews[crew], el, delay);
   });
 
-  timers.push(setTimeout(finish, 110 + marks.length * STEP + 430));
+  timers.push(setTimeout(finish, last + 420));
 })();
 </script>
 
