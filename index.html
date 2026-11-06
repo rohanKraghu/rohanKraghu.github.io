@@ -436,6 +436,18 @@
     .mode button{padding:4px 9px}
   }
 
+  @media (max-width:430px){
+    .top .wrap{gap:9px}
+    .top .me{font-size:16px}
+    .mode button{padding:4px 7px;font-size:11.5px}
+    .top a.mail{font-size:12.5px}
+  }
+
+  @media (max-width:359px){
+    .top .wrap{flex-wrap:wrap;row-gap:9px}
+    .mode .spr{display:none}
+  }
+
   html:not(.js) .tabbar{display:none}
   html:not(.js) [role="tabpanel"][hidden]{display:block!important}
 
