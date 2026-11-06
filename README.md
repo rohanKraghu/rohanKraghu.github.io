@@ -89,6 +89,40 @@ hangs off the bottom. An eleventh photo does not just need a position, it
 needs the frames made smaller or the stage made taller, which is what
 `.stage{height}` and `.float{width}` control at each breakpoint.
 
+## The hero build-in
+
+On the first load of a browsing session the hero assembles itself: a cursor
+draws a box around the eyebrow, the headline and the standfirst in turn,
+each with a size badge, and each element fades up as its box completes. It
+runs about 600ms and then removes itself from the DOM.
+
+It is deliberately small. Only those three elements are held back; the
+Lorenz canvas, the caption and the links column are painted normally, so
+the page is never blank. Everything is CSS transitions on three cursors and
+one box: there is no animation loop, and nothing runs after it finishes.
+
+It does not run at all when any of these hold:
+
+- the visitor asked for reduced motion
+- JavaScript is off, so the markup renders as written
+- the URL carries a hash, which means a deep link into a tab
+- `sessionStorage` already has `built`, so it is once per session
+
+It also stops early and shows everything the moment the visitor scrolls,
+clicks, types or taps. If the main script never runs, the inline script in
+`<head>` clears the holding class after three seconds anyway, so the hero
+can never be left invisible. No content is created by JavaScript: crawlers
+and reader modes see the full markup.
+
+To remove it: drop the `data-build` attributes, the `.build` rules in the
+stylesheet, the last block in the script, and restore the one-line `<head>`
+script to `document.documentElement.className="js"`.
+
+The idea comes from the Swarm Rebuild Chrome extension and, behind it, Joel
+Califa's Swarm. Neither is reused here: that extension's source carries no
+licence and asks that it not be reused, so this is an independent and much
+smaller implementation of the same idea.
+
 ## Social share cards
 
 Every page carries an Open Graph image: the 1200 x 630 card that Slack,

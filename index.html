@@ -26,7 +26,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Rohan Raghu","alternateName":"Rohan K. Raghu","url":"https://rohankraghu.github.io/","description":"Mathematics and artificial intelligence at MIT. Quantitative research, machine learning, and a numeracy nonprofit.","affiliation":{"@type":"CollegeOrUniversity","name":"Massachusetts Institute of Technology"},"sameAs":["https://www.linkedin.com/in/rohan-raghu/","https://github.com/rohanKraghu"]}
 </script>
-<script>document.documentElement.className="js"</script>
+<script>(function(e){var c="js";try{if(!matchMedia("(prefers-reduced-motion:reduce)").matches&&!location.hash&&!sessionStorage.getItem("built")){c+=" building";setTimeout(function(){e.classList.remove("building")},3000)}}catch(x){}e.className=c})(document.documentElement)</script>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -453,6 +453,21 @@
     .cta{font-size:15pt}
     a[href^="http"]::after,a[href^="mailto"]::after{content:" " attr(href);font-size:8pt;color:#555}
   }
+  html.js [data-build]{transition:opacity .42s ease,transform .42s cubic-bezier(.22,1,.36,1)}
+  html.js.building [data-build]{opacity:0;transform:translateY(9px)}
+  .build{position:fixed;inset:0;z-index:18;pointer-events:none;overflow:hidden;transition:opacity .3s ease}
+  .build .cur{position:absolute;top:0;left:0;opacity:0;transform:translate3d(-80px,-80px,0);
+    transition:transform .5s cubic-bezier(.33,1,.5,1),opacity .26s ease;will-change:transform}
+  .build .cur svg{display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.28))}
+  .build .c1 path{fill:var(--accent)}
+  .build .c2 path{fill:var(--ink)}
+  .build .c3 path{fill:var(--muted)}
+  .build .box{position:absolute;border:1px solid var(--accent);opacity:0;clip-path:inset(0 100% 100% 0);
+    transition:opacity .15s ease,clip-path .19s ease}
+  .build .dim{position:absolute;font-size:10px;font-weight:600;letter-spacing:.05em;line-height:1;
+    color:var(--paper);background:var(--accent);padding:3px 5px;white-space:nowrap;opacity:0;
+    transition:opacity .15s ease}
+  @media (prefers-reduced-motion:reduce){.build{display:none}html.js [data-build]{transition:none}}
 </style>
 </head>
 <body>
@@ -474,9 +489,9 @@
 <div class="hero">
   <div class="wrap hero-grid">
     <div class="lede">
-      <span class="lbl">Mathematics &amp; artificial intelligence</span>
-      <h1 class="tag">Making numbers mean something</h1>
-      <p class="stand">I'm interested in the moment a number stops being noise and becomes a
+      <span class="lbl" data-build>Mathematics &amp; artificial intelligence</span>
+      <h1 class="tag" data-build>Making numbers mean something</h1>
+      <p class="stand" data-build>I'm interested in the moment a number stops being noise and becomes a
         decision.
         Most of what I build is about getting from one to the other, whether it is a catalyst model,
         a market forecast, or somebody's first bank account.</p>
@@ -1332,6 +1347,89 @@
   var note0 = document.getElementById("lz-motion");
   if (note0) note0.hidden = !still;
   resize();
+})();
+
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  if (!root.classList.contains("building")) return;
+  try { sessionStorage.setItem("built", "1"); } catch (e) {}
+
+  var marks = [].slice.call(document.querySelectorAll("[data-build]"));
+  if (!marks.length || !document.body) { root.classList.remove("building"); return; }
+
+  var ARROW = '<svg width="14" height="17" viewBox="0 0 14 17" aria-hidden="true">'
+            + '<path d="M1 1l11.2 7-5 1.2L4.6 15z"/></svg>';
+  var layer = document.createElement("div");
+  layer.className = "build";
+  layer.setAttribute("aria-hidden", "true");
+
+  var box = document.createElement("div");
+  box.className = "box";
+  var dim = document.createElement("div");
+  dim.className = "dim";
+  layer.appendChild(box);
+  layer.appendChild(dim);
+
+  var curs = [];
+  for (var i = 0; i < 3; i++) {
+    var c = document.createElement("div");
+    c.className = "cur c" + (i + 1);
+    c.innerHTML = ARROW;
+    layer.appendChild(c);
+    curs.push(c);
+  }
+  document.body.appendChild(layer);
+
+  var STEP = 175, done = false, timers = [];
+
+  function finish() {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    marks.forEach(function (m) { m.style.opacity = ""; m.style.transform = ""; });
+    root.classList.remove("building");
+    layer.style.opacity = "0";
+    setTimeout(function () {
+      if (layer.parentNode) layer.parentNode.removeChild(layer);
+    }, 320);
+  }
+
+  ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (ev) {
+    window.addEventListener(ev, finish, { once: true, passive: true });
+  });
+
+  marks.forEach(function (m, i) {
+    timers.push(setTimeout(function () {
+      if (done) return;
+      var r = m.getBoundingClientRect(), c = curs[i % curs.length];
+      c.style.transform = "translate3d(" + (r.left - 5) + "px," + (r.top - 7) + "px,0)";
+      c.style.opacity = "1";
+      box.style.left = r.left + "px";
+      box.style.top = r.top + "px";
+      box.style.width = r.width + "px";
+      box.style.height = r.height + "px";
+      box.style.transition = "none";
+      box.style.clipPath = "inset(0 100% 100% 0)";
+      void box.offsetWidth;
+      box.style.transition = "";
+      box.style.opacity = "1";
+      box.style.clipPath = "inset(0)";
+      dim.textContent = Math.round(r.width) + " x " + Math.round(r.height);
+      dim.style.left = r.left + "px";
+      dim.style.top = Math.max(2, r.top - 16) + "px";
+      dim.style.opacity = "1";
+      timers.push(setTimeout(function () {
+        if (done) return;
+        m.style.opacity = "1";
+        m.style.transform = "none";
+        box.style.opacity = "0";
+        dim.style.opacity = "0";
+      }, 165));
+    }, 110 + i * STEP));
+  });
+
+  timers.push(setTimeout(finish, 110 + marks.length * STEP + 430));
 })();
 </script>
 
