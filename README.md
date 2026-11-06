@@ -89,32 +89,33 @@ hangs off the bottom. An eleventh photo does not just need a position, it
 needs the frames made smaller or the stage made taller, which is what
 `.stage{height}` and `.float{width}` control at each breakpoint.
 
-## The hero build-in
+## The page build-in
 
-On the first load of a browsing session the hero assembles itself: a cursor
-draws a box around the eyebrow, the headline and the standfirst in turn,
-each with a size badge, and each element fades up as its box completes. It
-runs about 600ms and then removes itself from the DOM.
+On every load the page assembles itself: six cursors fan out across the
+header, the hero and the tab bar, each drawing a box around an element with
+a size badge on it, and each element fades up as its box completes. It runs
+about a second and then removes itself from the DOM.
 
-It is deliberately small. Only those three elements are held back; the
-Lorenz canvas, the caption and the links column are painted normally, so
-the page is never blank. Everything is CSS transitions on three cursors and
-one box: there is no animation loop, and nothing runs after it finishes.
+Thirteen elements carry `data-build`. At animation time only the ones
+inside the viewport are animated, so on a phone that is about eight and the
+rest are simply shown when the holding class comes off. Six cursors work
+concurrently in six colours, each with its own box, so several boxes are
+being drawn at any moment.
 
-It does not run at all when any of these hold:
+Everything is CSS transitions. There is no animation loop, and nothing runs
+after it finishes.
 
-- the visitor asked for reduced motion
-- JavaScript is off, so the markup renders as written
-- the URL carries a hash, which means a deep link into a tab
-- `sessionStorage` already has `built`, so it is once per session
+It does not run when the visitor asked for reduced motion, or when
+JavaScript is off, in which case the markup renders as written. It stops
+early and shows everything the moment the visitor scrolls, clicks, types or
+taps. If the main script never runs, the inline script in `<head>` clears
+the holding class after three seconds anyway, so the page can never be left
+invisible. No content is created by JavaScript: crawlers and reader modes
+see the full markup.
 
-It also stops early and shows everything the moment the visitor scrolls,
-clicks, types or taps. If the main script never runs, the inline script in
-`<head>` clears the holding class after three seconds anyway, so the hero
-can never be left invisible. No content is created by JavaScript: crawlers
-and reader modes see the full markup.
-
-To remove it: drop the `data-build` attributes, the `.build` rules in the
+To make it quieter: raise `STEP`, lower the cursor count `K`, or drop
+`data-build` from whichever elements should not be held back. To remove it
+entirely: drop all the `data-build` attributes, the `.build` rules in the
 stylesheet, the last block in the script, and restore the one-line `<head>`
 script to `document.documentElement.className="js"`.
 
