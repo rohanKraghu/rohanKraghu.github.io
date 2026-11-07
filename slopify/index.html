@@ -122,6 +122,8 @@ footer .wrap{padding-block:22px;font:400 .78rem var(--mono);color:var(--muted)}
 .tip::backdrop{background:rgba(20,22,12,.55)}
 .tip h2{font-size:1.6rem;font-weight:800;margin-bottom:8px}
 .tip p{margin:0 0 12px;color:var(--muted)}
+.tip .pos{font:400 .9rem var(--mono);color:var(--muted);letter-spacing:0}
+.tip .def{color:var(--ink);font-style:italic;border-left:3px solid var(--goo);padding-left:12px}
 .tip .amt{font:500 1.4rem var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
 .tip .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .tip a.btn{text-decoration:none;display:inline-block}
@@ -174,8 +176,9 @@ footer .wrap{padding-block:22px;font:400 .78rem var(--mono);color:var(--muted)}
 
 <footer><div class="wrap">Slopify is a parody. No products exist and the timer is lying to you. Checkout is a real tip to the founder; you receive nothing but the joke. <a class="home" href="/">Back to rohankraghu.github.io</a></div></footer>
 <dialog class="tip" id="tip" aria-labelledby="tipTitle">
-  <h2 id="tipTitle">Nothing here ships</h2>
-  <p>There are no products, so checkout is a tip to the founder instead. You get nothing except the satisfaction of funding slop.</p>
+  <h2 id="tipTitle">slop <span class="pos">/slɒp/ · noun</span></h2>
+  <p class="def">Low-quality content or goods, made in bulk with little care.</p>
+  <p>So low quality, in fact, that it doesn't exist. You get nothing except the satisfaction of funding slop.</p>
   <p>Your cart says you were willing to pay <span class="amt" id="tipAmt">$0.00</span>. Tip that, a dollar, or anything in between.</p>
   <p class="small">Payment is handled by Stripe on a separate page. Tips are not refundable for lack of product, because there was never a product.</p>
   <div class="acts"><a class="btn" id="tipLink" href="https://buy.stripe.com/3cIaEWbCZ0qAeMub30grS00" target="_blank" rel="noopener">Tip the founder</a><button class="ghost" type="button" id="tipClose">Keep my money</button></div>
