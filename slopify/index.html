@@ -135,10 +135,10 @@ footer .wrap{padding-block:22px;font:400 .78rem var(--mono);color:var(--muted)}
 <section class="wrap hero" id="home">
   <span class="label">E-commerce for people with no product and no plan</span>
   <h1>Launch a store in <em>4 seconds.</em> Regret it in 5.</h1>
-  <p>Type any vague idea. Slopify invents a brand name, writes the copy, generates the products, marks everything up 900%, and adds a countdown timer that never ends.</p>
+  <p>Type any vague idea. Slopify invents a brand name, writes the copy, generates the products, marks everything up a few hundred percent, and adds a countdown timer that never ends.</p>
   <form class="gen" id="genForm">
     <label for="niche" class="label" hidden>Your niche</label>
-    <input id="niche" name="niche" placeholder="e.g. cats who meditate" value="crystals for productivity" autocomplete="off">
+    <input id="niche" name="niche" placeholder="e.g. cats who meditate" autocomplete="off">
     <button class="btn" type="submit">Generate my empire</button>
   </form>
   <div class="chips" id="chips"></div>
@@ -183,7 +183,8 @@ const tags=["Bestseller","Going viral","Seen on a reel","Only 3 left","New drop"
 const ships=["Ships in 6 to 40 weeks","Ships from a cargo container","Ships eventually","Ships in a smaller box than shown","Ship date: vibes"];
 const taglines=n=>[`${cap(n)}, but make it a lifestyle.`,`The ${n} brand your algorithm already chose for you.`,`We took ${n} and added a subscription.`,`Disrupting ${n} since this morning.`];
 const banners=["FREE SHIPPING ON ORDERS OVER $9,000","SALE ENDS IN 00:14:59 (IT RESETS)","AS SEEN ON A PHONE","HANDCRAFTED BY A WAREHOUSE","EVERY PURCHASE PLANTS ONE IMAGINARY TREE"];
-const ideas=["cats who meditate","sad millennials","standing desks for dogs","artisanal ice","eco-friendly plastic","productivity for babies"];
+const ideas=["cats who meditate","sad millennials","standing desks for dogs","artisanal ice","eco-friendly plastic","productivity for babies","crystals for productivity","gym bros who journal","haunted houseplants","luxury tap water","NFTs for grandparents","sleep for founders","keto for goldfish","minimalist clutter","gluten-free air","remote work for pigeons","small talk coaching","ergonomic spoons","therapy for robots","vintage brand-new jeans"];
+const shuffled=[...ideas].sort(()=>Math.random()-.5);
 
 let cart={n:0,t:0};
 const money=v=>"$"+v.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -205,17 +206,18 @@ function art(cv,hue){
 function brandName(niche,salt){seed=hash(niche.toLowerCase()+"|"+salt);return pick(prefixes)+pick(suffixes)}
 function renderStore(el,st,live){
   const niche=st.niche,name=brandName(niche,st.salt);
+  const markup=150+Math.floor(rnd()*200);
   el.innerHTML=`
     <div class="banner"><span>${[...Array(3)].map(()=>pick(banners)).join("  ★  ")}</span></div>
     <div class="storehead"><span class="label">${live?"Open for business (nobody visited yet)":"Preview: not published"}</span>
       <h2>${esc(name)}</h2><p>${esc(pick(taglines(niche)))}</p></div>
-    <div class="meta"><span>Niche: <b>${esc(niche)}</b></span><span>Markup: <b>${(800+Math.floor(rnd()*400))}%</b></span><span>Original thoughts: <b>0</b></span></div>
+    <div class="meta"><span>Niche: <b>${esc(niche)}</b></span><span>Markup: <b>${markup}%</b></span><span>Original thoughts: <b>0</b></span></div>
     <div class="grid"></div><div class="row"></div>`;
   const grid=el.querySelector(".grid");
   for(let i=0;i<6;i++){
-    const cost=+(0.4+rnd()*3).toFixed(2);
-    const now=Math.round(cost*(10+rnd()*20))-0.01;
-    const was=Math.round(now*(1.8+rnd()*2))-0.01;
+    const cost=+(3+rnd()*12).toFixed(2);
+    const now=Math.round(cost*(1+markup/100))-0.01;
+    const was=Math.round(now*(1.4+rnd()*.6))-0.01;
     const left=1+Math.floor(rnd()*4);
     const title=`${pick(adjectives)} ${cap(niche.split(" ").slice(-1)[0])} ${pick(objects)}`;
     const c=document.createElement("article");c.className="card";
@@ -273,9 +275,9 @@ let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on
 $("#cartBtn").onclick=()=>toast(cart.n?`Checkout disabled. Your ${cart.n} items are emotionally yours now.`:"Your cart is as empty as our business plan.");
 $("#genForm").onsubmit=e=>{e.preventDefault();preview($("#niche").value)};
 $("#backBtn").onclick=()=>{location.hash="";document.title="Slopify · Rohan Raghu"};
-ideas.forEach(i=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=i;b.onclick=()=>{$("#niche").value=i;preview(i)};$("#chips").append(b)});
+shuffled.slice(1,7).forEach(i=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=i;b.onclick=()=>{$("#niche").value=i;preview(i)};$("#chips").append(b)});
 addEventListener("hashchange",route);
-preview($("#niche").value);route();
+$("#niche").value=shuffled[0];$("#niche").placeholder="e.g. "+shuffled[1];preview(shuffled[0]);route();
 
 </script>
 </body>
