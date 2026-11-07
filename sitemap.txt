@@ -2,3 +2,4 @@ https://rohankraghu.github.io/
 https://rohankraghu.github.io/countersign/
 https://rohankraghu.github.io/honest-backtest/
 https://rohankraghu.github.io/transit-detection/
+https://rohankraghu.github.io/slopify/

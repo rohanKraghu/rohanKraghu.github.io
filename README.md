@@ -12,6 +12,7 @@ assets/og-src/              Source pages for the social share cards. Not linked 
 countersign/index.html      Countersign, the startup: what it is and build progress.
 honest-backtest/index.html  Honest Backtest, the engine and the Sharpe study.
 transit-detection/          Finding Planets in Starlight, the TESS vetting pipeline.
+slopify/index.html          Slopify, a parody store builder. Stores live in the link (#s=niche~seed).
 ```
 
 ## Replacing the resume or the CV
@@ -135,6 +136,7 @@ iMessage, LinkedIn and X show when the link is posted.
 | `countersign/index.html` | `assets/og-countersign.png` |
 | `honest-backtest/index.html` | `assets/og-honest-backtest.png` |
 | `transit-detection/index.html` | `assets/og-transit-detection.png` |
+| `slopify/index.html` | `assets/og-slopify.png` (a screenshot of the page itself, no source in `og-src/`) |
 
 Each card is drawn by the page of the same name in `assets/og-src/`, using
 that section's own palette, typefaces and figures. To change one: edit its
