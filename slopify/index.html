@@ -118,6 +118,13 @@ footer .wrap{padding-block:22px;font:400 .78rem var(--mono);color:var(--muted)}
 .stall span{overflow-wrap:anywhere}
 .empty{padding:22px;border:1.5px dashed var(--line);border-radius:16px;color:var(--muted)}
 .back{font:500 .85rem var(--mono);color:var(--ink);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.tip{border:2px solid var(--ink);border-radius:20px;background:var(--surface);color:var(--ink);padding:24px;max-width:min(420px,calc(100% - 32px));box-shadow:8px 8px 0 var(--goo)}
+.tip::backdrop{background:rgba(20,22,12,.55)}
+.tip h2{font-size:1.6rem;font-weight:800;margin-bottom:8px}
+.tip p{margin:0 0 12px;color:var(--muted)}
+.tip .amt{font:500 1.4rem var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.tip .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.tip a.btn{text-decoration:none;display:inline-block}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,calc(100% + 60px));background:var(--ink);color:var(--bg);font:500 .85rem var(--mono);padding:11px 18px;border-radius:12px;transition:transform .25s;max-width:calc(100% - 32px);z-index:20}
 .toast.on{transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.banner span{animation:none;padding-left:0}.toast,.btn{transition:none}}
@@ -165,7 +172,14 @@ footer .wrap{padding-block:22px;font:400 .78rem var(--mono);color:var(--muted)}
 </section>
 </main>
 
-<footer><div class="wrap">Slopify is a parody. No products exist, no money moves, and the timer is lying to you. <a class="home" href="/">Back to rohankraghu.github.io</a></div></footer>
+<footer><div class="wrap">Slopify is a parody. No products exist and the timer is lying to you. Checkout is a real tip to the founder; you receive nothing but the joke. <a class="home" href="/">Back to rohankraghu.github.io</a></div></footer>
+<dialog class="tip" id="tip" aria-labelledby="tipTitle">
+  <h2 id="tipTitle">Nothing here ships</h2>
+  <p>There are no products, so checkout is a tip to the founder instead. You get nothing except the satisfaction of funding slop.</p>
+  <p>Your cart says you were willing to pay <span class="amt" id="tipAmt">$0.00</span>. Tip that, a dollar, or anything in between.</p>
+  <p class="small">Payment is handled by Stripe on a separate page. Tips are not refundable for lack of product, because there was never a product.</p>
+  <div class="acts"><a class="btn" id="tipLink" href="https://buy.stripe.com/3cIaEWbCZ0qAeMub30grS00" target="_blank" rel="noopener">Tip the founder</a><button class="ghost" type="button" id="tipClose">Keep my money</button></div>
+</dialog>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -272,7 +286,9 @@ function route(){
 
 function sync(){$("#cartN").textContent=cart.n;$("#cartT").textContent=money(cart.t)}
 let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2600)}
-$("#cartBtn").onclick=()=>toast(cart.n?`Checkout disabled. Your ${cart.n} items are emotionally yours now.`:"Your cart is as empty as our business plan.");
+$("#cartBtn").onclick=()=>{$("#tipAmt").textContent=money(cart.t);$("#tip").showModal()};
+$("#tipClose").onclick=()=>$("#tip").close();
+$("#tipLink").onclick=()=>{$("#tip").close();toast("Opening Stripe. Thank you for your service.")};
 $("#genForm").onsubmit=e=>{e.preventDefault();preview($("#niche").value)};
 $("#backBtn").onclick=()=>{location.hash="";document.title="Slopify · Rohan Raghu"};
 shuffled.slice(1,7).forEach(i=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=i;b.onclick=()=>{$("#niche").value=i;preview(i)};$("#chips").append(b)});
