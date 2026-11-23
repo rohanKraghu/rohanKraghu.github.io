@@ -156,6 +156,9 @@
     font-variant-numeric:tabular-nums;text-anchor:end;fill:var(--ink)}
   .shot svg.ledger .t{font-weight:600;fill:var(--accent)}
   .shot img{object-fit:cover}
+  .shot img.dk{display:none}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .shot img.lt{display:none}:root:not([data-theme="light"]) .shot img.dk{display:block}}
+  :root[data-theme="dark"] .shot img.lt{display:none}:root[data-theme="dark"] .shot img.dk{display:block}
   a.item:hover .shot{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
 
   .role{display:grid;grid-template-columns:repeat(12,1fr);gap:12px 24px;padding-block:clamp(26px,3.2vw,42px);border-bottom:1px solid var(--line)}
@@ -590,7 +593,7 @@
         <a class="item" href="countersign/">
           <div class="rail">
             <span class="num idx">01</span>
-            <div class="shot"><img src="assets/proto-countersign.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
+            <div class="shot"><img class="lt" src="assets/proto-countersign-light.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""><img class="dk" src="assets/proto-countersign.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
           </div>
           <div class="main">
             <h3>Countersign</h3>
@@ -639,7 +642,7 @@
         <a class="item" href="honest-backtest/">
           <div class="rail">
             <span class="num idx">03</span>
-            <div class="shot"><img src="assets/proto-honest-backtest.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
+            <div class="shot"><img class="lt" src="assets/proto-honest-backtest-light.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""><img class="dk" src="assets/proto-honest-backtest.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""></div>
           </div>
           <div class="main">
             <h3>Honest backtester</h3>
